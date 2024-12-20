@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
-import { ColorValue, StyleSheet, View } from 'react-native';
+import React, { useMemo } from 'react';
+import { ColorValue, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 import { grey, useThemeButtonConfigSelector, useThemeColorsSelector, useThemeSpacingSelector } from '../../libraries';
 import { getVariant, merge } from '../../utils';
 import { ActivityIndicator } from '../ActivityIndicator';
@@ -43,7 +43,56 @@ export const Button = React.forwardRef<View, ButtonProps>(
     const themeColors = useThemeColorsSelector();
     const themeSpacing = useThemeSpacingSelector();
     const buttonThemeConfig = useThemeButtonConfigSelector();
+
     const isContainedButton = variation === 'contained';
+    const isOutlinedButton = variation === 'outlined';
+    const isTextButton = variation === 'text';
+
+    const {
+      labelStyles: containedButtonLabelStyles,
+      baseButtonStyles: containedBaseButtonStyles,
+      style: containedButtonStyles,
+    } = buttonThemeConfig?.contained || {};
+    const {
+      labelStyles: outlinedButtonLabelStyles,
+      baseButtonStyles: outlinedBaseButtonStyles,
+      style: outlinedButtonStyles,
+    } = buttonThemeConfig?.outlined || {};
+    const {
+      labelStyles: textButtonLabelStyles,
+      baseButtonStyles: textBaseButtonStyles,
+      style: textButtonStyles,
+    } = buttonThemeConfig?.text || {};
+
+    const computeButtonContainedStyles = (): StyleProp<TextStyle> => {
+      return [
+        buttonThemeConfig?.labelStyles,
+        isContainedButton && containedButtonLabelStyles,
+        isOutlinedButton && outlinedButtonLabelStyles,
+        isTextButton && textButtonLabelStyles,
+        labelStyles,
+      ].filter(Boolean);
+    };
+
+    const computeBaseButtonStyles = (): StyleProp<ViewStyle> => {
+      return [
+        buttonThemeConfig?.baseButtonStyles,
+        isContainedButton && containedBaseButtonStyles,
+        isOutlinedButton && outlinedBaseButtonStyles,
+        isTextButton && textBaseButtonStyles,
+        baseButtonStyles,
+      ].filter(Boolean);
+    };
+
+    const computeButtonStyles = (): StyleProp<ViewStyle> => {
+      return [
+        buttonThemeConfig?.style,
+        isContainedButton && containedButtonStyles,
+        isOutlinedButton && outlinedButtonStyles,
+        isTextButton && textButtonStyles,
+        style,
+      ].filter(Boolean);
+    };
 
     const shouldDisableRipple = disableRipple ?? buttonThemeConfig?.disableRipple;
 
@@ -100,48 +149,34 @@ export const Button = React.forwardRef<View, ButtonProps>(
       buttonThemeConfig?.square,
     ]);
 
-    const renderChild = useCallback(() => {
+    const renderChild = () => {
       if (loading) {
         return <ActivityIndicator />;
-      } else if (children) {
-        return children;
-      } else {
-        let textColor: ColorValue;
-
-        if (labelColor) {
-          textColor = labelColor;
-        } else if (buttonThemeConfig?.labelColor) {
-          textColor = buttonThemeConfig.labelColor;
-        } else if (isContainedButton) {
-          textColor = grey[50];
-        } else {
-          textColor = getVariant({ variant: buttonColor, colors: themeColors });
-        }
-
-        return (
-          <Text style={StyleSheet.flatten([{ color: textColor }, buttonThemeConfig?.labelStyles, labelStyles])}>{label}</Text>
-        );
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [
-      loading,
-      children,
-      labelStyles,
-      themeColors,
-      variation,
-      buttonColor,
-      labelColor,
-      label,
-      buttonThemeConfig?.labelColor,
-      buttonThemeConfig?.labelStyles,
-      labelStyles,
-    ]);
+      if (children) {
+        return children;
+      }
+
+      let textColor: ColorValue;
+
+      if (labelColor) {
+        textColor = labelColor;
+      } else if (buttonThemeConfig?.labelColor) {
+        textColor = buttonThemeConfig.labelColor;
+      } else if (isContainedButton) {
+        textColor = grey[50];
+      } else {
+        textColor = getVariant({ variant: buttonColor, colors: themeColors });
+      }
+
+      return <Text style={StyleSheet.flatten([{ color: textColor }, computeButtonContainedStyles()])}>{label}</Text>;
+    };
 
     return (
-      <Box style={StyleSheet.flatten([buttonRootContainerStyles({ flex }), buttonThemeConfig?.style, style])} sx={sx} ref={ref}>
+      <Box style={StyleSheet.flatten([buttonRootContainerStyles({ flex }), computeButtonStyles()])} sx={sx} ref={ref}>
         <BaseButton
           disabled={loading || disabled}
-          style={StyleSheet.flatten([buttonStyles, buttonThemeConfig?.baseButtonStyles, baseButtonStyles])}
+          style={StyleSheet.flatten([buttonStyles, computeBaseButtonStyles()])}
           disableRipple={shouldDisableRipple}
           disableScaleAnimation={shouldDisableScaleAnimation()}
           scaleAnimationValue={buttonScaleAnimationValue()}

@@ -12,6 +12,7 @@ import {
   BadgeProps,
   BadgeVariationThemeConfig,
   ButtonProps,
+  ButtonVariations,
   CardHeaderProps,
   CardProps,
   CheckBoxProps,
@@ -119,7 +120,7 @@ export type CreateThemeDimensionsReturnValues = ThemeDimensions & InnerPartial<T
  * with support for specifying the theme property name (e.g., 'primary' or 'secondary') for each shade.
  */
 export type CreateColorShadesInterface = { shades: Partial<ColorShades>; themePropertyName: ThemeKeys };
-type TextFiledConfig = Pick<
+type TextFileThemeConfig = Pick<
   TextFieldProps,
   | 'animatedDuration'
   | 'inputStyles'
@@ -135,7 +136,24 @@ type TextFiledConfig = Pick<
  * Each key corresponds to a specific TextField variation (e.g., 'outlined', 'filled'), and the value is a partial configuration specific to that variation.
  */
 type TextFieldVariationConfig = Partial<
-  Record<TextFiledVariation, Pick<TextFiledConfig, 'activeColor' | 'errorColor' | 'inputStyles' | 'style'> | undefined>
+  Record<TextFiledVariation, Pick<TextFileThemeConfig, 'activeColor' | 'errorColor' | 'inputStyles' | 'style'> | undefined>
+>;
+type ButtonThemeConfig = Pick<
+  ButtonProps,
+  | 'disableRipple'
+  | 'labelStyles'
+  | 'square'
+  | 'labelColor'
+  | 'baseButtonStyles'
+  | 'disableScaleAnimation'
+  | 'scaleAnimationValue'
+  | 'rippleEdge'
+  | 'baseButtonContainerStyle'
+  | 'rippleProps'
+  | 'style'
+>;
+type ButtonVariationConfig = Partial<
+  Record<ButtonVariations, Pick<ButtonThemeConfig, 'labelStyles' | 'baseButtonStyles' | 'style'> | undefined>
 >;
 /**
  * Configuration type for customizing the look and feel of themeable components.
@@ -145,20 +163,7 @@ export type ThemeComponentConfig = {
   textProps: Pick<TextProps, 'gutterBottomSpace' | 'maxLength' | 'errorColor' | 'activeColor' | 'color' | 'style'> &
     TextVariationThemeConfig;
   badgeProps: Pick<BadgeProps, 'max' | 'badgeAnimationDuration' | 'anchorOrigin' | 'style'> & BadgeVariationThemeConfig;
-  buttonProps: Pick<
-    ButtonProps,
-    | 'disableRipple'
-    | 'labelStyles'
-    | 'square'
-    | 'labelColor'
-    | 'baseButtonStyles'
-    | 'disableScaleAnimation'
-    | 'scaleAnimationValue'
-    | 'rippleEdge'
-    | 'baseButtonContainerStyle'
-    | 'rippleProps'
-    | 'style'
-  >;
+  buttonProps: ButtonThemeConfig & ButtonVariationConfig;
   iconButtonProps: Pick<
     IconButtonProps,
     'variation' | 'disableRipple' | 'rippleProps' | 'rippleEdge' | 'baseButtonContainerStyle' | 'style'
