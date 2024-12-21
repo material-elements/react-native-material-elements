@@ -19,7 +19,9 @@ import {
   CheckBoxVariationThemeConfig,
   ChipColorThemeConfig,
   ChipProps,
+  ChipVariant,
   IconButtonProps,
+  IconButtonVariations,
   ListItemProps,
   ListProps,
   PaginationProps,
@@ -120,6 +122,7 @@ export type CreateThemeDimensionsReturnValues = ThemeDimensions & InnerPartial<T
  * with support for specifying the theme property name (e.g., 'primary' or 'secondary') for each shade.
  */
 export type CreateColorShadesInterface = { shades: Partial<ColorShades>; themePropertyName: ThemeKeys };
+
 type TextFileThemeConfig = Pick<
   TextFieldProps,
   | 'animatedDuration'
@@ -131,10 +134,6 @@ type TextFileThemeConfig = Pick<
   | 'ignoreOpacityOnNonEditable'
   | 'square'
 >;
-/**
- * Define a configuration map for TextField variations.
- * Each key corresponds to a specific TextField variation (e.g., 'outlined', 'filled'), and the value is a partial configuration specific to that variation.
- */
 type TextFieldVariationConfig = Partial<
   Record<TextFiledVariation, Pick<TextFileThemeConfig, 'activeColor' | 'errorColor' | 'inputStyles' | 'style'> | undefined>
 >;
@@ -155,6 +154,18 @@ type ButtonThemeConfig = Pick<
 type ButtonVariationConfig = Partial<
   Record<ButtonVariations, Pick<ButtonThemeConfig, 'labelStyles' | 'baseButtonStyles' | 'style'> | undefined>
 >;
+type IconButtonThemeConfig = Pick<
+  IconButtonProps,
+  'variation' | 'disableRipple' | 'rippleProps' | 'rippleEdge' | 'baseButtonContainerStyle' | 'style'
+>;
+type IconButtonVariationsConfig = Partial<
+  Record<IconButtonVariations, Pick<IconButtonThemeConfig, 'style' | 'baseButtonContainerStyle'> | undefined>
+>;
+type ChipThemeConfig = Pick<ChipProps, 'chipWrapperContainerStyles' | 'square' | 'labelColor' | 'style'> & ChipColorThemeConfig;
+type ChipVariationConfig = Partial<
+  Record<ChipVariant, Pick<ChipThemeConfig, 'style' | 'chipWrapperContainerStyles'> | undefined>
+>;
+
 /**
  * Configuration type for customizing the look and feel of themeable components.
  * These configurations allow for easy styling adjustments for various components.
@@ -164,10 +175,7 @@ export type ThemeComponentConfig = {
     TextVariationThemeConfig;
   badgeProps: Pick<BadgeProps, 'max' | 'badgeAnimationDuration' | 'anchorOrigin' | 'style'> & BadgeVariationThemeConfig;
   buttonProps: ButtonThemeConfig & ButtonVariationConfig;
-  iconButtonProps: Pick<
-    IconButtonProps,
-    'variation' | 'disableRipple' | 'rippleProps' | 'rippleEdge' | 'baseButtonContainerStyle' | 'style'
-  >;
+  iconButtonProps: IconButtonThemeConfig & IconButtonVariationsConfig;
   buttonGroupProps: Pick<
     ButtonGroupProps,
     'roundSize' | 'borderWidth' | 'removeBorders' | 'disableRipple' | 'baseButtonStyles' | 'style'
@@ -184,7 +192,7 @@ export type ThemeComponentConfig = {
     | 'labelContainerStyles'
   > &
     CheckBoxVariationThemeConfig;
-  chipProps?: Pick<ChipProps, 'chipWrapperContainerStyles' | 'square' | 'labelColor' | 'style'> & ChipColorThemeConfig;
+  chipProps?: ChipThemeConfig & ChipVariationConfig;
   dividerProps?: Pick<DividerProps, 'startLineStyles' | 'endLineStyles' | 'borderColor' | 'gap' | 'variantSpacing' | 'style'> &
     DividerColorThemeConfig;
   listProps?: Pick<ListProps, 'subheaderContainerStyles' | 'disablePadding' | 'style'>;

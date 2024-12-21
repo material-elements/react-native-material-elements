@@ -72,14 +72,7 @@ export const Ripple = React.forwardRef<RippleInterface, RippleProps>(
       let rippleAnimationDefaultStyles: ViewStyle = {
         top: item.positionY,
         left: item.positionX,
-        transform: [
-          {
-            scale: item.progress.interpolate({
-              inputRange: [0, 1],
-              outputRange: [0.5, RIPPLE_SIZE * 2],
-            }),
-          },
-        ],
+        transform: [{ scale: item.progress.interpolate({ inputRange: [0, 1], outputRange: [0.5, RIPPLE_SIZE * 2] }) }],
         opacity: item.progress.interpolate({
           inputRange: [0, 1],
           outputRange: [1, 0],
@@ -88,17 +81,14 @@ export const Ripple = React.forwardRef<RippleInterface, RippleProps>(
 
       return (
         <Animated.View
-          style={[
+          style={StyleSheet.flatten([
             rippleStyles ? { ...rippleDefaultStyles, ...rippleStyles } : rippleDefaultStyles,
             [
               rippleAnimationStyles
-                ? {
-                    ...rippleAnimationDefaultStyles,
-                    ...rippleAnimationStyles,
-                  }
+                ? { ...rippleAnimationDefaultStyles, ...rippleAnimationStyles }
                 : rippleAnimationDefaultStyles,
             ],
-          ]}
+          ])}
           key={item.id}
         />
       );

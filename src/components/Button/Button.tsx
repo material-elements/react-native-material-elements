@@ -64,7 +64,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       style: textButtonStyles,
     } = buttonThemeConfig?.text || {};
 
-    const computeButtonContainedStyles = (): StyleProp<TextStyle> => {
+    const generateButtonContainedStyles = (): StyleProp<TextStyle> => {
       return [
         buttonThemeConfig?.labelStyles,
         isContainedButton && containedButtonLabelStyles,
@@ -74,7 +74,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       ].filter(Boolean);
     };
 
-    const computeBaseButtonStyles = (): StyleProp<ViewStyle> => {
+    const generateBaseButtonStyles = (): StyleProp<ViewStyle> => {
       return [
         buttonThemeConfig?.baseButtonStyles,
         isContainedButton && containedBaseButtonStyles,
@@ -84,7 +84,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       ].filter(Boolean);
     };
 
-    const computeButtonStyles = (): StyleProp<ViewStyle> => {
+    const generateButtonStyles = (): StyleProp<ViewStyle> => {
       return [
         buttonThemeConfig?.style,
         isContainedButton && containedButtonStyles,
@@ -169,14 +169,14 @@ export const Button = React.forwardRef<View, ButtonProps>(
         textColor = getVariant({ variant: buttonColor, colors: themeColors });
       }
 
-      return <Text style={StyleSheet.flatten([{ color: textColor }, computeButtonContainedStyles()])}>{label}</Text>;
+      return <Text style={StyleSheet.flatten([{ color: textColor }, generateButtonContainedStyles()])}>{label}</Text>;
     };
 
     return (
-      <Box style={StyleSheet.flatten([buttonRootContainerStyles({ flex }), computeButtonStyles()])} sx={sx} ref={ref}>
+      <Box style={StyleSheet.flatten([buttonRootContainerStyles({ flex }), generateButtonStyles()])} sx={sx} ref={ref}>
         <BaseButton
           disabled={loading || disabled}
-          style={StyleSheet.flatten([buttonStyles, computeBaseButtonStyles()])}
+          style={StyleSheet.flatten([buttonStyles, generateBaseButtonStyles()])}
           disableRipple={shouldDisableRipple}
           disableScaleAnimation={shouldDisableScaleAnimation()}
           scaleAnimationValue={buttonScaleAnimationValue()}

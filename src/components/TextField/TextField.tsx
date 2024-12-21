@@ -114,7 +114,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
       }
     }, [errorColor, isOutlined, textFieldOutlinedErrorColor, textFieldThemeConfig?.errorColor, textFieldFieldErrorColor]);
 
-    const computeOutlineStyles = (): StyleProp<ViewStyle> => {
+    const generateOutlineStyles = (): StyleProp<ViewStyle> => {
       const styles: StyleProp<ViewStyle> = [
         textFieldThemeConfig?.style,
         isOutlined ? textFieldOutlinedStyle : textFieldFieldStyle,
@@ -123,7 +123,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
       return styles;
     };
 
-    const computeInputStyles = (): StyleProp<ViewStyle> => {
+    const generateInputStyles = (): StyleProp<ViewStyle> => {
       const styles: StyleProp<ViewStyle> = [
         textFieldThemeConfig?.inputStyles,
         isOutlined ? textFieldOutlinedInputStyles : textFieldFieldInputStyles,
@@ -254,7 +254,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
         variant={variant}
         activeColor={textFieldActiveColor}
         errorColor={textFieldErrorColor}
-        style={StyleSheet.flatten([sx && generateElementStyles(sx), computeOutlineStyles()])}
+        style={StyleSheet.flatten([sx && generateElementStyles(sx), generateOutlineStyles()])}
         isFocused={isFocused}
         error={error}
         ignoreOpacityOnNonEditable={shouldIgnoreOpacityOnNonEditable()}
@@ -289,7 +289,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
           onBlur={onBlur}
           onFocus={onFocus}
           onLayout={onLayout}
-          style={StyleSheet.flatten([textInputStyles, computeInputStyles()])}
+          style={StyleSheet.flatten([textInputStyles, generateInputStyles()])}
           variant={variant}
           placeholder={shouldHideLabel() ? placeholder : undefined}
           {...props}

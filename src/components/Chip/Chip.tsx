@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { useThemeChipConfigSelector, useThemeColorsSelector } from '../../libraries';
 import { Box } from '../Box';
 import { BaseButton } from '../Button/BaseButton';
@@ -36,7 +36,27 @@ export const Chip = React.forwardRef<View, ChipProps>(
     const hasIcon = Boolean(startIcon) || Boolean(endIcon);
     const chipThemeConfig = useThemeChipConfigSelector();
 
+    const isOutlinedChip = variant === 'outlined';
+
+    const { style: outlinedChipStyles, chipWrapperContainerStyles: outlinedChipChipWrapperContainerStyles } =
+      chipThemeConfig?.outlined || {};
+    const { style: fieldChipStyles, chipWrapperContainerStyles: fieldChipChipWrapperContainerStyles } =
+      chipThemeConfig?.filled || {};
+    const { colors: themeColorScheme } = chipThemeConfig || {};
+
     const chipLabelColor = labelColor ?? chipThemeConfig?.labelColor;
+
+    const computeChipStyles = (): StyleProp<ViewStyle> => {
+      return [chipThemeConfig?.style, isOutlinedChip ? outlinedChipStyles : fieldChipStyles, style].filter(Boolean);
+    };
+
+    const generateChipWrapperContainerStyles = (): StyleProp<ViewStyle> => {
+      return [
+        chipThemeConfig?.chipWrapperContainerStyles,
+        isOutlinedChip ? outlinedChipChipWrapperContainerStyles : fieldChipChipWrapperContainerStyles,
+        chipWrapperContainerStyles,
+      ].filter(Boolean);
+    };
 
     const chipSquareHandler = () => {
       if (overrideRootSquareConfig) {
@@ -44,8 +64,6 @@ export const Chip = React.forwardRef<View, ChipProps>(
       }
       return chipThemeConfig?.square ?? square;
     };
-
-    const { colors: themeColorScheme } = chipThemeConfig || {};
 
     const chipStyles = useMemo(
       () => generateChipStyles({ variant, disabled, color, colors: themeColors, colorSchemeConfig: themeColorScheme }),
@@ -74,12 +92,7 @@ export const Chip = React.forwardRef<View, ChipProps>(
         <Box
           style={StyleSheet.flatten([styles.chip, chipStyles, style, { borderRadius: chipSquareHandler() ? 5 : 20 }])}
           ref={ref}>
-          <Box
-            style={StyleSheet.flatten([
-              styles.chipWrapper,
-              chipThemeConfig?.chipWrapperContainerStyles,
-              chipWrapperContainerStyles,
-            ])}>
+          <Box style={StyleSheet.flatten([styles.chipWrapper, generateChipWrapperContainerStyles()])}>
             {startIcon && <TouchableOpacity {...startIconProps}>{startIcon}</TouchableOpacity>}
             {renderLabel()}
             {endIcon && <TouchableOpacity {...endIconProps}>{endIcon}</TouchableOpacity>}
@@ -97,17 +110,11 @@ export const Chip = React.forwardRef<View, ChipProps>(
           styles.chip,
           chipStyles,
           { borderRadius: chipSquareHandler() ? SQUARE_BORDER_RADIUS : DEFAULT_BORDER_RADIUS },
-          chipThemeConfig?.style,
-          style,
+          computeChipStyles(),
         ])}
         ref={ref}
         {...props}>
-        <Box
-          style={StyleSheet.flatten([
-            styles.chipWrapper,
-            chipThemeConfig?.chipWrapperContainerStyles,
-            chipWrapperContainerStyles,
-          ])}>
+        <Box style={StyleSheet.flatten([styles.chipWrapper, generateChipWrapperContainerStyles()])}>
           {children ?? renderLabel()}
         </Box>
       </BaseButton>
