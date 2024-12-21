@@ -287,4 +287,140 @@ describe('Button', () => {
     const labelText = getByText(mockLabel);
     expect(labelText.props.style).toEqual({ color: 'pink' });
   });
+
+  it('should apply the contained button label styles', () => {
+    const { getByText } = testRenderer(
+      <ThemeProvider
+        components={{
+          buttonProps: {
+            contained: {
+              labelStyles: { color: 'red', fontWeight: 100 },
+            },
+          },
+        }}>
+        <Button variation="contained" label={mockLabel} testID={mockButtonTestId} />
+      </ThemeProvider>,
+    );
+    const labelText = getByText(mockLabel);
+    expect(labelText.props.style).toEqual({ color: 'red', fontWeight: 100 });
+  });
+
+  it("should't apply the contained button label styles into the outlined button variant", () => {
+    const { getByText } = testRenderer(
+      <ThemeProvider
+        components={{
+          buttonProps: {
+            contained: {
+              labelStyles: { color: 'red', fontWeight: 100 },
+            },
+          },
+        }}>
+        <Button variation="outlined" label={mockLabel} testID={mockButtonTestId} />
+      </ThemeProvider>,
+    );
+    const labelText = getByText(mockLabel);
+    expect(labelText.props.style).not.toEqual({ color: 'red', fontWeight: 100 });
+  });
+
+  it('should combine the contained button label root and component styles', () => {
+    const { getByText } = testRenderer(
+      <ThemeProvider
+        components={{
+          buttonProps: {
+            contained: {
+              labelStyles: { color: 'red' },
+            },
+          },
+        }}>
+        <Button variation="contained" label={mockLabel} testID={mockButtonTestId} labelStyles={{ fontWeight: 100 }} />
+      </ThemeProvider>,
+    );
+    const labelText = getByText(mockLabel);
+    expect(labelText.props.style).toEqual({ color: 'red', fontWeight: 100 });
+  });
+
+  it('should apply the outlined button label styles', () => {
+    const { getByText } = testRenderer(
+      <ThemeProvider
+        components={{
+          buttonProps: {
+            outlined: {
+              labelStyles: { color: 'red', fontWeight: 100 },
+            },
+          },
+        }}>
+        <Button variation="outlined" label={mockLabel} testID={mockButtonTestId} />
+      </ThemeProvider>,
+    );
+    const labelText = getByText(mockLabel);
+    expect(labelText.props.style).toEqual({ color: 'red', fontWeight: 100 });
+  });
+
+  it('should combine the outlined button label root and component styles', () => {
+    const { getByText } = testRenderer(
+      <ThemeProvider
+        components={{
+          buttonProps: {
+            outlined: {
+              labelStyles: { color: 'red' },
+            },
+          },
+        }}>
+        <Button variation="outlined" label={mockLabel} testID={mockButtonTestId} labelStyles={{ fontWeight: 100 }} />
+      </ThemeProvider>,
+    );
+    const labelText = getByText(mockLabel);
+    expect(labelText.props.style).toEqual({ color: 'red', fontWeight: 100 });
+  });
+
+  it("should't apply the outlined button label styles into the contained button variant", () => {
+    const { getByText } = testRenderer(
+      <ThemeProvider
+        components={{
+          buttonProps: {
+            outlined: {
+              labelStyles: { color: 'red', fontWeight: 100 },
+            },
+          },
+        }}>
+        <Button variation="contained" label={mockLabel} testID={mockButtonTestId} />
+      </ThemeProvider>,
+    );
+    const labelText = getByText(mockLabel);
+    expect(labelText.props.style).not.toEqual({ color: 'red', fontWeight: 100 });
+  });
+
+  it('should apply the text button label styles', () => {
+    const { getByText } = testRenderer(
+      <ThemeProvider
+        components={{
+          buttonProps: {
+            text: {
+              labelStyles: { color: 'red', fontWeight: 100 },
+            },
+          },
+        }}>
+        <Button variation="text" label={mockLabel} testID={mockButtonTestId} />
+      </ThemeProvider>,
+    );
+    const labelText = getByText(mockLabel);
+    expect(labelText.props.style).toEqual({ color: 'red', fontWeight: 100 });
+  });
+
+  it('should combine the text button label root and component styles', () => {
+    const { getByText } = testRenderer(
+      <ThemeProvider
+        components={{
+          buttonProps: {
+            text: {
+              labelStyles: { color: 'red' },
+            },
+          },
+        }}>
+        <Button variation="text" label={mockLabel} testID={mockButtonTestId} labelStyles={{ fontWeight: 100 }} />
+      </ThemeProvider>,
+    );
+    const labelText = getByText(mockLabel);
+    expect(labelText.props.style).toEqual({ color: 'red', fontWeight: 100 });
+  });
 });
