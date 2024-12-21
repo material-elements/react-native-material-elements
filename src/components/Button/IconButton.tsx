@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { useThemeColorsSelector, useThemeIconButtonConfigSelector, useThemeSpacingSelector } from '../../libraries';
 import { merge } from '../../utils';
 import { BaseButton } from './BaseButton';
@@ -28,6 +28,27 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
     const themeSpacing = useThemeSpacingSelector();
     const iconButtonThemeConfig = useThemeIconButtonConfigSelector();
 
+    const isRoundedIconButton = variation === 'roundedIconButton';
+
+    const { style: roundedIconButtonStyles, baseButtonContainerStyle: roundedIconButtonBaseButtonContainerStyle } =
+      iconButtonThemeConfig?.roundedIconButton || {};
+    const { style: squareIconButtonStyles, baseButtonContainerStyle: squareIconButtonBaseButtonContainerStyle } =
+      iconButtonThemeConfig?.squareIconButton || {};
+
+    const generateButtonStyles = (): StyleProp<ViewStyle> => {
+      return [iconButtonThemeConfig?.style, isRoundedIconButton ? roundedIconButtonStyles : squareIconButtonStyles, style].filter(
+        Boolean,
+      );
+    };
+
+    const generateBaseButtonStyles = (): StyleProp<ViewStyle> => {
+      return [
+        iconButtonThemeConfig?.baseButtonContainerStyle,
+        isRoundedIconButton ? roundedIconButtonBaseButtonContainerStyle : squareIconButtonBaseButtonContainerStyle,
+        baseButtonContainerStyle,
+      ].filter(Boolean);
+    };
+
     const iconButtonVariation = () => {
       if (overrideRootVariation) {
         return variation;
@@ -49,17 +70,9 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
       return iconButtonThemeConfig?.rippleEdge ?? rippleEdge;
     };
 
-    const mergeBaseButtonContainerStyles = useMemo(() => {
-      return merge(iconButtonThemeConfig?.baseButtonContainerStyle, baseButtonContainerStyle);
-    }, [iconButtonThemeConfig?.baseButtonContainerStyle, baseButtonContainerStyle]);
-
     const mergeRippleProps = useMemo(() => {
       return merge(iconButtonThemeConfig?.rippleProps, rippleProps);
     }, [iconButtonThemeConfig?.rippleProps, rippleProps]);
-
-    const mergeStyles = useMemo(() => {
-      return merge(iconButtonThemeConfig?.style, style);
-    }, [iconButtonThemeConfig?.style, style]);
 
     const iconButtonStyles = useMemo(
       () =>
@@ -70,14 +83,14 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
           spacing: themeSpacing,
         }),
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [disabled, overrideRootVariation, themeColors, themeSpacing],
+      [disabled, overrideRootVariation, themeColors, themeSpacing, variation],
     );
 
     return (
       <BaseButton
         ref={ref}
-        style={StyleSheet.flatten([iconButtonStyles, mergeStyles])}
-        baseButtonContainerStyle={StyleSheet.flatten([styles.iconBaseButtonContainer, mergeBaseButtonContainerStyles])}
+        style={StyleSheet.flatten([iconButtonStyles, generateButtonStyles()])}
+        baseButtonContainerStyle={StyleSheet.flatten([styles.iconBaseButtonContainer, generateBaseButtonStyles()])}
         rippleProps={mergeRippleProps}
         disableRipple={iconButtonDisableRipple()}
         rippleEdge={iconButtonRippleEdge()}

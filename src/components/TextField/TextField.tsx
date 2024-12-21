@@ -5,9 +5,11 @@ import {
   LayoutChangeEvent,
   LayoutRectangle,
   NativeSyntheticEvent,
+  StyleProp,
   StyleSheet,
   TextInputFocusEventData,
   View,
+  ViewStyle,
 } from 'react-native';
 import { useThemeTextFieldConfigSelector } from '../../libraries';
 import { generateElementStyles } from '../../utils';
@@ -63,14 +65,73 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
     },
     ref,
   ) => {
+    const isOutlined = variant === 'outlined';
     const inputLabelAnimatedValue = useRef(new Animated.Value(0)).current;
     const [textInputLayoutRectangle, setTextInputLayoutRectangle] = useState<LayoutRectangle>();
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
     const textFieldThemeConfig = useThemeTextFieldConfigSelector();
+    const {
+      activeColor: textFieldOutlinedActiveColor,
+      errorColor: textFieldOutlinedErrorColor,
+      inputStyles: textFieldOutlinedInputStyles,
+      style: textFieldOutlinedStyle,
+    } = textFieldThemeConfig?.outlined || {};
+    const {
+      activeColor: textFieldFieldActiveColor,
+      errorColor: textFieldFieldErrorColor,
+      inputStyles: textFieldFieldInputStyles,
+      style: textFieldFieldStyle,
+    } = textFieldThemeConfig?.filled || {};
 
-    const textFieldActiveColor = activeColor ?? textFieldThemeConfig?.activeColor;
-    const textFieldErrorColor = errorColor ?? textFieldThemeConfig?.errorColor;
+    const textFieldActiveColor = useMemo(() => {
+      if (activeColor) {
+        return activeColor;
+      }
+      if (textFieldThemeConfig?.activeColor) {
+        return textFieldThemeConfig?.activeColor;
+      }
+      if (isOutlined && textFieldOutlinedActiveColor) {
+        return textFieldOutlinedActiveColor;
+      }
+      if (!isOutlined && textFieldFieldActiveColor) {
+        return textFieldFieldActiveColor;
+      }
+    }, [activeColor, isOutlined, textFieldOutlinedActiveColor, textFieldThemeConfig?.activeColor, textFieldFieldActiveColor]);
+
+    const textFieldErrorColor = useMemo(() => {
+      if (errorColor) {
+        return errorColor;
+      }
+      if (textFieldThemeConfig?.errorColor) {
+        return textFieldThemeConfig?.errorColor;
+      }
+      if (isOutlined && textFieldOutlinedErrorColor) {
+        return textFieldOutlinedErrorColor;
+      }
+      if (!isOutlined && textFieldFieldErrorColor) {
+        return textFieldFieldErrorColor;
+      }
+    }, [errorColor, isOutlined, textFieldOutlinedErrorColor, textFieldThemeConfig?.errorColor, textFieldFieldErrorColor]);
+
+    const generateOutlineStyles = (): StyleProp<ViewStyle> => {
+      const styles: StyleProp<ViewStyle> = [
+        textFieldThemeConfig?.style,
+        isOutlined ? textFieldOutlinedStyle : textFieldFieldStyle,
+        style,
+      ].filter(Boolean);
+      return styles;
+    };
+
+    const generateInputStyles = (): StyleProp<ViewStyle> => {
+      const styles: StyleProp<ViewStyle> = [
+        textFieldThemeConfig?.inputStyles,
+        isOutlined ? textFieldOutlinedInputStyles : textFieldFieldInputStyles,
+        inputStyles,
+      ].filter(Boolean);
+
+      return styles;
+    };
 
     const textFieldAnimationDuration = () => {
       if (overrideRootAnimationDuration) {
@@ -95,7 +156,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
 
     const shouldApplySquare = square ?? textFieldThemeConfig?.square ?? false;
 
-    const placeHolderLeftPos = variant === 'filled' ? PLACEHOLDER_FILED_INPUT_LEFT_POSITION : PLACEHOLDER_OUTLINE_LEFT_POSITION;
+    const placeHolderLeftPos = !isOutlined ? PLACEHOLDER_FILED_INPUT_LEFT_POSITION : PLACEHOLDER_OUTLINE_LEFT_POSITION;
 
     const onLayout = useCallback((event: LayoutChangeEvent) => {
       const { layout } = event.nativeEvent;
@@ -126,7 +187,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
       if (textInputLayoutRectangle?.width && textInputLayoutRectangle?.height) {
         if (variant === 'outlined') {
           return (textInputLayoutRectangle.height / 2) * -1;
-        } else if (variant === 'filled') {
+        } else if (!isOutlined) {
           return ((textInputLayoutRectangle.height - 19) / 2) * -1;
         }
       }
@@ -193,7 +254,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
         variant={variant}
         activeColor={textFieldActiveColor}
         errorColor={textFieldErrorColor}
-        style={StyleSheet.flatten([sx && generateElementStyles(sx), textFieldThemeConfig?.style, style])}
+        style={StyleSheet.flatten([sx && generateElementStyles(sx), generateOutlineStyles()])}
         isFocused={isFocused}
         error={error}
         ignoreOpacityOnNonEditable={shouldIgnoreOpacityOnNonEditable()}
@@ -228,7 +289,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
           onBlur={onBlur}
           onFocus={onFocus}
           onLayout={onLayout}
-          style={StyleSheet.flatten([textInputStyles, textFieldThemeConfig?.inputStyles, inputStyles])}
+          style={StyleSheet.flatten([textInputStyles, generateInputStyles()])}
           variant={variant}
           placeholder={shouldHideLabel() ? placeholder : undefined}
           {...props}

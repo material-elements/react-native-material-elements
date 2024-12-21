@@ -12,18 +12,22 @@ import {
   BadgeProps,
   BadgeVariationThemeConfig,
   ButtonProps,
+  ButtonVariations,
   CardHeaderProps,
   CardProps,
   CheckBoxProps,
   CheckBoxVariationThemeConfig,
   ChipColorThemeConfig,
   ChipProps,
+  ChipVariant,
   IconButtonProps,
+  IconButtonVariations,
   ListItemProps,
   ListProps,
   PaginationProps,
   PaginationThemeConfig,
   TextFieldProps,
+  TextFiledVariation,
   TextProps,
   TextVariationThemeConfig,
 } from '../../../components/types';
@@ -118,6 +122,50 @@ export type CreateThemeDimensionsReturnValues = ThemeDimensions & InnerPartial<T
  * with support for specifying the theme property name (e.g., 'primary' or 'secondary') for each shade.
  */
 export type CreateColorShadesInterface = { shades: Partial<ColorShades>; themePropertyName: ThemeKeys };
+
+type TextFileThemeConfig = Pick<
+  TextFieldProps,
+  | 'animatedDuration'
+  | 'inputStyles'
+  | 'style'
+  | 'hideLabel'
+  | 'activeColor'
+  | 'errorColor'
+  | 'ignoreOpacityOnNonEditable'
+  | 'square'
+>;
+type TextFieldVariationConfig = Partial<
+  Record<TextFiledVariation, Pick<TextFileThemeConfig, 'activeColor' | 'errorColor' | 'inputStyles' | 'style'> | undefined>
+>;
+type ButtonThemeConfig = Pick<
+  ButtonProps,
+  | 'disableRipple'
+  | 'labelStyles'
+  | 'square'
+  | 'labelColor'
+  | 'baseButtonStyles'
+  | 'disableScaleAnimation'
+  | 'scaleAnimationValue'
+  | 'rippleEdge'
+  | 'baseButtonContainerStyle'
+  | 'rippleProps'
+  | 'style'
+>;
+type ButtonVariationConfig = Partial<
+  Record<ButtonVariations, Pick<ButtonThemeConfig, 'labelStyles' | 'baseButtonStyles' | 'style'> | undefined>
+>;
+type IconButtonThemeConfig = Pick<
+  IconButtonProps,
+  'variation' | 'disableRipple' | 'rippleProps' | 'rippleEdge' | 'baseButtonContainerStyle' | 'style'
+>;
+type IconButtonVariationsConfig = Partial<
+  Record<IconButtonVariations, Pick<IconButtonThemeConfig, 'style' | 'baseButtonContainerStyle'> | undefined>
+>;
+type ChipThemeConfig = Pick<ChipProps, 'chipWrapperContainerStyles' | 'square' | 'labelColor' | 'style'> & ChipColorThemeConfig;
+type ChipVariationConfig = Partial<
+  Record<ChipVariant, Pick<ChipThemeConfig, 'style' | 'chipWrapperContainerStyles'> | undefined>
+>;
+
 /**
  * Configuration type for customizing the look and feel of themeable components.
  * These configurations allow for easy styling adjustments for various components.
@@ -126,24 +174,8 @@ export type ThemeComponentConfig = {
   textProps: Pick<TextProps, 'gutterBottomSpace' | 'maxLength' | 'errorColor' | 'activeColor' | 'color' | 'style'> &
     TextVariationThemeConfig;
   badgeProps: Pick<BadgeProps, 'max' | 'badgeAnimationDuration' | 'anchorOrigin' | 'style'> & BadgeVariationThemeConfig;
-  buttonProps: Pick<
-    ButtonProps,
-    | 'disableRipple'
-    | 'labelStyles'
-    | 'square'
-    | 'labelColor'
-    | 'baseButtonStyles'
-    | 'disableScaleAnimation'
-    | 'scaleAnimationValue'
-    | 'rippleEdge'
-    | 'baseButtonContainerStyle'
-    | 'rippleProps'
-    | 'style'
-  >;
-  iconButtonProps: Pick<
-    IconButtonProps,
-    'variation' | 'disableRipple' | 'rippleProps' | 'rippleEdge' | 'baseButtonContainerStyle' | 'style'
-  >;
+  buttonProps: ButtonThemeConfig & ButtonVariationConfig;
+  iconButtonProps: IconButtonThemeConfig & IconButtonVariationsConfig;
   buttonGroupProps: Pick<
     ButtonGroupProps,
     'roundSize' | 'borderWidth' | 'removeBorders' | 'disableRipple' | 'baseButtonStyles' | 'style'
@@ -160,7 +192,7 @@ export type ThemeComponentConfig = {
     | 'labelContainerStyles'
   > &
     CheckBoxVariationThemeConfig;
-  chipProps?: Pick<ChipProps, 'chipWrapperContainerStyles' | 'square' | 'labelColor' | 'style'> & ChipColorThemeConfig;
+  chipProps?: ChipThemeConfig & ChipVariationConfig;
   dividerProps?: Pick<DividerProps, 'startLineStyles' | 'endLineStyles' | 'borderColor' | 'gap' | 'variantSpacing' | 'style'> &
     DividerColorThemeConfig;
   listProps?: Pick<ListProps, 'subheaderContainerStyles' | 'disablePadding' | 'style'>;
@@ -185,17 +217,7 @@ export type ThemeComponentConfig = {
     'toggleDuration' | 'toggleWrapperBgDuration' | 'wrapperDefaultBgColor' | 'wrapperActiveBgColor' | 'thumbStyles' | 'style'
   > &
     SwitchThemeConfig;
-  textFieldProps?: Pick<
-    TextFieldProps,
-    | 'animatedDuration'
-    | 'inputStyles'
-    | 'style'
-    | 'hideLabel'
-    | 'activeColor'
-    | 'errorColor'
-    | 'ignoreOpacityOnNonEditable'
-    | 'square'
-  >;
+  textFieldProps?: TextFiledConfig & TextFieldVariationConfig;
   iconInputProps?: Pick<IconInputProps, 'inputWrapperStyles' | 'endAdornmentContainerStyles' | 'startAdornmentContainerStyles'>;
 };
 /**
