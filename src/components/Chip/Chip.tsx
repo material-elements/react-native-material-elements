@@ -23,6 +23,8 @@ export const Chip = React.forwardRef<View, ChipProps>(
       endIconProps,
       children,
       activeLabelColor,
+      backgroundColor,
+      activeBackgroundColor,
       isActive = false,
       variant = 'filled',
       color = 'secondary',
@@ -68,8 +70,18 @@ export const Chip = React.forwardRef<View, ChipProps>(
     };
 
     const chipStyles = useMemo(
-      () => generateChipStyles({ variant, disabled, color, colors: themeColors, colorSchemeConfig: themeColorScheme, isActive }),
-      [variant, disabled, color, themeColors, themeColorScheme, isActive],
+      () =>
+        generateChipStyles({
+          variant,
+          disabled,
+          color,
+          colors: themeColors,
+          colorSchemeConfig: themeColorScheme,
+          isActive,
+          backgroundColor,
+          activeBackgroundColor,
+        }),
+      [variant, disabled, color, themeColors, themeColorScheme, isActive, backgroundColor, activeBackgroundColor],
     );
 
     const renderLabel = useCallback(() => {

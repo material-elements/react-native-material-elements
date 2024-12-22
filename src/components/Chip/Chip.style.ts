@@ -6,8 +6,10 @@ import { ADORNMENT_WRAPPER_SPACE } from './constants';
 
 export const styles = StyleSheet.create({
   chip: {
-    paddingVertical: 5,
-    paddingHorizontal: 10,
+    paddingTop: 5,
+    paddingBottom: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
     borderRadius: 20,
     overflow: 'hidden',
     alignSelf: 'flex-start',
@@ -37,6 +39,8 @@ export const generateChipStyles = ({
   colors,
   colorSchemeConfig,
   isActive,
+  backgroundColor,
+  activeBackgroundColor,
 }: GenerateChipStylesProps) => {
   let baseStyles: ViewStyle = {};
 
@@ -47,7 +51,9 @@ export const generateChipStyles = ({
   let currentColor: ColorValue;
 
   if (isActive) {
-    currentColor = colors.lightBlue[400];
+    currentColor = activeBackgroundColor ?? colors.lightBlue[400];
+  } else if (backgroundColor) {
+    currentColor = backgroundColor;
   } else {
     currentColor = getVariant({ variant: color, colors, config: colorSchemeConfig });
   }
@@ -89,9 +95,9 @@ export const labelStyles = ({
   ) {
     textColor = grey[50];
   } else if (color === 'lightGrey') {
-    textColor = colors.grey[700];
+    textColor = colors.grey[800];
   } else if (color === 'warning') {
-    textColor = grey[700];
+    textColor = grey[800];
   } else {
     textColor = colors.grey[50];
   }

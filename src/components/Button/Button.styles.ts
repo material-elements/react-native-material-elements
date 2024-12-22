@@ -1,4 +1,4 @@
-import { StyleSheet, ViewStyle } from 'react-native';
+import { ColorValue, StyleSheet, ViewStyle } from 'react-native';
 import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
 import { getVariant } from '../../utils';
 import { ButtonRootContainerStylesInterface, ButtonVariationsType, GetButtonStylesProps } from './Button.types';
@@ -75,12 +75,19 @@ export const getButtonStyles = ({
   disabled,
   square,
   spacing,
+  backgroundColor,
   variation = 'contained',
 }: GetButtonStylesProps): ViewStyle => {
   const isContainedVariation = variation === 'contained';
+  let buttonBackgroundColor: ColorValue | undefined;
 
+  if (backgroundColor) {
+    buttonBackgroundColor = backgroundColor;
+  } else if (buttonColor) {
+    buttonBackgroundColor = getVariant({ variant: buttonColor, colors: themeColors });
+  }
   return {
-    ...(buttonColor && { backgroundColor: getVariant({ variant: buttonColor, colors: themeColors }) }),
+    ...(buttonBackgroundColor && { backgroundColor: buttonBackgroundColor }),
     ...buttonVariationStyles(spacing, themeColors, variation),
     ...(!isContainedVariation && { borderColor: getVariant({ variant: buttonColor, colors: themeColors }) }),
     ...(disabled && disabledStyles),

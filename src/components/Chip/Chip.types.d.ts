@@ -72,8 +72,17 @@ export interface ChipProps extends Omit<BaseButtonProps, 'sx'> {
    * Chip label active color
    */
   activeLabelColor?: ColorValue;
+  /**
+   * Background color of the chip component
+   */
+  backgroundColor?: ColorValue;
+  /**
+   * Chip active background color
+   */
+  activeBackgroundColor?: ColorValue;
 }
-export interface GenerateChipStylesProps extends Pick<ChipProps, 'variant' | 'disabled' | 'color' | 'isActive'> {
+export interface GenerateChipStylesProps
+  extends Pick<ChipProps, 'variant' | 'disabled' | 'color' | 'isActive' | 'backgroundColor' | 'activeBackgroundColor'> {
   colors: Theme;
   colorSchemeConfig?: GetVariantArgs<ChipColorThemeConfig>['config'];
 }

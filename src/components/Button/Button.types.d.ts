@@ -122,6 +122,10 @@ export interface ButtonProps extends Omit<BaseButtonProps, 'sx'> {
    * Override root ripple edge
    */
   overrideRootRippleEdge?: boolean;
+  /**
+   * Button background color
+   */
+  backgroundColor?: ColorValue;
 }
 export interface ButtonRootContainerStylesInterface extends Pick<ButtonProps, 'flex'> {}
 

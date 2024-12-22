@@ -28,6 +28,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       rippleEdge,
       rippleProps,
       sx,
+      backgroundColor,
       baseButtonSx,
       overrideRootDisableScaleAnimation = false,
       overrideRootScaleAnimationValue = false,
@@ -137,6 +138,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
         disabled,
         buttonColor,
         square: applySquareStyle,
+        backgroundColor,
       });
     }, [
       overrideRootSquareConfig,
@@ -147,6 +149,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       buttonColor,
       square,
       buttonThemeConfig?.square,
+      backgroundColor,
     ]);
 
     const renderChild = () => {
@@ -165,6 +168,8 @@ export const Button = React.forwardRef<View, ButtonProps>(
         textColor = buttonThemeConfig.labelColor;
       } else if (isContainedButton) {
         textColor = grey[50];
+      } else if (isOutlinedButton && (buttonColor === 'grey' || buttonColor === 'lightGrey')) {
+        textColor = themeColors.grey[900];
       } else {
         textColor = getVariant({ variant: buttonColor, colors: themeColors });
       }
