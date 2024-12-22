@@ -1,4 +1,4 @@
-import { render as testRenderer } from '@testing-library/react-native';
+import { render as testRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { View } from 'react-native';
 import {
@@ -45,9 +45,11 @@ describe('CheckBox Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render checkbox correctly', () => {
+  it('should render checkbox correctly', async () => {
     const { toJSON } = render(<CheckBox />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward ref correctly', () => {

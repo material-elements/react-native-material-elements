@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, ViewStyle } from 'react-native';
 import { Avatar } from '../src';
 import { BaseStyles } from '../src/libraries/style/styleTypes';
-import { render } from './test-utils';
+import { render, waitFor } from './test-utils';
 
 describe('Avatar Component', () => {
   const ref = React.createRef<Image>();
@@ -14,9 +14,11 @@ describe('Avatar Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should match the snapshot with  props', () => {
+  it('should match the snapshot with  props', async () => {
     const { toJSON } = render(<Avatar source={{ uri: mockAvatarUrl }} />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('renders correctly with default props', () => {

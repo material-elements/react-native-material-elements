@@ -217,7 +217,7 @@ export type ThemeComponentConfig = {
     'toggleDuration' | 'toggleWrapperBgDuration' | 'wrapperDefaultBgColor' | 'wrapperActiveBgColor' | 'thumbStyles' | 'style'
   > &
     SwitchThemeConfig;
-  textFieldProps?: TextFiledConfig & TextFieldVariationConfig;
+  textFieldProps?: TextFileThemeConfig & TextFieldVariationConfig;
   iconInputProps?: Pick<IconInputProps, 'inputWrapperStyles' | 'endAdornmentContainerStyles' | 'startAdornmentContainerStyles'>;
 };
 /**

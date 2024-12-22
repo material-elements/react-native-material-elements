@@ -1,3 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Switch Component should match the snapshot with default props 1`] = `[Function]`;
+exports[`Switch Component should match the snapshot with default props 1`] = `
+<View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={false}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "backgroundColor": "rgba(224, 224, 224, 1)",
+        "borderRadius": 15,
+        "height": 25,
+        "justifyContent": "center",
+        "padding": 2,
+        "width": 45,
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      onLayout={[Function]}
+      style={
+        {
+          "backgroundColor": "#FFF",
+          "borderRadius": 13,
+          "height": 22,
+          "transform": [
+            {
+              "translateX": 0,
+            },
+          ],
+          "width": 22,
+        }
+      }
+    />
+  </View>
+</View>
+`;

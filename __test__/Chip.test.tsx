@@ -1,8 +1,9 @@
 import React from 'react';
-import { Avatar, Chip, green, lightBlue, primary, red, secondary, yellow } from '../src';
+import { Avatar, Chip, green, lightBlue, primary, red, secondary, ThemeProvider, yellow } from '../src';
 import { SQUARE_BORDER_RADIUS } from '../src/components/Chip/constants';
 import { fireEvent, render } from './test-utils';
 import { View } from 'react-native';
+import { render as testRenderer, waitFor } from '@testing-library/react-native';
 
 describe('Chip Component', () => {
   const chipMockTestId = 'chip-test-id';
@@ -16,6 +17,7 @@ describe('Chip Component', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.clearAllTimers();
   });
 
   it('should forward ref correctly', () => {
@@ -25,9 +27,11 @@ describe('Chip Component', () => {
     expect(mockRef.current).toBeInstanceOf(View);
   });
 
-  it('should match the snapshot with default props', () => {
+  it('should match the snapshot with default props', async () => {
     const { toJSON } = render(<Chip />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('renders correctly with label', () => {
@@ -61,6 +65,7 @@ describe('Chip Component', () => {
   });
 
   it('should call the function when chip component is pressed', () => {
+    jest.useFakeTimers();
     const { getByTestId } = render(<Chip onPress={mockOnPress} testID={chipMockTestId} />);
     const chip = getByTestId(chipMockTestId);
     fireEvent.press(chip, { nativeEvent: {} });
@@ -323,5 +328,85 @@ describe('Chip Component', () => {
     const endIconTouch = getByTestId(iconMockTestId);
     fireEvent.press(endIconTouch, { nativeEvent: {} });
     expect(mockOnPress).toHaveBeenCalledTimes(1);
+  });
+
+  it('should apply the root styles', () => {
+    const { getByTestId } = testRenderer(
+      <ThemeProvider components={{ chipProps: { style: { backgroundColor: 'red' } } }}>
+        <Chip label="Save" testID={chipMockTestId} />
+      </ThemeProvider>,
+    );
+    const chip = getByTestId(chipMockTestId);
+    expect(chip.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+  });
+
+  it('should combine the root styles and component styles', () => {
+    const { getByTestId } = testRenderer(
+      <ThemeProvider components={{ chipProps: { style: { backgroundColor: 'red' } } }}>
+        <Chip label="Save" testID={chipMockTestId} style={{ borderWidth: 1 }} />
+      </ThemeProvider>,
+    );
+    const chip = getByTestId(chipMockTestId);
+    expect(chip.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red', borderWidth: 1 }));
+  });
+
+  it('should apply the outlined chip variation root styles', () => {
+    const { getByTestId } = testRenderer(
+      <ThemeProvider components={{ chipProps: { outlined: { style: { backgroundColor: 'red' } } } }}>
+        <Chip label="Save" testID={chipMockTestId} variant="outlined" />
+      </ThemeProvider>,
+    );
+    const chip = getByTestId(chipMockTestId);
+    expect(chip.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+  });
+
+  it('should combine the outlined chip variation root styles and component styles', () => {
+    const { getByTestId } = testRenderer(
+      <ThemeProvider components={{ chipProps: { outlined: { style: { backgroundColor: 'red' } } } }}>
+        <Chip label="Save" testID={chipMockTestId} variant="outlined" style={{ borderWidth: 1 }} />
+      </ThemeProvider>,
+    );
+    const chip = getByTestId(chipMockTestId);
+    expect(chip.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red', borderWidth: 1 }));
+  });
+
+  it('should apply the root chip field variation styles', () => {
+    const { getByTestId } = testRenderer(
+      <ThemeProvider components={{ chipProps: { filled: { style: { backgroundColor: 'red' } } } }}>
+        <Chip label="Save" testID={chipMockTestId} variant="filled" />
+      </ThemeProvider>,
+    );
+    const chip = getByTestId(chipMockTestId);
+    expect(chip.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+  });
+
+  it('should combine the root chip field variation styles and component styles', () => {
+    const { getByTestId } = testRenderer(
+      <ThemeProvider components={{ chipProps: { filled: { style: { backgroundColor: 'red' } } } }}>
+        <Chip label="Save" testID={chipMockTestId} style={{ borderWidth: 1 }} variant="filled" />
+      </ThemeProvider>,
+    );
+    const chip = getByTestId(chipMockTestId);
+    expect(chip.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red', borderWidth: 1 }));
+  });
+
+  it("should't apply the outlined chip variation root styles when chip variation is filled", () => {
+    const { getByTestId } = testRenderer(
+      <ThemeProvider components={{ chipProps: { outlined: { style: { backgroundColor: 'red' } } } }}>
+        <Chip label="Save" testID={chipMockTestId} variant="filled" />
+      </ThemeProvider>,
+    );
+    const chip = getByTestId(chipMockTestId);
+    expect(chip.props.style).not.toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+  });
+
+  it("should't apply the filled chip variation root styles when chip variation is outlined", () => {
+    const { getByTestId } = testRenderer(
+      <ThemeProvider components={{ chipProps: { filled: { style: { backgroundColor: 'red' } } } }}>
+        <Chip label="Save" testID={chipMockTestId} variant="outlined" />
+      </ThemeProvider>,
+    );
+    const chip = getByTestId(chipMockTestId);
+    expect(chip.props.style).not.toEqual(expect.objectContaining({ backgroundColor: 'red' }));
   });
 });

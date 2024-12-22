@@ -1,3 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextField Component should render correctly 1`] = `[Function]`;
+exports[`TextField Component should render correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderColor": "#BDBDBD",
+      "borderRadius": 5,
+      "borderWidth": 0.6,
+      "display": "flex",
+      "flexDirection": "row",
+      "opacity": 1,
+      "paddingHorizontal": 14,
+      "position": "relative",
+      "width": "100%",
+    }
+  }
+>
+  <View
+    collapsable={false}
+    style={
+      {
+        "backgroundColor": "#ffffff",
+        "left": 8,
+        "paddingHorizontal": 8,
+        "position": "absolute",
+        "top": "50%",
+        "transform": [
+          {
+            "translateY": -5,
+          },
+          {
+            "scale": 1,
+          },
+        ],
+        "zIndex": 10,
+      }
+    }
+  >
+    <Text
+      collapsable={false}
+      onLayout={[Function]}
+    />
+  </View>
+  <TextInput
+    editable={true}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onLayout={[Function]}
+    style={
+      {
+        "backgroundColor": "transparent",
+        "color": "#424242",
+        "flex": 1,
+        "height": 48,
+        "minHeight": 30,
+        "position": "relative",
+        "width": "100%",
+        "zIndex": 12,
+      }
+    }
+  />
+</View>
+`;

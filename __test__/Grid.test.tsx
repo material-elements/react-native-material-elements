@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Grid, GridSize } from '../src';
-import { render } from './test-utils';
+import { render, waitFor } from './test-utils';
 
 describe('Grid component', () => {
   const mockGridTestId = 'grid-test-id';
@@ -16,9 +16,11 @@ describe('Grid component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<Grid container />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward ref correctly', () => {

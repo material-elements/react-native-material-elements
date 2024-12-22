@@ -1,3 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Avatar Component should match the snapshot with  props 1`] = `[Function]`;
+exports[`Avatar Component should match the snapshot with  props 1`] = `
+<Image
+  collapsable={false}
+  source={
+    {
+      "uri": "avatar.jpg",
+    }
+  }
+  style={
+    {
+      "height": undefined,
+      "width": undefined,
+    }
+  }
+/>
+`;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { QuantityStepper } from '../src';
-import { fireEvent, render } from './test-utils';
+import { fireEvent, render, waitFor } from './test-utils';
 
 describe('QuantityStepper Component', () => {
   const mockOnIncrementTestId = 'on-increment-test-id';
@@ -13,9 +13,11 @@ describe('QuantityStepper Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<QuantityStepper value={10} />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should apply the label styles when passed the label props', () => {

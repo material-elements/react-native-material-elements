@@ -1,6 +1,6 @@
 import React from 'react';
 import { DropDown, Text } from '../src';
-import { fireEvent, render } from './test-utils';
+import { fireEvent, render, waitFor } from './test-utils';
 
 describe('DropDown Component', () => {
   const mockInputWrapperTouchTestId = 'input-wrapper-touch-test-id';
@@ -9,9 +9,11 @@ describe('DropDown Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<DropDown />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should render the inputStartAdornment component correctly', () => {

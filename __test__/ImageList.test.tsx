@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from './test-utils';
+import { fireEvent, render, waitFor } from './test-utils';
 import { Image, ImageList, ImageListItem, Text } from '../src';
 import { ScrollView, View, ViewStyle } from 'react-native';
 
@@ -28,9 +28,11 @@ describe('ImageList Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly with default props', () => {
+  it('should render correctly with default props', async () => {
     const { toJSON } = render(<ImageList />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward ref correctly', () => {

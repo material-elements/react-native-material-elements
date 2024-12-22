@@ -1,4 +1,4 @@
-import { render as testingRenderer } from '@testing-library/react-native';
+import { render as testingRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { Text as RnText, StyleProp, TextStyle } from 'react-native';
 import { red, secondary, Text, ThemeProvider } from '../src';
@@ -23,9 +23,11 @@ describe('Text Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should match the snapshot with default props', () => {
+  it('should match the snapshot with default props', async () => {
     const { toJSON } = render(<Text>Mock</Text>);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should apply the sx styles', () => {

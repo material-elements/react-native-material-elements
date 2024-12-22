@@ -8,7 +8,7 @@ import {
   SWITCH_CONTAINER_WIDTH_MEDIUM,
   SWITCH_CONTAINER_WIDTH_SMALL,
 } from '../src';
-import { fireEvent, render } from './test-utils';
+import { fireEvent, render, waitFor } from './test-utils';
 import { View } from 'react-native';
 
 describe('Switch Component', () => {
@@ -20,9 +20,11 @@ describe('Switch Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should match the snapshot with default props', () => {
+  it('should match the snapshot with default props', async () => {
     const { toJSON } = render(<Switch />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward ref correctly', () => {

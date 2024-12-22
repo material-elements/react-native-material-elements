@@ -1,3 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CheckBox Component should render checkbox correctly 1`] = `[Function]`;
+exports[`CheckBox Component should render checkbox correctly 1`] = `
+<View
+  style={
+    {
+      "alignSelf": "auto",
+      "display": "flex",
+      "flexDirection": "row",
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignContent": "center",
+        "display": "flex",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Image
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      source={
+        {
+          "testUri": "../../../src/packages/react-native-material-elements/src/components/CheckBox/images/check-box-outline-medium.png",
+        }
+      }
+      style={
+        {
+          "height": 30,
+          "tintColor": "#757575",
+          "width": 30,
+        }
+      }
+    />
+  </View>
+</View>
+`;

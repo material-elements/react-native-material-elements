@@ -1,3 +1,485 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pagination Component should render correctly 1`] = `[Function]`;
+exports[`Pagination Component should render correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "alignSelf": "flex-start",
+      "display": "flex",
+      "flexDirection": "row",
+      "gap": 5,
+      "justifyContent": "center",
+      "padding": 5,
+      "paddingHorizontal": 10,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignSelf": "auto",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      pointerEvents="box-only"
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderColor": "transparent",
+          "borderRadius": 100,
+          "borderWidth": 0,
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 30,
+          "minWidth": 30,
+          "opacity": 1,
+          "overflow": "hidden",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+      testID="pagination-item-test-id-1"
+    >
+      <Text
+        collapsable={false}
+        style={{}}
+      >
+        1
+      </Text>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "bottom": 0,
+              "left": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "alignSelf": "auto",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      pointerEvents="box-only"
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderColor": "transparent",
+          "borderRadius": 100,
+          "borderWidth": 0,
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 30,
+          "minWidth": 30,
+          "opacity": 1,
+          "overflow": "hidden",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+      testID="pagination-item-test-id-2"
+    >
+      <Text
+        collapsable={false}
+        style={{}}
+      >
+        2
+      </Text>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "bottom": 0,
+              "left": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "alignSelf": "auto",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      pointerEvents="box-only"
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderColor": "transparent",
+          "borderRadius": 100,
+          "borderWidth": 0,
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 30,
+          "minWidth": 30,
+          "opacity": 1,
+          "overflow": "hidden",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+      testID="pagination-item-test-id-3"
+    >
+      <Text
+        collapsable={false}
+        style={{}}
+      >
+        3
+      </Text>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "bottom": 0,
+              "left": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "alignSelf": "auto",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      pointerEvents="box-only"
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderColor": "transparent",
+          "borderRadius": 100,
+          "borderWidth": 0,
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 30,
+          "minWidth": 30,
+          "opacity": 1,
+          "overflow": "hidden",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+      testID="pagination-item-test-id-4"
+    >
+      <Text
+        collapsable={false}
+        style={{}}
+      >
+        4
+      </Text>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "bottom": 0,
+              "left": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "alignSelf": "auto",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      pointerEvents="box-only"
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderColor": "transparent",
+          "borderRadius": 100,
+          "borderWidth": 0,
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 30,
+          "minWidth": 30,
+          "opacity": 1,
+          "overflow": "hidden",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+      testID="pagination-item-test-id-5"
+    >
+      <Text
+        collapsable={false}
+        style={{}}
+      >
+        5
+      </Text>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "bottom": 0,
+              "left": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={{}}
+  >
+    <Text
+      collapsable={false}
+      style={
+        {
+          "fontSize": 20,
+          "marginHorizontal": 5,
+          "opacity": 1,
+        }
+      }
+    >
+      ···
+    </Text>
+  </View>
+  <View
+    style={
+      {
+        "alignSelf": "auto",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      pointerEvents="box-only"
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderColor": "transparent",
+          "borderRadius": 100,
+          "borderWidth": 0,
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 30,
+          "minWidth": 30,
+          "opacity": 1,
+          "overflow": "hidden",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+      testID="pagination-item-test-id-10"
+    >
+      <Text
+        collapsable={false}
+        style={{}}
+      >
+        10
+      </Text>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "bottom": 0,
+              "left": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

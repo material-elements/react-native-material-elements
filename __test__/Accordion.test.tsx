@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from './test-utils';
+import { render, waitFor } from './test-utils';
 import { Accordion, AccordionSummary, Text } from '../src';
 import { View } from 'react-native';
 
@@ -12,9 +12,11 @@ describe('Accordion Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<Accordion />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward ref correctly', () => {
@@ -45,9 +47,11 @@ describe('AccordionSummary Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<AccordionSummary />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward ref correctly', () => {

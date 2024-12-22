@@ -16,7 +16,7 @@ import {
   VariantTypes,
   yellow,
 } from '../src';
-import { render } from './test-utils';
+import { render, waitFor } from './test-utils';
 
 describe('Badge', () => {
   const mockBadgeTestId = 'mock-badge-test-id';
@@ -40,18 +40,22 @@ describe('Badge', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<Badge />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
-  it('should render correctly with inner component', () => {
+  it('should render correctly with inner component', async () => {
     const { toJSON } = render(
       <Badge>
         <View />
       </Badge>,
     );
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward the ref', () => {
