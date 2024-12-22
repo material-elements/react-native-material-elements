@@ -64,12 +64,21 @@ export interface ChipProps extends Omit<BaseButtonProps, 'sx'> {
    * end icon touch props
    */
   endIconProps?: Omit<TouchableOpacityProps, 'children'>;
+  /**
+   * Active state of the chip component
+   */
+  isActive?: boolean;
+  /**
+   * Chip label active color
+   */
+  activeLabelColor?: ColorValue;
 }
-export interface GenerateChipStylesProps extends Pick<ChipProps, 'variant' | 'disabled' | 'color'> {
+export interface GenerateChipStylesProps extends Pick<ChipProps, 'variant' | 'disabled' | 'color' | 'isActive'> {
   colors: Theme;
   colorSchemeConfig?: GetVariantArgs<ChipColorThemeConfig>['config'];
 }
-export interface LabelStylesInterface extends Pick<ChipProps, 'labelColor' | 'color' | 'syncBorderAndLabelColor'> {
+export interface LabelStylesInterface
+  extends Pick<ChipProps, 'labelColor' | 'color' | 'syncBorderAndLabelColor' | 'isActive' | 'activeLabelColor'> {
   isOutlinedVariant: boolean;
   colors: Theme;
   colorSchemeConfig?: GetVariantArgs<ChipColorThemeConfig>['config'];

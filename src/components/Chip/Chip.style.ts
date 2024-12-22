@@ -30,21 +30,36 @@ export const styles = StyleSheet.create({
   },
 });
 
-export const generateChipStyles = ({ variant, disabled, color, colors, colorSchemeConfig }: GenerateChipStylesProps) => {
+export const generateChipStyles = ({
+  variant,
+  disabled,
+  color,
+  colors,
+  colorSchemeConfig,
+  isActive,
+}: GenerateChipStylesProps) => {
   let baseStyles: ViewStyle = {};
 
   if (disabled) {
     baseStyles = { ...baseStyles, opacity: 0.5 };
   }
 
+  let currentColor: ColorValue;
+
+  if (isActive) {
+    currentColor = colors.lightBlue[400];
+  } else {
+    currentColor = getVariant({ variant: color, colors, config: colorSchemeConfig });
+  }
+
   if (variant === 'outlined') {
     baseStyles = {
       ...baseStyles,
       borderWidth: 1,
-      borderColor: getVariant({ variant: color, colors, config: colorSchemeConfig }),
+      borderColor: currentColor,
     };
   } else {
-    baseStyles.backgroundColor = getVariant({ variant: color, colors, config: colorSchemeConfig });
+    baseStyles.backgroundColor = currentColor;
   }
 
   return baseStyles;
@@ -57,18 +72,28 @@ export const labelStyles = ({
   colors,
   syncBorderAndLabelColor,
   colorSchemeConfig,
+  isActive,
+  activeLabelColor,
 }: LabelStylesInterface): TextStyle => {
   let textColor: ColorValue;
 
-  switch (color) {
-    case 'secondary':
-    case 'error':
-    case 'success':
-    case 'info':
-      textColor = grey[50];
-      break;
-    default:
-      textColor = colors.grey[50];
+  if (isActive) {
+    textColor = activeLabelColor ?? grey[50];
+  } else if (
+    color === 'secondary' ||
+    color === 'error' ||
+    color === 'success' ||
+    color === 'info' ||
+    color === 'primary' ||
+    color === 'grey'
+  ) {
+    textColor = grey[50];
+  } else if (color === 'lightGrey') {
+    textColor = colors.grey[700];
+  } else if (color === 'warning') {
+    textColor = grey[700];
+  } else {
+    textColor = colors.grey[50];
   }
 
   let resolvedColor;
@@ -78,7 +103,8 @@ export const labelStyles = ({
   } else if (labelColor) {
     resolvedColor = labelColor;
   } else {
-    resolvedColor = isOutlinedVariant ? colors.grey[900] : textColor;
+    const rColor = isOutlinedVariant ? colors.grey[900] : textColor;
+    resolvedColor = activeLabelColor ?? rColor;
   }
 
   return {

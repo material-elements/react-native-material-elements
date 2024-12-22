@@ -22,6 +22,8 @@ export const Chip = React.forwardRef<View, ChipProps>(
       startIconProps,
       endIconProps,
       children,
+      activeLabelColor,
+      isActive = false,
       variant = 'filled',
       color = 'secondary',
       square = false,
@@ -66,8 +68,8 @@ export const Chip = React.forwardRef<View, ChipProps>(
     };
 
     const chipStyles = useMemo(
-      () => generateChipStyles({ variant, disabled, color, colors: themeColors, colorSchemeConfig: themeColorScheme }),
-      [variant, disabled, color, themeColors, themeColorScheme],
+      () => generateChipStyles({ variant, disabled, color, colors: themeColors, colorSchemeConfig: themeColorScheme, isActive }),
+      [variant, disabled, color, themeColors, themeColorScheme, isActive],
     );
 
     const renderLabel = useCallback(() => {
@@ -80,12 +82,24 @@ export const Chip = React.forwardRef<View, ChipProps>(
             color,
             syncBorderAndLabelColor,
             colorSchemeConfig: themeColorScheme,
+            isActive,
+            activeLabelColor,
           })}
           variation="h4">
           {label}
         </Text>
       );
-    }, [themeColors, label, isOutlinedVariant, chipLabelColor, color, themeColorScheme, syncBorderAndLabelColor]);
+    }, [
+      themeColors,
+      label,
+      isOutlinedVariant,
+      chipLabelColor,
+      color,
+      themeColorScheme,
+      syncBorderAndLabelColor,
+      isActive,
+      activeLabelColor,
+    ]);
 
     if (hasIcon && !children) {
       return (
