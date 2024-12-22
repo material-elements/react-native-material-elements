@@ -1,4 +1,4 @@
-import { render as testRenderer } from '@testing-library/react-native';
+import { render as testRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { View } from 'react-native';
 import { Divider, Text, ThemeProvider } from '../src';
@@ -18,9 +18,11 @@ describe('Divider Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<Divider />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward ref correctly', () => {
@@ -30,7 +32,7 @@ describe('Divider Component', () => {
     expect(mockRef.current).toBeInstanceOf(View);
   });
 
-  it('should render the children correctly', () => {
+  it('should render the children correctly', async () => {
     const { toJSON, getByText } = render(
       <Divider ref={mockRef}>
         <Text>{mockTestLabel}</Text>
@@ -38,8 +40,9 @@ describe('Divider Component', () => {
     );
 
     const text = getByText(mockTestLabel);
-
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
     expect(text).toBeTruthy();
   });
 

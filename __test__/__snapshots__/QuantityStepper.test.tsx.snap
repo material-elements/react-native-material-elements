@@ -1,3 +1,140 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`QuantityStepper Component should render correctly 1`] = `[Function]`;
+exports[`QuantityStepper Component should render correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "row",
+      "gap": 5,
+    }
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "borderColor": "#424242",
+        "borderRadius": 100,
+        "borderWidth": 2,
+        "display": "flex",
+        "height": 35,
+        "justifyContent": "center",
+        "minWidth": 35,
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "backgroundColor": "#424242",
+          "borderRadius": 2,
+          "height": 2.4,
+          "position": "absolute",
+          "width": 15,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "height": 35,
+          "justifyContent": "center",
+          "minWidth": 35,
+        },
+      ]
+    }
+  >
+    <Text
+      collapsable={false}
+      style={
+        {
+          "fontSize": 20,
+        }
+      }
+    >
+      10
+    </Text>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "borderColor": "#424242",
+        "borderRadius": 100,
+        "borderWidth": 2,
+        "display": "flex",
+        "height": 35,
+        "justifyContent": "center",
+        "minWidth": 35,
+        "opacity": 0.4,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "backgroundColor": "#424242",
+          "borderRadius": 2,
+          "height": 2.4,
+          "position": "absolute",
+          "width": 15,
+        }
+      }
+    />
+    <View
+      style={
+        {
+          "backgroundColor": "#424242",
+          "borderRadius": 2,
+          "height": 15,
+          "position": "absolute",
+          "width": 2.4,
+        }
+      }
+    />
+  </View>
+</View>
+`;

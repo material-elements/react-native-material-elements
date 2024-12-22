@@ -1,5 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Badge should render correctly 1`] = `[Function]`;
+exports[`Badge should render correctly 1`] = `
+<View
+  style={
+    {
+      "alignSelf": "flex-start",
+      "minHeight": 40,
+      "minWidth": 40,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "alignSelf": "auto",
+        "borderRadius": 5,
+        "display": "flex",
+        "justifyContent": "center",
+      }
+    }
+  />
+  <View
+    collapsable={false}
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#03A9F4",
+        "borderRadius": 100,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "minHeight": 20,
+        "minWidth": 20,
+        "paddingBottom": 3,
+        "paddingLeft": 5,
+        "paddingRight": 5,
+        "paddingTop": 3,
+        "position": "absolute",
+        "right": -4,
+        "top": -4,
+        "transform": [
+          {
+            "scale": 0,
+          },
+        ],
+      }
+    }
+  />
+</View>
+`;
 
-exports[`Badge should render correctly with inner component 1`] = `[Function]`;
+exports[`Badge should render correctly with inner component 1`] = `
+<View
+  style={
+    {
+      "alignSelf": "flex-start",
+      "minHeight": 40,
+      "minWidth": 40,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "alignSelf": "auto",
+        "borderRadius": 5,
+        "display": "flex",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View />
+  </View>
+  <View
+    collapsable={false}
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#03A9F4",
+        "borderRadius": 100,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "minHeight": 20,
+        "minWidth": 20,
+        "paddingBottom": 3,
+        "paddingLeft": 5,
+        "paddingRight": 5,
+        "paddingTop": 3,
+        "position": "absolute",
+        "right": -4,
+        "top": -4,
+        "transform": [
+          {
+            "scale": 0,
+          },
+        ],
+      }
+    }
+  />
+</View>
+`;

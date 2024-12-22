@@ -1,4 +1,4 @@
-import { render as testRenderer } from '@testing-library/react-native';
+import { render as testRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { Button, green, lightBlue, primary, red, secondary, ThemeProvider, yellow } from '../src';
@@ -17,18 +17,22 @@ describe('Button', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<Button />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
-  it('should render correctly with inner component', () => {
+  it('should render correctly with inner component', async () => {
     const { toJSON } = render(
       <Button>
         <Text />
       </Button>,
     );
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward ref correctly', () => {

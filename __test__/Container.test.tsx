@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react-native';
+import { render, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import { Container } from '../src';
@@ -12,20 +12,23 @@ describe('Container Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should match the snapshot', () => {
+  it('should match the snapshot', async () => {
     const { toJSON } = render(<Container />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
-  it('should match the snapshot with sx styles', () => {
+  it('should match the snapshot with sx styles', async () => {
     const sx = { bg: 'red', p: 10, r: 5, mt: 10 };
     const { toJSON } = render(
       <Container sx={sx}>
         <View />
       </Container>,
     );
-
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('renders correctly with default props', () => {

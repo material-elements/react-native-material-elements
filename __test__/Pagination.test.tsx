@@ -1,4 +1,4 @@
-import { render as testRenderer } from '@testing-library/react-native';
+import { render as testRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { View } from 'react-native';
 import { Pagination, Text, ThemeProvider } from '../src';
@@ -14,11 +14,14 @@ describe('Pagination Component', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.clearAllTimers();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<Pagination count={10} />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward ref correctly', () => {
@@ -48,7 +51,6 @@ describe('Pagination Component', () => {
     fireEvent.press(ThirdItem, { nativeEvent: {} });
     expect(mockOnPageChange).toHaveBeenCalled();
     expect(mockOnPageChange).toHaveBeenCalledTimes(3);
-    jest.useRealTimers();
   });
 
   it('should apply the dot container styles', () => {

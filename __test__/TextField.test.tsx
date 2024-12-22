@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { grey, lightBlue, red, TextField, ThemeProvider } from '../src';
 import { fireEvent, render } from './test-utils';
-import { render as testRenderer } from '@testing-library/react-native';
+import { render as testRenderer, waitFor } from '@testing-library/react-native';
 
 describe('TextField Component', () => {
   const mockTextFiledTestId = 'text-filed-test-id';
@@ -22,9 +22,11 @@ describe('TextField Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<TextField />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should render the input value correctly', () => {

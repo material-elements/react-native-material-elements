@@ -1,5 +1,148 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button should render correctly 1`] = `[Function]`;
+exports[`Button should render correctly 1`] = `
+<View
+  style={{}}
+>
+  <View
+    style={
+      {
+        "alignSelf": "auto",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      pointerEvents="box-only"
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#03A9F4",
+          "borderRadius": 8,
+          "overflow": "hidden",
+          "padding": 15,
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+    >
+      <Text
+        collapsable={false}
+        style={
+          {
+            "color": "#FAFAFA",
+          }
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "bottom": 0,
+              "left": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
 
-exports[`Button should render correctly with inner component 1`] = `[Function]`;
+exports[`Button should render correctly with inner component 1`] = `
+<View
+  style={{}}
+>
+  <View
+    style={
+      {
+        "alignSelf": "auto",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      pointerEvents="box-only"
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#03A9F4",
+          "borderRadius": 8,
+          "overflow": "hidden",
+          "padding": 15,
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+    >
+      <Text />
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "bottom": 0,
+              "left": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

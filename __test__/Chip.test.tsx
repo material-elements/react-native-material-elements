@@ -3,7 +3,7 @@ import { Avatar, Chip, green, lightBlue, primary, red, secondary, ThemeProvider,
 import { SQUARE_BORDER_RADIUS } from '../src/components/Chip/constants';
 import { fireEvent, render } from './test-utils';
 import { View } from 'react-native';
-import { render as testRenderer } from '@testing-library/react-native';
+import { render as testRenderer, waitFor } from '@testing-library/react-native';
 
 describe('Chip Component', () => {
   const chipMockTestId = 'chip-test-id';
@@ -27,9 +27,11 @@ describe('Chip Component', () => {
     expect(mockRef.current).toBeInstanceOf(View);
   });
 
-  it('should match the snapshot with default props', () => {
+  it('should match the snapshot with default props', async () => {
     const { toJSON } = render(<Chip />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('renders correctly with label', () => {

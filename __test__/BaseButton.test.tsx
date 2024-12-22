@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { BaseButton } from '../src';
-import { fireEvent, render } from './test-utils';
+import { fireEvent, render, waitFor } from './test-utils';
 
 describe('Base button component', () => {
   const mockTestId = 'base_button_mock_test_id';
@@ -14,18 +14,22 @@ describe('Base button component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<BaseButton />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
-  it('should render child components correctly', () => {
+  it('should render child components correctly', async () => {
     const { toJSON } = render(
       <BaseButton>
         <Text />
       </BaseButton>,
     );
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should call the onLayout function when onLayout function prop passed', () => {

@@ -1,5 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Divider Component should render correctly 1`] = `[Function]`;
+exports[`Divider Component should render correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "row",
+      "gap": 0,
+      "paddingVertical": 2,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "borderColor": "#BDBDBD",
+        "borderWidth": 0.4,
+        "flex": 1,
+      }
+    }
+  />
+  <View
+    style={
+      {
+        "borderColor": "#BDBDBD",
+        "borderWidth": 0.4,
+        "flex": 1,
+      }
+    }
+  />
+</View>
+`;
 
-exports[`Divider Component should render the children correctly 1`] = `[Function]`;
+exports[`Divider Component should render the children correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "row",
+      "gap": 10,
+      "paddingVertical": 2,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "borderColor": "#BDBDBD",
+        "borderWidth": 0.4,
+        "flex": 1,
+      }
+    }
+  />
+  <Text
+    collapsable={false}
+    style={{}}
+  >
+    test-label
+  </Text>
+  <View
+    style={
+      {
+        "borderColor": "#BDBDBD",
+        "borderWidth": 0.4,
+        "flex": 1,
+      }
+    }
+  />
+</View>
+`;

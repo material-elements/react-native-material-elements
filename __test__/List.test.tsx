@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from './test-utils';
+import { fireEvent, render, waitFor } from './test-utils';
 import { grey, List, ListItem, ListItemText, Text } from '../src';
 import { View } from 'react-native';
 import { BaseStyles } from '../src/libraries/style/styleTypes';
@@ -15,20 +15,25 @@ describe('List Component', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.clearAllTimers();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<List />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
-  it('should render the child component', () => {
+  it('should render the child component', async () => {
     const { toJSON } = render(
       <List>
         <Text>Mock</Text>
       </List>,
     );
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward the ref correctly', () => {
@@ -86,9 +91,11 @@ describe('ListItem Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<ListItem />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward the ref correctly', () => {
@@ -97,13 +104,15 @@ describe('ListItem Component', () => {
     expect(mockRef.current).toBeInstanceOf(View);
   });
 
-  it('should render the child component', () => {
+  it('should render the child component', async () => {
     const { toJSON } = render(
       <ListItem>
         <Text>Mock</Text>
       </ListItem>,
     );
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should apply the list item container styles', () => {
@@ -213,6 +222,7 @@ describe('ListItem Component', () => {
   });
 
   it('should called the onPress function when clicked on the list item', () => {
+    jest.useFakeTimers();
     const { getByTestId } = render(<ListItem onPress={mockOnPress} testID={mockListItemTestId} />);
 
     const listItem = getByTestId(mockListItemTestId);
@@ -240,9 +250,11 @@ describe('ListItemText Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<ListItemText />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward the ref correctly', () => {

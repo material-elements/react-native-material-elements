@@ -2,7 +2,7 @@ import React from 'react';
 import { View, ViewStyle } from 'react-native';
 import { Box, Text } from '../src';
 import { BaseStyles } from '../src/libraries/style/styleTypes';
-import { render } from './test-utils';
+import { render, waitFor } from './test-utils';
 
 describe('Box Component', () => {
   const ref = React.createRef<View>();
@@ -12,31 +12,35 @@ describe('Box Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should match the snapshot', () => {
+  it('should match the snapshot', async () => {
     const { toJSON } = render(<Box sx={{ bg: 'red', r: 10, w: 20, h: 20 }} />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
-  it('should match the snapshot with sx styles', () => {
+  it('should match the snapshot with sx styles', async () => {
     const sx = { bg: 'red', p: 10, r: 5 };
     const { toJSON } = render(
       <Box sx={sx}>
         <View />
       </Box>,
     );
-
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
-  it('should match the snapshot with custom styles', () => {
+  it('should match the snapshot with custom styles', async () => {
     const customStyle = { backgroundColor: 'blue', padding: 20 };
     const { toJSON } = render(
       <Box style={customStyle}>
         <View />
       </Box>,
     );
-
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('renders without crashing', () => {

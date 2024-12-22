@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator as RnActivityIndicator } from 'react-native';
 import { ActivityIndicator } from '../src';
-import { render } from './test-utils';
+import { render, waitFor } from './test-utils';
 
 describe('ActivityIndicator', () => {
   const mockActivityIndicatorTestId = 'mock-activity-indicator-test-id';
@@ -11,9 +11,11 @@ describe('ActivityIndicator', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<ActivityIndicator />);
-    expect(toJSON).toBeDefined();
+    await waitFor(() => {
+      expect(toJSON).toBeDefined();
+    });
   });
 
   it('should render the large size indicator', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from './test-utils';
+import { fireEvent, render, waitFor } from './test-utils';
 import { Radio, Text } from '../src';
 import { View } from 'react-native';
 
@@ -13,9 +13,11 @@ describe('Radio Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const { toJSON } = render(<Radio />);
-    expect(toJSON).toMatchSnapshot();
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should forward the ref correctly', () => {
