@@ -22,3 +22,4 @@ export * from './Switch';
 export * from './TextField';
 export * from './Typography';
 export * from './Backdrop';
+export * from './Progress';
