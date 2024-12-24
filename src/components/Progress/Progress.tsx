@@ -11,8 +11,10 @@ export interface ProgressBarProps extends React.ComponentPropsWithRef<typeof Vie
   variant?: VariantTypes;
   borderColor?: ColorValue;
   backgroundColor?: ColorValue;
+  removeBorder?: boolean;
+  borderWidth?: number;
 }
-export interface ProgressBarContainerStylesParams extends Pick<ProgressBarProps, 'borderColor'> {
+export interface ProgressBarContainerStylesParams extends Pick<ProgressBarProps, 'borderColor' | 'removeBorder' | 'borderWidth'> {
   colors: Theme;
   variant?: VariantTypes;
 }
@@ -21,7 +23,20 @@ export interface ProgressBarIndicatorStylesParams
     Pick<ProgressBarProps, 'backgroundColor'> {}
 
 export const ProgressBar = React.forwardRef<View, ProgressBarProps>(
-  ({ progress = 0, style, borderColor, backgroundColor, variant = 'secondary', testID, ...rest }, ref) => {
+  (
+    {
+      progress = 0,
+      style,
+      borderColor,
+      backgroundColor,
+      variant = 'secondary',
+      removeBorder = false,
+      borderWidth = 0.6,
+      testID,
+      ...rest
+    },
+    ref,
+  ) => {
     const themeColors = useThemeColorsSelector();
 
     const animatedWidth = useRef(new Animated.Value(0)).current;
@@ -29,8 +44,8 @@ export const ProgressBar = React.forwardRef<View, ProgressBarProps>(
     const [prevWidth, setPrevWidth] = useState(0);
 
     const progressBarContainerStyles = useMemo(() => {
-      return getProgressBarContainerStyles({ colors: themeColors, variant, borderColor });
-    }, [themeColors, variant, borderColor]);
+      return getProgressBarContainerStyles({ colors: themeColors, variant, borderColor, removeBorder, borderWidth });
+    }, [themeColors, variant, borderColor, removeBorder, borderWidth]);
 
     const progressBarIndicatorStyles = useMemo(() => {
       return getProgressBarIndicatorStyles({ variant, colors: themeColors, backgroundColor });
@@ -94,7 +109,6 @@ const styles = StyleSheet.create({
   container: {
     height: 9,
     overflow: 'hidden',
-    borderWidth: 0.6,
   },
   progressBar: {
     flex: 1,

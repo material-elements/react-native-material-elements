@@ -5,12 +5,15 @@ import { ProgressBarContainerStylesParams, ProgressBarIndicatorStylesParams } fr
 export const getProgressBarContainerStyles = ({
   colors,
   variant,
+  removeBorder,
   borderColor: progressBarBorderColor,
+  borderWidth,
 }: ProgressBarContainerStylesParams): ViewStyle => {
   const borderColor = progressBarBorderColor ?? getVariant({ variant, colors });
 
   return {
     borderColor,
+    ...(!removeBorder && { borderWidth }),
   };
 };
 
