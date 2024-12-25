@@ -23,12 +23,12 @@ export const Backdrop: React.FC<BackdropProps> = ({
   return (
     <Portal
       visible={visible}
-      onDismiss={onClose}
       animationType={animationType}
       modalContainerProps={{
         style: StyleSheet.flatten([styles.backDropContainer, style]),
         ...rest,
       }}
+      onClose={onClose}
       {...props}>
       <View style={childWrapperContainerStyles}>{children ?? <ActivityIndicator size="large" color={grey[50]} />}</View>
     </Portal>
