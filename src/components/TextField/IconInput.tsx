@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, TextInputProps, View, ViewStyle } from 'react-native';
+import { StyleSheet, TextInputProps, TextStyle, View, ViewStyle } from 'react-native';
 import { useThemeColorsSelector, useThemeIconInputConfigSelector } from '../../libraries';
 import { BaseStyles } from '../../libraries/style/styleTypes';
 import { Box } from '../Box';
 import { BoxProps } from '../types';
 import { BaseInput } from './BaseInput';
+import { Text } from '../Typography';
 
 export interface IconInputProps extends TextInputProps, Pick<BoxProps, 'sx'> {
   /**
@@ -29,6 +30,18 @@ export interface IconInputProps extends TextInputProps, Pick<BoxProps, 'sx'> {
    * Props to be applied to the container of the start adornment.
    */
   startAdornmentContainerStyles?: ViewStyle;
+  /**
+   * Show the top label of the input
+   */
+  label?: string;
+  /**
+   * Label container styles
+   */
+  labelContainerStyles?: ViewStyle;
+  /**
+   * Label styles
+   */
+  labelStyles?: TextStyle;
 }
 
 export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconInputProps>(
@@ -41,6 +54,9 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
       startAdornment,
       startAdornmentContainerStyles,
       style,
+      labelContainerStyles,
+      label,
+      labelStyles,
       ...props
     },
     ref,
@@ -54,42 +70,53 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
     };
 
     return (
-      <Box
-        sx={{ ...defaultIconInputContainerStyles, ...sx }}
-        style={StyleSheet.flatten([styles.inputContainer, iconInputThemeConfig?.inputWrapperStyles, inputWrapperStyles])}
-        ref={ref}>
-        {startAdornment && (
-          <Box
-            style={StyleSheet.flatten([
-              { marginRight: 8 },
-              iconInputThemeConfig?.startAdornmentContainerStyles,
-              startAdornmentContainerStyles,
-            ])}>
-            {startAdornment}
-          </Box>
+      <View>
+        {label && (
+          <View style={StyleSheet.flatten([styles.labelContainer, labelContainerStyles])}>
+            <Text variation="h5" style={labelStyles}>
+              {label}
+            </Text>
+          </View>
         )}
-        <BaseInput
-          placeholder="Base input"
-          style={StyleSheet.flatten([{ color: themeColors.white[900], flex: 1 }, style])}
-          placeholderTextColor={themeColors.grey[600]}
-          {...props}
-        />
-        {endAdornment && (
-          <Box
-            style={StyleSheet.flatten([
-              { marginLeft: 8 },
-              iconInputThemeConfig?.endAdornmentContainerStyles,
-              endAdornmentContainerStyles,
-            ])}>
-            {endAdornment}
-          </Box>
-        )}
-      </Box>
+        <Box
+          sx={{ ...defaultIconInputContainerStyles, ...sx }}
+          style={StyleSheet.flatten([styles.inputContainer, iconInputThemeConfig?.inputWrapperStyles, inputWrapperStyles])}
+          ref={ref}>
+          {startAdornment && (
+            <Box
+              style={StyleSheet.flatten([
+                { marginRight: 8 },
+                iconInputThemeConfig?.startAdornmentContainerStyles,
+                startAdornmentContainerStyles,
+              ])}>
+              {startAdornment}
+            </Box>
+          )}
+          <BaseInput
+            style={StyleSheet.flatten([{ color: themeColors.white[900], flex: 1 }, style])}
+            placeholderTextColor={themeColors.grey[600]}
+            {...props}
+          />
+          {endAdornment && (
+            <Box
+              style={StyleSheet.flatten([
+                { marginLeft: 8 },
+                iconInputThemeConfig?.endAdornmentContainerStyles,
+                endAdornmentContainerStyles,
+              ])}>
+              {endAdornment}
+            </Box>
+          )}
+        </Box>
+      </View>
     );
   },
 );
 
 const styles = StyleSheet.create({
+  labelContainer: {
+    marginBottom: 3,
+  },
   inputContainer: {
     width: '100%',
     paddingHorizontal: 10,

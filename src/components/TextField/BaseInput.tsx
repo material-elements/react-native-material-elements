@@ -7,9 +7,6 @@ import { baseInputStyles } from './TextField.style';
 export const BaseInput = React.forwardRef<TextInput, BaseInputProps>(({ style, variant, ...props }, ref) => {
   const themeColors = useThemeColorsSelector();
 
-  const baseInputGeneratedStyles = useMemo(
-    () => StyleSheet.create({ generated: baseInputStyles({ colors: themeColors, variant }) }),
-    [variant, themeColors],
-  );
-  return <TextInput ref={ref} style={StyleSheet.flatten([baseInputGeneratedStyles.generated, style])} {...props} />;
+  const baseInputGeneratedStyles = useMemo(() => baseInputStyles({ colors: themeColors, variant }), [variant, themeColors]);
+  return <TextInput ref={ref} style={StyleSheet.flatten([baseInputGeneratedStyles, style])} {...props} />;
 });
