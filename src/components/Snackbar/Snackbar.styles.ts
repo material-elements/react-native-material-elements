@@ -1,12 +1,14 @@
-import { DimensionValue, StyleSheet, ViewStyle } from 'react-native';
+import { ColorValue, DimensionValue, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { green, grey } from '../../libraries';
 import { getVariant, isAndroid, isIso, isLargeScreen } from '../../utils';
-import { SnackbarContainerStylesInterface, SnackbarRootContainerStylesInterface } from './Snackbar';
+import { SnackbarContainerStylesInterface, SnackBarLabelStyles, SnackbarRootContainerStylesInterface } from './Snackbar';
 
 export const styles = StyleSheet.create({
   snackbarRootContainer: {
-    paddingHorizontal: 16,
-    paddingVertical: 10,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 10,
+    paddingBottom: 10,
     position: 'absolute',
     zIndex: 9999,
     elevation: 1000,
@@ -46,6 +48,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonLabel: { color: green[500], fontWeight: 600, fontSize: 14 },
+  actionButtonContainer: { width: '100%' },
   actionButton: { width: '100%', borderRadius: 0, height: '100%' },
   icon: {
     width: 20,
@@ -82,4 +85,16 @@ export const snackbarContainerStyles = ({ colors, variant }: SnackbarContainerSt
   return {
     backgroundColor: variant ? getVariant({ variant: variant, colors }) : grey[900],
   };
+};
+
+export const snackBarLabelStyles = ({ variant }: SnackBarLabelStyles): TextStyle => {
+  let textColor: ColorValue;
+
+  if (variant === 'warning') {
+    textColor = grey[900];
+  } else {
+    textColor = grey[50];
+  }
+
+  return { color: textColor };
 };
