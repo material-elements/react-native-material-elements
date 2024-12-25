@@ -57,6 +57,7 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
       labelContainerStyles,
       label,
       labelStyles,
+      testID,
       ...props
     },
     ref,
@@ -81,20 +82,23 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
         <Box
           sx={{ ...defaultIconInputContainerStyles, ...sx }}
           style={StyleSheet.flatten([styles.inputContainer, iconInputThemeConfig?.inputWrapperStyles, inputWrapperStyles])}
-          ref={ref}>
+          ref={ref}
+          testID={`${testID}-wrapper`}>
           {startAdornment && (
             <Box
               style={StyleSheet.flatten([
                 { marginRight: 8 },
                 iconInputThemeConfig?.startAdornmentContainerStyles,
                 startAdornmentContainerStyles,
-              ])}>
+              ])}
+              testID={`${testID}-start-adornment-container`}>
               {startAdornment}
             </Box>
           )}
           <BaseInput
             style={StyleSheet.flatten([{ color: themeColors.white[900], flex: 1 }, style])}
             placeholderTextColor={themeColors.grey[600]}
+            testID={testID}
             {...props}
           />
           {endAdornment && (
@@ -103,7 +107,8 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
                 { marginLeft: 8 },
                 iconInputThemeConfig?.endAdornmentContainerStyles,
                 endAdornmentContainerStyles,
-              ])}>
+              ])}
+              testID={`${testID}-end-adornment-container`}>
               {endAdornment}
             </Box>
           )}
