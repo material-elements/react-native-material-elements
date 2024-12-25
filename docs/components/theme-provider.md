@@ -39,10 +39,6 @@ Represents shades of a color.
 
 Type representing the theme object, based on `initialLightTheme`.
 
-### `ThemMode`
-
-Type representing the theme mode, either 'dark' or 'light'.
-
 ### `ThemeType`
 
 Type representing the structure of the theme object.
@@ -59,7 +55,6 @@ Type representing the structure of the theme object.
 Interface representing the theme and a function to change the theme mode.
 
 - `theme`: `ThemeType & T` - The current theme.
-- `changeTheme`: Function to change the theme mode, accepting a `ThemMode`.
 
 ### `ThemeContextType`
 

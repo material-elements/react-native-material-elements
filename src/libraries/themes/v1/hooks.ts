@@ -1,6 +1,5 @@
 import { useContextSelector } from 'use-context-selector';
 import { ThemeContext } from './V2ThemeContext';
-import { ThemMode } from './theme';
 
 const msg = 'Please ensure the ThemeProvider is correctly wrapped around the application.';
 
@@ -11,13 +10,7 @@ export const useThemeFontSelector = () => {
   }
   return themeFonts;
 };
-export const useThemeModeSelector = () => {
-  const themeMode = useContextSelector(ThemeContext, values => values?.theme?.colors?.mode) as ThemMode | undefined;
-  if (!themeMode) {
-    throw new Error(`Theme mode are unavailable. ${msg}`);
-  }
-  return themeMode;
-};
+
 export const useThemeColorsSelector = () => {
   const themeColors = useContextSelector(ThemeContext, values => values?.theme?.colors);
   if (!themeColors) {
