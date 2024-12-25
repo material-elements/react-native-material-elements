@@ -3,6 +3,7 @@ import {
   ActivityIndicatorProps,
   Animated,
   ColorValue,
+  DimensionValue,
   StyleProp,
   TextInputProps,
   TextStyle,
@@ -55,6 +56,10 @@ export interface BaseInputProps extends TextInputProps {
    * Change the shape of the input
    */
   square?: boolean;
+  /**
+   * Customize input height
+   */
+  height?: DimensionValue;
 }
 
 /**
@@ -211,6 +216,6 @@ export interface LabelTextStylesProps
   colors: Theme;
 }
 
-export interface BaseInputStylesProps extends Pick<BaseInputProps, 'variant'> {
+export interface BaseInputStylesProps extends Pick<BaseInputProps, 'variant' | 'height'> {
   colors: Theme;
 }

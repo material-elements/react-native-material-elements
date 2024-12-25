@@ -51,10 +51,10 @@ export const labelTextStyles = ({ colors, variant, ignoreOpacityOnNonEditable }:
   return baseStyles;
 };
 
-export const baseInputStyles = ({ colors, variant }: BaseInputStylesProps): TextStyle => {
+export const baseInputStyles = ({ colors, variant, height = 30 }: BaseInputStylesProps): TextStyle => {
   const baseStyles: TextStyle = {
     color: variant === 'outlined' ? colors.grey[800] : colors.grey[200],
-    minHeight: 30,
+    minHeight: height,
     width: '100%',
   };
   return baseStyles;

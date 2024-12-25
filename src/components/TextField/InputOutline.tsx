@@ -22,28 +22,24 @@ export const Outline = React.forwardRef<View, OutlineProps>(
   ) => {
     const themeColors = useThemeColorsSelector();
 
-    const outlineGeneratedStyles = useMemo(
-      () =>
-        StyleSheet.create({
-          generated: {
-            ...inputOutlineVariationStyles(variant, themeColors),
-            ...outlineStyles({
-              error,
-              errorColor,
-              isFocused,
-              activeColor,
-              colors: themeColors,
-              editable,
-              variant,
-              ignoreOpacityOnNonEditable,
-              square,
-            }),
-          },
+    const outlineGeneratedStyles = useMemo(() => {
+      return {
+        ...inputOutlineVariationStyles(variant, themeColors),
+        ...outlineStyles({
+          error,
+          errorColor,
+          isFocused,
+          activeColor,
+          colors: themeColors,
+          editable,
+          variant,
+          ignoreOpacityOnNonEditable,
+          square,
         }),
-      [error, errorColor, isFocused, activeColor, themeColors, editable, variant, ignoreOpacityOnNonEditable, square],
-    );
+      };
+    }, [error, errorColor, isFocused, activeColor, themeColors, editable, variant, ignoreOpacityOnNonEditable, square]);
 
-    return <View ref={ref} style={StyleSheet.flatten([outlineGeneratedStyles.generated, style])} {...props} />;
+    return <View ref={ref} style={StyleSheet.flatten([outlineGeneratedStyles, style])} {...props} />;
   },
 );
 Outline.displayName = 'TextFiledOutline';

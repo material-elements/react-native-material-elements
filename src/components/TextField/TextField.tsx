@@ -49,11 +49,13 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
       onBlur: onTextInputBlurHandler,
       onLayout: onTextInputLayoutHandler,
       loadingIndicatorProps,
+      multiline,
       animatedDuration = LABELED_ANIMATION_DURATION,
       overrideRootAnimationDuration = false,
       hideLabel = false,
       overrideRootHideLabel = false,
       square,
+      height,
       editable = true,
       placeholder = 'Outlined',
       variant = 'outlined',
@@ -292,6 +294,8 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
           style={StyleSheet.flatten([textInputStyles, generateInputStyles()])}
           variant={variant}
           placeholder={shouldHideLabel() ? placeholder : undefined}
+          multiline={multiline}
+          height={height}
           {...props}
         />
         {renderEndAdornment()}

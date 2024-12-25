@@ -3,10 +3,9 @@ import { Text as RnText } from 'react-native';
 import { useThemeColorsSelector } from '../../libraries';
 import { Text } from '../Typography';
 import { TextProps } from '../Typography/Text.types';
-import { dialogContentTextStyles } from './Dialog.styles';
 
-export const DialogContentText = React.forwardRef<RnText, TextProps>(({ sx, ...props }, ref) => {
+export const DialogContentText = React.forwardRef<RnText, TextProps>(({ color, ...props }, ref) => {
   const themeColors = useThemeColorsSelector();
 
-  return <Text variation="h4" ref={ref} style={[dialogContentTextStyles(themeColors), sx]} {...props} />;
+  return <Text variation="h4" ref={ref} color={color ?? themeColors.grey[50]} {...props} />;
 });

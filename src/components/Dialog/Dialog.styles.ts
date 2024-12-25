@@ -1,5 +1,4 @@
-import { DimensionValue, StyleSheet, TextStyle, ViewStyle } from 'react-native';
-import { Theme } from '../../libraries/themes/v1/theme';
+import { DimensionValue, StyleSheet, ViewStyle } from 'react-native';
 import { DialogActionsContainerStylesInterface, DialogContainerStylesInterface } from './Dialog.types';
 
 export const styles = StyleSheet.create({
@@ -31,6 +30,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     display: 'flex',
     alignItems: 'center',
+  },
+  dialogTitle: {
+    padding: 15,
   },
 });
 
@@ -64,15 +66,6 @@ export const dialogContainerStyles = ({ colors, fullWidth, maxWidth }: DialogCon
     maxWidth: mW,
   };
 };
-
-export const dialogTitleStyles = (colors: Theme): TextStyle => ({
-  padding: 15,
-  color: colors.grey[100],
-});
-
-export const dialogContentTextStyles = (colors: Theme): TextStyle => ({
-  color: colors.grey[100],
-});
 
 export const dialogActionsContainerStyles = ({ maxWidth, fullWidth }: DialogActionsContainerStylesInterface): ViewStyle => ({
   maxWidth: fullWidth ? '100%' : maxWidth,
