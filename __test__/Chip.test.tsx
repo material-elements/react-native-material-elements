@@ -253,7 +253,7 @@ describe('Chip Component', () => {
 
     const startIcon = getByTestId(startIconMockTestId);
     expect(startIcon).toBeTruthy();
-    expect(toJSON).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render correctly with end icon', () => {
@@ -275,7 +275,7 @@ describe('Chip Component', () => {
 
     const endIcon = getByTestId(endIconMockTestId);
     expect(endIcon).toBeTruthy();
-    expect(toJSON).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('user should able to click on the start icon', () => {

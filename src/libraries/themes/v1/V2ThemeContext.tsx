@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { useMemo } from 'react';
-import { useColorScheme } from 'react-native';
+import { ColorSchemeName, useColorScheme } from 'react-native';
 import { createContext, useContext } from 'use-context-selector';
 import { initialDarkTheme, initialLightTheme } from './colors';
 import { font, fontWeight, latterSpacing, lineHeight, spacing } from './sizes';
@@ -9,11 +9,10 @@ import {
   CreateColorShadesInterface,
   CreateThemeDimensions,
   CreateThemeDimensionsReturnValues,
-  CreateThemeReturnValues,
   CreateThemeType,
-  ThemMode,
   ThemeDimensions,
   ThemeInterface,
+  ThemeKeys,
   ThemeProviderProps,
   ThemeType,
 } from './theme';
@@ -40,8 +39,11 @@ export const ThemeContext = createContext<ThemeInterface<ThemeType> | undefined>
  * Function to create color shades by merging default theme colors with custom shades
  * @returns ColorShades
  */
-export const createColorShades = ({ shades, themePropertyName }: CreateColorShadesInterface): ColorShades => ({
-  ...defaultLightTheme.colors[themePropertyName],
+export const createColorShades = <T extends string>({
+  shades,
+  themePropertyName,
+}: CreateColorShadesInterface<T>): ColorShades => ({
+  ...defaultLightTheme.colors[themePropertyName as ThemeKeys],
   ...shades,
 });
 
@@ -55,23 +57,16 @@ export const createThemeDimensions = (dimensions: CreateThemeDimensions): Create
 /**
  * Function to create a theme based on the specified mode (light or dark) and additional theme configurations.
  * Merges the base theme (either light or dark) with the custom theme configurations
- * @param mode ThemMode
+ * @param mode ColorSchemeName
  * @param theme CreateThemeType
  * @returns CreateThemeReturnValues
  */
-export const createTheme = function (mode: ThemMode, theme: CreateThemeType): CreateThemeReturnValues {
+export const createTheme = function <T>(mode: ColorSchemeName, theme: CreateThemeType & T) {
   const isLightTheme = mode === 'light';
-  const generatedTheme = { mode, ..._.merge(isLightTheme ? defaultLightTheme : defaultDarkTheme, theme) };
-  return generatedTheme;
+  return _.merge({}, isLightTheme ? defaultLightTheme : defaultDarkTheme, theme);
 };
 
-export const ThemeProvider = <T extends Object>({
-  children,
-  lightTheme,
-  darkTheme,
-  dimensions,
-  components = {},
-}: ThemeProviderProps<T>) => {
+export const ThemeProvider = ({ children, lightTheme, darkTheme, dimensions, components = {} }: ThemeProviderProps) => {
   const colorScheme = useColorScheme();
 
   const initialTheme = useMemo(() => {
@@ -82,8 +77,7 @@ export const ThemeProvider = <T extends Object>({
   }, [lightTheme, darkTheme, colorScheme]);
 
   const mergedTheme = useMemo(() => ({ ...initialTheme, ...(dimensions || themeDimensions) }), [initialTheme, dimensions]);
-
-  const themeValues: ThemeInterface<any> = useMemo(() => ({ theme: mergedTheme, components }), [mergedTheme, components]);
+  const themeValues = useMemo(() => ({ theme: mergedTheme, components }), [mergedTheme, components]);
 
   return <ThemeContext.Provider value={themeValues}>{children}</ThemeContext.Provider>;
 };

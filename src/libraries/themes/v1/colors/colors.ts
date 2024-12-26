@@ -20,7 +20,6 @@ import { white } from './white';
 import { yellow } from './yellow';
 
 const initialLightTheme = {
-  mode: 'light',
   primary,
   secondary,
   accent,
@@ -57,7 +56,6 @@ const createDarkColorTheme = (key: keyof typeof initialLightTheme) => {
 };
 
 const initialDarkTheme: Theme = {
-  mode: 'dark',
   primary: createDarkColorTheme('primary'),
   secondary: createDarkColorTheme('secondary'),
   accent: createDarkColorTheme('accent'),

@@ -59,12 +59,7 @@ export type Theme = typeof initialLightTheme;
  * Type for valid theme keys, excluding the 'mode' property.
  * Useful for referring to theme properties like colors, fonts, etc., but not the mode (dark/light).
  */
-export type ThemeKeys = keyof Omit<Theme, 'mode'>;
-/**
- * Enum-like type representing theme modes.
- * Can be either 'dark' or 'light'.
- */
-export type ThemMode = 'dark' | 'light';
+export type ThemeKeys = keyof Theme;
 /**
  * Type for defining theme-related design dimensions such as fonts, spacing, and line heights.
  * These properties help maintain consistent spacing and typography throughout the application.
@@ -77,18 +72,10 @@ export type ThemeDimensions = {
   fontWeight: typeof fontWeight;
 };
 /**
- * Interface representing the required structure of the theme, which includes the theme object.
- * The theme object is of type `ThemeType`, which defines the full theme structure.
- */
-export interface RequiredTheme {
-  theme: ThemeType;
-}
-/**
  * Type representing the overall theme structure, including colors and various design metrics.
  */
 export type ThemeType = {
-  mode: ThemMode;
-  colors: Theme;
+  colors: Theme & { [index: string]: ColorShades };
 } & ThemeDimensions;
 export type ThemeSpacingType = typeof themeDimensions;
 /**
@@ -104,10 +91,6 @@ export type InnerPartial<T> = {
  */
 export type CreateThemeType = Pick<InnerPartial<ThemeType>, 'colors'>;
 /**
- * Type used to define the return values when creating a theme, including the mode and colors.
- */
-export type CreateThemeReturnValues = Pick<ThemeType, 'colors' | 'mode'>;
-/**
  * Type used to define theme dimensions when creating a new theme.
  * This is useful when adjusting spacing, font sizes, and other layout values.
  */
@@ -121,7 +104,7 @@ export type CreateThemeDimensionsReturnValues = ThemeDimensions & InnerPartial<T
  * Interface for creating color shades dynamically within the theme,
  * with support for specifying the theme property name (e.g., 'primary' or 'secondary') for each shade.
  */
-export type CreateColorShadesInterface = { shades: Partial<ColorShades>; themePropertyName: ThemeKeys };
+export type CreateColorShadesInterface<T> = { shades: Partial<ColorShades>; themePropertyName: ThemeKeys | T };
 
 type TextFileThemeConfig = Pick<
   TextFieldProps,
@@ -230,7 +213,7 @@ export type WithThemeComponentConfig<K extends keyof ThemeComponentConfig, T> = 
 /**
  * Interface representing the theme context, including the current theme and a function to change the theme mode.
  */
-export interface ThemeInterface<T extends object> {
+export interface ThemeInterface<T> {
   /**
    * The current theme, extended with any additional properties
    */
@@ -246,7 +229,7 @@ export interface ThemeInterface<T extends object> {
 export interface ThemeContextType {
   theme: ThemeInterface;
 }
-export interface ThemeProviderProps<T extends Object> {
+export interface ThemeProviderProps {
   /**
    * Child components to be wrapped by the provider
    */
@@ -254,11 +237,11 @@ export interface ThemeProviderProps<T extends Object> {
   /**
    * Optional light theme, extended with additional properties
    */
-  lightTheme?: Pick<ThemeType, 'mode' | 'colors'> & T;
+  lightTheme?: Pick<ThemeType, 'colors'>;
   /**
    * Optional dark theme, extended with additional properties
    */
-  darkTheme?: Pick<ThemeType, 'mode' | 'colors'> & T;
+  darkTheme?: Pick<ThemeType, 'colors'>;
   /**
    * Optional theme dimensions values
    */
