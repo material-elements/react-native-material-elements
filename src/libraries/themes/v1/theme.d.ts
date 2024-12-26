@@ -59,7 +59,7 @@ export type Theme = typeof initialLightTheme;
  * Type for valid theme keys, excluding the 'mode' property.
  * Useful for referring to theme properties like colors, fonts, etc., but not the mode (dark/light).
  */
-export type ThemeKeys = keyof Omit<Theme, 'mode'>;
+export type ThemeKeys = keyof Theme;
 /**
  * Type for defining theme-related design dimensions such as fonts, spacing, and line heights.
  * These properties help maintain consistent spacing and typography throughout the application.
@@ -71,13 +71,6 @@ export type ThemeDimensions = {
   lineHeight: typeof lineHeight;
   fontWeight: typeof fontWeight;
 };
-/**
- * Interface representing the required structure of the theme, which includes the theme object.
- * The theme object is of type `ThemeType`, which defines the full theme structure.
- */
-export interface RequiredTheme {
-  theme: ThemeType;
-}
 /**
  * Type representing the overall theme structure, including colors and various design metrics.
  */
