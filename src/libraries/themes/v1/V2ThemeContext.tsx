@@ -63,8 +63,7 @@ export const createThemeDimensions = (dimensions: CreateThemeDimensions): Create
  */
 export const createTheme = function <T>(mode: ColorSchemeName, theme: CreateThemeType & T) {
   const isLightTheme = mode === 'light';
-  const generatedTheme = { ..._.merge(isLightTheme ? defaultLightTheme : defaultDarkTheme, theme) };
-  return generatedTheme;
+  return _.merge({}, isLightTheme ? defaultLightTheme : defaultDarkTheme, theme);
 };
 
 export const ThemeProvider = ({ children, lightTheme, darkTheme, dimensions, components = {} }: ThemeProviderProps) => {
