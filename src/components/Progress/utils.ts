@@ -8,11 +8,13 @@ export const getProgressBarContainerStyles = ({
   removeBorder,
   borderColor: progressBarBorderColor,
   borderWidth,
+  height,
 }: ProgressBarContainerStylesParams): ViewStyle => {
   const borderColor = progressBarBorderColor ?? getVariant({ variant, colors });
 
   return {
     borderColor,
+    height,
     ...(!removeBorder && { borderWidth }),
   };
 };
