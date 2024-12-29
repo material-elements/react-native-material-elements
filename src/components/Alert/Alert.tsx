@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
+import { StyleSheet, TextStyle, View } from 'react-native';
 import { useThemeColorsSelector } from '../../libraries';
 import { Theme } from '../../libraries/themes/types';
 import { VariantTypes } from '../../utils';
@@ -10,9 +10,10 @@ import { getAlertContainerStyles, getAlertTitleStyles } from './utils';
 
 export interface AlertProps extends BoxProps {
   title?: string;
-  titleContainerStyles?: ViewStyle;
-  variant?: VariantTypes;
   titleStyles?: TextStyle;
+  subTitle?: string;
+  subTitleStyles?: TextStyle;
+  variant?: VariantTypes;
   action?: React.ReactNode;
   variation?: 'filled' | 'outlined';
   titleMixLength?: number;
@@ -27,10 +28,11 @@ export const Alert = React.forwardRef<View, AlertProps>(
     {
       style,
       title,
-      titleContainerStyles,
       titleStyles,
       action,
       titleMixLength,
+      subTitle,
+      subTitleStyles,
       variant = 'success',
       variation = 'filled',
       ...props
@@ -49,13 +51,18 @@ export const Alert = React.forwardRef<View, AlertProps>(
 
     return (
       <Box ref={ref} style={StyleSheet.flatten([styles.alertContainer, alertContainerStyles, style])} {...props}>
-        {title ? (
-          <View style={StyleSheet.flatten([styles.titleContainer, titleContainerStyles])}>
+        <View style={styles.contentContainer}>
+          {title ? (
             <Text variation="h4" maxLength={titleMixLength} style={StyleSheet.flatten([titleS, titleStyles])}>
               {title}
             </Text>
-          </View>
-        ) : null}
+          ) : null}
+          {subTitle ? (
+            <Text variation="h5" maxLength={titleMixLength} style={StyleSheet.flatten([titleS, styles.subTitle, subTitleStyles])}>
+              {subTitle}
+            </Text>
+          ) : null}
+        </View>
         {action ? <View style={styles.actionContainer}>{action}</View> : null}
       </Box>
     );
@@ -64,7 +71,6 @@ export const Alert = React.forwardRef<View, AlertProps>(
 
 const styles = StyleSheet.create({
   alertContainer: {
-    width: '100%',
     paddingTop: 4,
     paddingBottom: 4,
     paddingLeft: 10,
@@ -75,8 +81,11 @@ const styles = StyleSheet.create({
     minHeight: 30,
     alignItems: 'center',
   },
-  titleContainer: {
+  contentContainer: {
     flex: 1,
+  },
+  subTitle: {
+    marginTop: 2,
   },
   actionContainer: {
     paddingLeft: 5,
