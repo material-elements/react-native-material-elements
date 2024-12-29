@@ -1,5 +1,6 @@
 export * from './Accordion';
 export * from './ActivityIndicator';
+export * from './Alert';
 export * from './Avatar';
 export * from './Backdrop';
 export * from './Badge';
