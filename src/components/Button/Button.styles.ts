@@ -1,11 +1,17 @@
-import { ColorValue, StyleSheet, ViewStyle } from 'react-native';
+import { ColorValue, DimensionValue, StyleSheet, ViewStyle } from 'react-native';
 import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
 import { getVariant } from '../../utils';
-import { ButtonRootContainerStylesInterface, ButtonVariationsType, GetButtonStylesProps } from './Button.types';
+import {
+  BaseButtonStylesParams,
+  ButtonRootContainerStylesInterface,
+  ButtonSizeVariant,
+  ButtonVariationsType,
+  GetButtonStylesProps,
+} from './Button.types';
 
 export const styles = StyleSheet.create({
   baseButtonContainer: {
-    alignSelf: 'auto',
+    alignSelf: 'flex-start',
   },
   buttonGroupContainer: {
     display: 'flex',
@@ -28,38 +34,69 @@ export const styles = StyleSheet.create({
   },
 });
 
+export const baseButtonStyles = ({ fullWidth }: BaseButtonStylesParams): ViewStyle => {
+  return {
+    ...(fullWidth && { width: '100%' }),
+  };
+};
+
 export const buttonRootContainerStyles = ({ flex }: ButtonRootContainerStylesInterface) => ({
   ...(flex && { flex }),
 });
 
-export const containedButtonDefaultStyles = (spacing: ThemeDimensions['spacing']): ViewStyle => ({
-  padding: spacing.lg,
-  alignItems: 'center',
-  borderRadius: 8,
-  overflow: 'hidden',
-});
+export const baseStyles = (spacing: ThemeDimensions['spacing'], size?: ButtonSizeVariant): ViewStyle => {
+  let padding: DimensionValue;
+  let paddingHorizontal: DimensionValue;
 
-export const textButtonDefaultStyles = (spacing: ThemeDimensions['spacing']): ViewStyle => ({
-  ...containedButtonDefaultStyles(spacing),
-  elevation: 0,
-  backgroundColor: 'transparent',
-});
+  switch (size) {
+    case 'small':
+      padding = spacing.xs;
+      paddingHorizontal = spacing.sm;
+      break;
+    case 'medium':
+      padding = spacing.md;
+      paddingHorizontal = spacing.md;
+      break;
+    case 'large':
+      padding = spacing.lg;
+      paddingHorizontal = spacing.lg;
+      break;
+    default:
+      padding = spacing.lg;
+      paddingHorizontal = spacing.lg;
+  }
 
-export const outlinedButtonDefaultStyles = (colors: Theme, spacing: ThemeDimensions['spacing']): ViewStyle => ({
-  ...textButtonDefaultStyles(spacing),
-  borderWidth: 1,
-  borderColor: colors.grey[400],
-});
+  return {
+    alignItems: 'center',
+    borderRadius: 8,
+    overflow: 'hidden',
+    padding,
+    paddingHorizontal,
+  };
+};
 
 export const disabledStyles: ViewStyle = {
   opacity: 0.7,
 };
 
-export const buttonVariationStyles = (spacing: ThemeDimensions['spacing'], colors: Theme, variation: ButtonVariationsType) => {
+export const buttonVariationStyles = (
+  spacing: ThemeDimensions['spacing'],
+  colors: Theme,
+  variation: ButtonVariationsType,
+  size: ButtonSizeVariant,
+) => {
   const variations: Record<ButtonVariationsType, ViewStyle> = {
-    outlined: outlinedButtonDefaultStyles(colors, spacing),
-    contained: containedButtonDefaultStyles(spacing),
-    text: textButtonDefaultStyles(spacing),
+    outlined: {
+      ...baseStyles(spacing, size),
+      backgroundColor: 'transparent',
+      borderColor: colors.grey[400],
+      borderWidth: 1,
+    },
+    contained: baseStyles(spacing, size),
+    text: {
+      ...baseStyles(spacing, size),
+      backgroundColor: 'transparent',
+    },
     roundedIconButton: styles.iconButton,
     squareIconButton: {
       ...styles.iconButton,
@@ -77,6 +114,7 @@ export const getButtonStyles = ({
   spacing,
   backgroundColor,
   variation = 'contained',
+  size = 'large',
 }: GetButtonStylesProps): ViewStyle => {
   const isContainedVariation = variation === 'contained';
   let buttonBackgroundColor: ColorValue | undefined;
@@ -88,7 +126,7 @@ export const getButtonStyles = ({
   }
   return {
     ...(buttonBackgroundColor && { backgroundColor: buttonBackgroundColor }),
-    ...buttonVariationStyles(spacing, themeColors, variation),
+    ...buttonVariationStyles(spacing, themeColors, variation, size),
     ...(!isContainedVariation && { borderColor: getVariant({ variant: buttonColor, colors: themeColors }) }),
     ...(disabled && disabledStyles),
     ...(square && { borderRadius: 0 }),

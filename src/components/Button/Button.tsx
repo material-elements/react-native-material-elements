@@ -30,6 +30,8 @@ export const Button = React.forwardRef<View, ButtonProps>(
       sx,
       backgroundColor,
       baseButtonSx,
+      size = 'large',
+      fullWidth = false,
       overrideRootDisableScaleAnimation = false,
       overrideRootScaleAnimationValue = false,
       overrideRootRippleEdge = false,
@@ -139,6 +141,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
         buttonColor,
         square: applySquareStyle,
         backgroundColor,
+        size,
       });
     }, [
       overrideRootSquareConfig,
@@ -150,6 +153,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       square,
       buttonThemeConfig?.square,
       backgroundColor,
+      size,
     ]);
 
     const renderChild = () => {
@@ -189,6 +193,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
           baseButtonContainerStyle={(buttonThemeConfig?.baseButtonContainerStyle, baseButtonContainerStyle)}
           rippleProps={mergeRippleProps}
           sx={baseButtonSx}
+          fullWidth={fullWidth}
           {...props}>
           {renderChild()}
         </BaseButton>

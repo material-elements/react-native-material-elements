@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import {
   Animated,
   GestureResponderEvent,
@@ -11,7 +11,7 @@ import {
 import { Box } from '../Box';
 import { Ripple } from '../Ripple';
 import { RippleInterface } from '../Ripple/Ripple.types';
-import { styles } from './Button.styles';
+import { baseButtonStyles, styles } from './Button.styles';
 import { BaseButtonProps } from './Button.types';
 
 export const BaseButton = React.forwardRef<View, BaseButtonProps>(
@@ -28,6 +28,7 @@ export const BaseButton = React.forwardRef<View, BaseButtonProps>(
       onLayout: onLayoutHandler,
       onPress: onPressHandler,
       onLongPress: onLongPressHandler,
+      fullWidth,
       scaleAnimationValue = 0.99,
       disableScaleAnimation = false,
       scaleAnimationDuration = 200,
@@ -96,8 +97,12 @@ export const BaseButton = React.forwardRef<View, BaseButtonProps>(
       [onLayoutHandler],
     );
 
+    const baseButtonS = useMemo(() => {
+      return baseButtonStyles({ fullWidth });
+    }, [fullWidth]);
+
     return (
-      <Box ref={ref} sx={sx} style={StyleSheet.flatten([styles.baseButtonContainer, baseButtonContainerStyle])}>
+      <Box ref={ref} sx={sx} style={StyleSheet.flatten([styles.baseButtonContainer, baseButtonS, baseButtonContainerStyle])}>
         <TouchableWithoutFeedback
           onPress={buttonPressHandler}
           onLongPress={buttonLongPressHandler}

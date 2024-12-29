@@ -1,10 +1,11 @@
 import React from 'react';
 import { ColorValue, TextStyle, TouchableWithoutFeedback, ViewStyle } from 'react-native';
 import { BaseStyles } from '../../libraries/style/styleTypes';
-import { Theme } from '../../libraries/themes/v1/theme';
+import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
 import { VariantTypes } from '../../utils';
 import { RipplePosition, RippleProps } from '../Ripple/Ripple.types';
 
+export type ButtonSizeVariant = 'small' | 'medium' | 'large';
 export interface BaseButtonProps extends React.ComponentPropsWithRef<typeof TouchableWithoutFeedback> {
   /**
    * Custom styles to apply to the Box component.
@@ -41,6 +42,7 @@ export interface BaseButtonProps extends React.ComponentPropsWithRef<typeof Touc
    * button scale animation duration
    */
   scaleAnimationDuration?: number;
+  fullWidth?: boolean;
 }
 
 /**
@@ -126,6 +128,10 @@ export interface ButtonProps extends Omit<BaseButtonProps, 'sx'> {
    * Button background color
    */
   backgroundColor?: ColorValue;
+  /**
+   * Button size variant
+   */
+  size?: ButtonSizeVariant;
 }
 export interface ButtonRootContainerStylesInterface extends Pick<ButtonProps, 'flex'> {}
 
@@ -139,7 +145,7 @@ export type IconButtonVariations = 'roundedIconButton' | 'squareIconButton';
  * Defines the props interface for the IconButton component.
  * Extends React's ComponentPropsWithRef<typeof TouchableWithoutFeedback>.
  */
-export interface IconButtonProps extends Omit<BaseButtonProps, 'sx'> {
+export interface IconButtonProps extends Omit<BaseButtonProps, 'sx' | 'fullWidth' | 'size'> {
   /**
    * Specifies the variation of the IconButton.
    * Can be either 'roundedIconButton' or 'squareIconButton'.
@@ -165,3 +171,4 @@ export interface GetButtonStylesProps extends Omit<ButtonProps, 'sx' | 'children
   spacing: ThemeDimensions['spacing'];
   variation?: ButtonVariationsType;
 }
+export interface BaseButtonStylesParams extends Pick<BaseButtonProps, 'fullWidth'> {}
