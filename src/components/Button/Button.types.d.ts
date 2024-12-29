@@ -172,3 +172,4 @@ export interface GetButtonStylesProps extends Omit<ButtonProps, 'sx' | 'children
   variation?: ButtonVariationsType;
 }
 export interface BaseButtonStylesParams extends Pick<BaseButtonProps, 'fullWidth'> {}
+export interface ButtonLabelStylesParams extends Pick<ButtonProps, 'size'> {}

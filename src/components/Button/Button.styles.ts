@@ -1,8 +1,9 @@
-import { ColorValue, DimensionValue, StyleSheet, ViewStyle } from 'react-native';
+import { ColorValue, DimensionValue, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
 import { getVariant } from '../../utils';
 import {
   BaseButtonStylesParams,
+  ButtonLabelStylesParams,
   ButtonRootContainerStylesInterface,
   ButtonSizeVariant,
   ButtonVariationsType,
@@ -131,4 +132,22 @@ export const getButtonStyles = ({
     ...(disabled && disabledStyles),
     ...(square && { borderRadius: 0 }),
   };
+};
+
+export const buttonLabelStyles = ({ size }: ButtonLabelStylesParams): TextStyle => {
+  let fontSize: number;
+
+  switch (size) {
+    case 'small':
+      fontSize = 12;
+      break;
+    case 'medium':
+      fontSize = 13;
+      break;
+    default:
+      fontSize = 14;
+      break;
+  }
+
+  return { fontSize };
 };

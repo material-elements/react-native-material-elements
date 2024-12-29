@@ -6,7 +6,7 @@ import { ActivityIndicator } from '../ActivityIndicator';
 import { Box } from '../Box';
 import { Text } from '../Typography';
 import { BaseButton } from './BaseButton';
-import { buttonRootContainerStyles, getButtonStyles } from './Button.styles';
+import { buttonLabelStyles, buttonRootContainerStyles, getButtonStyles } from './Button.styles';
 import { ButtonProps } from './Button.types';
 
 export const Button = React.forwardRef<View, ButtonProps>(
@@ -67,7 +67,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       style: textButtonStyles,
     } = buttonThemeConfig?.text || {};
 
-    const generateButtonContainedStyles = (): StyleProp<TextStyle> => {
+    const generateButtonLabelStyles = (): StyleProp<TextStyle> => {
       return [
         buttonThemeConfig?.labelStyles,
         isContainedButton && containedButtonLabelStyles,
@@ -178,7 +178,11 @@ export const Button = React.forwardRef<View, ButtonProps>(
         textColor = getVariant({ variant: buttonColor, colors: themeColors });
       }
 
-      return <Text style={StyleSheet.flatten([{ color: textColor }, generateButtonContainedStyles()])}>{label}</Text>;
+      return (
+        <Text style={StyleSheet.flatten([{ color: textColor }, buttonLabelStyles({ size }), generateButtonLabelStyles()])}>
+          {label}
+        </Text>
+      );
     };
 
     return (
