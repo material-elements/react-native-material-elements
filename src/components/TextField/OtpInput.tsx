@@ -40,6 +40,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({
   error = false,
   variant = 'secondary',
   variation = 'outlined',
+  testID = 'otp-input',
   ...props
 }) => {
   const [otp, setOtp] = useState<string[]>(Array(length).fill(''));
@@ -100,8 +101,8 @@ export const OTPInput: React.FC<OTPInputProps> = ({
         key={index}
         style={StyleSheet.flatten([
           styles.input,
-          inputStyles,
           getOtpInputStyles({ length, colors: themeColors, variant, isFocused: focusedIndex === index, square, error }),
+          inputStyles,
           isUnderLineInput && styles.underLineInput,
         ])}
         keyboardType="number-pad"
@@ -113,6 +114,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({
         onFocus={() => handleFocus(index)}
         onBlur={handleBlur}
         selectTextOnFocus
+        testID={`${testID}-${index}`}
         {...props}
       />
     ));
