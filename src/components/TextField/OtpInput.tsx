@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TextInput,
   TextInputKeyPressEventData,
+  TextInputProps,
   TextStyle,
   View,
   ViewStyle,
@@ -13,29 +14,39 @@ import { Theme } from '../../libraries/themes/types';
 import { VariantTypes } from '../../utils';
 import { getOtpInputStyles } from './TextField.style';
 
-interface OTPInputProps {
+export type OtpInputVariation = 'outlined' | 'underlined';
+export type OTPInputProps = Omit<TextInputProps, 'onChange'> & {
   length: number;
-  onChangeOTP?: (otp: string) => void;
+  onChange?: (otp: string) => void;
   variant?: VariantTypes;
   inputStyles?: TextStyle;
   otpContainerStyles?: ViewStyle;
-}
+  square?: boolean;
+  error?: boolean;
+  variation?: OtpInputVariation;
+};
 
-export interface GetOtpInputStylesParams extends Pick<OTPInputProps, 'length' | 'variant'> {
+export interface GetOtpInputStylesParams extends Pick<OTPInputProps, 'length' | 'variant' | 'square' | 'error'> {
   colors: Theme;
   isFocused?: boolean;
 }
 
 export const OTPInput: React.FC<OTPInputProps> = ({
   length,
-  onChangeOTP,
-  variant = 'secondary',
+  onChange,
   inputStyles,
   otpContainerStyles,
+  square = false,
+  error = false,
+  variant = 'secondary',
+  variation = 'outlined',
+  ...props
 }) => {
   const [otp, setOtp] = useState<string[]>(Array(length).fill(''));
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
   const inputs = useRef<TextInput[]>([]);
+
+  const isUnderLineInput = variation === 'underlined';
 
   const themeColors = useThemeColorsSelector();
 
@@ -47,8 +58,8 @@ export const OTPInput: React.FC<OTPInputProps> = ({
     const newOtp = [...otp];
     newOtp[index] = text;
     setOtp(newOtp);
-    if (onChangeOTP) {
-      onChangeOTP(newOtp.join(''));
+    if (onChange) {
+      onChange(newOtp.join(''));
     }
 
     if (text && index < length - 1) {
@@ -61,8 +72,8 @@ export const OTPInput: React.FC<OTPInputProps> = ({
       const newOtp = [...otp];
       newOtp[index] = '';
       setOtp(newOtp);
-      if (onChangeOTP) {
-        onChangeOTP(newOtp.join(''));
+      if (onChange) {
+        onChange(newOtp.join(''));
       }
 
       if (index > 0) {
@@ -90,7 +101,8 @@ export const OTPInput: React.FC<OTPInputProps> = ({
         style={StyleSheet.flatten([
           styles.input,
           inputStyles,
-          getOtpInputStyles({ length, colors: themeColors, variant, isFocused: focusedIndex === index }),
+          getOtpInputStyles({ length, colors: themeColors, variant, isFocused: focusedIndex === index, square, error }),
+          isUnderLineInput && styles.underLineInput,
         ])}
         keyboardType="number-pad"
         maxLength={1}
@@ -101,11 +113,12 @@ export const OTPInput: React.FC<OTPInputProps> = ({
         onFocus={() => handleFocus(index)}
         onBlur={handleBlur}
         selectTextOnFocus
+        {...props}
       />
     ));
   };
 
-  return <View style={[styles.container, otpContainerStyles]}>{renderInputs()}</View>;
+  return <View style={StyleSheet.flatten([styles.container, otpContainerStyles])}>{renderInputs()}</View>;
 };
 
 const styles = StyleSheet.create({
@@ -117,11 +130,16 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 50,
-    borderWidth: 1,
+    borderWidth: 0.8,
     color: 'red',
-    borderRadius: 5,
     textAlign: 'center',
     marginHorizontal: 5,
     fontSize: 18,
+  },
+  underLineInput: {
+    borderRadius: 0,
+    borderTopWidth: 0,
+    borderRightWidth: 0,
+    borderLeftWidth: 0,
   },
 });

@@ -158,13 +158,15 @@ export const labelTransformStyle = ({
   };
 };
 
-export const getOtpInputStyles = ({ length, colors, variant, isFocused }: GetOtpInputStylesParams): TextStyle => {
+export const getOtpInputStyles = ({ length, colors, variant, isFocused, square, error }: GetOtpInputStylesParams): TextStyle => {
   const defaultWidth = 50;
   const isExpanded = (length + 1) * defaultWidth > screenWidth;
 
   let borderColor: ColorValue;
 
-  if (isFocused) {
+  if (error) {
+    borderColor = colors.red[500];
+  } else if (isFocused) {
     borderColor = getVariant({ variant, colors });
   } else {
     borderColor = colors.grey[400];
@@ -174,5 +176,6 @@ export const getOtpInputStyles = ({ length, colors, variant, isFocused }: GetOtp
     ...(isExpanded ? { flex: 1 } : { width: defaultWidth }),
     color: colors.grey[900],
     borderColor,
+    borderRadius: square ? 0 : 8,
   };
 };
