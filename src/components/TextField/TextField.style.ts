@@ -1,5 +1,6 @@
 import { ColorValue, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { Theme } from '../../libraries/themes/v1/theme';
+import { getVariant, screenWidth } from '../../utils';
 import {
   INPUT_DEFAULT_BORDER_RADIUS,
   INPUT_DEFAULT_BORDER_WIDTH,
@@ -14,6 +15,7 @@ import {
   TextFiledVariation,
   TextInputStylesProps,
 } from './Input.types';
+import { GetOtpInputStylesParams } from './OtpInput';
 
 const baseInputDefaultStyles: ViewStyle = {
   height: INPUT_DEFAULT_HEIGHT,
@@ -153,5 +155,24 @@ export const labelTransformStyle = ({
     paddingHorizontal: 8,
     top: '50%',
     transform,
+  };
+};
+
+export const getOtpInputStyles = ({ length, colors, variant, isFocused }: GetOtpInputStylesParams): TextStyle => {
+  const defaultWidth = 50;
+  const isExpanded = (length + 1) * defaultWidth > screenWidth;
+
+  let borderColor: ColorValue;
+
+  if (isFocused) {
+    borderColor = getVariant({ variant, colors });
+  } else {
+    borderColor = colors.grey[400];
+  }
+
+  return {
+    ...(isExpanded ? { flex: 1 } : { width: defaultWidth }),
+    color: colors.grey[900],
+    borderColor,
   };
 };
