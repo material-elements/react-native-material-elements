@@ -158,7 +158,16 @@ export const labelTransformStyle = ({
   };
 };
 
-export const getOtpInputStyles = ({ length, colors, variant, isFocused, square, error }: GetOtpInputStylesParams): TextStyle => {
+export const getOtpInputStyles = ({
+  length,
+  colors,
+  variant,
+  isFocused,
+  square,
+  error,
+  tintColor,
+  offTintColor,
+}: GetOtpInputStylesParams): TextStyle => {
   const defaultWidth = 50;
   const isExpanded = (length + 1) * defaultWidth > screenWidth;
 
@@ -166,6 +175,10 @@ export const getOtpInputStyles = ({ length, colors, variant, isFocused, square, 
 
   if (error) {
     borderColor = colors.red[500];
+  } else if (tintColor && isFocused) {
+    borderColor = tintColor;
+  } else if (offTintColor && !isFocused) {
+    borderColor = offTintColor;
   } else if (isFocused) {
     borderColor = getVariant({ variant, colors });
   } else {

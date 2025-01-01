@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
+  ColorValue,
   NativeSyntheticEvent,
   StyleSheet,
   TextInput,
@@ -24,9 +25,12 @@ export type OTPInputProps = Omit<TextInputProps, 'onChange'> & {
   square?: boolean;
   error?: boolean;
   variation?: OtpInputVariation;
+  tintColor?: ColorValue;
+  offTintColor?: ColorValue;
 };
 
-export interface GetOtpInputStylesParams extends Pick<OTPInputProps, 'length' | 'variant' | 'square' | 'error'> {
+export interface GetOtpInputStylesParams
+  extends Pick<OTPInputProps, 'length' | 'variant' | 'square' | 'error' | 'tintColor' | 'offTintColor'> {
   colors: Theme;
   isFocused?: boolean;
 }
@@ -36,6 +40,8 @@ export const OTPInput: React.FC<OTPInputProps> = ({
   onChange,
   inputStyles,
   otpContainerStyles,
+  tintColor,
+  offTintColor,
   square = false,
   error = false,
   variant = 'secondary',
@@ -101,7 +107,16 @@ export const OTPInput: React.FC<OTPInputProps> = ({
         key={index}
         style={StyleSheet.flatten([
           styles.input,
-          getOtpInputStyles({ length, colors: themeColors, variant, isFocused: focusedIndex === index, square, error }),
+          getOtpInputStyles({
+            length,
+            colors: themeColors,
+            variant,
+            isFocused: focusedIndex === index,
+            square,
+            error,
+            tintColor,
+            offTintColor,
+          }),
           inputStyles,
           isUnderLineInput && styles.underLineInput,
         ])}
