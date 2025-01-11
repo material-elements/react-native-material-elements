@@ -6,7 +6,7 @@ import { ActivityIndicator } from '../ActivityIndicator';
 import { Box } from '../Box';
 import { Text } from '../Typography';
 import { BaseButton } from './BaseButton';
-import { buttonLabelStyles, buttonRootContainerStyles, getButtonStyles } from './Button.styles';
+import { buttonLabelStyles, buttonRootContainerStyles, getButtonStyles, styles } from './Button.styles';
 import { ButtonProps } from './Button.types';
 
 export const Button = React.forwardRef<View, ButtonProps>(
@@ -30,6 +30,8 @@ export const Button = React.forwardRef<View, ButtonProps>(
       sx,
       backgroundColor,
       baseButtonSx,
+      startIcon,
+      endIcon,
       size = 'large',
       fullWidth = false,
       overrideRootDisableScaleAnimation = false,
@@ -179,9 +181,11 @@ export const Button = React.forwardRef<View, ButtonProps>(
       }
 
       return (
-        <Text style={StyleSheet.flatten([{ color: textColor }, buttonLabelStyles({ size }), generateButtonLabelStyles()])}>
-          {label}
-        </Text>
+        <View style={styles.buttonLabelContainer}>
+          <Text style={StyleSheet.flatten([{ color: textColor }, buttonLabelStyles({ size }), generateButtonLabelStyles()])}>
+            {label}
+          </Text>
+        </View>
       );
     };
 
@@ -189,7 +193,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       <Box style={StyleSheet.flatten([buttonRootContainerStyles({ flex }), generateButtonStyles()])} sx={sx} ref={ref}>
         <BaseButton
           disabled={loading || disabled}
-          style={StyleSheet.flatten([buttonStyles, generateBaseButtonStyles()])}
+          style={StyleSheet.flatten([styles.baseButtonStyles, buttonStyles, generateBaseButtonStyles()])}
           disableRipple={shouldDisableRipple}
           disableScaleAnimation={shouldDisableScaleAnimation()}
           scaleAnimationValue={buttonScaleAnimationValue()}
@@ -199,7 +203,9 @@ export const Button = React.forwardRef<View, ButtonProps>(
           sx={baseButtonSx}
           fullWidth={fullWidth}
           {...props}>
+          {startIcon && <View style={styles.iconContainer}>{startIcon}</View>}
           {renderChild()}
+          {endIcon && <View style={styles.iconContainer}>{endIcon}</View>}
         </BaseButton>
       </Box>
     );

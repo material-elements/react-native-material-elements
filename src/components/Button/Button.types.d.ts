@@ -132,6 +132,14 @@ export interface ButtonProps extends Omit<BaseButtonProps, 'sx'> {
    * Button size variant
    */
   size?: ButtonSizeVariant;
+  /**
+   * Button start icon
+   */
+  startIcon?: React.ReactNode;
+  /**
+   * Button end icon
+   */
+  endIcon?: React.ReactNode;
 }
 export interface ButtonRootContainerStylesInterface extends Pick<ButtonProps, 'flex'> {}
 

@@ -1,4 +1,4 @@
-import { ColorValue, DimensionValue, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { ColorValue, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
 import { getVariant } from '../../utils';
 import {
@@ -13,6 +13,28 @@ import {
 export const styles = StyleSheet.create({
   baseButtonContainer: {
     alignSelf: 'flex-start',
+  },
+  baseButtonStyles: {
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  buttonLabelContainer: {
+    paddingHorizontal: 10,
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  iconContainer: {
+    paddingHorizontal: 10,
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   buttonGroupContainer: {
     display: 'flex',
@@ -45,34 +67,28 @@ export const buttonRootContainerStyles = ({ flex }: ButtonRootContainerStylesInt
   ...(flex && { flex }),
 });
 
-export const baseStyles = (spacing: ThemeDimensions['spacing'], size?: ButtonSizeVariant): ViewStyle => {
-  let padding: DimensionValue;
-  let paddingHorizontal: DimensionValue;
+export const baseStyles = (size?: ButtonSizeVariant): ViewStyle => {
+  let minHeight: number;
 
   switch (size) {
     case 'small':
-      padding = spacing.xs;
-      paddingHorizontal = spacing.sm;
+      minHeight = 20;
       break;
     case 'medium':
-      padding = spacing.md;
-      paddingHorizontal = spacing.md;
+      minHeight = 30;
       break;
     case 'large':
-      padding = spacing.lg;
-      paddingHorizontal = spacing.lg;
+      minHeight = 40;
       break;
     default:
-      padding = spacing.lg;
-      paddingHorizontal = spacing.lg;
+      minHeight = 40;
   }
 
   return {
     alignItems: 'center',
     borderRadius: 8,
     overflow: 'hidden',
-    padding,
-    paddingHorizontal,
+    minHeight,
   };
 };
 
@@ -88,14 +104,14 @@ export const buttonVariationStyles = (
 ) => {
   const variations: Record<ButtonVariationsType, ViewStyle> = {
     outlined: {
-      ...baseStyles(spacing, size),
+      ...baseStyles(size),
       backgroundColor: 'transparent',
       borderColor: colors.grey[400],
       borderWidth: 1,
     },
-    contained: baseStyles(spacing, size),
+    contained: baseStyles(size),
     text: {
-      ...baseStyles(spacing, size),
+      ...baseStyles(size),
       backgroundColor: 'transparent',
     },
     roundedIconButton: styles.iconButton,
