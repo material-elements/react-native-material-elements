@@ -32,6 +32,10 @@ export const Button = React.forwardRef<View, ButtonProps>(
       baseButtonSx,
       startIcon,
       endIcon,
+      loadingIndicatorColor,
+      loadingIndicatorVariant = 'grey',
+      switchSpinnerMode = false,
+      loadingIndicatorSize,
       size = 'large',
       fullWidth = false,
       overrideRootDisableScaleAnimation = false,
@@ -160,7 +164,14 @@ export const Button = React.forwardRef<View, ButtonProps>(
 
     const renderChild = () => {
       if (loading) {
-        return <ActivityIndicator />;
+        return (
+          <ActivityIndicator
+            variant={loadingIndicatorVariant}
+            color={loadingIndicatorColor}
+            switchMode={switchSpinnerMode}
+            size={loadingIndicatorSize}
+          />
+        );
       }
       if (children) {
         return children;

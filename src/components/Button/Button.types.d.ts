@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorValue, TextStyle, TouchableWithoutFeedback, ViewStyle } from 'react-native';
+import { ActivityIndicatorProps, ColorValue, TextStyle, TouchableWithoutFeedback, ViewStyle } from 'react-native';
 import { BaseStyles } from '../../libraries/style/styleTypes';
 import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
 import { VariantTypes } from '../../utils';
@@ -140,6 +140,22 @@ export interface ButtonProps extends Omit<BaseButtonProps, 'sx'> {
    * Button end icon
    */
   endIcon?: React.ReactNode;
+  /**
+   * Loading spinner color
+   */
+  loadingIndicatorColor?: ColorValue;
+  /**
+   * Loading spinner variants
+   */
+  loadingIndicatorVariant?: VariantTypes;
+  /**
+   * Switch light and dark mode of spinner component
+   */
+  switchSpinnerMode?: boolean;
+  /**
+   * Spinner size
+   */
+  loadingIndicatorSize?: ActivityIndicatorProps['size'];
 }
 export interface ButtonRootContainerStylesInterface extends Pick<ButtonProps, 'flex'> {}
 

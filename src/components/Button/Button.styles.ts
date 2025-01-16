@@ -68,27 +68,27 @@ export const buttonRootContainerStyles = ({ flex }: ButtonRootContainerStylesInt
 });
 
 export const baseStyles = (size?: ButtonSizeVariant): ViewStyle => {
-  let minHeight: number;
+  let height: number;
 
   switch (size) {
     case 'small':
-      minHeight = 20;
+      height = 20;
       break;
     case 'medium':
-      minHeight = 30;
+      height = 30;
       break;
     case 'large':
-      minHeight = 40;
+      height = 40;
       break;
     default:
-      minHeight = 40;
+      height = 40;
   }
 
   return {
     alignItems: 'center',
     borderRadius: 8,
     overflow: 'hidden',
-    minHeight,
+    height,
   };
 };
 
