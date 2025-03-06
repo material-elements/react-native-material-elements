@@ -22,7 +22,7 @@ exports[`Radio Component should render correctly 1`] = `
     <View
       style={
         {
-          "alignSelf": "auto",
+          "alignSelf": "flex-start",
         }
       }
     >

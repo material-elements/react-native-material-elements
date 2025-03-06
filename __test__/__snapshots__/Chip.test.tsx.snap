@@ -4,7 +4,7 @@ exports[`Chip Component should match the snapshot with default props 1`] = `
 <View
   style={
     {
-      "alignSelf": "auto",
+      "alignSelf": "flex-start",
     }
   }
 >

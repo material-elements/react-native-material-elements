@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Animated,
+  ColorValue,
   Easing,
   LayoutChangeEvent,
   LayoutRectangle,
@@ -25,7 +26,7 @@ import { TextFieldProps } from './Input.types';
 import { InputLabel } from './InputLabel';
 import { Outline } from './InputOutline';
 import { textInputStyles as textInputStylesUtil } from './TextField.style';
-import { ActivityIndicator } from '../ActivityIndicator';
+import TextFieldEndAdornment from './TextFieldEndAdornment';
 
 export const TextField = React.forwardRef<View, TextFieldProps>(
   (
@@ -86,35 +87,34 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
       style: textFieldFieldStyle,
     } = textFieldThemeConfig?.filled || {};
 
-    const textFieldActiveColor = useMemo(() => {
+    const placeHolderLeftPos = !isOutlined ? PLACEHOLDER_FILED_INPUT_LEFT_POSITION : PLACEHOLDER_OUTLINE_LEFT_POSITION;
+    const shouldApplySquareShape = square ?? textFieldThemeConfig?.square ?? false;
+
+    const getTextFieldActiveColor = (): ColorValue | undefined => {
       if (activeColor) {
         return activeColor;
-      }
-      if (textFieldThemeConfig?.activeColor) {
-        return textFieldThemeConfig?.activeColor;
-      }
-      if (isOutlined && textFieldOutlinedActiveColor) {
+      } else if (textFieldThemeConfig?.activeColor) {
+        return textFieldThemeConfig.activeColor;
+      } else if (isOutlined && textFieldOutlinedActiveColor) {
         return textFieldOutlinedActiveColor;
-      }
-      if (!isOutlined && textFieldFieldActiveColor) {
+      } else if (!isOutlined && textFieldFieldActiveColor) {
         return textFieldFieldActiveColor;
       }
-    }, [activeColor, isOutlined, textFieldOutlinedActiveColor, textFieldThemeConfig?.activeColor, textFieldFieldActiveColor]);
+      return undefined;
+    };
 
-    const textFieldErrorColor = useMemo(() => {
+    const getTextFieldErrorColor = (): ColorValue | undefined => {
       if (errorColor) {
         return errorColor;
-      }
-      if (textFieldThemeConfig?.errorColor) {
-        return textFieldThemeConfig?.errorColor;
-      }
-      if (isOutlined && textFieldOutlinedErrorColor) {
+      } else if (textFieldThemeConfig?.errorColor) {
+        return textFieldThemeConfig.errorColor;
+      } else if (isOutlined && textFieldOutlinedErrorColor) {
         return textFieldOutlinedErrorColor;
-      }
-      if (!isOutlined && textFieldFieldErrorColor) {
+      } else if (!isOutlined && textFieldFieldErrorColor) {
         return textFieldFieldErrorColor;
       }
-    }, [errorColor, isOutlined, textFieldOutlinedErrorColor, textFieldThemeConfig?.errorColor, textFieldFieldErrorColor]);
+      return undefined;
+    };
 
     const generateOutlineStyles = (): StyleProp<ViewStyle> => {
       const styles: StyleProp<ViewStyle> = [
@@ -156,20 +156,18 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
       return textFieldThemeConfig?.ignoreOpacityOnNonEditable ?? ignoreOpacityOnNonEditable;
     };
 
-    const shouldApplySquare = square ?? textFieldThemeConfig?.square ?? false;
+    const onLayout = useCallback(
+      (event: LayoutChangeEvent) => {
+        const { layout } = event.nativeEvent;
 
-    const placeHolderLeftPos = !isOutlined ? PLACEHOLDER_FILED_INPUT_LEFT_POSITION : PLACEHOLDER_OUTLINE_LEFT_POSITION;
+        if (onTextInputLayoutHandler && typeof onTextInputLayoutHandler === 'function') {
+          onTextInputLayoutHandler(event);
+        }
 
-    const onLayout = useCallback((event: LayoutChangeEvent) => {
-      const { layout } = event.nativeEvent;
-
-      if (onTextInputLayoutHandler && typeof onTextInputLayoutHandler === 'function') {
-        onTextInputLayoutHandler(event);
-      }
-
-      setTextInputLayoutRectangle(layout);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        setTextInputLayoutRectangle(layout);
+      },
+      [onTextInputLayoutHandler],
+    );
 
     const onFocus = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
       if (onTextInputFocusHandler && typeof onTextInputFocusHandler === 'function') {
@@ -197,39 +195,6 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [textInputLayoutRectangle]);
 
-    const textInputStyles = useMemo(
-      () => textInputStylesUtil({ variant, endAdornment: !!endAdornment, startAdornment: !!startAdornment }),
-      [variant, endAdornment, startAdornment],
-    );
-
-    const renderEndAdornment = useCallback(() => {
-      if (!loading && !endAdornment) {
-        return null;
-      }
-
-      let element: React.ReactNode;
-
-      if (endAdornment) {
-        element = endAdornment;
-      } else {
-        if (showLoadingIndicatorWhenFocused && isFocused && loading) {
-          element = <ActivityIndicator {...loadingIndicatorProps} />;
-        } else if (!showLoadingIndicatorWhenFocused && loading) {
-          element = <ActivityIndicator {...loadingIndicatorProps} />;
-        }
-      }
-
-      if (!element) {
-        return null;
-      }
-
-      return (
-        <Box sx={{ me: 8, ms: 8 }} {...endAdornmentContainerProps}>
-          {element}
-        </Box>
-      );
-    }, [endAdornment, endAdornmentContainerProps, loading, loadingIndicatorProps, showLoadingIndicatorWhenFocused, isFocused]);
-
     useEffect(() => {
       inputLabelAnimatedValue.stopAnimation();
       if (isFocused || value || !!startAdornment || inputIsFocused) {
@@ -254,23 +219,23 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
       <Outline
         editable={editable}
         variant={variant}
-        activeColor={textFieldActiveColor}
-        errorColor={textFieldErrorColor}
+        activeColor={getTextFieldActiveColor()}
+        errorColor={getTextFieldErrorColor()}
         style={StyleSheet.flatten([sx && generateElementStyles(sx), generateOutlineStyles()])}
         isFocused={isFocused}
         error={error}
         ignoreOpacityOnNonEditable={shouldIgnoreOpacityOnNonEditable()}
-        square={shouldApplySquare}
+        square={shouldApplySquareShape}
         ref={ref}
         testID={outlineContainerTestId}
         {...outlineProps}>
-        {!shouldHideLabel() && (
+        {!shouldHideLabel() && placeholder && (
           <InputLabel
             disabled={!editable}
             variant={variant}
             isActive={isFocused}
-            activeColor={textFieldActiveColor}
-            errorColor={textFieldErrorColor}
+            activeColor={getTextFieldActiveColor()}
+            errorColor={getTextFieldErrorColor()}
             placeholder={placeholder}
             labelAnimatedValue={inputLabelAnimatedValue}
             translateYAnimatedPosition={getLabelTranslatePos()}
@@ -291,14 +256,24 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
           onBlur={onBlur}
           onFocus={onFocus}
           onLayout={onLayout}
-          style={StyleSheet.flatten([textInputStyles, generateInputStyles()])}
+          style={StyleSheet.flatten([
+            textInputStylesUtil({ variant, endAdornment: !!endAdornment, startAdornment: !!startAdornment }),
+            generateInputStyles(),
+          ])}
           variant={variant}
           placeholder={shouldHideLabel() ? placeholder : undefined}
           multiline={multiline}
           height={height}
           {...props}
         />
-        {renderEndAdornment()}
+        <TextFieldEndAdornment
+          loading={loading}
+          endAdornment={endAdornment}
+          showLoadingIndicatorWhenFocused={showLoadingIndicatorWhenFocused}
+          loadingIndicatorProps={loadingIndicatorProps}
+          isFocused={isFocused}
+          endAdornmentContainerProps={endAdornmentContainerProps}
+        />
       </Outline>
     );
   },

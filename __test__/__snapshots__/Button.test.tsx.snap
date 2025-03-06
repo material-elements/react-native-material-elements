@@ -7,7 +7,7 @@ exports[`Button should render correctly 1`] = `
   <View
     style={
       {
-        "alignSelf": "auto",
+        "alignSelf": "flex-start",
       }
     }
   >
@@ -38,8 +38,11 @@ exports[`Button should render correctly 1`] = `
           "alignItems": "center",
           "backgroundColor": "#03A9F4",
           "borderRadius": 8,
+          "display": "flex",
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
           "overflow": "hidden",
-          "padding": 15,
           "transform": [
             {
               "scale": 1,
@@ -48,14 +51,28 @@ exports[`Button should render correctly 1`] = `
         }
       }
     >
-      <Text
-        collapsable={false}
+      <View
         style={
           {
-            "color": "#FAFAFA",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "height": "100%",
+            "justifyContent": "center",
+            "paddingHorizontal": 10,
           }
         }
-      />
+      >
+        <Text
+          collapsable={false}
+          style={
+            {
+              "color": "#FAFAFA",
+              "fontSize": 14,
+            }
+          }
+        />
+      </View>
       <View
         style={
           [
@@ -84,7 +101,7 @@ exports[`Button should render correctly with inner component 1`] = `
   <View
     style={
       {
-        "alignSelf": "auto",
+        "alignSelf": "flex-start",
       }
     }
   >
@@ -115,8 +132,11 @@ exports[`Button should render correctly with inner component 1`] = `
           "alignItems": "center",
           "backgroundColor": "#03A9F4",
           "borderRadius": 8,
+          "display": "flex",
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
           "overflow": "hidden",
-          "padding": 15,
           "transform": [
             {
               "scale": 1,
