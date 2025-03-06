@@ -195,20 +195,7 @@ export interface OutlineStyles
 /**
  * Represents the properties required to get text input styles.
  */
-export interface TextInputStylesProps {
-  /**
-   * The variation type of the text field.
-   */
-  variant: TextFiledVariation;
-  /**
-   * Indicates if there's an end adornment present.
-   */
-  endAdornment?: boolean;
-  /**
-   * Indicates if there's a start adornment present.
-   */
-  startAdornment?: boolean;
-}
+export interface TextInputStylesProps extends Pick<TextFieldProps, 'variant' | 'endAdornment' | 'startAdornment'> {}
 
 export interface LabelTextStylesProps
   extends Pick<TextInputStylesProps, 'variant'>,

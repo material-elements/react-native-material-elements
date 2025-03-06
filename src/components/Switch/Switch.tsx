@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Animated, LayoutChangeEvent, StyleSheet, TouchableWithoutFeedback, View, ViewStyle } from 'react-native';
 import { useThemeColorsSelector, useThemeSwitchConfigSelector } from '../../libraries';
 import { BaseStyles } from '../../libraries/style/styleTypes';
@@ -183,16 +183,12 @@ export const Switch = React.forwardRef<View, SwitchProps>(
       ],
     };
 
-    const colorVariation = useMemo(
-      () => getVariant({ variant, colors: themeColors, config: themeColorScheme }),
-      [variant, themeColors, themeColorScheme],
-    ) as string;
-
-    const switchSizeVariation = useMemo(() => getSwitchSizes({ size }), [size]);
-
     const backgroundColorInterpolation = switchWrapperBgAnimatedValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [switchWrapperDefaultBgColor ?? themeColors.grey[300], switchWrapperActiveBgColor ?? colorVariation],
+      outputRange: [
+        switchWrapperDefaultBgColor ?? themeColors.grey[300],
+        switchWrapperActiveBgColor ?? (getVariant({ variant, colors: themeColors, config: themeColorScheme }) as string),
+      ],
     });
 
     return (
@@ -201,7 +197,7 @@ export const Switch = React.forwardRef<View, SwitchProps>(
           <Animated.View
             style={StyleSheet.flatten([
               styles.switchContainer,
-              switchSizeVariation.thumbContainerStyles,
+              getSwitchSizes({ size }).thumbContainerStyles,
               { backgroundColor: backgroundColorInterpolation },
               switchThemeConfig?.style,
               style,
@@ -212,7 +208,7 @@ export const Switch = React.forwardRef<View, SwitchProps>(
             <Animated.View
               style={StyleSheet.flatten([
                 styles.thumb,
-                switchSizeVariation.thumbStyles,
+                getSwitchSizes({ size }).thumbStyles,
                 switchThumbAnimationStyles,
                 switchThemeConfig?.thumbStyles,
                 thumbStyles,

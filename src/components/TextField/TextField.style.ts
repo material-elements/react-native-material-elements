@@ -18,7 +18,6 @@ import {
 import { GetOtpInputStylesParams } from './OtpInput';
 
 const baseInputDefaultStyles: ViewStyle = {
-  height: INPUT_DEFAULT_HEIGHT,
   position: 'relative',
   zIndex: 12,
   backgroundColor: 'transparent',
@@ -53,7 +52,7 @@ export const labelTextStyles = ({ colors, variant, ignoreOpacityOnNonEditable }:
   return baseStyles;
 };
 
-export const baseInputStyles = ({ colors, variant, height = 30 }: BaseInputStylesProps): TextStyle => {
+export const baseInputStyles = ({ colors, variant, height = INPUT_DEFAULT_HEIGHT }: BaseInputStylesProps): TextStyle => {
   const baseStyles: TextStyle = {
     color: variant === 'outlined' ? colors.grey[800] : colors.grey[200],
     minHeight: height,

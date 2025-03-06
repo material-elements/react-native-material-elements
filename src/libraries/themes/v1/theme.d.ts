@@ -251,3 +251,6 @@ export interface ThemeProviderProps {
    */
   components?: InnerPartial<ThemeComponentConfig>;
 }
+
+export type CreateColorShades = ColorShades;
+export type UseTheme = ThemeInterface<ThemeType>;
