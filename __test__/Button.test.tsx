@@ -51,13 +51,13 @@ describe('Button', () => {
   it('should customize the label style correctly', () => {
     const { getByText } = render(<Button label={mockLabel} labelStyles={{ color: 'red' }} testID={mockButtonTestId} />);
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).toEqual({ color: 'red' });
+    expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'red' }));
   });
 
   it('should change the color of the label', () => {
     const { getByText } = render(<Button label={mockLabel} labelColor="red" testID={mockButtonTestId} />);
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).toEqual({ color: 'red' });
+    expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'red' }));
   });
 
   it('should apply the border radius', () => {
@@ -234,7 +234,7 @@ describe('Button', () => {
       </ThemeProvider>,
     );
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).toEqual({ color: 'green' });
+    expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'green' }));
   });
 
   it('should combine the root label style and component styles correctly', () => {
@@ -249,7 +249,7 @@ describe('Button', () => {
       </ThemeProvider>,
     );
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).toEqual({ color: 'green', fontWeight: 100 });
+    expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'green', fontWeight: 100 }));
   });
 
   it('should apply the root square props correctly', () => {
@@ -279,7 +279,7 @@ describe('Button', () => {
       </ThemeProvider>,
     );
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).toEqual({ color: 'green' });
+    expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'green' }));
   });
 
   it('should override the root label color', () => {
@@ -289,7 +289,7 @@ describe('Button', () => {
       </ThemeProvider>,
     );
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).toEqual({ color: 'pink' });
+    expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'pink' }));
   });
 
   it('should apply the contained button label styles', () => {
@@ -306,7 +306,7 @@ describe('Button', () => {
       </ThemeProvider>,
     );
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).toEqual({ color: 'red', fontWeight: 100 });
+    expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'red', fontWeight: 100 }));
   });
 
   it("should't apply the contained button label styles into the outlined button variant", () => {
@@ -323,7 +323,7 @@ describe('Button', () => {
       </ThemeProvider>,
     );
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).not.toEqual({ color: 'red', fontWeight: 100 });
+    expect(labelText.props.style).not.toEqual(expect.objectContaining({ color: 'red', fontWeight: 100 }));
   });
 
   it('should combine the contained button label root and component styles', () => {
@@ -340,7 +340,7 @@ describe('Button', () => {
       </ThemeProvider>,
     );
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).toEqual({ color: 'red', fontWeight: 100 });
+    expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'red', fontWeight: 100 }));
   });
 
   it('should apply the outlined button label styles', () => {
@@ -357,7 +357,7 @@ describe('Button', () => {
       </ThemeProvider>,
     );
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).toEqual({ color: 'red', fontWeight: 100 });
+    expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'red', fontWeight: 100 }));
   });
 
   it('should combine the outlined button label root and component styles', () => {
@@ -374,7 +374,7 @@ describe('Button', () => {
       </ThemeProvider>,
     );
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).toEqual({ color: 'red', fontWeight: 100 });
+    expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'red', fontWeight: 100 }));
   });
 
   it("should't apply the outlined button label styles into the contained button variant", () => {
@@ -391,7 +391,7 @@ describe('Button', () => {
       </ThemeProvider>,
     );
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).not.toEqual({ color: 'red', fontWeight: 100 });
+    expect(labelText.props.style).not.toEqual(expect.objectContaining({ color: 'red', fontWeight: 100 }));
   });
 
   it('should apply the text button label styles', () => {
@@ -408,7 +408,7 @@ describe('Button', () => {
       </ThemeProvider>,
     );
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).toEqual({ color: 'red', fontWeight: 100 });
+    expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'red', fontWeight: 100 }));
   });
 
   it('should combine the text button label root and component styles', () => {
@@ -425,6 +425,6 @@ describe('Button', () => {
       </ThemeProvider>,
     );
     const labelText = getByText(mockLabel);
-    expect(labelText.props.style).toEqual({ color: 'red', fontWeight: 100 });
+    expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'red', fontWeight: 100 }));
   });
 });

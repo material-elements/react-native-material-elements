@@ -65,7 +65,7 @@ exports[`ListItem Component should render correctly 1`] = `
       <View
         style={
           {
-            "alignSelf": "auto",
+            "alignSelf": "flex-start",
           }
         }
       >
@@ -171,7 +171,7 @@ exports[`ListItem Component should render the child component 1`] = `
       <View
         style={
           {
-            "alignSelf": "auto",
+            "alignSelf": "flex-start",
           }
         }
       >

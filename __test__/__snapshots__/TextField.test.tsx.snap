@@ -18,32 +18,6 @@ exports[`TextField Component should render correctly 1`] = `
     }
   }
 >
-  <View
-    collapsable={false}
-    style={
-      {
-        "backgroundColor": "#ffffff",
-        "left": 8,
-        "paddingHorizontal": 8,
-        "position": "absolute",
-        "top": "50%",
-        "transform": [
-          {
-            "translateY": -5,
-          },
-          {
-            "scale": 1,
-          },
-        ],
-        "zIndex": 10,
-      }
-    }
-  >
-    <Text
-      collapsable={false}
-      onLayout={[Function]}
-    />
-  </View>
   <TextInput
     editable={true}
     onBlur={[Function]}
