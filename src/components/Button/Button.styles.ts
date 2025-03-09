@@ -63,8 +63,9 @@ export const baseButtonStyles = ({ fullWidth }: BaseButtonStylesParams): ViewSty
   };
 };
 
-export const buttonRootContainerStyles = ({ flex }: ButtonRootContainerStylesInterface) => ({
+export const buttonRootContainerStyles = ({ flex, fullWidth }: ButtonRootContainerStylesInterface): ViewStyle => ({
   ...(flex && { flex }),
+  ...(fullWidth ? { alignSelf: 'auto' } : { alignSelf: 'flex-start' }),
 });
 
 export const baseStyles = (size?: ButtonSizeVariant): ViewStyle => {

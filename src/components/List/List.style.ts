@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 5,
   },
-  baseButton: { display: 'flex', flexDirection: 'row', minHeight: 50 },
+  baseButton: { display: 'flex', flexDirection: 'row', paddingTop: 2, paddingBottom: 2 },
   listItemContainer: {
     display: 'flex',
     flexDirection: 'row',

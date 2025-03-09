@@ -104,3 +104,15 @@ export const merge = <T1, T2>(param1: T1, param2: T2): T1 & T2 => {
 
   return mergeObjects(param1, param2);
 };
+
+export function mergeRefs<T>(...refs: (React.Ref<T> | null | undefined)[]) {
+  return (instance: T | null) => {
+    refs.forEach(ref => {
+      if (typeof ref === 'function') {
+        ref(instance);
+      } else if (ref) {
+        (ref as React.MutableRefObject<T | null>).current = instance;
+      }
+    });
+  };
+}
