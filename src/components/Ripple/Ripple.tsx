@@ -1,8 +1,11 @@
-import React, { useImperativeHandle, useState } from 'react';
-import { Animated, Easing, LayoutRectangle, StyleSheet, View, ViewStyle } from 'react-native';
+import React, { useImperativeHandle, useMemo, useState } from 'react';
+import { Animated, Easing, LayoutRectangle, StyleSheet, useColorScheme, View, ViewStyle } from 'react-native';
 import { generateUniqueId } from '../../utils';
 import { RIPPLE_DURATION, RIPPLE_RADIUS, RIPPLE_SIZE } from './constants';
 import { RippleInterface, RippleObject, RipplePosition, RippleProps, onRippleAnimationType } from './Ripple.types';
+
+const lightRippleBackground = 'rgba(0, 0, 0, 0.147)';
+const darkRippleBackground = 'rgba(211, 211, 211, 0.174)';
 
 const rippleContainerDefaultStyles: ViewStyle = {
   ...StyleSheet.absoluteFillObject,
@@ -16,12 +19,13 @@ const rippleDefaultStyles: ViewStyle = {
   borderRadius: RIPPLE_RADIUS,
   overflow: 'hidden',
   position: 'absolute',
-  backgroundColor: 'rgba(0, 0, 0, 0.147)',
 };
 
 export const Ripple = React.forwardRef<RippleInterface, RippleProps>(
   ({ rippleStyles, rippleAnimationStyles, rippleContainerStyles, ...props }, ref) => {
     const [ripples, setRipples] = useState<Array<RippleObject>>([]);
+    const colorScheme = useColorScheme();
+    const isDarkMode = colorScheme === 'dark';
 
     const onRippleAnimationHandler: onRippleAnimationType = (animation, callBack) => {
       animation.start(callBack);
@@ -68,6 +72,16 @@ export const Ripple = React.forwardRef<RippleInterface, RippleProps>(
       setRipples(prevState => prevState.concat(ripple));
     };
 
+    const animatedRippleStyles = useMemo(() => {
+      const backgroundRippleColor = isDarkMode ? darkRippleBackground : lightRippleBackground;
+
+      if (rippleStyles) {
+        return { backgroundColor: backgroundRippleColor, ...rippleDefaultStyles, ...rippleStyles };
+      } else {
+        return { backgroundColor: backgroundRippleColor, ...rippleDefaultStyles };
+      }
+    }, [rippleStyles, isDarkMode]);
+
     const renderRipple = function (item: RippleObject) {
       let rippleAnimationDefaultStyles: ViewStyle = {
         top: item.positionY,
@@ -82,7 +96,7 @@ export const Ripple = React.forwardRef<RippleInterface, RippleProps>(
       return (
         <Animated.View
           style={StyleSheet.flatten([
-            rippleStyles ? { ...rippleDefaultStyles, ...rippleStyles } : rippleDefaultStyles,
+            animatedRippleStyles,
             [
               rippleAnimationStyles
                 ? { ...rippleAnimationDefaultStyles, ...rippleAnimationStyles }
@@ -107,7 +121,7 @@ export const Ripple = React.forwardRef<RippleInterface, RippleProps>(
     );
 
     return (
-      <View ref={ref} style={[rippleContainerDefaultStyles, rippleContainerStyles]} {...props}>
+      <View style={[rippleContainerDefaultStyles, rippleContainerStyles]} {...props}>
         {ripples.map(item => renderRipple(item))}
       </View>
     );
