@@ -2,7 +2,11 @@
 
 exports[`Button should render correctly 1`] = `
 <View
-  style={{}}
+  style={
+    {
+      "alignSelf": "flex-start",
+    }
+  }
 >
   <View
     style={
@@ -96,7 +100,11 @@ exports[`Button should render correctly 1`] = `
 
 exports[`Button should render correctly with inner component 1`] = `
 <View
-  style={{}}
+  style={
+    {
+      "alignSelf": "flex-start",
+    }
+  }
 >
   <View
     style={
