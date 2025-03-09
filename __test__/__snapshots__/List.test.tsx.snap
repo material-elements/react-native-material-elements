@@ -95,7 +95,8 @@ exports[`ListItem Component should render correctly 1`] = `
             {
               "display": "flex",
               "flexDirection": "row",
-              "minHeight": 50,
+              "paddingBottom": 2,
+              "paddingTop": 2,
               "transform": [
                 {
                   "scale": 1,
@@ -201,7 +202,8 @@ exports[`ListItem Component should render the child component 1`] = `
             {
               "display": "flex",
               "flexDirection": "row",
-              "minHeight": 50,
+              "paddingBottom": 2,
+              "paddingTop": 2,
               "transform": [
                 {
                   "scale": 1,
