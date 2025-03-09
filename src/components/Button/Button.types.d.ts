@@ -157,7 +157,7 @@ export interface ButtonProps extends Omit<BaseButtonProps, 'sx'> {
    */
   loadingIndicatorSize?: ActivityIndicatorProps['size'];
 }
-export interface ButtonRootContainerStylesInterface extends Pick<ButtonProps, 'flex'> {}
+export interface ButtonRootContainerStylesInterface extends Pick<ButtonProps, 'flex' | 'fullWidth'> {}
 
 /**
  * Defines variations of IconButton component.

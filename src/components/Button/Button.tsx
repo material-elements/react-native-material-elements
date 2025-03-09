@@ -201,7 +201,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
     };
 
     return (
-      <Box style={StyleSheet.flatten([buttonRootContainerStyles({ flex }), generateButtonStyles()])} sx={sx} ref={ref}>
+      <Box style={StyleSheet.flatten([buttonRootContainerStyles({ flex, fullWidth }), generateButtonStyles()])} sx={sx} ref={ref}>
         <BaseButton
           disabled={loading || disabled}
           style={StyleSheet.flatten([styles.baseButtonStyles, buttonStyles, generateBaseButtonStyles()])}
