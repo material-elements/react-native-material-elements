@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { useThemeColorsSelector } from '../../libraries';
 import { Theme } from '../../libraries/themes/types';
-import { MeasureElementRect } from '../../types';
+import { MeasureElementRect, PortalProps } from '../../types';
 import { screenHeight, screenWidth } from '../../utils';
 import { Portal } from '../Portal';
 import { menuContainerStyle, styles } from './Menu.styles';
@@ -50,6 +50,11 @@ export type MenuProps = ViewProps & {
 
   /** The spacing from the screen edges to prevent overflow */
   screenSideSpacer?: number;
+
+  /** Test id for portal component */
+  portalTestId?: string;
+
+  portalProps?: PortalProps;
 };
 
 export type MenuContainerStyle = Pick<MenuProps, 'borderColor' | 'width' | 'height' | 'backgroundColor' | 'fullWidth'> & {
@@ -71,6 +76,8 @@ export const Menu = React.forwardRef<View, MenuProps>(
       width,
       height,
       backgroundColor,
+      portalProps,
+      portalTestId = 'menu-portal-test-id',
       elemSpace = 3,
       fullWidth = false,
       menuYPosSpacer = MENU_Y_POS_SPACER,
@@ -115,7 +122,13 @@ export const Menu = React.forwardRef<View, MenuProps>(
     };
 
     return (
-      <Portal animationType="fade" visible={open} onClose={onClose} modalContainerProps={{ style: [styles.dropDownModal] }}>
+      <Portal
+        animationType="fade"
+        visible={open}
+        onClose={onClose}
+        modalContainerProps={{ style: [styles.dropDownModal] }}
+        testID={portalTestId}
+        {...portalProps}>
         <Animated.View
           style={StyleSheet.flatten([
             styles.menuContainer,
