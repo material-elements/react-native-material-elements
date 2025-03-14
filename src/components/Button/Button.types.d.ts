@@ -42,7 +42,6 @@ export interface BaseButtonProps extends React.ComponentPropsWithRef<typeof Touc
    * button scale animation duration
    */
   scaleAnimationDuration?: number;
-  fullWidth?: boolean;
 }
 
 /**
@@ -157,7 +156,7 @@ export interface ButtonProps extends Omit<BaseButtonProps, 'sx'> {
    */
   loadingIndicatorSize?: ActivityIndicatorProps['size'];
 }
-export interface ButtonRootContainerStylesInterface extends Pick<ButtonProps, 'flex' | 'fullWidth'> {}
+export interface ButtonRootContainerStylesInterface extends Pick<ButtonProps, 'flex'> {}
 
 /**
  * Defines variations of IconButton component.
@@ -169,7 +168,7 @@ export type IconButtonVariations = 'roundedIconButton' | 'squareIconButton';
  * Defines the props interface for the IconButton component.
  * Extends React's ComponentPropsWithRef<typeof TouchableWithoutFeedback>.
  */
-export interface IconButtonProps extends Omit<BaseButtonProps, 'sx' | 'fullWidth' | 'size'> {
+export interface IconButtonProps extends Omit<BaseButtonProps, 'sx' | 'size'> {
   /**
    * Specifies the variation of the IconButton.
    * Can be either 'roundedIconButton' or 'squareIconButton'.
@@ -195,5 +194,4 @@ export interface GetButtonStylesProps extends Omit<ButtonProps, 'sx' | 'children
   spacing: ThemeDimensions['spacing'];
   variation?: ButtonVariationsType;
 }
-export interface BaseButtonStylesParams extends Pick<BaseButtonProps, 'fullWidth'> {}
 export interface ButtonLabelStylesParams extends Pick<ButtonProps, 'size'> {}

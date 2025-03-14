@@ -160,9 +160,9 @@ export const ButtonGroup = React.forwardRef<View, ButtonGroupProps>(
             variation,
             buttonColor,
             disableRipple: buttonGroupDisableRipple,
+            style: { flex: 1 },
             ...child?.props,
           };
-
           return React.cloneElement(child, childProps);
         }
         return child;

@@ -2,7 +2,6 @@ import { ColorValue, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
 import { getVariant } from '../../utils';
 import {
-  BaseButtonStylesParams,
   ButtonLabelStylesParams,
   ButtonRootContainerStylesInterface,
   ButtonSizeVariant,
@@ -11,9 +10,6 @@ import {
 } from './Button.types';
 
 export const styles = StyleSheet.create({
-  baseButtonContainer: {
-    alignSelf: 'flex-start',
-  },
   baseButtonStyles: {
     justifyContent: 'center',
     display: 'flex',
@@ -39,7 +35,6 @@ export const styles = StyleSheet.create({
   buttonGroupContainer: {
     display: 'flex',
     flexDirection: 'row',
-    alignSelf: 'flex-start',
   },
   iconButton: {
     display: 'flex',
@@ -57,15 +52,8 @@ export const styles = StyleSheet.create({
   },
 });
 
-export const baseButtonStyles = ({ fullWidth }: BaseButtonStylesParams): ViewStyle => {
-  return {
-    ...(fullWidth && { width: '100%' }),
-  };
-};
-
-export const buttonRootContainerStyles = ({ flex, fullWidth }: ButtonRootContainerStylesInterface): ViewStyle => ({
+export const buttonRootContainerStyles = ({ flex }: ButtonRootContainerStylesInterface): ViewStyle => ({
   ...(flex && { flex }),
-  ...(fullWidth ? { alignSelf: 'auto' } : { alignSelf: 'flex-start' }),
 });
 
 export const baseStyles = (size?: ButtonSizeVariant): ViewStyle => {

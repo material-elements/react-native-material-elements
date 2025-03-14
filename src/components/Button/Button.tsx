@@ -37,7 +37,6 @@ export const Button = React.forwardRef<View, ButtonProps>(
       switchSpinnerMode = false,
       loadingIndicatorSize,
       size = 'large',
-      fullWidth = false,
       overrideRootDisableScaleAnimation = false,
       overrideRootScaleAnimationValue = false,
       overrideRootRippleEdge = false,
@@ -201,7 +200,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
     };
 
     return (
-      <Box style={StyleSheet.flatten([buttonRootContainerStyles({ flex, fullWidth }), generateButtonStyles()])} sx={sx} ref={ref}>
+      <Box style={StyleSheet.flatten([buttonRootContainerStyles({ flex }), generateButtonStyles()])} sx={sx} ref={ref}>
         <BaseButton
           disabled={loading || disabled}
           style={StyleSheet.flatten([styles.baseButtonStyles, buttonStyles, generateBaseButtonStyles()])}
@@ -212,7 +211,6 @@ export const Button = React.forwardRef<View, ButtonProps>(
           baseButtonContainerStyle={(buttonThemeConfig?.baseButtonContainerStyle, baseButtonContainerStyle)}
           rippleProps={mergeRippleProps}
           sx={baseButtonSx}
-          fullWidth={fullWidth}
           {...props}>
           {startIcon && <View style={styles.iconContainer}>{startIcon}</View>}
           {renderChild()}
