@@ -12,8 +12,6 @@ export interface ButtonGroupProps extends ViewProps, Pick<ButtonProps, 'disableR
   roundSize?: number;
   /** The width of the border around each button. */
   borderWidth?: number;
-  /** Whether to remove borders from the buttons. */
-  removeBorders?: boolean;
   /** The variation style of the buttons (e.g., primary, secondary). */
   variation?: ButtonVariations;
   /** The color type of the buttons (e.g., default, custom). */
@@ -23,14 +21,9 @@ export interface ButtonGroupProps extends ViewProps, Pick<ButtonProps, 'disableR
    * for the root of the button group.
    */
   overrideRootBorderWidthConfig?: boolean;
-  /**
-   * If true, overrides the default configuration to remove borders
-   * from the root of the button group.
-   */
-  overrideRootBorderRemoveConfig?: boolean;
 }
 
-interface GetBorderWidthInterface extends Pick<ButtonGroupProps, 'removeBorders' | 'borderWidth'> {
+interface GetBorderWidthInterface extends Pick<ButtonGroupProps, 'borderWidth'> {
   /** Specifies the position of the button (left or right). */
   position: 'left' | 'right';
   /** Indicates if the button is the first in the group. */
@@ -38,6 +31,8 @@ interface GetBorderWidthInterface extends Pick<ButtonGroupProps, 'removeBorders'
   /** Indicates if the button is the last in the group. */
   isLast?: boolean;
 }
+
+const DEFAULT_BORDER_WIDTH = 1;
 
 export const ButtonGroup = React.forwardRef<View, ButtonGroupProps>(
   (
@@ -49,15 +44,16 @@ export const ButtonGroup = React.forwardRef<View, ButtonGroupProps>(
       disableRipple,
       variation = 'contained',
       buttonColor = 'secondary',
-      removeBorders = false,
       roundSize,
-      borderWidth = 1,
+      borderWidth = DEFAULT_BORDER_WIDTH,
       overrideRootBorderWidthConfig = false,
-      overrideRootBorderRemoveConfig = false,
       ...props
     },
     ref,
   ) => {
+    const isOutlinedButton = variation === 'outlined';
+    const isTextButton = variation === 'text';
+
     const themeColors = useThemeColorsSelector();
     const themeButtonGroupConfig = useThemeButtonGroupConfigSelector();
 
@@ -71,57 +67,23 @@ export const ButtonGroup = React.forwardRef<View, ButtonGroupProps>(
       return themeButtonGroupConfig?.borderWidth ?? borderWidth;
     };
 
-    const buttonGroupRemoveBorder = () => {
-      if (overrideRootBorderRemoveConfig) {
-        return removeBorders;
-      }
-      return themeButtonGroupConfig?.removeBorders ?? removeBorders;
-    };
-
-    const childrenCount = React.Children.count(children);
-    const isOutlinedButton = variation === 'outlined';
-    const isTextButton = variation === 'text';
-
     const getBorderWidth = ({
       position,
       isFirst,
       isLast,
-      removeBorders: removeChildBorders,
-      borderWidth: childBorderWidth,
-    }: GetBorderWidthInterface) => {
+      borderWidth: childBorderWidth = DEFAULT_BORDER_WIDTH,
+    }: GetBorderWidthInterface): number => {
       const isLeftPosition = position === 'left';
 
-      if (!isFirst && !isLast && removeChildBorders) {
+      if (!isFirst && isLeftPosition && !isTextButton) {
+        return borderWidth;
+      } else if (isOutlinedButton && ((isFirst && isLeftPosition) || (isLast && !isLeftPosition))) {
+        return childBorderWidth;
+      } else if (isTextButton && !isFirst && ((!isLast && isLeftPosition) || (isLast && isLeftPosition))) {
+        return borderWidth;
+      } else {
         return 0;
       }
-      if (isLast && removeChildBorders && isLeftPosition) {
-        return 0;
-      }
-
-      if (isFirst && !isTextButton && isLeftPosition) {
-        return childBorderWidth;
-      }
-      if (isLast && !isTextButton && !isLeftPosition) {
-        return childBorderWidth;
-      }
-
-      if (childrenCount === 2 && isLast && isLeftPosition) {
-        return childBorderWidth;
-      }
-
-      if (childrenCount > 2) {
-        if (isFirst && !isLeftPosition) {
-          return 0;
-        }
-        if (!isFirst && !isLast) {
-          return isLeftPosition ? childBorderWidth : 0;
-        }
-        if (isLast && isLeftPosition) {
-          return childBorderWidth;
-        }
-      }
-
-      return 0;
     };
 
     const renderElements = useCallback(() => {
@@ -134,23 +96,19 @@ export const ButtonGroup = React.forwardRef<View, ButtonGroupProps>(
           borderBottomLeftRadius: isFirst ? buttonGroupRoundSize : 0,
           borderTopRightRadius: isLast ? buttonGroupRoundSize : 0,
           borderBottomRightRadius: isLast ? buttonGroupRoundSize : 0,
-          borderColor: isOutlinedButton ? getVariant({ variant: buttonColor, colors: themeColors }) : grey[300],
+          borderColor: isOutlinedButton ? getVariant({ variant: buttonColor, colors: themeColors }) : grey[200],
           borderLeftWidth: getBorderWidth({
             position: 'left',
             isFirst,
             isLast,
             borderWidth: buttonGroupBorderWidth(),
-            removeBorders: buttonGroupRemoveBorder(),
           }),
           borderRightWidth: getBorderWidth({
             position: 'right',
             isFirst,
             isLast,
             borderWidth: buttonGroupBorderWidth(),
-            removeBorders: buttonGroupRemoveBorder(),
           }),
-          ...(borderWidth && !isTextButton && { borderTopWidth: buttonGroupBorderWidth() }),
-          ...(borderWidth && !isTextButton && { borderBottomWidth: buttonGroupBorderWidth() }),
         };
 
         if (React.isValidElement(child)) {
@@ -172,9 +130,7 @@ export const ButtonGroup = React.forwardRef<View, ButtonGroupProps>(
       buttonGroupRoundSize,
       children,
       borderWidth,
-      removeBorders,
       themeButtonGroupConfig?.borderWidth,
-      themeButtonGroupConfig?.removeBorders,
       variation,
       buttonColor,
       themeColors,

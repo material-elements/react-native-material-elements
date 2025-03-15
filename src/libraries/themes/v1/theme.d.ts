@@ -159,10 +159,7 @@ export type ThemeComponentConfig = {
   badgeProps: Pick<BadgeProps, 'max' | 'badgeAnimationDuration' | 'anchorOrigin' | 'style'> & BadgeVariationThemeConfig;
   buttonProps: ButtonThemeConfig & ButtonVariationConfig;
   iconButtonProps: IconButtonThemeConfig & IconButtonVariationsConfig;
-  buttonGroupProps: Pick<
-    ButtonGroupProps,
-    'roundSize' | 'borderWidth' | 'removeBorders' | 'disableRipple' | 'baseButtonStyles' | 'style'
-  >;
+  buttonGroupProps: Pick<ButtonGroupProps, 'roundSize' | 'borderWidth' | 'disableRipple' | 'baseButtonStyles' | 'style'>;
   cardProps?: Pick<CardProps, 'style'>;
   cardHeaderProps?: Pick<CardHeaderProps, 'style'>;
   checkBoxProps?: Pick<
