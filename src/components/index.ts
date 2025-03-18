@@ -22,6 +22,7 @@ export * from './Pagination';
 export * from './Portal';
 export * from './Progress';
 export * from './Radio';
+export * from './SegmentedControl';
 export * from './Snackbar';
 export * from './Stack';
 export * from './Stepper';
