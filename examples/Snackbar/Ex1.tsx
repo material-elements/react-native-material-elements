@@ -48,7 +48,6 @@ function App(): React.JSX.Element {
       <Snackbar
         autoHide={false}
         position="bottom"
-        labelProps={{ variation: 'h6' }}
         disableLabelContainerPadding
         snackbarLabelContainerStyles={{ backgroundColor: 'red' }}
       />

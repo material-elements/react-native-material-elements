@@ -13,12 +13,13 @@ function App(): React.JSX.Element {
               label="Show Snack bar"
               onPress={() =>
                 snackbar.show({
-                  message: 'Marked as read',
-                  showActionButton: true,
+                  message: `Oops! Something went wrong on our end. We're working to fix it as soon as possible. Please try again in a few moments or check back later.`,
+                  showActionButton: false,
                   shouldHideWhenClickedOnActionButton: true,
-                  hideDuration: SNACK_BAR.LENGTH_SHORT,
-                  type: 'info',
-                  variant: 'error',
+                  hideDuration: 60,
+                  actionButtonLabel: 'Close',
+                  animationDuration: 50,
+                  type: 'error',
                 })
               }
             />
