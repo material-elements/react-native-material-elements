@@ -16,15 +16,32 @@ import { SegmentedControlContainer } from './SegmentedControlContainer';
 import { SegmentedControlItem } from './SegmentedControlItem';
 
 export interface SegmentedControlProps<T extends string | number> extends ViewProps {
+  /** Array of values to be displayed in the segmented control */
   values: T[];
+  /** Index of the currently selected segment */
   selectedIndex: number;
+  /** Callback triggered when a segment is selected; returns the selected value */
   onChange?: (value: T) => void;
+  /** Background color for the active segment in dark mode */
   activeSegmentDarkModeBackgroundColor?: string;
+  /** Background color for the active segment in light mode */
   activeSegmentLightModeBackgroundColor?: string;
+  /** Style to apply to each segment item (e.g., padding, borderRadius) */
   segmentItemStyles?: ViewStyle;
+  /**
+   * Index of the segment where `segmentItemStyles` should be applied;
+   * if undefined, style is applied to all segments
+   */
   applySegmentItemStyleIndex?: number;
+  /** Text style to apply to each segment label (e.g., fontSize, color) */
   segmentTextStyle?: TextStyle;
+  /**
+   * Index of the segment where `segmentTextStyle` should be applied;
+   * if undefined, style is applied to all segment labels
+   */
   applySegmentItemTextStyleIndex?: number;
+  /** View styles for animated segment */
+  animatedSegmentStyle?: ViewStyle;
 }
 
 export const SegmentedControl = <T extends string | number>({
@@ -36,7 +53,8 @@ export const SegmentedControl = <T extends string | number>({
   segmentTextStyle,
   applySegmentItemStyleIndex,
   applySegmentItemTextStyleIndex,
-  selectedIndex = 1,
+  animatedSegmentStyle,
+  selectedIndex = 0,
   ...props
 }: SegmentedControlProps<T>) => {
   const animatedSegmentWidth = useRef(new Animated.Value(0));
@@ -70,12 +88,11 @@ export const SegmentedControl = <T extends string | number>({
   };
 
   const getSegmentItemHeadingStyle = function (index: number) {
-    if (!applySegmentItemTextStyleIndex) {
+    if (applySegmentItemTextStyleIndex == null || applySegmentItemTextStyleIndex == undefined) {
       return segmentTextStyle;
     }
-    return applySegmentItemTextStyleIndex && values.length && index === applySegmentItemTextStyleIndex - 1
-      ? segmentTextStyle
-      : undefined;
+
+    return values.length && index === applySegmentItemTextStyleIndex ? segmentTextStyle : undefined;
   };
 
   const backgroundColor = themeAnimation.current.interpolate({
@@ -104,19 +121,19 @@ export const SegmentedControl = <T extends string | number>({
 
       Animated.spring(animatedTranslateX.current, {
         useNativeDriver: false,
-        toValue: width * (selectedIndex - 1),
+        toValue: width * selectedIndex,
       }).start();
     }
 
-    if (selectedIndex && selectedIndex < values.length + 1) {
-      setSelectedSegment(values[selectedIndex - 1]);
+    if (selectedIndex && selectedIndex < values.length) {
+      setSelectedSegment(values[selectedIndex]);
     }
   }, [segmentRect, selectedIndex, values]);
 
   return (
     <SegmentedControlContainer {...props}>
       <View style={styles.segmentContainer}>
-        <Animated.View style={[styles.animatedSegmentContainer, animatedViewStyles]} />
+        <Animated.View style={[styles.animatedSegmentContainer, animatedViewStyles, animatedSegmentStyle]} />
         {values.map((value, index) => (
           <SegmentedControlItem
             onLayout={index === 0 ? onLayout : undefined}

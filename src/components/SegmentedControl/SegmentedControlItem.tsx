@@ -6,9 +6,16 @@ import { styles } from './SegmentedControl.styles';
 import { StyleSheet, TextStyle } from 'react-native';
 
 export interface SegmentedControlItemProps<T> extends Omit<BaseButtonProps, 'ref' | 'onPress'> {
+  /** The value associated with this segment item (e.g., label or identifier) */
   value: T;
+  /** Index of this item in the segmented control */
   index: number;
+  /**
+   * Callback triggered when the segment item is pressed;
+   * provides both the value and the index
+   */
   onPress?: (value: T, index: number) => void;
+  /** Custom styles for the label/text displayed in the segment item */
   headingStyles?: TextStyle;
 }
 
