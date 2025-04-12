@@ -4,8 +4,8 @@ import { useThemeColorsSelector, useThemeIconInputConfigSelector } from '../../l
 import { BaseStyles } from '../../libraries/style/styleTypes';
 import { Box } from '../Box';
 import { BoxProps } from '../types';
-import { BaseInput } from './BaseInput';
 import { Text } from '../Typography';
+import { BaseInput } from './BaseInput';
 
 export interface IconInputProps extends TextInputProps, Pick<BoxProps, 'sx'> {
   /**
@@ -65,9 +65,8 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
     const themeColors = useThemeColorsSelector();
     const iconInputThemeConfig = useThemeIconInputConfigSelector();
 
-    const defaultIconInputContainerStyles: BaseStyles = {
-      bg: themeColors.grey[300],
-      bColor: themeColors.grey[300],
+    const inputContainerStyles: BaseStyles = {
+      bg: themeColors.blueGrey[50],
     };
 
     return (
@@ -80,7 +79,7 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
           </View>
         )}
         <Box
-          sx={{ ...defaultIconInputContainerStyles, ...sx }}
+          sx={{ ...inputContainerStyles, ...sx }}
           style={StyleSheet.flatten([styles.inputContainer, iconInputThemeConfig?.inputWrapperStyles, inputWrapperStyles])}
           ref={ref}
           testID={`${testID}-wrapper`}>
@@ -125,9 +124,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: '100%',
     paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 6,
-    borderWidth: 1,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

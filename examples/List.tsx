@@ -10,6 +10,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Switch,
   Text,
   ThemeProvider,
 } from '../src';
@@ -43,6 +44,9 @@ export const Ex1 = () => {
           />
         </ListItemIcon>
         <ListItemText primary="Summer BBQ" secondary="to Scott, Alex, Jennifer — Wish I could come, but I'm out of town this…" />
+      </ListItem>
+      <ListItem disableRipple disableScaleAnimation endAdornment={<Switch size="large" />}>
+        <ListItemText primary="Brunch this weekend?" secondary="Ali Connors — I'll be in your neighborhood doing errands this…" />
       </ListItem>
     </List>
   );
