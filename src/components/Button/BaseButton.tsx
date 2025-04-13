@@ -26,6 +26,7 @@ export const BaseButton = React.forwardRef<View, BaseButtonProps>(
       onLayout: onLayoutHandler,
       onPress: onPressHandler,
       onLongPress: onLongPressHandler,
+      componentWrapperProps,
       scaleAnimationValue = 0.99,
       disableScaleAnimation = false,
       scaleAnimationDuration = 200,
@@ -102,7 +103,10 @@ export const BaseButton = React.forwardRef<View, BaseButtonProps>(
           onLayout={buttonLayoutHandler}
           disabled={disabled}
           {...props}>
-          <Animated.View style={[{ transform: [{ scale: scaleValue }] }, style]}>
+          <Animated.View
+            pointerEvents="box-only"
+            style={[{ transform: [{ scale: scaleValue }] }, style]}
+            {...componentWrapperProps}>
             {children}
             {disableRipple ? null : <Ripple ref={rippleRef} {...rippleProps} />}
           </Animated.View>

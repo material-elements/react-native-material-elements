@@ -129,11 +129,22 @@ export const Chip = React.forwardRef<View, ChipProps>(
           scaleAnimationValue={0.98}
           style={getChipBaseButtonStyles()}
           ref={ref}
+          componentWrapperProps={{
+            pointerEvents: 'auto',
+          }}
           {...props}>
           <Box style={StyleSheet.flatten([styles.chipWrapper, generateChipWrapperContainerStyles()])}>
-            {startIcon && <TouchableOpacity {...startIconProps}>{startIcon}</TouchableOpacity>}
+            {startIcon && (
+              <TouchableOpacity activeOpacity={1} {...startIconProps}>
+                {startIcon}
+              </TouchableOpacity>
+            )}
             {renderLabel()}
-            {endIcon && <TouchableOpacity {...endIconProps}>{endIcon}</TouchableOpacity>}
+            {endIcon && (
+              <TouchableOpacity activeOpacity={1} {...endIconProps}>
+                {endIcon}
+              </TouchableOpacity>
+            )}
           </Box>
         </BaseButton>
       );

@@ -48,6 +48,30 @@ export const Ex1 = () => {
       <ListItem disableRipple disableScaleAnimation endAdornment={<Switch size="large" />}>
         <ListItemText primary="Brunch this weekend?" secondary="Ali Connors — I'll be in your neighborhood doing errands this…" />
       </ListItem>
+      <ListItem
+        disableBottomSpacing
+        actionType="root"
+        onPress={() => console.log('done')}
+        endAdornment={
+          <Avatar
+            source={{
+              uri: 'https://cdn-icons-png.flaticon.com/128/2722/2722985.png',
+            }}
+            size={15}
+            variation="rounded"
+          />
+        }>
+        <ListItemIcon>
+          <Avatar
+            source={{
+              uri: 'https://cdn-icons-png.flaticon.com/128/15527/15527317.png',
+            }}
+            size={30}
+            variation="rounded"
+          />
+        </ListItemIcon>
+        <ListItemText style={{ paddingLeft: 5 }} secondary="Default account" />
+      </ListItem>
     </List>
   );
 };

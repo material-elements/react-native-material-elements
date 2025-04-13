@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicatorProps, ColorValue, TextStyle, TouchableWithoutFeedback, ViewStyle } from 'react-native';
+import { ActivityIndicatorProps, ColorValue, TextStyle, TouchableWithoutFeedback, ViewProps, ViewStyle } from 'react-native';
 import { BaseStyles } from '../../libraries/style/styleTypes';
 import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
 import { VariantTypes } from '../../utils';
@@ -42,6 +42,11 @@ export interface BaseButtonProps extends React.ComponentPropsWithRef<typeof Touc
    * button scale animation duration
    */
   scaleAnimationDuration?: number;
+
+  /**
+   * Button child component wrapper props
+   */
+  componentWrapperProps?: ViewProps;
 }
 
 /**
