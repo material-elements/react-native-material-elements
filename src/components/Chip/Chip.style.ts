@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     borderRadius: 20,
-    overflow: 'hidden',
     alignSelf: 'flex-start',
   },
   chipWrapper: {

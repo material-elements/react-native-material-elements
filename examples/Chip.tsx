@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Chip } from '../src';
+import { Avatar, Box, Chip } from '../src';
 
 export const Ex1: React.FC = () => {
   return (
@@ -24,36 +24,29 @@ export const Ex1: React.FC = () => {
       <Chip label="Chip with end adornment chip" variant="outlined" />
       <Chip label="Chip with end adornment chip with styles" variant="outlined" />
       <Chip label="onPress chip" variant="outlined" onPress={() => console.log('pressed')} />
-      <Chip label="onPress chip without ripple effect" variant="outlined" disableRipple onPress={() => console.log('pressed')} />
+      <Chip label="onPress chip without ripple effect" variant="outlined" onPress={() => console.log('pressed')} />
+      <Chip label="onPress chip with rippleEdge bottom left" variant="outlined" onPress={() => console.log('pressed')} />
+      <Chip label="onPress chip with rippleEdge bottom right" variant="outlined" onPress={() => console.log('pressed')} />
+      <Chip label="onPress chip with rippleEdge center" variant="outlined" onPress={() => console.log('pressed')} />
+      <Chip label="onPress chip with rippleEdge top left" variant="outlined" onPress={() => console.log('pressed')} />
+      <Chip label="onPress chip with rippleEdge top right" variant="outlined" onPress={() => console.log('pressed')} />
       <Chip
-        label="onPress chip with rippleEdge bottom left"
-        variant="outlined"
-        rippleEdge="bottomLeft"
+        label="Shopping"
+        square
         onPress={() => console.log('pressed')}
-      />
-      <Chip
-        label="onPress chip with rippleEdge bottom right"
-        variant="outlined"
-        rippleEdge="bottomRight"
-        onPress={() => console.log('pressed')}
-      />
-      <Chip
-        label="onPress chip with rippleEdge center"
-        variant="outlined"
-        rippleEdge="center"
-        onPress={() => console.log('pressed')}
-      />
-      <Chip
-        label="onPress chip with rippleEdge top left"
-        variant="outlined"
-        rippleEdge="topLeft"
-        onPress={() => console.log('pressed')}
-      />
-      <Chip
-        label="onPress chip with rippleEdge top right"
-        variant="outlined"
-        rippleEdge="topRight"
-        onPress={() => console.log('pressed')}
+        startIcon={
+          <Avatar
+            source={{
+              uri: 'https://images.unsplash.com/photo-1568409938619-12e139227838?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            }}
+            size={25}
+            variation="rounded"
+          />
+        }
+        startIconProps={{
+          activeOpacity: 1,
+          onPress: () => console.log('icon press'),
+        }}
       />
     </Box>
   );

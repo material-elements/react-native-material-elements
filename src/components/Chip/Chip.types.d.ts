@@ -15,7 +15,7 @@ export type ChipVariant = 'outlined' | 'filled';
 /**
  * Defines the color variations available for the chip.
  */
-export interface ChipProps extends Omit<BaseButtonProps, 'sx'> {
+export interface ChipProps extends Omit<BaseButtonProps, 'sx' | 'disableRipple' | 'rippleProps' | 'rippleEdge'> {
   /**
    * The label text to display inside the chip.
    */

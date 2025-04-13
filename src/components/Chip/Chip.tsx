@@ -13,7 +13,6 @@ export const Chip = React.forwardRef<View, ChipProps>(
     {
       label,
       disabled,
-      disableRipple,
       style,
       chipWrapperContainerStyles,
       labelColor,
@@ -113,31 +112,39 @@ export const Chip = React.forwardRef<View, ChipProps>(
       activeLabelColor,
     ]);
 
+    const getChipBaseButtonStyles = () =>
+      StyleSheet.flatten([
+        styles.chip,
+        chipStyles,
+        style,
+        { borderRadius: chipSquareHandler() ? SQUARE_BORDER_RADIUS : DEFAULT_BORDER_RADIUS },
+        computeChipStyles(),
+      ]);
+
     if (hasIcon && !children) {
       return (
-        <Box
-          style={StyleSheet.flatten([styles.chip, chipStyles, style, { borderRadius: chipSquareHandler() ? 5 : 20 }])}
-          ref={ref}>
+        <BaseButton
+          disabled={disabled}
+          disableRipple={true}
+          scaleAnimationValue={0.98}
+          style={getChipBaseButtonStyles()}
+          ref={ref}
+          {...props}>
           <Box style={StyleSheet.flatten([styles.chipWrapper, generateChipWrapperContainerStyles()])}>
             {startIcon && <TouchableOpacity {...startIconProps}>{startIcon}</TouchableOpacity>}
             {renderLabel()}
             {endIcon && <TouchableOpacity {...endIconProps}>{endIcon}</TouchableOpacity>}
           </Box>
-        </Box>
+        </BaseButton>
       );
     }
 
     return (
       <BaseButton
         disabled={disabled}
-        disableRipple={disableRipple}
-        scaleAnimationValue={0.96}
-        style={StyleSheet.flatten([
-          styles.chip,
-          chipStyles,
-          { borderRadius: chipSquareHandler() ? SQUARE_BORDER_RADIUS : DEFAULT_BORDER_RADIUS },
-          computeChipStyles(),
-        ])}
+        disableRipple={true}
+        scaleAnimationValue={0.98}
+        style={getChipBaseButtonStyles()}
         ref={ref}
         {...props}>
         <Box style={StyleSheet.flatten([styles.chipWrapper, generateChipWrapperContainerStyles()])}>
