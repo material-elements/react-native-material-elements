@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, BaseInput, Box, IconButton, TextField, useTheme } from '../src';
+import { Avatar, BaseInput, Box, Divider, IconButton, TextField, useTheme } from '../src';
 
 export const App: React.FC = () => {
   const { theme } = useTheme();
@@ -99,6 +99,22 @@ export const App: React.FC = () => {
         endAdornmentContainerProps={{
           style: { backgroundColor: 'red', marginLeft: 10 },
         }}
+      />
+      <TextField
+        style={{ borderRadius: 20 }}
+        placeholder="Search place"
+        endAdornment={
+          <Box sx={{ d: 'flex', fDirection: 'row', gap: 10 }}>
+            <Divider orientation="vertical" />
+            <Avatar
+              source={{
+                uri: 'https://images.unsplash.com/photo-1568409938619-12e139227838?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+              }}
+              size={30}
+              variation="rounded"
+            />
+          </Box>
+        }
       />
     </Box>
   );
