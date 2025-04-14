@@ -56,12 +56,6 @@ Interface representing the theme and a function to change the theme mode.
 
 - `theme`: `ThemeType & T` - The current theme.
 
-### `ThemeContextType`
-
-Interface representing the theme context.
-
-- `theme`: `ThemeInterface` - The current theme interface.
-
 # Theme Configuration Documentation
 
 This documentation provides an overview of the theme configuration used in your application, including the initial light and dark themes. The themes define color palettes for various UI elements to maintain a consistent design.

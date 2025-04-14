@@ -207,26 +207,22 @@ export type ThemeComponentConfig = {
 export type WithThemeComponentConfig<K extends keyof ThemeComponentConfig, T> = T & {
   themeComponentConfig?: ThemeComponentConfig[K];
 };
-/**
- * Interface representing the theme context, including the current theme and a function to change the theme mode.
- */
-export interface ThemeInterface<T> {
-  /**
-   * The current theme, extended with any additional properties
-   */
-  theme: ThemeType & T;
+export interface ThemeConfigInterface {
   /**
    * Component configurations
    */
   components?: InnerPartial<ThemeComponentConfig>;
 }
 /**
- * Interface representing the theme context type.
+ * Interface representing the theme context, including the current theme and a function to change the theme mode.
  */
-export interface ThemeContextType {
-  theme: ThemeInterface;
+export interface ThemeInterface<T> extends ThemeConfigInterface {
+  /**
+   * The current theme, extended with any additional properties
+   */
+  theme: ThemeType & T;
 }
-export interface ThemeProviderProps {
+export interface ThemeProviderProps extends ThemeConfigInterface {
   /**
    * Child components to be wrapped by the provider
    */
@@ -243,10 +239,6 @@ export interface ThemeProviderProps {
    * Optional theme dimensions values
    */
   dimensions?: ThemeDimensions;
-  /**
-   * Component configurations
-   */
-  components?: InnerPartial<ThemeComponentConfig>;
 }
 
 export type CreateColorShades = ColorShades;
