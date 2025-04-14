@@ -5,9 +5,28 @@ import { BoxProps } from '../types';
 import { getStackInnerContainerStyles } from './utils';
 
 export interface StackProps extends Omit<BoxProps, 'animatedView'> {
+  /**
+   * Space (in pixels or design units) between each child element in the stack.
+   * This controls the visual gap between stacked items.
+   *
+   * Example: spacing={8} will add 8px gap between items.
+   */
   spacing?: number;
+
+  /**
+   * Layout direction of the stack items.
+   * - 'row' places children horizontally (like flex-direction: row)
+   * - 'column' places children vertically (like flex-direction: column)
+   *
+   * Defaults to 'column' if not specified.
+   */
   direction?: 'row' | 'column';
-  stackKey: string;
+
+  /**
+   * Optional key to uniquely identify this stack, useful for debugging,
+   * animations, or conditional rendering.
+   */
+  stackKey?: string;
 }
 export interface GetStackInnerContainerStylesParams extends Pick<StackProps, 'spacing' | 'direction'> {
   index: number;

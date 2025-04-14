@@ -155,7 +155,7 @@ export interface ListItemIconProps extends ViewProps {
  * Interface for ListItemText component properties, extending ListProps but omitting the 'children' property
  * This interface defines the props that can be passed to a ListItemText component.
  */
-export interface ListItemTextProps extends Omit<ListProps, 'children'> {
+export interface ListItemTextProps extends ListProps {
   /**
    * Optional primary text for the ListItemText component.
    * This property allows you to set the main text for the ListItemText component.

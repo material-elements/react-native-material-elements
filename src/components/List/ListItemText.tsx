@@ -18,6 +18,7 @@ export const ListItemText = React.forwardRef<View, ListItemTextProps>(
       primaryLabelProps,
       disableLeftPadding = false,
       alignItems = 'start',
+      children,
       ...props
     },
     ref,
@@ -39,6 +40,7 @@ export const ListItemText = React.forwardRef<View, ListItemTextProps>(
             {secondary}
           </Text>
         )}
+        {children}
       </Box>
     );
   },
