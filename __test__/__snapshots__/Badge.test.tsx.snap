@@ -3,22 +3,34 @@
 exports[`Badge should render correctly 1`] = `
 <View
   style={
-    {
-      "alignSelf": "flex-start",
-      "minHeight": 40,
-      "minWidth": 40,
-    }
+    [
+      {
+        "alignSelf": "flex-start",
+        "minHeight": 40,
+        "minWidth": 40,
+      },
+      undefined,
+    ]
   }
 >
   <View
     style={
-      {
-        "alignItems": "center",
-        "alignSelf": "auto",
-        "borderRadius": 5,
-        "display": "flex",
-        "justifyContent": "center",
-      }
+      [
+        {},
+        {},
+        [
+          {
+            "alignItems": "center",
+            "alignSelf": "auto",
+            "display": "flex",
+            "justifyContent": "center",
+          },
+          {
+            "borderRadius": 5,
+          },
+          undefined,
+        ],
+      ]
     }
   />
   <View
@@ -53,22 +65,34 @@ exports[`Badge should render correctly 1`] = `
 exports[`Badge should render correctly with inner component 1`] = `
 <View
   style={
-    {
-      "alignSelf": "flex-start",
-      "minHeight": 40,
-      "minWidth": 40,
-    }
+    [
+      {
+        "alignSelf": "flex-start",
+        "minHeight": 40,
+        "minWidth": 40,
+      },
+      undefined,
+    ]
   }
 >
   <View
     style={
-      {
-        "alignItems": "center",
-        "alignSelf": "auto",
-        "borderRadius": 5,
-        "display": "flex",
-        "justifyContent": "center",
-      }
+      [
+        {},
+        {},
+        [
+          {
+            "alignItems": "center",
+            "alignSelf": "auto",
+            "display": "flex",
+            "justifyContent": "center",
+          },
+          {
+            "borderRadius": 5,
+          },
+          undefined,
+        ],
+      ]
     }
   >
     <View />

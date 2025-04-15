@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ViewStyle } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import { Avatar } from '../src';
 import { BaseStyles } from '../src/libraries/style/styleTypes';
 import { render, waitFor } from './test-utils';
@@ -26,14 +26,15 @@ describe('Avatar Component', () => {
 
     const avatar = getByTestId(mockTestId);
     expect(avatar).toBeTruthy();
-
     expect(avatar.props.source).toEqual(expect.objectContaining({ uri: mockAvatarUrl }));
   });
 
   it('passes size prop correctly to the Image component', () => {
     const { getByTestId } = render(<Avatar testID={mockAvatarUrl} source={{ uri: mockAvatarUrl }} size={50} />);
     const avatar = getByTestId(mockAvatarUrl);
-    expect(avatar.props.style).toEqual({ width: 50, height: 50 });
+    const flattenedStyle = StyleSheet.flatten(avatar.props.style);
+    expect(flattenedStyle.width).toEqual(50);
+    expect(flattenedStyle.height).toEqual(50);
   });
 
   it('applies sx styles correctly', () => {
@@ -42,8 +43,9 @@ describe('Avatar Component', () => {
 
     const avatar = getByTestId(mockAvatarUrl);
 
-    const expectedStyles: ViewStyle = { backgroundColor: 'blue', borderWidth: 2 };
-    expect(avatar.props.style).toEqual(expectedStyles);
+    const flattenedStyle = StyleSheet.flatten(avatar.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('blue');
+    expect(flattenedStyle.borderWidth).toEqual(2);
   });
 
   it('forwards ref to the Image component', () => {
@@ -51,16 +53,33 @@ describe('Avatar Component', () => {
     expect(ref.current).toBeInstanceOf(Image);
   });
 
-  it('applies the variation prop correctly for different variants', () => {
-    const { getByTestId, rerender } = render(<Avatar testID={mockTestId} source={{ uri: mockAvatarUrl }} variation="rounded" />);
+  it('applies the "rounded" variation prop correctly', () => {
+    const { getByTestId } = render(<Avatar testID={mockTestId} source={{ uri: mockAvatarUrl }} variation="rounded" />);
 
     const avatar = getByTestId(mockTestId);
-    expect(avatar.props.style).toEqual({ borderRadius: 100 });
+    const flattenedStyle = StyleSheet.flatten(avatar.props.style);
+    expect(flattenedStyle.borderRadius).toEqual(100);
+  });
+
+  it('applies the "square" variation prop correctly', () => {
+    const { getByTestId, rerender } = render(<Avatar testID={mockTestId} source={{ uri: mockAvatarUrl }} variation="square" />);
+
+    const avatar = getByTestId(mockTestId);
+    const flattenedStyle = StyleSheet.flatten(avatar.props.style);
 
     rerender(<Avatar testID={mockTestId} source={{ uri: mockAvatarUrl }} variation="square" />);
-    expect(avatar.props.style).toEqual({ borderRadius: 0 });
+    expect(flattenedStyle.borderRadius).toEqual(0);
+  });
+
+  it('applies the "rounded-lg" variation prop correctly', () => {
+    const { getByTestId, rerender } = render(
+      <Avatar testID={mockTestId} source={{ uri: mockAvatarUrl }} variation="rounded-lg" />,
+    );
+
+    const avatar = getByTestId(mockTestId);
+    const flattenedStyle = StyleSheet.flatten(avatar.props.style);
 
     rerender(<Avatar testID={mockTestId} source={{ uri: mockAvatarUrl }} variation="rounded-lg" />);
-    expect(avatar.props.style).toEqual({ borderRadius: 40 });
+    expect(flattenedStyle.borderRadius).toEqual(40);
   });
 });

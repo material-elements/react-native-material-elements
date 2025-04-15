@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
-import { DimensionValue, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { DimensionValue, StyleProp, View, ViewStyle } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { Box } from '../Box';
 import { BoxProps } from '../types';
 import { gridContainerStyles, gridItemContainerStyles, styles } from './Grid.styles';
@@ -110,6 +111,8 @@ export const Grid = forwardRef<View, GridProps>(
     },
     ref,
   ) => {
+    const { getStyleFromProps } = useRestyle(props);
+
     if (!container && !item) {
       console.warn('Grid container or grid item is not defined');
       return null;
@@ -206,12 +209,13 @@ export const Grid = forwardRef<View, GridProps>(
         <Box
           ref={ref}
           sx={sx}
-          style={StyleSheet.flatten([
+          style={[
             gridItemContainerStyles({ size, topSpacing, bottomSpacing, leftSpacing, rightSpacing }),
+            getStyleFromProps(),
             style,
-          ])}
+          ]}
           {...props}>
-          <Box style={StyleSheet.flatten([gridInnerContainerStyles])}>{children}</Box>
+          <Box style={gridInnerContainerStyles}>{children}</Box>
         </Box>
       );
     } else if (container) {
@@ -219,7 +223,7 @@ export const Grid = forwardRef<View, GridProps>(
         <Box
           ref={ref}
           sx={sx}
-          style={StyleSheet.flatten([styles.gridContainer, gridContainerStyles({ width }), style])}
+          style={[styles.gridContainer, gridContainerStyles({ width }), getStyleFromProps(), style]}
           {...props}>
           {renderChild()}
         </Box>

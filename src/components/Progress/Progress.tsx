@@ -1,12 +1,14 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, ColorValue, DimensionValue, I18nManager, LayoutChangeEvent, StyleSheet, View } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector } from '../../libraries';
+import { StyledProps } from '../../libraries/style/styleTypes';
 import { Theme } from '../../libraries/themes/types';
 import { VariantTypes } from '../../utils';
 import { AnimatedView } from '../Box';
 import { getProgressBarContainerStyles, getProgressBarIndicatorStyles } from './utils';
 
-export interface ProgressBarProps extends React.ComponentPropsWithRef<typeof View> {
+export interface ProgressBarProps extends React.ComponentPropsWithRef<typeof View>, StyledProps {
   /**
    * Hight of the progress bar container
    */
@@ -85,6 +87,7 @@ export const ProgressBar = React.forwardRef<View, ProgressBarProps>(
     ref,
   ) => {
     const themeColors = useThemeColorsSelector();
+    const { getStyleFromProps } = useRestyle(rest);
 
     const animatedWidth = useRef(new Animated.Value(0)).current;
     const indeterminateAnimation = React.useRef<Animated.CompositeAnimation | null>(null);
@@ -176,15 +179,11 @@ export const ProgressBar = React.forwardRef<View, ProgressBarProps>(
 
     return (
       <View onLayout={onLayout} accessible testID={testID} ref={ref} {...rest}>
-        <AnimatedView style={StyleSheet.flatten([styles.container, progressBarContainerStyles, style])}>
+        <AnimatedView style={[styles.container, progressBarContainerStyles, getStyleFromProps(), style]}>
           {width ? (
             <AnimatedView
               testID={`${testID}-progress-indicator`}
-              style={StyleSheet.flatten([
-                styles.progressBar,
-                progressBarIndicatorStyles,
-                { width, transform: getTransformStyles() },
-              ])}
+              style={[styles.progressBar, progressBarIndicatorStyles, { width, transform: getTransformStyles() }]}
             />
           ) : null}
         </AnimatedView>

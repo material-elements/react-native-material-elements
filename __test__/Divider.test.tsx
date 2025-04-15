@@ -1,6 +1,6 @@
 import { render as testRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Divider, Text, ThemeProvider } from '../src';
 import { spacing } from '../src/libraries/themes/v1/sizes';
 import { render } from './test-utils';
@@ -50,21 +50,24 @@ describe('Divider Component', () => {
     const { getByTestId } = render(<Divider ref={mockRef} testID={dividerMockTestId} variant="startSpacing" />);
 
     const divider = getByTestId(dividerMockTestId);
-    expect(divider.props.style).toEqual(expect.objectContaining({ paddingLeft: spacing.lg }));
+    const flattenedStyle = StyleSheet.flatten(divider.props.style);
+    expect(flattenedStyle.paddingLeft).toEqual(spacing.lg);
   });
 
   it('should add the end spacing when passed the variant (endSpacing)', () => {
     const { getByTestId } = render(<Divider ref={mockRef} testID={dividerMockTestId} variant="endSpacing" />);
 
     const divider = getByTestId(dividerMockTestId);
-    expect(divider.props.style).toEqual(expect.objectContaining({ paddingRight: spacing.lg }));
+    const flattenedStyle = StyleSheet.flatten(divider.props.style);
+    expect(flattenedStyle.paddingRight).toEqual(spacing.lg);
   });
 
   it('should add the start and end spacing when passed the variant (middle)', () => {
     const { getByTestId } = render(<Divider ref={mockRef} testID={dividerMockTestId} variant="middle" />);
 
     const divider = getByTestId(dividerMockTestId);
-    expect(divider.props.style).toEqual(expect.objectContaining({ paddingHorizontal: spacing.lg }));
+    const flattenedStyle = StyleSheet.flatten(divider.props.style);
+    expect(flattenedStyle.paddingHorizontal).toEqual(spacing.lg);
   });
 
   it('should remove the start and end spacing when passed the variant (fullWidth)', () => {
@@ -82,8 +85,10 @@ describe('Divider Component', () => {
     );
     const startLine = getByTestId(dividerStartLineTestId);
     const endLine = getByTestId(dividerStartLineTestId);
-    expect(startLine.props.style).toEqual(expect.objectContaining({ borderColor: 'red' }));
-    expect(endLine.props.style).toEqual(expect.objectContaining({ borderColor: 'red' }));
+    const startLineFlattenedStyle = StyleSheet.flatten(startLine.props.style);
+    const endLineFlattenedStyle = StyleSheet.flatten(endLine.props.style);
+    expect(startLineFlattenedStyle.borderColor).toEqual('red');
+    expect(endLineFlattenedStyle.borderColor).toEqual('red');
   });
 
   it('should change the variant spacing of the divider component when passed the variantSpacing prop', () => {
@@ -92,7 +97,8 @@ describe('Divider Component', () => {
     );
 
     const divider = getByTestId(dividerMockTestId);
-    expect(divider.props.style).toEqual(expect.objectContaining({ paddingLeft: 20 }));
+    const flattenedStyle = StyleSheet.flatten(divider.props.style);
+    expect(flattenedStyle.paddingLeft).toEqual(20);
   });
 
   it('should apply the dynamic style into the start line element', () => {
@@ -101,14 +107,16 @@ describe('Divider Component', () => {
     );
 
     const startLine = getByTestId(dividerStartLineTestId);
-    expect(startLine.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(startLine.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should apply the dynamic style into the end line element', () => {
     const { getByTestId } = render(<Divider endLineTestId={dividerEndLineTestId} endLineStyles={{ backgroundColor: 'red' }} />);
 
     const endLine = getByTestId(dividerEndLineTestId);
-    expect(endLine.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(endLine.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should apply the root startLineStyles styles correctly', () => {
@@ -123,7 +131,8 @@ describe('Divider Component', () => {
       </ThemeProvider>,
     );
     const startLine = getByTestId(dividerStartLineTestId);
-    expect(startLine.props.style).toEqual(expect.objectContaining({ borderColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(startLine.props.style);
+    expect(flattenedStyle.borderColor).toEqual('red');
   });
 
   it('should combine the root startLineStyles styles and component startLineStyles correctly', () => {
@@ -138,7 +147,9 @@ describe('Divider Component', () => {
       </ThemeProvider>,
     );
     const startLine = getByTestId(dividerStartLineTestId);
-    expect(startLine.props.style).toEqual(expect.objectContaining({ borderColor: 'red', borderWidth: 2 }));
+    const flattenedStyle = StyleSheet.flatten(startLine.props.style);
+    expect(flattenedStyle.borderColor).toEqual('red');
+    expect(flattenedStyle.borderWidth).toEqual(2);
   });
 
   it('should apply the root endLineStyles styles correctly', () => {
@@ -149,7 +160,8 @@ describe('Divider Component', () => {
     );
 
     const endLine = getByTestId(dividerEndLineTestId);
-    expect(endLine.props.style).toEqual(expect.objectContaining({ borderColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(endLine.props.style);
+    expect(flattenedStyle.borderColor).toEqual('red');
   });
 
   it('should combine the root endLineStyles styles and component endLineStyles correctly', () => {
@@ -160,7 +172,9 @@ describe('Divider Component', () => {
     );
 
     const endLine = getByTestId(dividerEndLineTestId);
-    expect(endLine.props.style).toEqual(expect.objectContaining({ borderColor: 'red', borderWidth: 2 }));
+    const flattenedStyle = StyleSheet.flatten(endLine.props.style);
+    expect(flattenedStyle.borderColor).toEqual('red');
+    expect(flattenedStyle.borderWidth).toEqual(2);
   });
 
   it('should apply the root borderColor correctly', () => {
@@ -171,8 +185,10 @@ describe('Divider Component', () => {
     );
     const startLine = getByTestId(dividerStartLineTestId);
     const endLine = getByTestId(dividerStartLineTestId);
-    expect(startLine.props.style).toEqual(expect.objectContaining({ borderColor: 'red' }));
-    expect(endLine.props.style).toEqual(expect.objectContaining({ borderColor: 'red' }));
+    const startLineFlattenedStyle = StyleSheet.flatten(startLine.props.style);
+    const endLineFlattenedStyle = StyleSheet.flatten(endLine.props.style);
+    expect(startLineFlattenedStyle.borderColor).toEqual('red');
+    expect(endLineFlattenedStyle.borderColor).toEqual('red');
   });
 
   it('should override the root borderColor correctly', () => {
@@ -183,8 +199,10 @@ describe('Divider Component', () => {
     );
     const startLine = getByTestId(dividerStartLineTestId);
     const endLine = getByTestId(dividerStartLineTestId);
-    expect(startLine.props.style).toEqual(expect.objectContaining({ borderColor: 'green' }));
-    expect(endLine.props.style).toEqual(expect.objectContaining({ borderColor: 'green' }));
+    const startLineFlattenedStyle = StyleSheet.flatten(startLine.props.style);
+    const endLineFlattenedStyle = StyleSheet.flatten(endLine.props.style);
+    expect(startLineFlattenedStyle.borderColor).toEqual('green');
+    expect(endLineFlattenedStyle.borderColor).toEqual('green');
   });
 
   it('should apply the root variant spacing of the divider component correctly', () => {
@@ -195,7 +213,8 @@ describe('Divider Component', () => {
     );
 
     const divider = getByTestId(dividerMockTestId);
-    expect(divider.props.style).toEqual(expect.objectContaining({ paddingLeft: 10 }));
+    const flattenedStyle = StyleSheet.flatten(divider.props.style);
+    expect(flattenedStyle.paddingLeft).toEqual(10);
   });
 
   it('should override the root variant spacing of the divider component correctly', () => {
@@ -206,7 +225,8 @@ describe('Divider Component', () => {
     );
 
     const divider = getByTestId(dividerMockTestId);
-    expect(divider.props.style).toEqual(expect.objectContaining({ paddingLeft: 20 }));
+    const flattenedStyle = StyleSheet.flatten(divider.props.style);
+    expect(flattenedStyle.paddingLeft).toEqual(20);
   });
 
   it('should apply the root style of divider component correctly', () => {
@@ -216,7 +236,8 @@ describe('Divider Component', () => {
       </ThemeProvider>,
     );
     const divider = getByTestId(dividerMockTestId);
-    expect(divider.props.style).toEqual(expect.objectContaining({ borderWidth: 2 }));
+    const flattenedStyle = StyleSheet.flatten(divider.props.style);
+    expect(flattenedStyle.borderWidth).toEqual(2);
   });
 
   it('should combine the root style of divider component and component styles correctly', () => {
@@ -226,6 +247,8 @@ describe('Divider Component', () => {
       </ThemeProvider>,
     );
     const divider = getByTestId(dividerMockTestId);
-    expect(divider.props.style).toEqual(expect.objectContaining({ borderWidth: 2, backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(divider.props.style);
+    expect(flattenedStyle.borderWidth).toEqual(2);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 });

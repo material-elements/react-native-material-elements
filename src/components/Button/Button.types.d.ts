@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActivityIndicatorProps, ColorValue, TextStyle, TouchableWithoutFeedback, ViewProps, ViewStyle } from 'react-native';
-import { BaseStyles } from '../../libraries/style/styleTypes';
+import { BaseStyles, StyledProps } from '../../libraries/style/styleTypes';
 import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
 import { VariantTypes } from '../../utils';
 import { RipplePosition, RippleProps } from '../Ripple/Ripple.types';
@@ -173,7 +173,7 @@ export type IconButtonVariations = 'roundedIconButton' | 'squareIconButton';
  * Defines the props interface for the IconButton component.
  * Extends React's ComponentPropsWithRef<typeof TouchableWithoutFeedback>.
  */
-export interface IconButtonProps extends Omit<BaseButtonProps, 'sx' | 'size'> {
+export interface IconButtonProps extends Omit<BaseButtonProps, 'sx' | 'size'>, StyledProps {
   /**
    * Specifies the variation of the IconButton.
    * Can be either 'roundedIconButton' or 'squareIconButton'.

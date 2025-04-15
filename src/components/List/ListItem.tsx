@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector, useThemeListItemConfigSelector } from '../../libraries';
 import { merge } from '../../utils';
 import { Box } from '../Box';
@@ -37,6 +38,7 @@ export const ListItem = React.forwardRef<View, ListItemProps>(
   ) => {
     const themeColors = useThemeColorsSelector();
     const listItemThemeConfig = useThemeListItemConfigSelector();
+    const { getStyleFromProps } = useRestyle(props);
 
     const listItemSelectedColor = selectedColor ?? listItemThemeConfig?.selectedColor;
     const listItemOutlineColor = outlineColor ?? listItemThemeConfig?.outlineColor;
@@ -107,7 +109,7 @@ export const ListItem = React.forwardRef<View, ListItemProps>(
             <Box sx={{ f: 1 }}>
               <BaseButton
                 disableRipple={disableRipple}
-                style={StyleSheet.flatten([styles.baseButton, listItemThemeConfig?.style, style])}
+                style={[styles.baseButton, listItemThemeConfig?.style, getStyleFromProps(), style]}
                 {...props}>
                 <View style={[styles.flexContainer]}>{children}</View>
               </BaseButton>
@@ -120,7 +122,7 @@ export const ListItem = React.forwardRef<View, ListItemProps>(
           <Box sx={{ f: 1 }}>
             <BaseButton
               disableRipple={disableRipple}
-              style={StyleSheet.flatten([styles.baseButton, listItemThemeConfig?.style, style])}
+              style={[styles.baseButton, listItemThemeConfig?.style, getStyleFromProps(), style]}
               {...props}>
               <View style={[styles.flexContainer]}>
                 {renderAdornment('start', startAdornment)}
@@ -137,13 +139,13 @@ export const ListItem = React.forwardRef<View, ListItemProps>(
 
     return (
       <Box
-        style={StyleSheet.flatten([
+        style={[
           styles.listItemContainer,
           spacingStyles,
           containerStyles,
           listItemThemeConfig?.listContainerStyles,
           listContainerStyles,
-        ])}
+        ]}
         ref={ref}
         testID={listItemContainerTestId}>
         {renderListItem()}

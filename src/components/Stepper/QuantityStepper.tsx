@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { StyleSheet, TouchableWithoutFeedback, View, ViewStyle } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector } from '../../libraries';
 import { Text } from '../Typography';
 import { QuantityStepperProps } from './Stepper.types';
@@ -35,6 +36,7 @@ export const QuantityStepper = React.forwardRef<View, QuantityStepperProps>(
     ref,
   ) => {
     const themeColors = useThemeColorsSelector();
+    const { getStyleFromProps } = useRestyle(props);
 
     const isBelowMinimum = value <= minDecrement;
     const isAboveMaximum = value >= maxIncrement;
@@ -60,16 +62,10 @@ export const QuantityStepper = React.forwardRef<View, QuantityStepperProps>(
     );
 
     return (
-      <View style={StyleSheet.flatten([styles.stepperContainer, style])} ref={ref} {...props}>
+      <View style={[styles.stepperContainer, getStyleFromProps(), style]} ref={ref} {...props}>
         <TouchableWithoutFeedback onPress={onDecrement} disabled={shouldDisableDecrement} testID={onDecrementTestId}>
-          <View
-            style={StyleSheet.flatten([
-              styles.item,
-              styles.stepperOptions,
-              stepperOptionsStyles('DEC', buttonType),
-              decrementButtonStyle,
-            ])}>
-            {decrementIcon ?? <View style={StyleSheet.flatten([styles.horizontalLine, iconStyle(themeColors)])} />}
+          <View style={[styles.item, styles.stepperOptions, stepperOptionsStyles('DEC', buttonType), decrementButtonStyle]}>
+            {decrementIcon ?? <View style={[styles.horizontalLine, iconStyle(themeColors)]} />}
           </View>
         </TouchableWithoutFeedback>
         <View style={[styles.item]} {...labelWrapperProps}>
@@ -87,8 +83,8 @@ export const QuantityStepper = React.forwardRef<View, QuantityStepperProps>(
             ])}>
             {incrementIcon ?? (
               <React.Fragment>
-                <View style={StyleSheet.flatten([styles.horizontalLine, iconStyle(themeColors)])} />
-                <View style={StyleSheet.flatten([styles.verticalLine, iconStyle(themeColors)])} />
+                <View style={[styles.horizontalLine, iconStyle(themeColors)]} />
+                <View style={[styles.verticalLine, iconStyle(themeColors)]} />
               </React.Fragment>
             )}
           </View>

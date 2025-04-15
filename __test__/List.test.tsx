@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render, waitFor } from './test-utils';
 import { grey, List, ListItem, ListItemText, Text } from '../src';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { BaseStyles } from '../src/libraries/style/styleTypes';
 import { BOTTOM_LARGE_SPACING, BOTTOM_MEDIUM_SPACING, BOTTOM_SMALL_SPACING } from '../src/components/List/constants';
 
@@ -47,7 +47,9 @@ describe('List Component', () => {
     const { getByTestId } = render(<List sx={mockSx} testID={mockListTestId} />);
 
     const list = getByTestId(mockListTestId);
-    expect(list.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red', borderRadius: 10 }));
+    const flattenedStyle = StyleSheet.flatten(list.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
+    expect(flattenedStyle.borderRadius).toEqual(10);
   });
 
   it('should render the sub header if passed the subHeader prop', () => {
@@ -67,7 +69,8 @@ describe('List Component', () => {
     );
 
     const subHeaderContainer = getByTestId(mockSubHeaderContainerTestId);
-    expect(subHeaderContainer.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(subHeaderContainer.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should customize the sub header when passed the subheaderProps', () => {
@@ -76,7 +79,8 @@ describe('List Component', () => {
     );
 
     const subHeader = getByTestId(mockSubHeaderTestId);
-    expect(subHeader.props.style).toEqual(expect.objectContaining({ color: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(subHeader.props.style);
+    expect(flattenedStyle.color).toEqual('red');
   });
 });
 
@@ -121,7 +125,8 @@ describe('ListItem Component', () => {
     );
 
     const listItem = getByTestId(mockListItemContainerTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should render the end adornment correctly', () => {
@@ -142,7 +147,8 @@ describe('ListItem Component', () => {
     const { getByTestId } = render(<ListItem listItemContainerTestId={mockListItemContainerTestId} selected />);
 
     const listItem = getByTestId(mockListItemContainerTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ backgroundColor: grey[100] }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual(grey[100]);
   });
 
   it('should apply the active custom color on the selected item when passed the selected and selectedColor props', () => {
@@ -151,42 +157,48 @@ describe('ListItem Component', () => {
     );
 
     const listItem = getByTestId(mockListItemContainerTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should disable the bottom spacing when passed the disableBottomSpacing prop', () => {
     const { getByTestId } = render(<ListItem disableBottomSpacing listItemContainerTestId={mockListItemContainerTestId} />);
 
     const listItem = getByTestId(mockListItemContainerTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ marginBottom: 'auto' }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.marginBottom).toEqual('auto');
   });
 
   it('should apply the bottom spacing when bottomSpacingType is (small)', () => {
     const { getByTestId } = render(<ListItem bottomSpacingType="small" listItemContainerTestId={mockListItemContainerTestId} />);
 
     const listItem = getByTestId(mockListItemContainerTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ marginBottom: BOTTOM_SMALL_SPACING }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.marginBottom).toEqual(BOTTOM_SMALL_SPACING);
   });
 
   it('should apply the bottom spacing when bottomSpacingType is (medium)', () => {
     const { getByTestId } = render(<ListItem bottomSpacingType="medium" listItemContainerTestId={mockListItemContainerTestId} />);
 
     const listItem = getByTestId(mockListItemContainerTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ marginBottom: BOTTOM_MEDIUM_SPACING }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.marginBottom).toEqual(BOTTOM_MEDIUM_SPACING);
   });
 
   it('should apply the bottom spacing when bottomSpacingType is (large)', () => {
     const { getByTestId } = render(<ListItem bottomSpacingType="large" listItemContainerTestId={mockListItemContainerTestId} />);
 
     const listItem = getByTestId(mockListItemContainerTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ marginBottom: BOTTOM_LARGE_SPACING }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.marginBottom).toEqual(BOTTOM_LARGE_SPACING);
   });
 
   it('should apply the outline when showOutline prop is passed', () => {
     const { getByTestId } = render(<ListItem showOutline listItemContainerTestId={mockListItemContainerTestId} />);
 
     const listItem = getByTestId(mockListItemContainerTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ borderColor: grey[400] }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.borderColor).toEqual(grey[400]);
   });
 
   it('should apply the outline width when outlineWidth prop is passed', () => {
@@ -195,7 +207,9 @@ describe('ListItem Component', () => {
     );
 
     const listItem = getByTestId(mockListItemContainerTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ borderColor: grey[400], borderWidth: 2 }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.borderColor).toEqual(grey[400]);
+    expect(flattenedStyle.borderWidth).toEqual(2);
   });
 
   it('should apply the outline color when outlineColor prop is passed', () => {
@@ -204,21 +218,25 @@ describe('ListItem Component', () => {
     );
 
     const listItem = getByTestId(mockListItemContainerTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ borderWidth: 2, borderColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.borderWidth).toEqual(2);
+    expect(flattenedStyle.borderColor).toEqual('red');
   });
 
   it('should apply the grey color when showDefaultBg prop is passed', () => {
     const { getByTestId } = render(<ListItem showDefaultBg listItemContainerTestId={mockListItemContainerTestId} />);
 
     const listItem = getByTestId(mockListItemContainerTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ backgroundColor: grey[50] }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual(grey[50]);
   });
 
   it('should apply the soft border radius when softRadius prop passed', () => {
     const { getByTestId } = render(<ListItem softRadius listItemContainerTestId={mockListItemContainerTestId} />);
 
     const listItem = getByTestId(mockListItemContainerTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ borderRadius: 10 }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.borderRadius).toEqual(10);
   });
 
   it('should called the onPress function when clicked on the list item', () => {

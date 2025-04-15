@@ -1,6 +1,6 @@
 import { render as testRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Card, CardContent, CardHeader, grey, ThemeProvider } from '../src';
 import { render } from './test-utils';
 
@@ -31,14 +31,17 @@ describe('Card Component', () => {
     const { getByTestId } = render(<Card sx={mockSx} testID={mockCardTestId} />);
 
     const card = getByTestId(mockCardTestId);
-    expect(card.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(card.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should apply the card variant (outlined)', () => {
     const { getByTestId } = render(<Card variation="outlined" testID={mockCardTestId} />);
 
     const card = getByTestId(mockCardTestId);
-    expect(card.props.style).toEqual(expect.objectContaining({ borderWidth: 0.5, borderColor: grey[500] }));
+    const flattenedStyle = StyleSheet.flatten(card.props.style);
+    expect(flattenedStyle.borderWidth).toEqual(0.5);
+    expect(flattenedStyle.borderColor).toEqual(grey[500]);
   });
 
   it('should apply the root style', () => {
@@ -48,7 +51,8 @@ describe('Card Component', () => {
       </ThemeProvider>,
     );
     const card = getByTestId(mockCardTestId);
-    expect(card.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(card.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should combine the root style and component style', () => {
@@ -58,7 +62,9 @@ describe('Card Component', () => {
       </ThemeProvider>,
     );
     const card = getByTestId(mockCardTestId);
-    expect(card.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red', borderWidth: 2 }));
+    const flattenedStyle = StyleSheet.flatten(card.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
+    expect(flattenedStyle.borderWidth).toEqual(2);
   });
 });
 
@@ -89,7 +95,8 @@ describe('CardHeader Component', () => {
     const { getByTestId } = render(<CardHeader sx={mockSx} testID={mockCardHeaderTestId} />);
 
     const cardHeader = getByTestId(mockCardHeaderTestId);
-    expect(cardHeader.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(cardHeader.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should apply the root style', () => {
@@ -99,7 +106,8 @@ describe('CardHeader Component', () => {
       </ThemeProvider>,
     );
     const cardHeader = getByTestId(mockCardHeaderTestId);
-    expect(cardHeader.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(cardHeader.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should combine the root style and component style', () => {
@@ -109,7 +117,9 @@ describe('CardHeader Component', () => {
       </ThemeProvider>,
     );
     const cardHeader = getByTestId(mockCardHeaderTestId);
-    expect(cardHeader.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red', borderWidth: 2 }));
+    const flattenedStyle = StyleSheet.flatten(cardHeader.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
+    expect(flattenedStyle.borderWidth).toEqual(2);
   });
 });
 
@@ -140,6 +150,7 @@ describe('CardContent Component', () => {
     const { getByTestId } = render(<CardContent sx={mockSx} testID={mockCardContentTestId} />);
 
     const cardHeader = getByTestId(mockCardContentTestId);
-    expect(cardHeader.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(cardHeader.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 });

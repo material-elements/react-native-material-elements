@@ -1,6 +1,6 @@
 import React from 'react';
 import { ColorValue, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
-import { BaseStyles } from '../../libraries/style/styleTypes';
+import { BaseStyles, StyledProps } from '../../libraries/style/styleTypes';
 import { Theme } from '../../libraries/themes/v1/theme';
 import { BaseButtonProps } from '../Button/Button.types';
 import { TextProps } from '../Typography/Text.types';
@@ -9,7 +9,7 @@ import { TextProps } from '../Typography/Text.types';
  * Interface for the List component properties, extending the properties of a View component
  * This interface defines the props that can be passed to a List component.
  */
-export interface ListProps extends React.ComponentPropsWithRef<typeof View> {
+export interface ListProps extends React.ComponentPropsWithRef<typeof View>, StyledProps {
   /**
    * Optional custom styles for the List component.
    * This can be used to apply additional styling to the List component.
@@ -51,7 +51,7 @@ export interface ListProps extends React.ComponentPropsWithRef<typeof View> {
  * Interface for the ListItem component properties, extending from BaseButtonProps
  * This interface defines the props that can be passed to a ListItem component.
  */
-export interface ListItemProps extends Omit<BaseButtonProps, 'sx'> {
+export interface ListItemProps extends Omit<BaseButtonProps, 'sx'>, StyledProps {
   /**
    * Optional styles for the container of the ListItem.
    * This can be used to apply additional styling to the ListItem container.

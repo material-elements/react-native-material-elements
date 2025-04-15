@@ -1,6 +1,8 @@
 import React, { useCallback, useMemo } from 'react';
-import { ColorSchemeName, ColorValue, StyleProp, StyleSheet, useColorScheme, View, ViewProps, ViewStyle } from 'react-native';
+import { ColorSchemeName, ColorValue, StyleProp, useColorScheme, View, ViewProps, ViewStyle } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector, useThemeDividerConfigSelector, useThemeSpacingSelector } from '../../libraries';
+import { StyledProps } from '../../libraries/style/styleTypes';
 import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
 import { DefaultVariationOptions, GetVariantArgs, VariantTypes, VariationThemeConfig } from '../../utils';
 import { dividerLineStyles, dividerRootContainerStyles, styles } from './Divider.styles';
@@ -9,7 +11,7 @@ export type DividerColorThemeConfig = {
   colors?: VariationThemeConfig<DefaultVariationOptions>;
 };
 
-export interface DividerProps extends ViewProps {
+export interface DividerProps extends ViewProps, StyledProps {
   /**
    * Styles for the line at the start of the divider.
    */
@@ -118,6 +120,7 @@ export const Divider = React.forwardRef<View, DividerProps>(
     const colorScheme = useColorScheme();
     const hasChild = Boolean(children);
     const dividerThemeConfig = useThemeDividerConfigSelector();
+    const { getStyleFromProps } = useRestyle(props);
 
     const dividerBorderColor = borderColor ?? dividerThemeConfig?.borderColor;
     const dividerGap = gap ?? dividerThemeConfig?.gap;
@@ -154,17 +157,14 @@ export const Divider = React.forwardRef<View, DividerProps>(
     return (
       <View
         ref={ref}
-        style={StyleSheet.flatten([styles.rootContainer, containerStyles, dividerThemeConfig?.style, style])}
+        style={[styles.rootContainer, containerStyles, dividerThemeConfig?.style, getStyleFromProps(), style]}
         {...props}>
         <View
-          style={StyleSheet.flatten([styles.line, lineStyles('start'), dividerThemeConfig?.startLineStyles, startLineStyles])}
+          style={[styles.line, lineStyles('start'), dividerThemeConfig?.startLineStyles, startLineStyles]}
           testID={startLineTestId}
         />
         {children}
-        <View
-          style={StyleSheet.flatten([styles.line, lineStyles('end'), dividerThemeConfig?.endLineStyles, endLineStyles])}
-          testID={endLineTestId}
-        />
+        <View style={[styles.line, lineStyles('end'), dividerThemeConfig?.endLineStyles, endLineStyles]} testID={endLineTestId} />
       </View>
     );
   },

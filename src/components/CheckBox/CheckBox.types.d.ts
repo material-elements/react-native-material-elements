@@ -1,12 +1,13 @@
 import React from 'react';
 import { TextStyle, TouchableWithoutFeedback, ViewProps, ViewStyle } from 'react-native';
+import { StyledProps } from '../../libraries/style/styleTypes';
 import { DefaultVariationOptions, VariantTypes, VariationThemeConfig } from '../../utils';
 
 export type CheckBoxVariationThemeConfig = {
   colors?: VariationThemeConfig<DefaultVariationOptions>;
 };
 
-export interface CheckBoxProps extends React.ComponentPropsWithoutRef<typeof TouchableWithoutFeedback> {
+export interface CheckBoxProps extends React.ComponentPropsWithoutRef<typeof TouchableWithoutFeedback>, StyledProps {
   /**
    * Boolean value indicating whether the checkbox is checked.
    * This is a required prop.

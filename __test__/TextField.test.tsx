@@ -19,6 +19,7 @@ describe('TextField Component', () => {
   const mockOnSubmitEditing = jest.fn();
 
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
   });
 

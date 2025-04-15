@@ -10,6 +10,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeCheckBoxConfigSelector, useThemeColorsSelector } from '../../libraries';
 import { getVariant, merge } from '../../utils';
 import { Text } from '../Typography';
@@ -52,6 +53,7 @@ export const CheckBox = React.forwardRef<View, CheckBoxProps>(
   ) => {
     const themeColors = useThemeColorsSelector();
     const checkBoxThemeConfig = useThemeCheckBoxConfigSelector();
+    const { getStyleFromProps } = useRestyle(props);
 
     const checkBoxColorValue = checkBoxColor ?? checkBoxThemeConfig?.checkBoxColor;
 
@@ -159,14 +161,9 @@ export const CheckBox = React.forwardRef<View, CheckBoxProps>(
     }, [isChecked, variant, themeColors, checkBoxColorValue, themeVariantColors, size]);
 
     return (
-      <View ref={ref} style={StyleSheet.flatten([styles.container, style, { opacity: disabled ? 0.5 : 1 }])} {...containerProps}>
+      <View ref={ref} style={[styles.container, getStyleFromProps(), style, { opacity: disabled ? 0.5 : 1 }]} {...containerProps}>
         {shouldRenderAdornment && renderAdornment()}
-        <View
-          style={StyleSheet.flatten([
-            styles.checkboxContainer,
-            checkBoxThemeConfig?.checkBoxWrapperStyles,
-            checkBoxWrapperStyles,
-          ])}>
+        <View style={[styles.checkboxContainer, checkBoxThemeConfig?.checkBoxWrapperStyles, checkBoxWrapperStyles]}>
           <TouchableWithoutFeedback disabled={disabled} onPress={onPress} {...props}>
             {renderImage()}
           </TouchableWithoutFeedback>

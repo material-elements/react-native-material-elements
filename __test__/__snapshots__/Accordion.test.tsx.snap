@@ -3,12 +3,20 @@
 exports[`Accordion Component should render correctly 1`] = `
 <View
   style={
-    {
-      "backgroundColor": "#EEEEEE",
-      "borderRadius": 8,
-      "opacity": 1,
-      "width": "100%",
-    }
+    [
+      {},
+      {},
+      [
+        {
+          "backgroundColor": "#EEEEEE",
+          "borderRadius": 8,
+          "opacity": 1,
+          "width": "100%",
+        },
+        {},
+        undefined,
+      ],
+    ]
   }
 />
 `;
@@ -35,32 +43,47 @@ exports[`AccordionSummary Component should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-        "padding": 13,
-        "width": "100%",
-      }
+      [
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "padding": 13,
+          "width": "100%",
+        },
+        {},
+        {},
+        undefined,
+      ]
     }
   >
     <View
       style={
-        {
-          "alignContent": "center",
-          "alignItems": "center",
-          "display": "flex",
-          "flexDirection": "row",
-          "width": "90%",
-        }
+        [
+          {
+            "alignContent": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "width": "90%",
+          },
+          undefined,
+        ]
       }
     >
       <View
         style={
-          {
-            "flex": 1,
-          }
+          [
+            {},
+            {},
+            [
+              {
+                "flex": 1,
+              },
+              undefined,
+            ],
+          ]
         }
       />
     </View>
@@ -94,10 +117,15 @@ exports[`AccordionSummary Component should render correctly 1`] = `
   >
     <View
       style={
-        {
-          "height": null,
-          "width": "100%",
-        }
+        [
+          {
+            "width": "100%",
+          },
+          {
+            "height": null,
+          },
+          undefined,
+        ]
       }
     />
   </View>

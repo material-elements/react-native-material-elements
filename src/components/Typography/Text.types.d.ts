@@ -1,6 +1,6 @@
 import React from 'react';
 import { ColorSchemeName, ColorValue, Text } from 'react-native';
-import { BaseStyles, ElementTextStyleProps } from '../../libraries/style/styleTypes';
+import { BaseStyles, ElementTextStyleProps, RNStyle, StyledProps } from '../../libraries/style/styleTypes';
 import { ThemeDimensions, WithThemeComponentConfig } from '../../libraries/themes/v1/theme';
 /**
  * Defines the possible variations for text components.
@@ -15,7 +15,7 @@ export type TextVariationThemeConfig = Partial<Record<TextVariation, TextFontSiz
  * Interface for the properties that can be passed to a text component.
  * Extends TextStyle for text styling and ElementDimensionMap for spacing properties.
  */
-export interface TextProps extends React.ComponentPropsWithRef<typeof Text> {
+export interface TextProps extends React.ComponentPropsWithRef<typeof Text>, StyledProps {
   /**
    * Custom styles to be applied to the text.
    */

@@ -1,8 +1,9 @@
 import React from 'react';
 import { GestureResponderEvent, View, ViewProps, ViewStyle } from 'react-native';
+import { StyledProps } from '../../libraries/style/styleTypes';
 import { TextProps } from '../Typography/Text.types';
 
-export interface QuantityStepperProps extends React.ComponentPropsWithRef<typeof View> {
+export interface QuantityStepperProps extends React.ComponentPropsWithRef<typeof View>, StyledProps {
   /**
    * The current value of the quantity stepper.
    * It should represent the number that is being incremented or decremented.

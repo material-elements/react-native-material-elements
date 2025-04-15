@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleProp, TouchableWithoutFeedback, ViewStyle } from 'react-native';
+import { StyledProps } from '../../libraries/style/styleTypes';
 
 /**
  * Props for the AccordionSummary component.
  */
-export interface AccordionSummaryProps extends React.ComponentPropsWithRef<typeof TouchableWithoutFeedback> {
+export interface AccordionSummaryProps extends React.ComponentPropsWithRef<typeof TouchableWithoutFeedback>, StyledProps {
   /**
    * Icon displayed to indicate expansion state.
    */

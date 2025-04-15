@@ -1,5 +1,6 @@
 import React from 'react';
 import { Animated, TextStyle, View, ViewStyle } from 'react-native';
+import { StyledProps } from '../../libraries/style/styleTypes';
 import { Theme, WithThemeComponentConfig } from '../../libraries/themes/v1/theme';
 import { DefaultVariationOptions, VariantTypes, VariationThemeConfig } from '../../utils';
 import { BoxProps } from '../Box/Box.types';
@@ -26,7 +27,7 @@ export interface AnchorOrigin {
 /**
  * Props for the badge component.
  */
-export interface BadgeProps extends React.ComponentPropsWithRef<typeof View> {
+export interface BadgeProps extends React.ComponentPropsWithRef<typeof View>, StyledProps {
   /**
    * Content to be displayed inside the badge.
    */

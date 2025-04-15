@@ -6,6 +6,7 @@ import { Text } from '../Typography';
 import { badgeContentDefaultStyles, generateBadgeContainerStyles, generateBadgeStyles } from './Badge.styles';
 import { BadgeContainerProps, BadgeProps } from './Badge.types';
 import { BADGE_ANIMATION_DURATION, BADGE_MAX_DEFAULT_VALUE, BADGE_TOP_RIGHT_POSITION } from './constants';
+import { useRestyle } from '../../hooks';
 
 const BadgeContainer = React.forwardRef<View, BadgeContainerProps>(({ children, style, overlap, ...props }, ref) => {
   return (
@@ -41,6 +42,7 @@ export const Badge = React.forwardRef<View, BadgeProps>(
     const themeBadgeConfig = useThemeBadgeConfigSelector();
     const badgeVisibility = useRef(new Animated.Value(0)).current;
     const themeColors = useThemeColorsSelector();
+    const { getStyleFromProps } = useRestyle(props);
 
     const animationDuration = badgeAnimationDuration ?? themeBadgeConfig?.badgeAnimationDuration;
 
@@ -124,11 +126,11 @@ export const Badge = React.forwardRef<View, BadgeProps>(
     }, [invisible, badgeContent]);
 
     return (
-      <View style={StyleSheet.flatten([styles.container, containerStyles])} ref={ref}>
+      <View style={[styles.container, containerStyles]} ref={ref}>
         <BadgeContainer overlap={overlap} {...badgeContainerProps}>
           {children}
         </BadgeContainer>
-        <Animated.View style={StyleSheet.flatten([styles.badge, badgeStyles, themeBadgeConfig?.style, style])} {...props}>
+        <Animated.View style={[styles.badge, badgeStyles, themeBadgeConfig?.style, getStyleFromProps(), style]} {...props}>
           {renderBadgeContent(badgeContent)}
         </Animated.View>
       </View>

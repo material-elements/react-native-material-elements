@@ -3,11 +3,16 @@
 exports[`Radio Component should render correctly 1`] = `
 <View
   style={
-    {
-      "display": "flex",
-      "flexDirection": "row",
-      "width": "100%",
-    }
+    [
+      {
+        "display": "flex",
+        "flexDirection": "row",
+        "width": "100%",
+      },
+      undefined,
+      {},
+      undefined,
+    ]
   }
 >
   <View
@@ -21,9 +26,11 @@ exports[`Radio Component should render correctly 1`] = `
   >
     <View
       style={
-        {
-          "alignSelf": "flex-start",
-        }
+        [
+          {},
+          {},
+          undefined,
+        ]
       }
     >
       <View

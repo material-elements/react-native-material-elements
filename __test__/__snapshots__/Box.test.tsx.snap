@@ -3,12 +3,16 @@
 exports[`Box Component should match the snapshot 1`] = `
 <View
   style={
-    {
-      "backgroundColor": "red",
-      "borderRadius": 10,
-      "height": 20,
-      "width": 20,
-    }
+    [
+      {
+        "backgroundColor": "red",
+        "borderRadius": 10,
+        "height": 20,
+        "width": 20,
+      },
+      {},
+      undefined,
+    ]
   }
 />
 `;
@@ -16,10 +20,14 @@ exports[`Box Component should match the snapshot 1`] = `
 exports[`Box Component should match the snapshot with custom styles 1`] = `
 <View
   style={
-    {
-      "backgroundColor": "blue",
-      "padding": 20,
-    }
+    [
+      {},
+      {},
+      {
+        "backgroundColor": "blue",
+        "padding": 20,
+      },
+    ]
   }
 >
   <View />
@@ -29,11 +37,15 @@ exports[`Box Component should match the snapshot with custom styles 1`] = `
 exports[`Box Component should match the snapshot with sx styles 1`] = `
 <View
   style={
-    {
-      "backgroundColor": "red",
-      "borderRadius": 5,
-      "padding": 10,
-    }
+    [
+      {
+        "backgroundColor": "red",
+        "borderRadius": 5,
+        "padding": 10,
+      },
+      {},
+      undefined,
+    ]
   }
 >
   <View />

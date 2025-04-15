@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, waitFor } from './test-utils';
 import { Accordion, AccordionSummary, Text } from '../src';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 describe('Accordion Component', () => {
   const mockAccordionTestId = 'accordion-test-id';
@@ -36,7 +36,21 @@ describe('Accordion Component', () => {
     const { getByTestId } = render(<Accordion testID={mockAccordionTestId} disable />);
 
     const accordion = getByTestId(mockAccordionTestId);
-    expect(accordion.props.style).toEqual(expect.objectContaining({ opacity: 0.5 }));
+    const flattenedStyle = StyleSheet.flatten(accordion.props.style);
+
+    expect(flattenedStyle.opacity).toEqual(0.5);
+  });
+
+  it('should add the inline styles correctly', () => {
+    const { getByTestId } = render(
+      <Accordion testID={mockAccordionTestId} display="flex" justifyContent="center" flex={1} alignItems="center" />,
+    );
+    const accordion = getByTestId(mockAccordionTestId);
+    const flattenedStyle = StyleSheet.flatten(accordion.props.style);
+    expect(flattenedStyle.display).toEqual('flex');
+    expect(flattenedStyle.justifyContent).toEqual('center');
+    expect(flattenedStyle.flex).toEqual(1);
+    expect(flattenedStyle.alignItems).toEqual('center');
   });
 });
 

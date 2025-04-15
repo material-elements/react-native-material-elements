@@ -4,11 +4,11 @@ import {
   Easing,
   GestureResponderEvent,
   LayoutChangeEvent,
-  StyleSheet,
   TouchableWithoutFeedback,
   View,
   ViewStyle,
 } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector } from '../../libraries';
 import { Box } from '../Box';
 import { accordionSummaryStyles } from './Accordion.style';
@@ -56,6 +56,8 @@ export const AccordionSummary = React.forwardRef<View, AccordionSummaryProps>(
     const [measuredHeight, setMeasuredHeight] = useState<number | null>(null);
     const accordionContentRef = useRef<View>(null);
     const themeColor = useThemeColorsSelector();
+
+    const { getStyleFromProps } = useRestyle(props);
 
     const summaryWrapperStyles = useMemo(() => {
       let styles: ViewStyle = {};
@@ -143,39 +145,33 @@ export const AccordionSummary = React.forwardRef<View, AccordionSummaryProps>(
       <View ref={ref}>
         <TouchableWithoutFeedback onPress={onPress} disabled={disabled} {...props}>
           <View
-            style={StyleSheet.flatten([accordionSummaryStyles.accordionSummaryWrapperContainer, summaryWrapperStyles, style])}>
-            <View style={StyleSheet.flatten([accordionSummaryStyles.accordionSummaryChildWrapper, summaryChildWrapperStyles])}>
+            style={[accordionSummaryStyles.accordionSummaryWrapperContainer, summaryWrapperStyles, getStyleFromProps(), style]}>
+            <View style={[accordionSummaryStyles.accordionSummaryChildWrapper, summaryChildWrapperStyles]}>
               {startAdornment && (
-                <View style={StyleSheet.flatten([accordionSummaryStyles.startAdornmentContainer, startAdornmentContainerStyle])}>
+                <View style={[accordionSummaryStyles.startAdornmentContainer, startAdornmentContainerStyle]}>
                   {startAdornment}
                 </View>
               )}
-              <Box style={StyleSheet.flatten([accordionSummaryStyles.accordionSummaryChildrenWrapper, childrenWrapperStyles])}>
-                {children}
-              </Box>
+              <Box style={[accordionSummaryStyles.accordionSummaryChildrenWrapper, childrenWrapperStyles]}>{children}</Box>
             </View>
             <Animated.View
-              style={StyleSheet.flatten([
+              style={[
                 accordionSummaryStyles.accordionSummaryExpandIconWrapper,
                 { transform: [{ rotate: rotateInterpolate }] },
                 expandIconWrapperStyles,
-              ])}>
+              ]}>
               {expandIcon}
             </Animated.View>
           </View>
         </TouchableWithoutFeedback>
         <Animated.View
-          style={StyleSheet.flatten([
+          style={[
             { height: heightValue, opacity: accordionDetailsOpacityValue },
             accordionSummaryStyles.accordionDetailsContainer,
-          ])}>
+          ]}>
           <View
             ref={accordionContentRef}
-            style={StyleSheet.flatten([
-              accordionSummaryStyles.accordionDetailsWrapper,
-              { height: measuredHeight },
-              accordionWrapperStyles,
-            ])}>
+            style={[accordionSummaryStyles.accordionDetailsWrapper, { height: measuredHeight }, accordionWrapperStyles]}>
             {accordionDetails}
           </View>
         </Animated.View>

@@ -1,11 +1,15 @@
 import React, { useMemo } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
+import { StyledProps } from '../../libraries/style/styleTypes';
+import { useRestyle } from '../../hooks';
 
-export interface AccordionDetailsProps extends React.ComponentPropsWithRef<typeof View> {
+export interface AccordionDetailsProps extends React.ComponentPropsWithRef<typeof View>, StyledProps {
   disable?: boolean;
 }
 
 export const AccordionDetails = React.forwardRef<View, AccordionDetailsProps>(({ style, disable, children, ...props }, ref) => {
+  const { getStyleFromProps } = useRestyle(props);
+
   const accordionStyle: ViewStyle = useMemo(
     () => ({
       width: '100%',
@@ -18,7 +22,7 @@ export const AccordionDetails = React.forwardRef<View, AccordionDetailsProps>(({
   );
 
   return (
-    <View style={StyleSheet.flatten([accordionStyle, style])} {...props} ref={ref}>
+    <View style={[accordionStyle, getStyleFromProps(), style]} {...props} ref={ref}>
       {React.Children.map(children, child =>
         React.isValidElement(child) ? React.cloneElement<any>(child, { disabled: disable }) : child,
       )}

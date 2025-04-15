@@ -1,7 +1,7 @@
 {
   "name": "react-native-material-elements",
   "description": "React native material elements is a sophisticated UI library crafted to enhance your React Native development workflow. Designed for simplicity and elegance, nex-ui provides a rich collection of components and utilities to effortlessly create polished mobile applications.",
-  "version": "1.1.18",
+  "version": "1.1.19",
   "private": false,
   "repository": {
     "type": "git",
@@ -21,9 +21,9 @@
     "test": "jest"
   },
   "peerDependencies": {
+    "lodash": "*",
     "react": "*",
     "react-native": "*",
-    "lodash": "*",
     "use-context-selector": "*"
   },
   "keywords": [
@@ -68,8 +68,10 @@
     "@react-native/eslint-config": "0.74.81",
     "@react-native/metro-config": "0.74.81",
     "@react-native/typescript-config": "0.74.81",
+    "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/react-native": "^12.5.0",
     "@types/jest": "^29.5.12",
+    "@types/lodash": "*",
     "@types/react": "^18.2.6",
     "@types/react-native-material-ripple": "^0.9.6",
     "@types/react-test-renderer": "^18.0.0",
@@ -79,8 +81,7 @@
     "prettier": "2.8.8",
     "react-native-builder-bob": "^0.23.2",
     "react-test-renderer": "18.2.0",
-    "typescript": "5.0.4",
-    "@types/lodash": "*"
+    "typescript": "5.0.4"
   },
   "engines": {
     "node": ">=18"

@@ -3,31 +3,50 @@
 exports[`Divider Component should render correctly 1`] = `
 <View
   style={
-    {
-      "alignItems": "center",
-      "display": "flex",
-      "flexDirection": "row",
-      "gap": 0,
-      "paddingVertical": 2,
-    }
+    [
+      {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+      },
+      {
+        "gap": 0,
+        "paddingVertical": 2,
+      },
+      undefined,
+      {},
+      undefined,
+    ]
   }
 >
   <View
     style={
-      {
-        "borderColor": "#BDBDBD",
-        "borderWidth": 0.4,
-        "flex": 1,
-      }
+      [
+        {
+          "borderWidth": 0.4,
+        },
+        {
+          "borderColor": "#BDBDBD",
+          "flex": 1,
+        },
+        undefined,
+        undefined,
+      ]
     }
   />
   <View
     style={
-      {
-        "borderColor": "#BDBDBD",
-        "borderWidth": 0.4,
-        "flex": 1,
-      }
+      [
+        {
+          "borderWidth": 0.4,
+        },
+        {
+          "borderColor": "#BDBDBD",
+          "flex": 1,
+        },
+        undefined,
+        undefined,
+      ]
     }
   />
 </View>
@@ -36,22 +55,35 @@ exports[`Divider Component should render correctly 1`] = `
 exports[`Divider Component should render the children correctly 1`] = `
 <View
   style={
-    {
-      "alignItems": "center",
-      "display": "flex",
-      "flexDirection": "row",
-      "gap": 10,
-      "paddingVertical": 2,
-    }
+    [
+      {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+      },
+      {
+        "gap": 10,
+        "paddingVertical": 2,
+      },
+      undefined,
+      {},
+      undefined,
+    ]
   }
 >
   <View
     style={
-      {
-        "borderColor": "#BDBDBD",
-        "borderWidth": 0.4,
-        "flex": 1,
-      }
+      [
+        {
+          "borderWidth": 0.4,
+        },
+        {
+          "borderColor": "#BDBDBD",
+          "flex": 1,
+        },
+        undefined,
+        undefined,
+      ]
     }
   />
   <Text
@@ -62,11 +94,17 @@ exports[`Divider Component should render the children correctly 1`] = `
   </Text>
   <View
     style={
-      {
-        "borderColor": "#BDBDBD",
-        "borderWidth": 0.4,
-        "flex": 1,
-      }
+      [
+        {
+          "borderWidth": 0.4,
+        },
+        {
+          "borderColor": "#BDBDBD",
+          "flex": 1,
+        },
+        undefined,
+        undefined,
+      ]
     }
   />
 </View>

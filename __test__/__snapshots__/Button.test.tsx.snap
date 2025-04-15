@@ -3,16 +3,20 @@
 exports[`Button should render correctly 1`] = `
 <View
   style={
-    {
-      "alignSelf": "flex-start",
-    }
+    [
+      {},
+      {},
+      {},
+    ]
   }
 >
   <View
     style={
-      {
-        "alignSelf": "flex-start",
-      }
+      [
+        {},
+        {},
+        undefined,
+      ]
     }
   >
     <View
@@ -101,16 +105,20 @@ exports[`Button should render correctly 1`] = `
 exports[`Button should render correctly with inner component 1`] = `
 <View
   style={
-    {
-      "alignSelf": "flex-start",
-    }
+    [
+      {},
+      {},
+      {},
+    ]
   }
 >
   <View
     style={
-      {
-        "alignSelf": "flex-start",
-      }
+      [
+        {},
+        {},
+        undefined,
+      ]
     }
   >
     <View

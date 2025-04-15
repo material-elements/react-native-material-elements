@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ViewStyle } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import { Box, Text } from '../src';
 import { BaseStyles } from '../src/libraries/style/styleTypes';
 import { render, waitFor } from './test-utils';
@@ -49,19 +49,26 @@ describe('Box Component', () => {
   });
 
   it('should apply the custom styles when style prop is passed', () => {
-    const styles: ViewStyle = { backgroundColor: 'red', borderRadius: 10, margin: 10, padding: 20 };
-    const { getByTestId } = render(<Box testID={mockTestId} style={styles} />);
+    const { getByTestId } = render(
+      <Box testID={mockTestId} style={{ backgroundColor: 'red', borderRadius: 10, margin: 10, padding: 20 }} />,
+    );
     const box = getByTestId(mockTestId);
-    expect(box.props.style).toEqual(expect.objectContaining(styles));
+    const flattenedStyle = StyleSheet.flatten(box.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
+    expect(flattenedStyle.borderRadius).toEqual(10);
+    expect(flattenedStyle.margin).toEqual(10);
+    expect(flattenedStyle.padding).toEqual(20);
   });
 
   it('should apply the sx styles when sx prop is passed', () => {
     const sx: BaseStyles = { bg: 'red', r: 10, m: 10, p: 20 };
     const { getByTestId } = render(<Box testID={mockTestId} sx={sx} />);
     const box = getByTestId(mockTestId);
-    expect(box.props.style).toEqual(
-      expect.objectContaining({ backgroundColor: 'red', borderRadius: 10, margin: 10, padding: 20 }),
-    );
+    const flattenedStyle = StyleSheet.flatten(box.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
+    expect(flattenedStyle.borderRadius).toEqual(10);
+    expect(flattenedStyle.margin).toEqual(10);
+    expect(flattenedStyle.padding).toEqual(20);
   });
 
   it('should combine the sx and styles props correctly', () => {
@@ -70,10 +77,11 @@ describe('Box Component', () => {
 
     const { getByTestId } = render(<Box testID={mockTestId} sx={mockSx} style={mockStyles} />);
     const box = getByTestId(mockTestId);
-
-    expect(box.props.style).toEqual(
-      expect.objectContaining({ backgroundColor: 'pink', borderRadius: 30, margin: 10, padding: 20 }),
-    );
+    const flattenedStyle = StyleSheet.flatten(box.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('pink');
+    expect(flattenedStyle.borderRadius).toEqual(30);
+    expect(flattenedStyle.margin).toEqual(10);
+    expect(flattenedStyle.padding).toEqual(20);
   });
 
   it('renders children correctly', () => {
@@ -99,6 +107,28 @@ describe('Box Component', () => {
   it('should position child elements correctly', () => {
     const { getByTestId } = render(<Box testID={mockTestId} style={{ flexDirection: 'row', display: 'flex' }} />);
     const box = getByTestId(mockTestId);
-    expect(box.props.style).toEqual(expect.objectContaining({ flexDirection: 'row', display: 'flex' }));
+    const flattenedStyle = StyleSheet.flatten(box.props.style);
+    expect(flattenedStyle.flexDirection).toEqual('row');
+    expect(flattenedStyle.display).toEqual('flex');
+  });
+
+  it('should add the inline styles correctly', () => {
+    const { getByTestId } = render(<Box testID={mockTestId} display="flex" flexDirection="row" />);
+    const box = getByTestId(mockTestId);
+    const flattenedStyle = StyleSheet.flatten(box.props.style);
+    expect(flattenedStyle.flexDirection).toEqual('row');
+    expect(flattenedStyle.display).toEqual('flex');
+  });
+
+  it('should add the flex inline styles correctly', () => {
+    const { getByTestId } = render(
+      <Box testID={mockTestId} display="flex" flexDirection="row" justifyContent="center" alignItems="center" />,
+    );
+    const box = getByTestId(mockTestId);
+    const flattenedStyle = StyleSheet.flatten(box.props.style);
+    expect(flattenedStyle.flexDirection).toEqual('row');
+    expect(flattenedStyle.display).toEqual('flex');
+    expect(flattenedStyle.justifyContent).toEqual('center');
+    expect(flattenedStyle.alignItems).toEqual('center');
   });
 });

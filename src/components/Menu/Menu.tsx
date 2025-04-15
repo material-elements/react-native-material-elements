@@ -11,11 +11,13 @@ import {
   ViewStyle,
 } from 'react-native';
 import { useThemeColorsSelector } from '../../libraries';
+import { StyledProps } from '../../libraries/style/styleTypes';
 import { Theme } from '../../libraries/themes/types';
 import { MeasureElementRect, PortalProps } from '../../types';
 import { screenHeight, screenWidth } from '../../utils';
 import { Portal } from '../Portal';
 import { menuContainerStyle, styles } from './Menu.styles';
+import { useRestyle } from '../../hooks';
 
 export type MenuProps = ViewProps & {
   /** Controls whether the menu is open or closed */
@@ -55,7 +57,7 @@ export type MenuProps = ViewProps & {
   portalTestId?: string;
 
   portalProps?: PortalProps;
-};
+} & StyledProps;
 
 export type MenuContainerStyle = Pick<MenuProps, 'borderColor' | 'width' | 'height' | 'backgroundColor' | 'fullWidth'> & {
   theme: Theme;
@@ -88,6 +90,7 @@ export const Menu = React.forwardRef<View, MenuProps>(
   ) => {
     const [menuRect, setMenuRect] = useState<LayoutRectangle | null>(null);
     const themeColors = useThemeColorsSelector();
+    const { getStyleFromProps } = useRestyle(props);
 
     const calculateXPosition = useMemo(() => {
       if (menuRect && anchorEl) {
@@ -130,12 +133,13 @@ export const Menu = React.forwardRef<View, MenuProps>(
         testID={portalTestId}
         {...portalProps}>
         <Animated.View
-          style={StyleSheet.flatten([
+          style={[
             styles.menuContainer,
             animatedStyles,
             menuContainerStyle({ theme: themeColors, width, height, backgroundColor, fullWidth }),
+            getStyleFromProps(),
             style,
-          ])}
+          ]}
           ref={ref}
           onLayout={menuViewOnLayout}
           {...props}>

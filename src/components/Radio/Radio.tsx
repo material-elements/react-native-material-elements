@@ -9,7 +9,9 @@ import {
   ViewProps,
   ViewStyle,
 } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector, useThemeRadioConfigSelector } from '../../libraries';
+import { StyledProps } from '../../libraries/style/styleTypes';
 import { DefaultVariationOptions, getVariant, VariantTypes, VariationThemeConfig } from '../../utils';
 import { BaseButton } from '../Button';
 import { Divider, DividerProps } from '../Divider';
@@ -66,7 +68,7 @@ export interface RadioCircleProps extends ViewProps, BaseInterface {
   variant?: VariantTypes;
 }
 
-export interface RadioProps extends ViewProps, BaseInterface {
+export interface RadioProps extends ViewProps, BaseInterface, StyledProps {
   /**
    * Variant type for customizing the appearance of the radio button
    */
@@ -169,6 +171,7 @@ export const Radio = React.forwardRef<View, RadioProps>(
     ref,
   ) => {
     const radioThemeConfig = useThemeRadioConfigSelector();
+    const { getStyleFromProps } = useRestyle(props);
 
     const { sizeConfig: themeSizeConfig = sizeConfig } = radioThemeConfig || {};
 
@@ -239,7 +242,7 @@ export const Radio = React.forwardRef<View, RadioProps>(
     }, [showDivider, dividerProps]);
 
     return (
-      <View ref={ref} style={StyleSheet.flatten([styles.radioRootContainer, radioThemeConfig?.style, style])} {...props}>
+      <View ref={ref} style={[styles.radioRootContainer, radioThemeConfig?.style, getStyleFromProps(), style]} {...props}>
         {adornmentType === 'start' && (
           <React.Fragment>
             {renderAdornment()}
@@ -251,17 +254,12 @@ export const Radio = React.forwardRef<View, RadioProps>(
             onPress={radioOnPressHandler}
             disabled={disabled}
             disableRipple={true}
-            style={StyleSheet.flatten([styles.baseButton, radioThemeConfig?.baseButtonStyles, baseButtonStyles])}
+            style={[styles.baseButton, radioThemeConfig?.baseButtonStyles, baseButtonStyles]}
             disableScaleAnimation={true}
             testID={radioBaseButtonTestId}>
             <RadioOutline isActive={isActive} animationDuration={animationDuration}>
               {radioItem ? (
-                <View
-                  style={StyleSheet.flatten([
-                    styles.radioItemContainer,
-                    radioThemeConfig?.radioItemContainerStyles,
-                    radioItemContainerStyles,
-                  ])}>
+                <View style={[styles.radioItemContainer, radioThemeConfig?.radioItemContainerStyles, radioItemContainerStyles]}>
                   {isActive ? radioItem : null}
                 </View>
               ) : (
@@ -307,7 +305,7 @@ const RadioOutline: React.FC<RadioOutlineProps> = ({ style, isActive, children, 
   });
 
   return (
-    <Animated.View style={StyleSheet.flatten([styles.radioOutline, { borderColor: borderColorInterpolation }, style])} {...props}>
+    <Animated.View style={[styles.radioOutline, { borderColor: borderColorInterpolation }, style]} {...props}>
       {children}
     </Animated.View>
   );
@@ -383,12 +381,12 @@ const RadioCircle: React.FC<RadioCircleProps> = ({
 
   return (
     <Animated.View
-      style={StyleSheet.flatten([
+      style={[
         styles.radioCircle,
         animatedStyle,
         { backgroundColor: backgroundColorInterpolation, width: getSize, height: getSize },
         style,
-      ])}
+      ]}
       {...props}
     />
   );
