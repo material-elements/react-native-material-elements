@@ -111,4 +111,24 @@ describe('Box Component', () => {
     expect(flattenedStyle.flexDirection).toEqual('row');
     expect(flattenedStyle.display).toEqual('flex');
   });
+
+  it('should add the inline styles correctly', () => {
+    const { getByTestId } = render(<Box testID={mockTestId} display="flex" flexDirection="row" />);
+    const box = getByTestId(mockTestId);
+    const flattenedStyle = StyleSheet.flatten(box.props.style);
+    expect(flattenedStyle.flexDirection).toEqual('row');
+    expect(flattenedStyle.display).toEqual('flex');
+  });
+
+  it('should add the flex inline styles correctly', () => {
+    const { getByTestId } = render(
+      <Box testID={mockTestId} display="flex" flexDirection="row" justifyContent="center" alignItems="center" />,
+    );
+    const box = getByTestId(mockTestId);
+    const flattenedStyle = StyleSheet.flatten(box.props.style);
+    expect(flattenedStyle.flexDirection).toEqual('row');
+    expect(flattenedStyle.display).toEqual('flex');
+    expect(flattenedStyle.justifyContent).toEqual('center');
+    expect(flattenedStyle.alignItems).toEqual('center');
+  });
 });

@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector } from '../../libraries';
 import { Box } from '../Box';
 import { BoxProps } from '../Box/Box.types';
 import { accordionWrapperStyles } from './Accordion.style';
-import { useRestyle } from '../../hooks';
 
 export interface AccordionProps extends BoxProps {
   square?: boolean;

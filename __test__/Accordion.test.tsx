@@ -40,6 +40,18 @@ describe('Accordion Component', () => {
 
     expect(flattenedStyle.opacity).toEqual(0.5);
   });
+
+  it('should add the inline styles correctly', () => {
+    const { getByTestId } = render(
+      <Accordion testID={mockAccordionTestId} display="flex" justifyContent="center" flex={1} alignItems="center" />,
+    );
+    const accordion = getByTestId(mockAccordionTestId);
+    const flattenedStyle = StyleSheet.flatten(accordion.props.style);
+    expect(flattenedStyle.display).toEqual('flex');
+    expect(flattenedStyle.justifyContent).toEqual('center');
+    expect(flattenedStyle.flex).toEqual(1);
+    expect(flattenedStyle.alignItems).toEqual('center');
+  });
 });
 
 describe('AccordionSummary Component', () => {
