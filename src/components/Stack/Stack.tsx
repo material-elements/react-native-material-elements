@@ -3,8 +3,9 @@ import { StyleSheet, View } from 'react-native';
 import { Box } from '../Box';
 import { BoxProps } from '../types';
 import { getStackInnerContainerStyles } from './utils';
+import { useRestyle } from '../../hooks';
 
-export interface StackProps extends Omit<BoxProps, 'animatedView'> {
+export interface StackProps extends Omit<BoxProps, 'animatedView' | 'direction'> {
   /**
    * Space (in pixels or design units) between each child element in the stack.
    * This controls the visual gap between stacked items.
@@ -64,7 +65,7 @@ export const Stack = React.forwardRef<View, StackProps>(
         ref={ref}
         sx={sx}
         key={`stack-${stackKey}-${direction}`}
-        style={StyleSheet.flatten([styles.stackContainer, isRowStack && styles.stackRowContainer, style])}
+        style={[styles.stackContainer, isRowStack && styles.stackRowContainer, style]}
         {...props}>
         {renderChild()}
       </Box>

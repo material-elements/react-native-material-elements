@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, ViewStyle } from 'react-native';
-import { BaseStyles } from '../../libraries/style/styleTypes';
+import { BaseStyles, StyledProps } from '../../libraries/style/styleTypes';
 
-export interface BoxProps extends React.ComponentPropsWithRef<typeof View> {
+export interface BoxProps extends React.ComponentPropsWithRef<typeof View>, StyledProps {
   /**
    * Custom styles to apply to the Box component.
    */
@@ -22,7 +22,7 @@ export interface BoxProps extends React.ComponentPropsWithRef<typeof View> {
  * Defines the possible values for the maximum width of the Container component.
  */
 export type ContainerMaxWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-export interface ContainerProps extends React.ComponentPropsWithRef<typeof View> {
+export interface ContainerProps extends React.ComponentPropsWithRef<typeof View>, StyledProps {
   /**
    * Custom styles to apply to the Container component.
    */

@@ -2,12 +2,14 @@ import _ from 'lodash';
 import React, { useCallback } from 'react';
 import { View, ViewProps, ViewStyle } from 'react-native';
 import { grey, useThemeButtonGroupConfigSelector, useThemeColorsSelector } from '../../libraries';
+import { StyledProps } from '../../libraries/style/styleTypes';
 import { getVariant, VariantTypes } from '../../utils';
 import { Box } from '../Box';
 import { styles } from './Button.styles';
 import { ButtonProps, ButtonVariations } from './Button.types';
+import { useRestyle } from '../../hooks';
 
-export interface ButtonGroupProps extends ViewProps, Pick<ButtonProps, 'disableRipple' | 'baseButtonStyles' | 'sx'> {
+export interface ButtonGroupProps extends ViewProps, Pick<ButtonProps, 'disableRipple' | 'baseButtonStyles' | 'sx'>, StyledProps {
   /** The size of the rounded corners for the buttons. */
   roundSize?: number;
   /** The width of the border around each button. */
@@ -54,6 +56,7 @@ export const ButtonGroup = React.forwardRef<View, ButtonGroupProps>(
     const isOutlinedButton = variation === 'outlined';
     const isTextButton = variation === 'text';
 
+    const { getStyleFromProps } = useRestyle(props);
     const themeColors = useThemeColorsSelector();
     const themeButtonGroupConfig = useThemeButtonGroupConfigSelector();
 
@@ -140,7 +143,11 @@ export const ButtonGroup = React.forwardRef<View, ButtonGroupProps>(
     ]);
 
     return (
-      <Box style={[styles.buttonGroupContainer, themeButtonGroupConfig?.style, style]} sx={sx} {...props} ref={ref}>
+      <Box
+        style={(styles.buttonGroupContainer, themeButtonGroupConfig?.style, getStyleFromProps(), style)}
+        sx={sx}
+        {...props}
+        ref={ref}>
         {renderElements()}
       </Box>
     );

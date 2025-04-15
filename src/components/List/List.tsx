@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeListConfigSelector } from '../../libraries';
 import { Box } from '../Box';
 import { Text } from '../Typography';
@@ -21,20 +22,17 @@ export const List = React.forwardRef<View, ListProps>(
     },
     ref,
   ) => {
+    const { getStyleFromProps } = useRestyle(props);
     const listThemeConfig = useThemeListConfigSelector();
     const listDisablePadding = disablePadding ?? listThemeConfig?.disablePadding;
 
     const listContainerStyles = useMemo(() => listStyles({ disablePadding: listDisablePadding }), [listDisablePadding]);
 
     return (
-      <Box sx={sx} style={StyleSheet.flatten([listContainerStyles, listThemeConfig?.style, style])} ref={ref} {...props}>
+      <Box sx={sx} style={[listContainerStyles, listThemeConfig?.style, getStyleFromProps(), style]} ref={ref} {...props}>
         {subheader && (
           <Box
-            style={StyleSheet.flatten([
-              styles.headerContainer,
-              listThemeConfig?.subheaderContainerStyles,
-              subheaderContainerStyles,
-            ])}
+            style={[styles.headerContainer, listThemeConfig?.subheaderContainerStyles, subheaderContainerStyles]}
             testID={subHeaderContainerTestId}>
             <Text variation="h4" {...subheaderProps}>
               {subheader}

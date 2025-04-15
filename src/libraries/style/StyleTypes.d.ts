@@ -1,5 +1,6 @@
 import {
   AnimatableNumericValue,
+  ColorValue,
   DimensionValue,
   FlexStyle,
   ImageStyle,
@@ -19,7 +20,6 @@ import {
  * 'pb': Padding on the bottom side
  */
 export type ElementPadding = 'p' | 'px' | 'py' | 'ps' | 'pe' | 'pt' | 'pb';
-
 /**
  * Defines the types of margin that can be applied to an element.
  * 'm': Margin on all sides
@@ -31,7 +31,6 @@ export type ElementPadding = 'p' | 'px' | 'py' | 'ps' | 'pe' | 'pt' | 'pb';
  * 'mb': Margin on the bottom side
  */
 export type ElementMargin = 'm' | 'mx' | 'my' | 'ms' | 'me' | 'mt' | 'mb';
-
 /**
  * Defines the types of dimension-related properties commonly used in React Native styling.
  * 'w': Sets the width of an element.
@@ -42,7 +41,6 @@ export type ElementMargin = 'm' | 'mx' | 'my' | 'ms' | 'me' | 'mt' | 'mb';
  * 'maxH': Sets the maximum height of an element.
  */
 export type ElementDimension = 'w' | 'h' | 'minW' | 'minH' | 'maxW' | 'maxH';
-
 /**
  * Represents a mapping of padding and margin types to their corresponding ELementDimensionMap.
  * Each key in the ELementDimensionMap represents either a padding type or a margin type,
@@ -51,7 +49,6 @@ export type ElementDimension = 'w' | 'h' | 'minW' | 'minH' | 'maxW' | 'maxH';
 export type ELementDimensionMap<T> = {
   [key in T]?: DimensionValue;
 };
-
 /**
  * Defines the types of position-related properties commonly used in React Native styling.
  * 'pos': Sets the positioning method used for an element.
@@ -70,7 +67,6 @@ export type ElementPositionMap = {
 } & PositionType;
 export interface PositionStyles extends Pick<FlexStyle, 'position' | 'right' | 'left' | 'top' | 'bottom'> {}
 export type KeyOfPositionStyles = keyof PositionStyles;
-
 /**
  * Type alias for element border radius properties.
  * Abbreviations:
@@ -102,7 +98,6 @@ export type ElementBorderRadius =
   | 'rss'
   | 'rrb'
   | 'rsb';
-
 /**
  * Mapping of element border radius keys to their respective animatable numeric values.
  */
@@ -242,3 +237,25 @@ export interface ElementBorderColorStyles
     ViewStyle,
     'borderBlockColor' | 'borderBlockEndColor' | 'borderBlockStartColor' | 'borderBottomColor' | 'borderColor'
   > {}
+/**
+ * A combined type that includes all style properties from View, Text, and Image components.
+ * This is useful for creating a unified style type that works across various components.
+ */
+export type RNStyle = ViewStyle & TextStyle & ImageStyle;
+/**
+ * A union type representing primitive or common values used in React Native styles.
+ * This includes strings, numbers, dimension values (like '100%' or numbers), color values, and undefined.
+ */
+type StyleLike = string | number | DimensionValue | ColorValue | undefined;
+/**
+ * Filters the keys of a type `T`, keeping only those properties whose value types extend from `StyleLike`.
+ * Essentially, it picks style-related properties (e.g., color, padding, margin) and excludes nested objects or complex values.
+ */
+type FilterStyleProps<T> = {
+  [K in keyof T as T[K] extends StyleLike ? K : never]: T[K];
+};
+/**
+ * A utility type that extracts only the directly usable style properties from `RNStyle`.
+ * This helps enforce clean and flat style props that can be applied directly to components.
+ */
+export type StyledProps = FilterStyleProps<RNStyle>;

@@ -4,6 +4,7 @@ import { Box } from '../Box';
 import { Text } from '../Typography';
 import { listItemTextStyles, styles } from './List.style';
 import { ListItemTextProps } from './List.types';
+import { useRestyle } from '../../hooks';
 
 export const ListItemText = React.forwardRef<View, ListItemTextProps>(
   (
@@ -27,9 +28,10 @@ export const ListItemText = React.forwardRef<View, ListItemTextProps>(
       () => listItemTextStyles({ disablePadding, alignItems, disableLeftPadding }),
       [disablePadding, alignItems, disableLeftPadding],
     );
+    const { getStyleFromProps } = useRestyle(props);
 
     return (
-      <Box ref={ref} style={[styles.listItemText, listItemGeneratedStyles, style]} {...props}>
+      <Box ref={ref} style={[styles.listItemText, listItemGeneratedStyles, getStyleFromProps(), style]} {...props}>
         {primary && (
           <Text variation="h3" style={primaryLabelStyles} {...primaryLabelProps}>
             {primary}

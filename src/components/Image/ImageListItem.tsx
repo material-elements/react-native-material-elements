@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { Box } from '../Box';
 import { DEFAULT_ITEM_BOTTOM_SPACE, DEFAULT_ITEM_SPACING, DEFAULT_ITEMS } from './constants';
 import { generateImageListItemStyles } from './Image.styles';
@@ -24,6 +25,8 @@ export const ImageListItem = React.forwardRef<View, ImageListItemProps>(
       throw new Error('Image list item must be at greater then zero');
     }
 
+    const { getStyleFromProps } = useRestyle(props);
+
     const imageListItemStyles = useMemo(
       () => generateImageListItemStyles({ index, items, itemSpace, itemBottomSpace }),
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,8 +34,8 @@ export const ImageListItem = React.forwardRef<View, ImageListItemProps>(
     );
 
     return (
-      <Box style={StyleSheet.flatten([styles.container, imageListItemStyles, style])} ref={ref} {...props}>
-        <Box style={StyleSheet.flatten([styles.listWrapperContainer, listWrapperContainerStyles])} testID={listWrapperTestId}>
+      <Box style={[styles.container, imageListItemStyles, getStyleFromProps(), style]} ref={ref} {...props}>
+        <Box style={[styles.listWrapperContainer, listWrapperContainerStyles]} testID={listWrapperTestId}>
           {children}
         </Box>
       </Box>

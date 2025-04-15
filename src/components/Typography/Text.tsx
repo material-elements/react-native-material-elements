@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { Animated, Text as RnText, StyleSheet, useColorScheme } from 'react-native';
+import { Animated, Text as RnText, useColorScheme } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeFontSelector, useThemeTextConfigSelector } from '../../libraries';
 import { maxLength as maxLengthUtile } from '../../utils';
 import { generateTextStyles } from './Text.styles';
@@ -30,6 +31,7 @@ export const Text = React.forwardRef<RnText, TextProps>(
     const themeTextConfig = useThemeTextConfigSelector();
     const themeFontConfig = useThemeFontSelector();
     const themeMode = useColorScheme();
+    const { getStyleFromProps } = useRestyle(props);
 
     const hasMaxLength = maxLength ?? themeTextConfig?.maxLength;
 
@@ -54,7 +56,7 @@ export const Text = React.forwardRef<RnText, TextProps>(
     return (
       <Animated.Text
         ref={ref}
-        style={StyleSheet.flatten([
+        style={[
           generateTextStyles({
             variation,
             gutterBottom,
@@ -72,8 +74,9 @@ export const Text = React.forwardRef<RnText, TextProps>(
             themeMode,
           }),
           themeTextConfig?.style,
+          getStyleFromProps(),
           style,
-        ])}
+        ]}
         {...props}>
         {renderedChildren}
       </Animated.Text>

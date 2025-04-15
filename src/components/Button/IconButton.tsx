@@ -5,6 +5,7 @@ import { merge } from '../../utils';
 import { BaseButton } from './BaseButton';
 import { getButtonStyles, styles } from './Button.styles';
 import { IconButtonProps } from './Button.types';
+import { useRestyle } from '../../hooks';
 
 export const IconButton = React.forwardRef<View, IconButtonProps>(
   (
@@ -24,6 +25,7 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
     },
     ref,
   ) => {
+    const { getStyleFromProps } = useRestyle(props);
     const themeColors = useThemeColorsSelector();
     const themeSpacing = useThemeSpacingSelector();
     const iconButtonThemeConfig = useThemeIconButtonConfigSelector();
@@ -89,7 +91,7 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
     return (
       <BaseButton
         ref={ref}
-        style={StyleSheet.flatten([iconButtonStyles, generateButtonStyles()])}
+        style={[iconButtonStyles, getStyleFromProps(), generateButtonStyles()]}
         baseButtonContainerStyle={StyleSheet.flatten([styles.iconBaseButtonContainer, generateBaseButtonStyles()])}
         rippleProps={mergeRippleProps}
         disableRipple={iconButtonDisableRipple()}

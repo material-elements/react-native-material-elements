@@ -3,6 +3,7 @@ import { DimensionValue, StyleProp, StyleSheet, View, ViewStyle } from 'react-na
 import { Box } from '../Box';
 import { BoxProps } from '../types';
 import { gridContainerStyles, gridItemContainerStyles, styles } from './Grid.styles';
+import { useRestyle } from '../../hooks';
 
 /**
  * Type representing the size of a grid item.
@@ -116,6 +117,7 @@ export const Grid = forwardRef<View, GridProps>(
     }
 
     const childArray = React.Children.toArray(children);
+    const { getStyleFromProps } = useRestyle(props);
 
     const getNextRowItemSize = (index: number): number => {
       const nextRowItemIndex = index + 1;
@@ -206,12 +208,13 @@ export const Grid = forwardRef<View, GridProps>(
         <Box
           ref={ref}
           sx={sx}
-          style={StyleSheet.flatten([
+          style={[
             gridItemContainerStyles({ size, topSpacing, bottomSpacing, leftSpacing, rightSpacing }),
+            getStyleFromProps(),
             style,
-          ])}
+          ]}
           {...props}>
-          <Box style={StyleSheet.flatten([gridInnerContainerStyles])}>{children}</Box>
+          <Box style={gridInnerContainerStyles}>{children}</Box>
         </Box>
       );
     } else if (container) {
@@ -219,7 +222,7 @@ export const Grid = forwardRef<View, GridProps>(
         <Box
           ref={ref}
           sx={sx}
-          style={StyleSheet.flatten([styles.gridContainer, gridContainerStyles({ width }), style])}
+          style={[styles.gridContainer, gridContainerStyles({ width }), getStyleFromProps(), style]}
           {...props}>
           {renderChild()}
         </Box>

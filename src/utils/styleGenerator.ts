@@ -7,10 +7,14 @@ import {
   ElementFlexStyleProps,
   ElementTextStyleProps,
   KeyOfStylePalette,
+  StyledProps,
   StyleEntry,
   StylePalette,
 } from '../libraries/style/styleTypes';
 import { styles } from '../libraries';
+
+export const getStyleFromProps = (props: StyledProps) =>
+  Object.fromEntries(Object.entries(props).filter(([, value]) => value !== undefined));
 
 export const generateStyle = <T extends KeyOfStylePalette>({ propertyName, value }: StyleEntry<T>) =>
   propertyName && value !== undefined ? { [propertyName]: value } : {};

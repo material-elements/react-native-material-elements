@@ -67,7 +67,7 @@ export interface PaginationItemStylesProps
 /**
  * Props for the Pagination component.
  */
-export interface PaginationProps extends BoxProps, Pick<PaginationItemProps, 'color' | 'variant'> {
+export interface PaginationProps extends Omit<BoxProps, 'color'>, Pick<PaginationItemProps, 'color' | 'variant'> {
   /**
    * The total number of pages.
    * This is used to determine the range of pagination items to render.

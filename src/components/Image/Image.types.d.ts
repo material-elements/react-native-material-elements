@@ -1,6 +1,6 @@
 import React from 'react';
 import { DimensionValue, Image, ImageProps as RnImageProps, ScrollView, View, ViewStyle } from 'react-native';
-import { BaseStyles } from '../../libraries/style/styleTypes';
+import { BaseStyles, StyledProps } from '../../libraries/style/styleTypes';
 
 /**
  * Define the type for the variant of the image.
@@ -18,7 +18,7 @@ export interface ImageVariationProp {
  * Interface for properties that can be passed to an image component.
  * Extends React Native ImageProps and ImageVariationProp for styling flexibility.
  */
-export interface ImageProps extends React.ComponentType<Image>, RnImageProps, ImageVariationProp {
+export interface ImageProps extends React.ComponentType<Image>, RnImageProps, ImageVariationProp, StyledProps {
   size?: DimensionValue;
   sx?: BaseStyles;
   expandToFill?: boolean;
@@ -34,7 +34,7 @@ export interface ImageListProps extends React.ComponentPropsWithRef<typeof Scrol
  * Interface for properties that can be passed to an image list item component.
  * Extends React Native View component properties.
  */
-export interface ImageListItemProps extends React.ComponentPropsWithRef<typeof View> {
+export interface ImageListItemProps extends React.ComponentPropsWithRef<typeof View>, StyledProps {
   /**
    * index of the image list item.
    */
