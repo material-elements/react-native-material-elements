@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react';
-import { DimensionValue, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { DimensionValue, StyleProp, View, ViewStyle } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { Box } from '../Box';
 import { BoxProps } from '../types';
 import { gridContainerStyles, gridItemContainerStyles, styles } from './Grid.styles';
-import { useRestyle } from '../../hooks';
 
 /**
  * Type representing the size of a grid item.
@@ -111,13 +111,14 @@ export const Grid = forwardRef<View, GridProps>(
     },
     ref,
   ) => {
+    const { getStyleFromProps } = useRestyle(props);
+
     if (!container && !item) {
       console.warn('Grid container or grid item is not defined');
       return null;
     }
 
     const childArray = React.Children.toArray(children);
-    const { getStyleFromProps } = useRestyle(props);
 
     const getNextRowItemSize = (index: number): number => {
       const nextRowItemIndex = index + 1;
