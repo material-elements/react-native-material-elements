@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from './test-utils';
 import { IconInput, Text } from '../src';
+import { StyleSheet } from 'react-native';
 
 describe('IconInput', () => {
   const inputTestId = 'icon-input-test-id';
@@ -23,7 +24,8 @@ describe('IconInput', () => {
   it('should apply the inputWrapperStyles', () => {
     const { getByTestId } = render(<IconInput testID={inputTestId} inputWrapperStyles={{ backgroundColor: 'red' }} />);
     const input = getByTestId(`${inputTestId}-wrapper`);
-    expect(input.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(input.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should render start adornment component', () => {
@@ -47,7 +49,8 @@ describe('IconInput', () => {
       />,
     );
     const adornment = getByTestId(`${inputTestId}-start-adornment-container`);
-    expect(adornment.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(adornment.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should apply end adornment container styles', () => {
@@ -59,6 +62,7 @@ describe('IconInput', () => {
       />,
     );
     const adornment = getByTestId(`${inputTestId}-end-adornment-container`);
-    expect(adornment.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(adornment.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 });

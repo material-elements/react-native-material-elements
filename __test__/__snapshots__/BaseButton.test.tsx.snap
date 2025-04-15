@@ -3,9 +3,11 @@
 exports[`Base button component should render child components correctly 1`] = `
 <View
   style={
-    {
-      "alignSelf": "flex-start",
-    }
+    [
+      {},
+      {},
+      undefined,
+    ]
   }
 >
   <View
@@ -64,9 +66,11 @@ exports[`Base button component should render child components correctly 1`] = `
 exports[`Base button component should render correctly 1`] = `
 <View
   style={
-    {
-      "alignSelf": "flex-start",
-    }
+    [
+      {},
+      {},
+      undefined,
+    ]
   }
 >
   <View

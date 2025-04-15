@@ -3,23 +3,33 @@
 exports[`Pagination Component should render correctly 1`] = `
 <View
   style={
-    {
-      "alignItems": "center",
-      "alignSelf": "flex-start",
-      "display": "flex",
-      "flexDirection": "row",
-      "gap": 5,
-      "justifyContent": "center",
-      "padding": 5,
-      "paddingHorizontal": 10,
-    }
+    [
+      {},
+      {},
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "flex-start",
+          "display": "flex",
+          "flexDirection": "row",
+          "gap": 5,
+          "justifyContent": "center",
+          "padding": 5,
+          "paddingHorizontal": 10,
+        },
+        undefined,
+        undefined,
+      ],
+    ]
   }
 >
   <View
     style={
-      {
-        "alignSelf": "flex-start",
-      }
+      [
+        {},
+        {},
+        undefined,
+      ]
     }
   >
     <View
@@ -92,9 +102,11 @@ exports[`Pagination Component should render correctly 1`] = `
   </View>
   <View
     style={
-      {
-        "alignSelf": "flex-start",
-      }
+      [
+        {},
+        {},
+        undefined,
+      ]
     }
   >
     <View
@@ -167,9 +179,11 @@ exports[`Pagination Component should render correctly 1`] = `
   </View>
   <View
     style={
-      {
-        "alignSelf": "flex-start",
-      }
+      [
+        {},
+        {},
+        undefined,
+      ]
     }
   >
     <View
@@ -242,9 +256,11 @@ exports[`Pagination Component should render correctly 1`] = `
   </View>
   <View
     style={
-      {
-        "alignSelf": "flex-start",
-      }
+      [
+        {},
+        {},
+        undefined,
+      ]
     }
   >
     <View
@@ -317,9 +333,11 @@ exports[`Pagination Component should render correctly 1`] = `
   </View>
   <View
     style={
-      {
-        "alignSelf": "flex-start",
-      }
+      [
+        {},
+        {},
+        undefined,
+      ]
     }
   >
     <View
@@ -391,7 +409,13 @@ exports[`Pagination Component should render correctly 1`] = `
     </View>
   </View>
   <View
-    style={{}}
+    style={
+      [
+        {},
+        {},
+        undefined,
+      ]
+    }
   >
     <Text
       collapsable={false}
@@ -408,9 +432,11 @@ exports[`Pagination Component should render correctly 1`] = `
   </View>
   <View
     style={
-      {
-        "alignSelf": "flex-start",
-      }
+      [
+        {},
+        {},
+        undefined,
+      ]
     }
   >
     <View

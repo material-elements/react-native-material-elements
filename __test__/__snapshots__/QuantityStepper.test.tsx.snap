@@ -3,12 +3,16 @@
 exports[`QuantityStepper Component should render correctly 1`] = `
 <View
   style={
-    {
-      "alignItems": "center",
-      "display": "flex",
-      "flexDirection": "row",
-      "gap": 5,
-    }
+    [
+      {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "gap": 5,
+      },
+      {},
+      undefined,
+    ]
   }
 >
   <View
@@ -31,28 +35,39 @@ exports[`QuantityStepper Component should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "borderColor": "#424242",
-        "borderRadius": 100,
-        "borderWidth": 2,
-        "display": "flex",
-        "height": 35,
-        "justifyContent": "center",
-        "minWidth": 35,
-        "opacity": 1,
-      }
+      [
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "height": 35,
+          "justifyContent": "center",
+          "minWidth": 35,
+        },
+        {
+          "borderWidth": 2,
+        },
+        {
+          "borderColor": "#424242",
+          "borderRadius": 100,
+          "opacity": 1,
+        },
+        undefined,
+      ]
     }
   >
     <View
       style={
-        {
-          "backgroundColor": "#424242",
-          "borderRadius": 2,
-          "height": 2.4,
-          "position": "absolute",
-          "width": 15,
-        }
+        [
+          {
+            "borderRadius": 2,
+            "height": 2.4,
+            "position": "absolute",
+            "width": 15,
+          },
+          {
+            "backgroundColor": "#424242",
+          },
+        ]
       }
     />
   </View>
@@ -115,24 +130,32 @@ exports[`QuantityStepper Component should render correctly 1`] = `
   >
     <View
       style={
-        {
-          "backgroundColor": "#424242",
-          "borderRadius": 2,
-          "height": 2.4,
-          "position": "absolute",
-          "width": 15,
-        }
+        [
+          {
+            "borderRadius": 2,
+            "height": 2.4,
+            "position": "absolute",
+            "width": 15,
+          },
+          {
+            "backgroundColor": "#424242",
+          },
+        ]
       }
     />
     <View
       style={
-        {
-          "backgroundColor": "#424242",
-          "borderRadius": 2,
-          "height": 15,
-          "position": "absolute",
-          "width": 2.4,
-        }
+        [
+          {
+            "borderRadius": 2,
+            "height": 15,
+            "position": "absolute",
+            "width": 2.4,
+          },
+          {
+            "backgroundColor": "#424242",
+          },
+        ]
       }
     />
   </View>

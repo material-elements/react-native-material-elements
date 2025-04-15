@@ -2,22 +2,47 @@
 
 exports[`Card Component should render correctly 1`] = `
 <View
-  style={{}}
+  style={
+    [
+      {},
+      {},
+      [
+        undefined,
+        undefined,
+        {},
+        undefined,
+      ],
+    ]
+  }
 />
 `;
 
 exports[`CardContent Component should render correctly 1`] = `
 <View
   style={
-    {
-      "padding": 10,
-    }
+    [
+      {},
+      {},
+      {
+        "padding": 10,
+      },
+    ]
   }
 />
 `;
 
 exports[`CardHeader Component should render correctly 1`] = `
 <View
-  style={{}}
+  style={
+    [
+      {},
+      {},
+      [
+        undefined,
+        {},
+        undefined,
+      ],
+    ]
+  }
 />
 `;

@@ -1,6 +1,6 @@
 import { render as testingRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
-import { Text as RnText, StyleProp, TextStyle } from 'react-native';
+import { Text as RnText, StyleSheet } from 'react-native';
 import { red, secondary, Text, ThemeProvider } from '../src';
 import { TextVariation, TextVariationThemeConfig } from '../src/components/types';
 import { render } from './test-utils';
@@ -38,8 +38,10 @@ describe('Text Component', () => {
     );
 
     const text = getByTestId(mockTestId);
-    const expectedStyles: TextStyle = { color: 'red', fontSize: 20, fontWeight: '400' };
-    expect(text.props.style).toEqual(expectedStyles);
+    const flattenedStyle = StyleSheet.flatten(text.props.style);
+    expect(flattenedStyle.color).toEqual('red');
+    expect(flattenedStyle.fontSize).toEqual(20);
+    expect(flattenedStyle.fontWeight).toEqual('400');
   });
 
   it('should render the disabled text when passed the disabled prop', () => {
@@ -50,8 +52,8 @@ describe('Text Component', () => {
     );
 
     const text = getByTestId(mockTestId);
-    const expectedStyles: StyleProp<TextStyle> = { opacity: 0.3 };
-    expect(text.props.style).toEqual(expectedStyles);
+    const flattenedStyle = StyleSheet.flatten(text.props.style);
+    expect(flattenedStyle.opacity).toEqual(0.3);
   });
 
   it('truncates text when maxLength is provided', () => {
@@ -66,7 +68,8 @@ describe('Text Component', () => {
       </Text>,
     );
     const text = getByTestId(mockTestId);
-    expect(text.props.style).toEqual({ fontSize: 24 });
+    const flattenedStyle = StyleSheet.flatten(text.props.style);
+    expect(flattenedStyle.fontSize).toEqual(24);
   });
 
   it('applies active state', () => {
@@ -76,7 +79,8 @@ describe('Text Component', () => {
       </Text>,
     );
     const text = getByTestId(mockTestId);
-    expect(text.props.style).toEqual({ color: 'green' });
+    const flattenedStyle = StyleSheet.flatten(text.props.style);
+    expect(flattenedStyle.color).toEqual('green');
   });
 
   it('applies error state', () => {
@@ -86,7 +90,8 @@ describe('Text Component', () => {
       </Text>,
     );
     const text = getByTestId(mockTestId);
-    expect(text.props.style).toEqual({ color: red[600] });
+    const flattenedStyle = StyleSheet.flatten(text.props.style);
+    expect(flattenedStyle.color).toEqual(red[600]);
   });
 
   it('applies light mode', () => {
@@ -103,8 +108,9 @@ describe('Text Component', () => {
       </Text>,
     );
     const text = getByTestId(mockTestId);
-    const expectedStyles: StyleProp<TextStyle> = { fontSize: 30, color: 'purple' };
-    expect(text.props.style).toEqual(expectedStyles);
+    const flattenedStyle = StyleSheet.flatten(text.props.style);
+    expect(flattenedStyle.fontSize).toEqual(30);
+    expect(flattenedStyle.color).toEqual('purple');
   });
 
   it('should apply the isActive prop', () => {
@@ -114,7 +120,8 @@ describe('Text Component', () => {
       </Text>,
     );
     const text = getByTestId(mockTestId);
-    expect(text.props.style).toEqual({ color: secondary[200] });
+    const flattenedStyle = StyleSheet.flatten(text.props.style);
+    expect(flattenedStyle.color).toEqual(secondary[200]);
   });
 
   it('should apply the spacing bottom styles when passed the gutter prop', () => {
@@ -124,7 +131,8 @@ describe('Text Component', () => {
       </Text>,
     );
     const text = getByTestId(mockTestId);
-    expect(text.props.style).toEqual({ marginBottom: 10 });
+    const flattenedStyle = StyleSheet.flatten(text.props.style);
+    expect(flattenedStyle.marginBottom).toEqual(10);
   });
 
   it('should override the gutter style when passed the custom spacing styles', () => {
@@ -134,7 +142,8 @@ describe('Text Component', () => {
       </Text>,
     );
     const text = getByTestId(mockTestId);
-    expect(text.props.style).toEqual({ marginBottom: 20 });
+    const flattenedStyle = StyleSheet.flatten(text.props.style);
+    expect(flattenedStyle.marginBottom).toEqual(20);
   });
 
   it('should able to adjust the gutter spacing', () => {
@@ -144,7 +153,8 @@ describe('Text Component', () => {
       </Text>,
     );
     const text = getByTestId(mockTestId);
-    expect(text.props.style).toEqual({ marginBottom: 20 });
+    const flattenedStyle = StyleSheet.flatten(text.props.style);
+    expect(flattenedStyle.marginBottom).toEqual(20);
   });
 
   it('should override the default active color when passed the custom styles', () => {
@@ -154,7 +164,8 @@ describe('Text Component', () => {
       </Text>,
     );
     const text = getByTestId(mockTestId);
-    expect(text.props.style).toEqual({ color: 'red' });
+    const flattenedStyle = StyleSheet.flatten(text.props.style);
+    expect(flattenedStyle.color).toEqual('red');
   });
 
   it('attaches the ref to the Text component', () => {
@@ -179,7 +190,8 @@ describe('Text Component', () => {
 
     const text = getByTestId(mockTestId);
     expect(text).toBeTruthy();
-    expect(text.props.style).toEqual({ color: 'red' });
+    const flattenedStyle = StyleSheet.flatten(text.props.style);
+    expect(flattenedStyle.color).toEqual('red');
   });
 
   it('should throw an error when using the maxLength prop with a non-string value', () => {

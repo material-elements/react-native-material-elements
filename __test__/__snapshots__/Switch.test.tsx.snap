@@ -41,7 +41,15 @@ exports[`Switch Component should match the snapshot with default props 1`] = `
         {
           "backgroundColor": "#FFF",
           "borderRadius": 13,
+          "elevation": 5,
           "height": 22,
+          "shadowColor": "#000",
+          "shadowOffset": {
+            "height": 1,
+            "width": 0,
+          },
+          "shadowOpacity": 0.2,
+          "shadowRadius": 1,
           "transform": [
             {
               "translateX": 0,

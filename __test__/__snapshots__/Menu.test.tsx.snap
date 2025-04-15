@@ -28,11 +28,23 @@ exports[`Menu component should render child components correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "transparent",
-        "flex": 1,
-        "paddingHorizontal": 10,
-      }
+      [
+        {},
+        {},
+        [
+          {
+            "backgroundColor": "rgba(0,0,0,0.5)",
+            "flex": 1,
+          },
+          [
+            {
+              "backgroundColor": "transparent",
+              "flex": 1,
+              "paddingHorizontal": 10,
+            },
+          ],
+        ],
+      ]
     }
   >
     <View
@@ -114,11 +126,23 @@ exports[`Menu component should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "transparent",
-        "flex": 1,
-        "paddingHorizontal": 10,
-      }
+      [
+        {},
+        {},
+        [
+          {
+            "backgroundColor": "rgba(0,0,0,0.5)",
+            "flex": 1,
+          },
+          [
+            {
+              "backgroundColor": "transparent",
+              "flex": 1,
+              "paddingHorizontal": 10,
+            },
+          ],
+        ],
+      ]
     }
   >
     <View

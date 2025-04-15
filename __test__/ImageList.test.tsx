@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render, waitFor } from './test-utils';
 import { Image, ImageList, ImageListItem, Text } from '../src';
-import { ScrollView, View, ViewStyle } from 'react-native';
+import { ScrollView, StyleSheet, View, ViewStyle } from 'react-native';
 
 const mockItemData = [
   { img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e' },
@@ -109,7 +109,8 @@ describe('ImageListItem Component', () => {
     const { getByTestId } = render(<ImageListItem testID={mockImageListItemTestId} index={0} sx={{ bg: 'red' }} />);
 
     const listItem = getByTestId(mockImageListItemTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should apply the listWrapperContainerStyles', () => {
@@ -122,37 +123,44 @@ describe('ImageListItem Component', () => {
     );
 
     const listItemWrapper = getByTestId(mockListItemWrapperTestId);
-    expect(listItemWrapper.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(listItemWrapper.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should apply (100%) width when items=1', () => {
     const { getByTestId } = render(<ImageListItem testID={mockImageListItemTestId} index={0} items={1} />);
     const listItem = getByTestId(mockImageListItemTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ width: '100%' }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.width).toEqual('100%');
   });
 
   it('should apply (50%) width when items=2', () => {
     const { getByTestId } = render(<ImageListItem testID={mockImageListItemTestId} index={0} items={2} />);
     const listItem = getByTestId(mockImageListItemTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ width: '50%' }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.width).toEqual('50%');
   });
 
   it('should apply (33.33%) width when items=3', () => {
     const { getByTestId } = render(<ImageListItem testID={mockImageListItemTestId} index={0} items={3} />);
     const listItem = getByTestId(mockImageListItemTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ width: '33.333333333333336%' }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.width).toEqual('33.333333333333336%');
   });
 
   it('should apply (25%) width when items=4', () => {
     const { getByTestId } = render(<ImageListItem testID={mockImageListItemTestId} index={0} items={4} />);
     const listItem = getByTestId(mockImageListItemTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ width: '25%' }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.width).toEqual('25%');
   });
 
   it("should't apply the padding left and right when items=1", () => {
     const { getByTestId } = render(<ImageListItem testID={mockImageListItemTestId} index={0} items={1} />);
     const listItem = getByTestId(mockImageListItemTestId);
-    expect(listItem.props.style).toEqual(expect.objectContaining({ paddingLeft: 0, paddingRight: 0 }));
+    const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+    expect(flattenedStyle.paddingLeft).toEqual(0);
+    expect(flattenedStyle.paddingRight).toEqual(0);
   });
 
   it('renders ImageList with the correct number of ImageListItem components', () => {
@@ -191,8 +199,9 @@ describe('ImageListItem Component', () => {
 
       const paddingLeft = isFirstInRow ? 0 : 1;
       const paddingRight = isLastInRow ? 0 : 1;
-
-      expect(listItem.props.style).toEqual(expect.objectContaining({ paddingLeft, paddingRight }));
+      const flattenedStyle = StyleSheet.flatten(listItem.props.style);
+      expect(flattenedStyle.paddingLeft).toEqual(paddingLeft);
+      expect(flattenedStyle.paddingRight).toEqual(paddingRight);
     });
   });
 });

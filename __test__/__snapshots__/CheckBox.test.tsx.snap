@@ -3,21 +3,31 @@
 exports[`CheckBox Component should render checkbox correctly 1`] = `
 <View
   style={
-    {
-      "alignSelf": "auto",
-      "display": "flex",
-      "flexDirection": "row",
-      "opacity": 1,
-    }
+    [
+      {
+        "alignSelf": "auto",
+        "display": "flex",
+        "flexDirection": "row",
+      },
+      {},
+      undefined,
+      {
+        "opacity": 1,
+      },
+    ]
   }
 >
   <View
     style={
-      {
-        "alignContent": "center",
-        "display": "flex",
-        "justifyContent": "center",
-      }
+      [
+        {
+          "alignContent": "center",
+          "display": "flex",
+          "justifyContent": "center",
+        },
+        undefined,
+        undefined,
+      ]
     }
   >
     <Image

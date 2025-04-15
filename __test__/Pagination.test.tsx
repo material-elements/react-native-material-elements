@@ -1,6 +1,6 @@
 import { render as testRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Pagination, Text, ThemeProvider } from '../src';
 import { fireEvent, render } from './test-utils';
 
@@ -59,7 +59,8 @@ describe('Pagination Component', () => {
     );
 
     const dotContainer = getByTestId(mockDotContainerTestId);
-    expect(dotContainer.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(dotContainer.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it("should't call the onPageChange function when clicked on the pagination item", () => {
@@ -141,7 +142,8 @@ describe('Pagination Component', () => {
       </ThemeProvider>,
     );
     const pagination = getByTestId(mockPaginationTestId);
-    expect(pagination.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    const flattenedStyle = StyleSheet.flatten(pagination.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should combine the root styles and component styles', () => {
@@ -151,6 +153,8 @@ describe('Pagination Component', () => {
       </ThemeProvider>,
     );
     const pagination = getByTestId(mockPaginationTestId);
-    expect(pagination.props.style).toEqual(expect.objectContaining({ backgroundColor: 'red', borderWidth: 2 }));
+    const flattenedStyle = StyleSheet.flatten(pagination.props.style);
+    expect(flattenedStyle.backgroundColor).toEqual('red');
+    expect(flattenedStyle.borderWidth).toEqual(2);
   });
 });

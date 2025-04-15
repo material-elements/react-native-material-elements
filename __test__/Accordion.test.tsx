@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, waitFor } from './test-utils';
 import { Accordion, AccordionSummary, Text } from '../src';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 describe('Accordion Component', () => {
   const mockAccordionTestId = 'accordion-test-id';
@@ -36,7 +36,9 @@ describe('Accordion Component', () => {
     const { getByTestId } = render(<Accordion testID={mockAccordionTestId} disable />);
 
     const accordion = getByTestId(mockAccordionTestId);
-    expect(accordion.props.style).toEqual(expect.objectContaining({ opacity: 0.5 }));
+    const flattenedStyle = StyleSheet.flatten(accordion.props.style);
+
+    expect(flattenedStyle.opacity).toEqual(0.5);
   });
 });
 

@@ -3,12 +3,22 @@
 exports[`Grid component should render correctly 1`] = `
 <View
   style={
-    {
-      "display": "flex",
-      "flexDirection": "row",
-      "flexWrap": "wrap",
-      "width": "100%",
-    }
+    [
+      {},
+      {},
+      [
+        {
+          "display": "flex",
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+        },
+        {
+          "width": "100%",
+        },
+        {},
+        undefined,
+      ],
+    ]
   }
 />
 `;
