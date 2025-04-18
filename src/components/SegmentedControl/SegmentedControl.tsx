@@ -115,7 +115,7 @@ export const SegmentedControl = <T extends string | number>({
   }, [colorScheme]);
 
   useEffect(() => {
-    if (segmentRect && values && values.length) {
+    if (segmentRect && values.length) {
       const width = segmentRect.width;
       animatedSegmentWidth.current.setValue(width);
 

@@ -3,7 +3,6 @@ import { StyleSheet, View } from 'react-native';
 import { Box } from '../Box';
 import { BoxProps } from '../types';
 import { getStackInnerContainerStyles } from './utils';
-import { useRestyle } from '../../hooks';
 
 export interface StackProps extends Omit<BoxProps, 'animatedView' | 'direction'> {
   /**

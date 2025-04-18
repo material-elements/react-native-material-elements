@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { GenerateAppBarStyles } from './AppBar';
 
 export const styles = StyleSheet.create({
   appBarContainer: {
@@ -13,20 +12,4 @@ export const styles = StyleSheet.create({
   appBarItemContainer: {
     padding: 4,
   },
-});
-
-export const generateAppBarStyles = ({
-  flex,
-  display,
-  alignItems,
-  justifyContent,
-  flexDirection,
-  backgroundColor,
-}: GenerateAppBarStyles) => ({
-  ...(flex && { flex }),
-  ...(display && { display }),
-  ...(alignItems && { alignItems }),
-  ...(justifyContent && { justifyContent }),
-  ...(flexDirection && { flexDirection }),
-  ...(backgroundColor && { backgroundColor }),
 });
