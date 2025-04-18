@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { StyleSheet, TextStyle, View } from 'react-native';
-import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector } from '../../libraries';
 import { Theme } from '../../libraries/themes/types';
 import { VariantTypes } from '../../utils';
@@ -41,7 +40,6 @@ export const Alert = React.forwardRef<View, AlertProps>(
     ref,
   ) => {
     const themeColors = useThemeColorsSelector();
-    const { getStyleFromProps } = useRestyle(props);
 
     const alertContainerStyles = useMemo(() => {
       return getAlertContainerStyles({ colors: themeColors, variant, variation });
@@ -52,7 +50,7 @@ export const Alert = React.forwardRef<View, AlertProps>(
     }, [variant, variation]);
 
     return (
-      <Box ref={ref} style={[styles.alertContainer, alertContainerStyles, getStyleFromProps(), style]} {...props}>
+      <Box ref={ref} style={[styles.alertContainer, alertContainerStyles, style]} {...props}>
         <View style={styles.contentContainer}>
           {title ? (
             <Text variation="h4" maxLength={titleMixLength} style={[titleS, titleStyles]}>
