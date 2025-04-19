@@ -17,9 +17,16 @@ export const getAlertContainerStyles = ({ colors, variant, variation }: GetAlert
   return { backgroundColor: variantColor };
 };
 
-export const getAlertTitleStyles = ({ variant, variation }: GetAlertTitleStylesParams): TextStyle => {
+export const getAlertTitleStyles = ({ variant, variation, colorScheme }: GetAlertTitleStylesParams): TextStyle => {
+  const isLight = colorScheme === 'light';
+
   const isWarningVariant = variant === 'warning';
+  const isLightGreyVariant = variant === 'lightGrey';
   const isOutlinedAlert = variation === 'outlined';
+
+  if (isLightGreyVariant && isLight) {
+    return { color: grey[900] };
+  }
 
   return {
     ...(!isOutlinedAlert && isWarningVariant && { color: grey[900] }),

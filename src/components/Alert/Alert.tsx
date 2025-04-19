@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { StyleSheet, TextStyle, View } from 'react-native';
+import { ColorSchemeName, StyleSheet, TextStyle, useColorScheme, View } from 'react-native';
 import { useThemeColorsSelector } from '../../libraries';
 import { Theme } from '../../libraries/themes/types';
 import { VariantTypes } from '../../utils';
@@ -21,7 +21,9 @@ export interface AlertProps extends BoxProps {
 export interface GetAlertContainerStylesParams extends Pick<AlertProps, 'variant' | 'variation'> {
   colors: Theme;
 }
-export interface GetAlertTitleStylesParams extends Pick<AlertProps, 'variant' | 'variation'> {}
+export interface GetAlertTitleStylesParams extends Pick<AlertProps, 'variant' | 'variation'> {
+  colorScheme: ColorSchemeName;
+}
 
 export const Alert = React.forwardRef<View, AlertProps>(
   (
@@ -40,25 +42,26 @@ export const Alert = React.forwardRef<View, AlertProps>(
     ref,
   ) => {
     const themeColors = useThemeColorsSelector();
+    const colorScheme = useColorScheme();
 
     const alertContainerStyles = useMemo(() => {
       return getAlertContainerStyles({ colors: themeColors, variant, variation });
     }, [themeColors, variant, variation]);
 
     const titleS = useMemo(() => {
-      return getAlertTitleStyles({ variant, variation });
-    }, [variant, variation]);
+      return getAlertTitleStyles({ variant, variation, colorScheme });
+    }, [variant, variation, colorScheme]);
 
     return (
       <Box ref={ref} style={[styles.alertContainer, alertContainerStyles, style]} {...props}>
         <View style={styles.contentContainer}>
           {title ? (
-            <Text variation="h4" maxLength={titleMixLength} style={[titleS, titleStyles]}>
+            <Text mode="light" variation="h4" maxLength={titleMixLength} style={[titleS, titleStyles]}>
               {title}
             </Text>
           ) : null}
           {subTitle ? (
-            <Text variation="h5" maxLength={titleMixLength} style={[titleS, styles.subTitle, subTitleStyles]}>
+            <Text mode="light" variation="h5" maxLength={titleMixLength} style={[titleS, styles.subTitle, subTitleStyles]}>
               {subTitle}
             </Text>
           ) : null}
@@ -75,7 +78,6 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
     paddingLeft: 10,
     paddingRight: 10,
-    borderRadius: 3,
     display: 'flex',
     flexDirection: 'row',
     minHeight: 30,
