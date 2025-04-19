@@ -1,9 +1,9 @@
 import React from 'react';
+import { TextStyle } from 'react-native';
 import { BaseButton } from '../Button';
 import { BaseButtonProps } from '../types';
 import { Text } from '../Typography';
 import { styles } from './SegmentedControl.styles';
-import { StyleSheet, TextStyle } from 'react-native';
 
 export interface SegmentedControlItemProps<T> extends Omit<BaseButtonProps, 'ref' | 'onPress'> {
   /** The value associated with this segment item (e.g., label or identifier) */
@@ -36,7 +36,7 @@ export const SegmentedControlItem = <T,>({
   return (
     <BaseButton
       baseButtonContainerStyle={styles.item}
-      style={StyleSheet.flatten([styles.baseButton, segmentItemStyle])}
+      style={[styles.baseButton, segmentItemStyle]}
       disableScaleAnimation
       onPress={onPress}
       disableRipple
