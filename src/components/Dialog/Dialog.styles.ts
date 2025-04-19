@@ -9,8 +9,7 @@ export const styles = StyleSheet.create({
   },
   dialogContainer: {
     paddingBottom: 8,
-    borderRadius: 5,
-    elevation: 5,
+    borderRadius: 10,
     zIndex: 100,
   },
   dialogContent: {
@@ -26,13 +25,16 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   dialogActionsContainer: {
-    minWidth: 100,
+    paddingHorizontal: 10,
     flexDirection: 'row',
     display: 'flex',
     alignItems: 'center',
   },
   dialogTitle: {
-    padding: 15,
+    paddingTop: 15,
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingBottom: 8,
   },
 });
 
