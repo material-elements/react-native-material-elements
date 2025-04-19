@@ -4,6 +4,20 @@ React Native Material Elements
 
 A sophisticated UI library crafted to enhance your React Native development workflow. Designed for simplicity and elegance, material elements provides a rich collection of components and utilities to effortlessly create polished mobile applications.
 
+## Installation
+
+Install the required dependencies using `yarn` or `npm`:
+
+```bash
+yarn add react-native-material-elements lodash use-context-selector
+yarn add @types/lodash -D
+
+OR
+
+npm install react-native-material-elements lodash use-context-selector
+yarn install @types/lodash -save-dev
+```
+
 ## Table of Contents
 
 - [Grid](https://github.com/material-elements/react-native-material-elements/blob/master/docs/components/grid.md)
