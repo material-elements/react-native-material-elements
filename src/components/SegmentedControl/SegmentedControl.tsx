@@ -7,15 +7,14 @@ import {
   TextStyle,
   useColorScheme,
   View,
-  ViewProps,
   ViewStyle,
 } from 'react-native';
 import { grey } from '../../libraries';
 import { styles } from './SegmentedControl.styles';
-import { SegmentedControlContainer } from './SegmentedControlContainer';
+import { SegmentedControlContainer, SegmentedControlContainerProps } from './SegmentedControlContainer';
 import { SegmentedControlItem } from './SegmentedControlItem';
 
-export interface SegmentedControlProps<T extends string | number> extends ViewProps {
+export interface SegmentedControlProps<T extends string | number> extends SegmentedControlContainerProps {
   /** Array of values to be displayed in the segmented control */
   values: T[];
   /** Index of the currently selected segment */

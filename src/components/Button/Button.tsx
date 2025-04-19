@@ -200,10 +200,10 @@ export const Button = React.forwardRef<View, ButtonProps>(
     };
 
     return (
-      <Box style={StyleSheet.flatten([buttonRootContainerStyles({ flex }), generateButtonStyles()])} sx={sx} ref={ref}>
+      <Box style={[buttonRootContainerStyles({ flex }), generateButtonStyles()]} sx={sx} ref={ref}>
         <BaseButton
           disabled={loading || disabled}
-          style={StyleSheet.flatten([styles.baseButtonStyles, buttonStyles, generateBaseButtonStyles()])}
+          style={[styles.baseButtonStyles, buttonStyles, generateBaseButtonStyles()]}
           disableRipple={shouldDisableRipple}
           disableScaleAnimation={shouldDisableScaleAnimation()}
           scaleAnimationValue={buttonScaleAnimationValue()}
