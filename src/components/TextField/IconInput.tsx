@@ -6,6 +6,7 @@ import { Box } from '../Box';
 import { BoxProps } from '../types';
 import { Text } from '../Typography';
 import { BaseInput } from './BaseInput';
+import { getIconInputStyles } from './TextField.style';
 
 export interface IconInputProps extends TextInputProps, Pick<BoxProps, 'sx'> {
   /**
@@ -42,7 +43,13 @@ export interface IconInputProps extends TextInputProps, Pick<BoxProps, 'sx'> {
    * Label styles
    */
   labelStyles?: TextStyle;
+  /**
+   * Hight of the input component
+   */
+  hight?: 'small' | 'medium' | 'large';
 }
+
+export interface GetIconInputStyles extends Pick<IconInputProps, 'hight'> {}
 
 export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconInputProps>(
   (
@@ -57,6 +64,7 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
       labelContainerStyles,
       label,
       labelStyles,
+      hight = 'medium',
       testID,
       ...props
     },
@@ -72,7 +80,7 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
     return (
       <View>
         {label && (
-          <View style={StyleSheet.flatten([styles.labelContainer, labelContainerStyles])}>
+          <View style={[styles.labelContainer, labelContainerStyles]}>
             <Text variation="h5" style={labelStyles}>
               {label}
             </Text>
@@ -80,33 +88,33 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
         )}
         <Box
           sx={{ ...inputContainerStyles, ...sx }}
-          style={StyleSheet.flatten([styles.inputContainer, iconInputThemeConfig?.inputWrapperStyles, inputWrapperStyles])}
+          style={[styles.inputContainer, iconInputThemeConfig?.inputWrapperStyles, inputWrapperStyles]}
           ref={ref}
           testID={`${testID}-wrapper`}>
           {startAdornment && (
             <Box
-              style={StyleSheet.flatten([
-                { marginRight: 8 },
+              style={[
+                styles.startAdornmentContainer,
                 iconInputThemeConfig?.startAdornmentContainerStyles,
                 startAdornmentContainerStyles,
-              ])}
+              ]}
               testID={`${testID}-start-adornment-container`}>
               {startAdornment}
             </Box>
           )}
           <BaseInput
-            style={StyleSheet.flatten([{ color: themeColors.white[900], flex: 1 }, style])}
+            style={[styles.baseButtonStyles, { color: themeColors.white[900] }, getIconInputStyles({ hight }), style]}
             placeholderTextColor={themeColors.grey[600]}
             testID={testID}
             {...props}
           />
           {endAdornment && (
             <Box
-              style={StyleSheet.flatten([
-                { marginLeft: 8 },
+              style={[
+                styles.endAdornmentContainer,
                 iconInputThemeConfig?.endAdornmentContainerStyles,
                 endAdornmentContainerStyles,
-              ])}
+              ]}
               testID={`${testID}-end-adornment-container`}>
               {endAdornment}
             </Box>
@@ -127,6 +135,15 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  startAdornmentContainer: {
+    marginRight: 8,
+  },
+  endAdornmentContainer: {
+    marginLeft: 8,
+  },
+  baseButtonStyles: {
+    flex: 1,
   },
 });
 

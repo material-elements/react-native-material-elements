@@ -5,6 +5,8 @@ import {
   INPUT_DEFAULT_BORDER_RADIUS,
   INPUT_DEFAULT_BORDER_WIDTH,
   INPUT_DEFAULT_HEIGHT,
+  INPUT_LARGE_HEIGHT,
+  INPUT_SMALL_HEIGHT,
   TRANSLATE_Y_ANIMATED_DEFAULT_POSITION,
 } from './constants';
 import {
@@ -16,6 +18,7 @@ import {
   TextInputStylesProps,
 } from './Input.types';
 import { GetOtpInputStylesParams } from './OtpInput';
+import { GetIconInputStyles } from './IconInput';
 
 const baseInputDefaultStyles: ViewStyle = {
   position: 'relative',
@@ -190,4 +193,14 @@ export const getOtpInputStyles = ({
     borderColor,
     borderRadius: square ? 0 : 8,
   };
+};
+
+export const getIconInputStyles = ({ hight }: GetIconInputStyles): ViewStyle => {
+  if (hight === 'small') {
+    return { minHeight: INPUT_SMALL_HEIGHT };
+  } else if (hight === 'medium') {
+    return { minHeight: INPUT_DEFAULT_HEIGHT };
+  } else {
+    return { minHeight: INPUT_LARGE_HEIGHT };
+  }
 };
