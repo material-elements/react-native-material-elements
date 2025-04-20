@@ -14,6 +14,8 @@ export const InputLabel: React.FC<InputLabelProps> = function ({
   placeholderLeftPosition,
   labelContainerStyles,
   style,
+  error,
+  errorColor,
   ignoreOpacityOnNonEditable,
   variant = 'outlined',
   ...props
@@ -21,7 +23,7 @@ export const InputLabel: React.FC<InputLabelProps> = function ({
   const themeColors = useThemeColorsSelector();
 
   const [textLayoutRect, setTextLayoutRect] = useState<LayoutRectangle>();
-  const textHeight = textLayoutRect?.height ? textLayoutRect.height : TEXT_FONT_DEFAULT_HEIGHT;
+  const textHeight = textLayoutRect?.height ?? TEXT_FONT_DEFAULT_HEIGHT;
 
   const styles = useMemo(
     () =>
@@ -37,8 +39,8 @@ export const InputLabel: React.FC<InputLabelProps> = function ({
   );
 
   const labelStyles = useMemo(
-    () => labelTextStyles({ colors: themeColors, variant, ignoreOpacityOnNonEditable }),
-    [themeColors, variant, ignoreOpacityOnNonEditable],
+    () => labelTextStyles({ colors: themeColors, variant, ignoreOpacityOnNonEditable, error, errorColor }),
+    [themeColors, variant, ignoreOpacityOnNonEditable, error, errorColor],
   );
 
   const onTextLayoutHandler = (event: LayoutChangeEvent) => {
@@ -48,13 +50,9 @@ export const InputLabel: React.FC<InputLabelProps> = function ({
 
   return (
     <Animated.View style={[styles, labelContainerStyles]}>
-      <Animated.Text onLayout={onTextLayoutHandler}>
-        {textLayoutRect ? (
-          <Text variation="h4" disabled={editable} style={[labelStyles, style]} {...props}>
-            {placeholder}
-          </Text>
-        ) : null}
-      </Animated.Text>
+      <Text variation="h4" onLayout={onTextLayoutHandler} disabled={editable} style={[labelStyles, style]} {...props}>
+        {placeholder}
+      </Text>
     </Animated.View>
   );
 };

@@ -43,16 +43,27 @@ export const textInputStyles = ({ variant, endAdornment, startAdornment }: TextI
   return baseInputDefaultStyles;
 };
 
-export const labelTextStyles = ({ colors, variant, ignoreOpacityOnNonEditable }: LabelTextStylesProps): TextStyle => {
-  const baseStyles: TextStyle = {
-    color: variant === 'outlined' ? colors.grey[800] : colors.white[50],
-  };
+export const labelTextStyles = ({
+  colors,
+  variant,
+  ignoreOpacityOnNonEditable,
+  error,
+  errorColor,
+}: LabelTextStylesProps): TextStyle => {
+  let color: ColorValue;
 
-  if (ignoreOpacityOnNonEditable) {
-    baseStyles.opacity = 1;
+  if (variant === 'outlined' && !error) {
+    color = colors.grey[800];
+  } else if (error) {
+    color = errorColor ?? colors.red[500];
+  } else {
+    color = colors.white[50];
   }
 
-  return baseStyles;
+  return {
+    color,
+    ...(ignoreOpacityOnNonEditable && { opacity: 1 }),
+  };
 };
 
 export const baseInputStyles = ({ colors, variant, height = INPUT_DEFAULT_HEIGHT }: BaseInputStylesProps): TextStyle => {

@@ -68,7 +68,7 @@ export interface BaseInputProps extends TextInputProps {
 export interface InputLabelProps
   extends Pick<
       BaseInputProps,
-      'placeholder' | 'activeColor' | 'errorColor' | 'variant' | 'editable' | 'ignoreOpacityOnNonEditable'
+      'placeholder' | 'activeColor' | 'errorColor' | 'variant' | 'editable' | 'ignoreOpacityOnNonEditable' | 'error'
     >,
     Omit<TextProps, 'children'> {
   /**
@@ -199,7 +199,7 @@ export interface TextInputStylesProps extends Pick<TextFieldProps, 'variant' | '
 
 export interface LabelTextStylesProps
   extends Pick<TextInputStylesProps, 'variant'>,
-    Pick<BaseInputProps, 'ignoreOpacityOnNonEditable'> {
+    Pick<BaseInputProps, 'ignoreOpacityOnNonEditable' | 'error' | 'errorColor'> {
   colors: Theme;
 }
 
