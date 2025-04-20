@@ -1,9 +1,10 @@
 import React from 'react';
-import { ColorValue, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
+import { ColorValue, TextStyle, View, ViewStyle } from 'react-native';
 import { BaseStyles, StyledProps } from '../../libraries/style/styleTypes';
 import { Theme } from '../../libraries/themes/v1/theme';
 import { BaseButtonProps } from '../Button/Button.types';
 import { TextProps } from '../Typography/Text.types';
+import { BoxProps } from '../types';
 
 /**
  * Interface for the List component properties, extending the properties of a View component
@@ -147,9 +148,7 @@ export interface ListItemProps extends Omit<BaseButtonProps, 'sx'>, StyledProps 
 /**
  * Interface for ListItemIcon component properties, extending the properties of ViewProps
  */
-export interface ListItemIconProps extends ViewProps {
-  sx?: BaseStyles;
-}
+export interface ListItemIconProps extends BoxProps {}
 
 /**
  * Interface for ListItemText component properties, extending ListProps but omitting the 'children' property

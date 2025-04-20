@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { SafeAreaView, ScrollView, View } from 'react-native';
-import { Avatar, Button, Container, List, ListItem, ListItemIcon, ListItemText, Menu, ThemeProvider } from '../src';
-import { MeasureElementRect } from '../src/types';
+import { Avatar, Button, Container, List, ListItem, ListItemIcon, ListItemText, Menu, ThemeProvider } from '../../src';
+import { MeasureElementRect } from '../../src/types';
 
 function App(): React.JSX.Element {
   const [open, setOpen] = useState(false);
