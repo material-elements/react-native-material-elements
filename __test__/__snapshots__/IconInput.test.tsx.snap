@@ -11,13 +11,17 @@ exports[`IconInput should render correctly 1`] = `
         {
           "testID": "undefined-wrapper",
         },
-        {
-          "alignItems": "center",
-          "display": "flex",
-          "flexDirection": "row",
-          "paddingHorizontal": 10,
-          "width": "100%",
-        },
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "paddingHorizontal": 10,
+            "width": "100%",
+          },
+          undefined,
+          undefined,
+        ],
       ]
     }
     testID="undefined-wrapper"

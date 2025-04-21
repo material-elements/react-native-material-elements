@@ -84,7 +84,16 @@ exports[`DropDown Component should render correctly 1`] = `
         <Text
           collapsable={false}
           onLayout={[Function]}
-        />
+          style={
+            {
+              "color": "#424242",
+              "fontSize": 14,
+              "opacity": 1,
+            }
+          }
+        >
+          Drop down
+        </Text>
       </View>
       <TextInput
         editable={false}
