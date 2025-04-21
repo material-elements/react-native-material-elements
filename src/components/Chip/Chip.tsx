@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { useThemedProps } from '../../hooks';
 import { useThemeChipConfigSelector, useThemeColorsSelector } from '../../libraries';
 import { Box } from '../Box';
 import { BaseButton } from '../Button/BaseButton';
@@ -38,6 +39,11 @@ export const Chip = React.forwardRef<View, ChipProps>(
     const isOutlinedVariant = variant === 'outlined';
     const hasIcon = Boolean(startIcon) || Boolean(endIcon);
     const chipThemeConfig = useThemeChipConfigSelector();
+
+    const { startIcon: startThemedIcon, endIcon: endThemedIcon } = useThemedProps({
+      startIcon,
+      endIcon,
+    });
 
     const isOutlinedChip = variant === 'outlined';
 
@@ -134,15 +140,15 @@ export const Chip = React.forwardRef<View, ChipProps>(
           }}
           {...props}>
           <Box style={StyleSheet.flatten([styles.chipWrapper, generateChipWrapperContainerStyles()])}>
-            {startIcon && (
+            {startThemedIcon && (
               <TouchableOpacity activeOpacity={1} {...startIconProps}>
-                {startIcon}
+                {startThemedIcon}
               </TouchableOpacity>
             )}
             {renderLabel()}
-            {endIcon && (
+            {endThemedIcon && (
               <TouchableOpacity activeOpacity={1} {...endIconProps}>
-                {endIcon}
+                {endThemedIcon}
               </TouchableOpacity>
             )}
           </Box>

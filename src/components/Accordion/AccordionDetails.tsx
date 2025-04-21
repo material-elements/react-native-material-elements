@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
-import { StyledProps } from '../../libraries/style/styleTypes';
+import { View, ViewStyle } from 'react-native';
 import { useRestyle } from '../../hooks';
+import { StyledProps } from '../../libraries/style/styleTypes';
 
 export interface AccordionDetailsProps extends React.ComponentPropsWithRef<typeof View>, StyledProps {
   disable?: boolean;

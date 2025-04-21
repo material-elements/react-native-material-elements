@@ -10,6 +10,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { ThemedIconProp } from '../../hooks';
 import { BaseStyles } from '../../libraries/style/styleTypes';
 import { Theme } from '../../libraries/themes/v1/theme';
 import { BoxProps } from '../Box/Box.types';
@@ -108,7 +109,7 @@ export interface TextFieldProps extends BaseInputProps {
   /**
    * React node for the end adornment.
    */
-  endAdornment?: React.ReactNode;
+  endAdornment?: ThemedIconProp;
   /**
    * Props for the end adornment container.
    */
@@ -116,7 +117,7 @@ export interface TextFieldProps extends BaseInputProps {
   /**
    * React node for the start adornment.
    */
-  startAdornment?: React.ReactNode;
+  startAdornment?: ThemedIconProp;
   /**
    * Props for the start adornment container.
    */

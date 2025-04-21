@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeCardConfigSelector, useThemeColorsSelector } from '../../libraries';
 import { Box } from '../Box';
 import { cardVariation } from './Card.styles';
 import { CardProps } from './Card.types';
-import { useRestyle } from '../../hooks';
 
 export const Card = React.forwardRef<View, CardProps>(({ children, variation, style, sx, ...props }, ref) => {
   const themeColors = useThemeColorsSelector();

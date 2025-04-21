@@ -1,5 +1,6 @@
 import React from 'react';
 import { ActivityIndicatorProps, ColorValue, TextStyle, TouchableWithoutFeedback, ViewProps, ViewStyle } from 'react-native';
+import { ThemedIconProp } from '../../hooks';
 import { BaseStyles, StyledProps } from '../../libraries/style/styleTypes';
 import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
 import { VariantTypes } from '../../utils';
@@ -139,11 +140,11 @@ export interface ButtonProps extends Omit<BaseButtonProps, 'sx'> {
   /**
    * Button start icon
    */
-  startIcon?: React.ReactNode;
+  startIcon?: ThemedIconProp;
   /**
    * Button end icon
    */
-  endIcon?: React.ReactNode;
+  endIcon?: ThemedIconProp;
   /**
    * Loading spinner color
    */
@@ -191,6 +192,10 @@ export interface IconButtonProps extends Omit<BaseButtonProps, 'sx' | 'size'>, S
    * Override root ripple edge
    */
   overrideRootRippleEdge?: boolean;
+  /**
+   * Icon button icon component
+   * */
+  icon?: ThemedIconProp;
 }
 
 export type ButtonVariationsType = ButtonVariations | IconButtonVariations;

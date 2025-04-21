@@ -8,7 +8,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { useRestyle } from '../../hooks';
+import { useRestyle, useThemedProps } from '../../hooks';
 import { useThemeColorsSelector } from '../../libraries';
 import { Box } from '../Box';
 import { accordionSummaryStyles } from './Accordion.style';
@@ -56,6 +56,11 @@ export const AccordionSummary = React.forwardRef<View, AccordionSummaryProps>(
     const [measuredHeight, setMeasuredHeight] = useState<number | null>(null);
     const accordionContentRef = useRef<View>(null);
     const themeColor = useThemeColorsSelector();
+
+    const { expandIcon: expandThemedIcon, startAdornment: startThemedAdornment } = useThemedProps({
+      expandIcon,
+      startAdornment,
+    });
 
     const { getStyleFromProps } = useRestyle(props);
 
@@ -149,7 +154,7 @@ export const AccordionSummary = React.forwardRef<View, AccordionSummaryProps>(
             <View style={[accordionSummaryStyles.accordionSummaryChildWrapper, summaryChildWrapperStyles]}>
               {startAdornment && (
                 <View style={[accordionSummaryStyles.startAdornmentContainer, startAdornmentContainerStyle]}>
-                  {startAdornment}
+                  {startThemedAdornment}
                 </View>
               )}
               <Box style={[accordionSummaryStyles.accordionSummaryChildrenWrapper, childrenWrapperStyles]}>{children}</Box>
@@ -160,7 +165,7 @@ export const AccordionSummary = React.forwardRef<View, AccordionSummaryProps>(
                 { transform: [{ rotate: rotateInterpolate }] },
                 expandIconWrapperStyles,
               ]}>
-              {expandIcon}
+              {expandThemedIcon}
             </Animated.View>
           </View>
         </TouchableWithoutFeedback>

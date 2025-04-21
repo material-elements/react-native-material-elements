@@ -8,6 +8,7 @@ import { Text } from '../Typography';
 import { BaseButton } from './BaseButton';
 import { buttonLabelStyles, buttonRootContainerStyles, getButtonStyles, styles } from './Button.styles';
 import { ButtonProps } from './Button.types';
+import { useThemedProps } from '../../hooks';
 
 export const Button = React.forwardRef<View, ButtonProps>(
   (
@@ -55,6 +56,11 @@ export const Button = React.forwardRef<View, ButtonProps>(
     const isContainedButton = variation === 'contained';
     const isOutlinedButton = variation === 'outlined';
     const isTextButton = variation === 'text';
+
+    const { startIcon: startThemedIcon, endIcon: endThemedIcon } = useThemedProps({
+      startIcon,
+      endIcon,
+    });
 
     const {
       labelStyles: containedButtonLabelStyles,
@@ -212,9 +218,9 @@ export const Button = React.forwardRef<View, ButtonProps>(
           rippleProps={mergeRippleProps}
           sx={baseButtonSx}
           {...props}>
-          {startIcon && <View style={styles.iconContainer}>{startIcon}</View>}
+          {startThemedIcon && <View style={styles.iconContainer}>{startThemedIcon}</View>}
           {renderChild()}
-          {endIcon && <View style={styles.iconContainer}>{endIcon}</View>}
+          {endThemedIcon && <View style={styles.iconContainer}>{endThemedIcon}</View>}
         </BaseButton>
       </Box>
     );

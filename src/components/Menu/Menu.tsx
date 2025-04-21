@@ -5,11 +5,11 @@ import {
   DimensionValue,
   LayoutChangeEvent,
   LayoutRectangle,
-  StyleSheet,
   View,
   ViewProps,
   ViewStyle,
 } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector } from '../../libraries';
 import { StyledProps } from '../../libraries/style/styleTypes';
 import { Theme } from '../../libraries/themes/types';
@@ -17,7 +17,6 @@ import { MeasureElementRect, PortalProps } from '../../types';
 import { screenHeight, screenWidth } from '../../utils';
 import { Portal } from '../Portal';
 import { menuContainerStyle, styles } from './Menu.styles';
-import { useRestyle } from '../../hooks';
 
 export type MenuProps = ViewProps & {
   /** Controls whether the menu is open or closed */

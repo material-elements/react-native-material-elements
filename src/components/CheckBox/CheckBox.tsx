@@ -10,7 +10,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { useRestyle } from '../../hooks';
+import { useRestyle, useThemedProps } from '../../hooks';
 import { useThemeCheckBoxConfigSelector, useThemeColorsSelector } from '../../libraries';
 import { getVariant, merge } from '../../utils';
 import { Text } from '../Typography';
@@ -55,6 +55,10 @@ export const CheckBox = React.forwardRef<View, CheckBoxProps>(
     const checkBoxThemeConfig = useThemeCheckBoxConfigSelector();
     const { getStyleFromProps } = useRestyle(props);
 
+    const { adornment: themedAdornment } = useThemedProps({
+      adornment,
+    });
+
     const checkBoxColorValue = checkBoxColor ?? checkBoxThemeConfig?.checkBoxColor;
 
     const mergeCheckBoxAdornmentContainerStyles = useMemo(() => {
@@ -67,7 +71,7 @@ export const CheckBox = React.forwardRef<View, CheckBoxProps>(
 
     const { colors: themeVariantColors } = checkBoxThemeConfig || {};
 
-    const hasAdornment = Boolean(adornment);
+    const hasAdornment = Boolean(themedAdornment);
     const shouldRenderAdornment = adornmentType === 'start' && (hasAdornment || label || subLabel);
     const shouldRenderEndAdornment = adornmentType === 'end' && (hasAdornment || label || subLabel);
 
@@ -108,7 +112,7 @@ export const CheckBox = React.forwardRef<View, CheckBoxProps>(
     const renderAdornment = useCallback(() => {
       let element: React.ReactNode;
       if (hasAdornment) {
-        element = adornment;
+        element = themedAdornment;
       } else {
         element = (
           <React.Fragment>
