@@ -24,7 +24,8 @@
     "lodash": ">=4.17.0",
     "react": "*",
     "react-native": "*",
-    "use-context-selector": ">=2.0.0"
+    "use-context-selector": ">=2.0.0",
+    "react-test-renderer": "^19.1.0"
   },
   "keywords": [
     "react native material ui",
@@ -74,14 +75,14 @@
     "@types/lodash": "*",
     "@types/react": "^18.2.6",
     "@types/react-native-material-ripple": "^0.9.6",
-    "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.6.3",
     "eslint": "^8.19.0",
     "jest": "^29.6.3",
     "prettier": "2.8.8",
     "react-native-builder-bob": "^0.23.2",
-    "react-test-renderer": "18.2.0",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "@types/react-test-renderer": "^18.0.0",
+    "react-test-renderer": "18.2.0"
   },
   "engines": {
     "node": ">=18"

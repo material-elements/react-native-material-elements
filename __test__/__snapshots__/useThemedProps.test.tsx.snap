@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useThemedProps should match icon component snapshot correctly 1`] = `<View />`;
+
+exports[`useThemedProps should render component correctly if user passed component directly 1`] = `<View />`;
