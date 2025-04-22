@@ -152,6 +152,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({
       const otpArray = defaultValueLength.split('').concat(Array(length - defaultValueLength.length).fill(''));
       setOtp(otpArray);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultValue]);
 
   const renderInputs = () => {

@@ -7,6 +7,7 @@ import { Box } from '../Box';
 import { BoxProps } from '../types';
 import { Text } from '../Typography';
 import { getAlertContainerStyles, getAlertTitleStyles } from './utils';
+import { ThemedIconProp, useThemedProps } from '../../hooks';
 
 export interface AlertProps extends BoxProps {
   /** Main title text displayed in the alert */
@@ -26,11 +27,11 @@ export interface AlertProps extends BoxProps {
   /** Maximum length of the title text, useful for truncating or layout adjustment */
   titleMixLength?: number;
   /** Optional icon displayed at the start (left) of the alert */
-  startIcon?: React.ReactNode;
+  startIcon?: ThemedIconProp;
   /** Custom styles for the container wrapping the start icon */
   startIconContainerStyles?: ViewStyle;
   /** Optional icon displayed at the end (right) of the alert */
-  endIcon?: React.ReactNode;
+  endIcon?: ThemedIconProp;
   /** Custom styles for the container wrapping the end icon */
   endIconContainerStyles?: ViewStyle;
 }
@@ -64,6 +65,11 @@ export const Alert = React.forwardRef<View, AlertProps>(
     const themeColors = useThemeColorsSelector();
     const colorScheme = useColorScheme();
 
+    const { startIcon: startThemedIcon, endIcon: endThemedIcon } = useThemedProps({
+      startIcon,
+      endIcon,
+    });
+
     const alertContainerStyles = useMemo(() => {
       return getAlertContainerStyles({ colors: themeColors, variant, variation });
     }, [themeColors, variant, variation]);
@@ -74,7 +80,7 @@ export const Alert = React.forwardRef<View, AlertProps>(
 
     return (
       <Box ref={ref} style={[styles.alertContainer, alertContainerStyles, style]} {...props}>
-        {startIcon ? <View style={[styles.startIconContainer, startIconContainerStyles]}>{startIcon}</View> : null}
+        {startIcon ? <View style={[styles.startIconContainer, startIconContainerStyles]}>{startThemedIcon}</View> : null}
         <View style={styles.contentContainer}>
           {title ? (
             <Text mode="light" variation="h4" maxLength={titleMixLength} style={[titleS, titleStyles]}>
@@ -87,7 +93,7 @@ export const Alert = React.forwardRef<View, AlertProps>(
             </Text>
           ) : null}
         </View>
-        {endIcon ? <View style={[styles.endIconContainer, endIconContainerStyles]}>{endIcon}</View> : null}
+        {endIcon ? <View style={[styles.endIconContainer, endIconContainerStyles]}>{endThemedIcon}</View> : null}
         {action ? <View style={styles.actionContainer}>{action}</View> : null}
       </Box>
     );

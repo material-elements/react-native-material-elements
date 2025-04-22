@@ -1,5 +1,6 @@
 import React from 'react';
 import { ColorValue, TextStyle, View, ViewStyle } from 'react-native';
+import { ThemedIconProp } from '../../hooks';
 import { BaseStyles, StyledProps } from '../../libraries/style/styleTypes';
 import { Theme } from '../../libraries/themes/v1/theme';
 import { BaseButtonProps } from '../Button/Button.types';
@@ -68,7 +69,7 @@ export interface ListItemProps extends Omit<BaseButtonProps, 'sx'>, StyledProps 
    * Optional element to be displayed at the end of the ListItem.
    * This property allows adding a custom element, such as an icon, at the end of the ListItem.
    */
-  endAdornment?: React.ReactNode;
+  endAdornment?: ThemedIconProp;
 
   /**
    * Optional styles for the container of the endAdornment.
@@ -80,7 +81,7 @@ export interface ListItemProps extends Omit<BaseButtonProps, 'sx'>, StyledProps 
    * Optional element to be displayed at the start of the ListItem.
    * This property allows adding a custom element, such as an icon, at the end of the ListItem.
    */
-  startAdornment?: React.ReactNode;
+  startAdornment?: ThemedIconProp;
 
   /**
    * Optional styles for the container of the startAdornment.

@@ -12,6 +12,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { useThemedProps } from '../../hooks';
 import { useThemeTextFieldConfigSelector } from '../../libraries';
 import { generateElementStyles } from '../../utils';
 import { Box } from '../Box';
@@ -72,6 +73,11 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
     const inputLabelAnimatedValue = useRef(new Animated.Value(0)).current;
     const [textInputLayoutRectangle, setTextInputLayoutRectangle] = useState<LayoutRectangle>();
     const [isFocused, setIsFocused] = useState<boolean>(false);
+
+    const { startAdornment: startThemedAdornment, endAdornment: endThemedAdornment } = useThemedProps({
+      startAdornment,
+      endAdornment,
+    });
 
     const textFieldThemeConfig = useThemeTextFieldConfigSelector();
     const {
@@ -245,9 +251,9 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
             {...inputLabelProps}
           />
         )}
-        {startAdornment && (
+        {startThemedAdornment && (
           <Box sx={{ me: 8 }} {...startAdornmentContainerProps}>
-            {startAdornment}
+            {startThemedAdornment}
           </Box>
         )}
         <BaseInput
@@ -268,7 +274,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
         />
         <TextFieldEndAdornment
           loading={loading}
-          endAdornment={endAdornment}
+          endAdornment={endThemedAdornment}
           showLoadingIndicatorWhenFocused={showLoadingIndicatorWhenFocused}
           loadingIndicatorProps={loadingIndicatorProps}
           isFocused={isFocused}

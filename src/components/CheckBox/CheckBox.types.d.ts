@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextStyle, TouchableWithoutFeedback, ViewProps, ViewStyle } from 'react-native';
+import { ThemedIconProp } from '../../hooks';
 import { StyledProps } from '../../libraries/style/styleTypes';
 import { DefaultVariationOptions, VariantTypes, VariationThemeConfig } from '../../utils';
 
@@ -41,7 +42,7 @@ export interface CheckBoxProps extends React.ComponentPropsWithoutRef<typeof Tou
    * React node to display at the end (right side) of the checkbox.
    * Commonly used for adding icons or labels.
    */
-  adornment?: React.ReactNode;
+  adornment?: ThemedIconProp;
 
   /**
    * Different variants of check box component.

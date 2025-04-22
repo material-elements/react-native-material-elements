@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, TextInputProps, TextStyle, View, ViewStyle } from 'react-native';
+import { ThemedIconProp, useThemedProps } from '../../hooks';
 import { useThemeColorsSelector, useThemeIconInputConfigSelector } from '../../libraries';
 import { BaseStyles } from '../../libraries/style/styleTypes';
 import { Box } from '../Box';
@@ -17,7 +18,7 @@ export interface IconInputProps extends TextInputProps, Pick<BoxProps, 'sx'> {
    * A React node to be displayed at the end of the input field.
    * This is typically used for icons or other interactive elements.
    */
-  endAdornment?: React.ReactNode;
+  endAdornment?: ThemedIconProp;
   /**
    * Props to be applied to the container of the end adornment.
    */
@@ -26,7 +27,7 @@ export interface IconInputProps extends TextInputProps, Pick<BoxProps, 'sx'> {
    * A React node to be displayed at the start of the input field.
    * This is typically used for icons or other interactive elements.
    */
-  startAdornment?: React.ReactNode;
+  startAdornment?: ThemedIconProp;
   /**
    * Props to be applied to the container of the start adornment.
    */
@@ -73,6 +74,11 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
     const themeColors = useThemeColorsSelector();
     const iconInputThemeConfig = useThemeIconInputConfigSelector();
 
+    const { startAdornment: startThemedAdornment, endAdornment: endThemedAdornment } = useThemedProps({
+      startAdornment,
+      endAdornment,
+    });
+
     const inputContainerStyles: BaseStyles = {
       bg: themeColors.blueGrey[50],
     };
@@ -91,7 +97,7 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
           style={[styles.inputContainer, iconInputThemeConfig?.inputWrapperStyles, inputWrapperStyles]}
           ref={ref}
           testID={`${testID}-wrapper`}>
-          {startAdornment && (
+          {startThemedAdornment && (
             <Box
               style={[
                 styles.startAdornmentContainer,
@@ -99,7 +105,7 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
                 startAdornmentContainerStyles,
               ]}
               testID={`${testID}-start-adornment-container`}>
-              {startAdornment}
+              {startThemedAdornment}
             </Box>
           )}
           <BaseInput
@@ -108,7 +114,7 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
             testID={testID}
             {...props}
           />
-          {endAdornment && (
+          {endThemedAdornment && (
             <Box
               style={[
                 styles.endAdornmentContainer,
@@ -116,7 +122,7 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
                 endAdornmentContainerStyles,
               ]}
               testID={`${testID}-end-adornment-container`}>
-              {endAdornment}
+              {endThemedAdornment}
             </Box>
           )}
         </Box>

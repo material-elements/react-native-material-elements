@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
-import { useRestyle } from '../../hooks';
+import { useRestyle, useThemedProps } from '../../hooks';
 import { useThemeColorsSelector, useThemeListItemConfigSelector } from '../../libraries';
 import { merge } from '../../utils';
 import { Box } from '../Box';
@@ -39,6 +39,11 @@ export const ListItem = React.forwardRef<View, ListItemProps>(
     const themeColors = useThemeColorsSelector();
     const listItemThemeConfig = useThemeListItemConfigSelector();
     const { getStyleFromProps } = useRestyle(props);
+
+    const { startAdornment: startThemedAdornment, endAdornment: endThemedAdornment } = useThemedProps({
+      startAdornment,
+      endAdornment,
+    });
 
     const listItemSelectedColor = selectedColor ?? listItemThemeConfig?.selectedColor;
     const listItemOutlineColor = outlineColor ?? listItemThemeConfig?.outlineColor;
@@ -105,7 +110,7 @@ export const ListItem = React.forwardRef<View, ListItemProps>(
       if (actionType === 'list') {
         return (
           <View style={[styles.flexContainer, styles.listItemInnerContainer]}>
-            {renderAdornment('start', startAdornment)}
+            {renderAdornment('start', startThemedAdornment)}
             <Box sx={{ f: 1 }}>
               <BaseButton
                 disableRipple={disableRipple}
@@ -114,7 +119,7 @@ export const ListItem = React.forwardRef<View, ListItemProps>(
                 <View style={[styles.flexContainer]}>{children}</View>
               </BaseButton>
             </Box>
-            {renderAdornment('end', endAdornment)}
+            {renderAdornment('end', endThemedAdornment)}
           </View>
         );
       } else if (actionType === 'root') {
@@ -125,9 +130,9 @@ export const ListItem = React.forwardRef<View, ListItemProps>(
               style={[styles.baseButton, listItemThemeConfig?.style, getStyleFromProps(), style]}
               {...props}>
               <View style={[styles.flexContainer]}>
-                {renderAdornment('start', startAdornment)}
+                {renderAdornment('start', startThemedAdornment)}
                 {children}
-                {renderAdornment('end', endAdornment)}
+                {renderAdornment('end', endThemedAdornment)}
               </View>
             </BaseButton>
           </Box>

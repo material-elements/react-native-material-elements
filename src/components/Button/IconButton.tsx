@@ -5,7 +5,7 @@ import { merge } from '../../utils';
 import { BaseButton } from './BaseButton';
 import { getButtonStyles, styles } from './Button.styles';
 import { IconButtonProps } from './Button.types';
-import { useRestyle } from '../../hooks';
+import { useRestyle, useThemedProps } from '../../hooks';
 
 export const IconButton = React.forwardRef<View, IconButtonProps>(
   (
@@ -15,6 +15,7 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
       style,
       rippleProps,
       baseButtonContainerStyle,
+      icon,
       overrideRootRippleEdge = false,
       disableRipple = false,
       overrideRootDisableRippleEffect = false,
@@ -29,6 +30,9 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
     const themeColors = useThemeColorsSelector();
     const themeSpacing = useThemeSpacingSelector();
     const iconButtonThemeConfig = useThemeIconButtonConfigSelector();
+    const { icon: themedIcon } = useThemedProps({
+      icon,
+    });
 
     const isRoundedIconButton = variation === 'roundedIconButton';
 
@@ -97,7 +101,7 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
         disableRipple={iconButtonDisableRipple()}
         rippleEdge={iconButtonRippleEdge()}
         {...props}>
-        {children}
+        {themedIcon ?? children}
       </BaseButton>
     );
   },

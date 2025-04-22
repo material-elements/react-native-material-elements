@@ -1,5 +1,5 @@
-import React from 'react';
 import { ColorValue, StyleProp, TouchableOpacityProps, ViewStyle } from 'react-native';
+import { ThemedIconProp } from '../../hooks';
 import { Theme } from '../../libraries/themes/v1/theme';
 import { DefaultVariationOptions, GetVariantArgs, VariantTypes, VariationThemeConfig } from '../../utils';
 import { BaseButtonProps } from '../Button/Button.types';
@@ -51,11 +51,11 @@ export interface ChipProps extends Omit<BaseButtonProps, 'sx' | 'disableRipple' 
   /**
    * Render the start icon of the chip component
    */
-  startIcon?: React.ReactNode;
+  startIcon?: ThemedIconProp;
   /**
    * Render the end icon of the chip component
    */
-  endIcon?: React.ReactNode;
+  endIcon?: ThemedIconProp;
   /**
    * start icon touch props
    */

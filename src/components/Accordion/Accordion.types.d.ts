@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleProp, TouchableWithoutFeedback, ViewStyle } from 'react-native';
 import { StyledProps } from '../../libraries/style/styleTypes';
+import { ThemeProviderProps } from '../../libraries/themes/types';
 
 /**
  * Props for the AccordionSummary component.
@@ -9,7 +10,7 @@ export interface AccordionSummaryProps extends React.ComponentPropsWithRef<typeo
   /**
    * Icon displayed to indicate expansion state.
    */
-  expandIcon?: React.ReactNode;
+  expandIcon?: ThemeProviderProps;
 
   /**
    * Styles for the wrapper around summary child elements.
@@ -74,7 +75,7 @@ export interface AccordionSummaryProps extends React.ComponentPropsWithRef<typeo
   /**
    * A React node to be displayed at the start of the accordion.
    */
-  startAdornment?: React.ReactNode;
+  startAdornment?: ThemeProviderProps;
 
   /**
    * Style for the start adornment container.
