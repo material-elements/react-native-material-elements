@@ -1,0 +1,13 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^13.0.7",
+    "nextra": "^2.0.1",
+    "nextra-theme-docs": "^2.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
