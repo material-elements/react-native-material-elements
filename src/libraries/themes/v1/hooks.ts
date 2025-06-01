@@ -18,6 +18,31 @@ export const useThemeColorsSelector = () => {
   }
   return themeColors;
 };
+
+export const useFontWeightSelector = () => {
+  const themeFontWeight = useContextSelector(ThemeContext, values => values?.theme?.fontWeight);
+  if (!themeFontWeight) {
+    throw new Error(`Theme font weight are unavailable. ${msg}`);
+  }
+  return themeFontWeight;
+};
+
+export const useLatterSpacingSelector = () => {
+  const latterSpacing = useContextSelector(ThemeContext, values => values?.theme?.latterSpacing);
+  if (!latterSpacing) {
+    throw new Error(`Theme latterSpacing are unavailable. ${msg}`);
+  }
+  return latterSpacing;
+};
+
+export const useLineHeightSelector = () => {
+  const lineHeight = useContextSelector(ThemeContext, values => values?.theme?.lineHeight);
+  if (!lineHeight) {
+    throw new Error(`Theme lineHeight are unavailable. ${msg}`);
+  }
+  return lineHeight;
+};
+
 export const useThemeSpacingSelector = () => {
   const themeSpacing = useContextSelector(ThemeContext, values => values?.theme?.spacing);
   if (!themeSpacing) {
