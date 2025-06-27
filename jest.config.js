@@ -11,7 +11,7 @@ module.exports = {
     './__test__',
     'src/libraries/themes/v1/colors',
     'src/libraries/themes/v1/sizes',
-    '.styles.ts',
+    'style.ts',
     'index.ts',
     'd.ts',
     '.consts.ts',
