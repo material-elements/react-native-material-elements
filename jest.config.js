@@ -9,8 +9,6 @@ module.exports = {
     './examples',
     './docs',
     './__test__',
-    'src/libraries/themes/v1/colors',
-    'src/libraries/themes/v1/sizes',
     'style.ts',
     'index.ts',
     'd.ts',
