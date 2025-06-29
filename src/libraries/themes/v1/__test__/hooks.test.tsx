@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { ThemeWrapper } from '../../../../../__test__/test-utils';
 import { initialLightTheme } from '../colors';
 import {
+  themeErrorMsg,
   useFontWeightSelector,
   useLatterSpacingSelector,
   useLineHeightSelector,
@@ -43,12 +44,34 @@ describe('Theme Hooks', () => {
       const { result } = renderHook(useThemeFontSelector, { wrapper: ThemeWrapper });
       expect(result.current).toEqual(expect.objectContaining(font));
     });
+
+    it('should throw error when theme not provided', () => {
+      try {
+        renderHook(useThemeFontSelector);
+      } catch (error) {
+        expect(error).toBeInstanceOf(Error);
+        if (error instanceof Error) {
+          expect(error.message).toEqual(`Theme fonts are unavailable. ${themeErrorMsg}`);
+        }
+      }
+    });
   });
 
   describe('useThemeColorsSelector', () => {
     it('should return the theme colors config', () => {
       const { result } = renderHook(useThemeColorsSelector, { wrapper: ThemeWrapper });
       expect(result.current).toEqual(expect.objectContaining(initialLightTheme));
+    });
+
+    it('should throw error when theme not provided', () => {
+      try {
+        renderHook(useThemeColorsSelector);
+      } catch (error) {
+        expect(error).toBeInstanceOf(Error);
+        if (error instanceof Error) {
+          expect(error.message).toEqual(`Theme fonts are unavailable. ${themeErrorMsg}`);
+        }
+      }
     });
   });
 
@@ -57,12 +80,34 @@ describe('Theme Hooks', () => {
       const { result } = renderHook(useFontWeightSelector, { wrapper: ThemeWrapper });
       expect(result.current).toEqual(expect.objectContaining(fontWeight));
     });
+
+    it('should throw error when theme not provided', () => {
+      try {
+        renderHook(useFontWeightSelector);
+      } catch (error) {
+        expect(error).toBeInstanceOf(Error);
+        if (error instanceof Error) {
+          expect(error.message).toEqual(`Theme fonts are unavailable. ${themeErrorMsg}`);
+        }
+      }
+    });
   });
 
   describe('useLatterSpacingSelector', () => {
     it('should return the theme latter spacing config', () => {
       const { result } = renderHook(useLatterSpacingSelector, { wrapper: ThemeWrapper });
       expect(result.current).toEqual(expect.objectContaining(latterSpacing));
+    });
+
+    it('should throw error when theme not provided', () => {
+      try {
+        renderHook(useLatterSpacingSelector);
+      } catch (error) {
+        expect(error).toBeInstanceOf(Error);
+        if (error instanceof Error) {
+          expect(error.message).toEqual(`Theme fonts are unavailable. ${themeErrorMsg}`);
+        }
+      }
     });
   });
 
@@ -71,12 +116,34 @@ describe('Theme Hooks', () => {
       const { result } = renderHook(useLineHeightSelector, { wrapper: ThemeWrapper });
       expect(result.current).toEqual(expect.objectContaining(lineHeight));
     });
+
+    it('should throw error when theme not provided', () => {
+      try {
+        renderHook(useLineHeightSelector);
+      } catch (error) {
+        expect(error).toBeInstanceOf(Error);
+        if (error instanceof Error) {
+          expect(error.message).toEqual(`Theme fonts are unavailable. ${themeErrorMsg}`);
+        }
+      }
+    });
   });
 
   describe('useThemeSpacingSelector', () => {
     it('should return the theme spacing config', () => {
       const { result } = renderHook(useThemeSpacingSelector, { wrapper: ThemeWrapper });
       expect(result.current).toEqual(expect.objectContaining(spacing));
+    });
+
+    it('should throw error when theme not provided', () => {
+      try {
+        renderHook(useThemeSpacingSelector);
+      } catch (error) {
+        expect(error).toBeInstanceOf(Error);
+        if (error instanceof Error) {
+          expect(error.message).toEqual(`Theme fonts are unavailable. ${themeErrorMsg}`);
+        }
+      }
     });
   });
 
