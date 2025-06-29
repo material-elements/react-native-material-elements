@@ -1,12 +1,12 @@
 import { useContextSelector } from 'use-context-selector';
 import { ThemeContext } from './V2ThemeContext';
 
-const msg = 'Please ensure the ThemeProvider is correctly wrapped around the application.';
+export const themeErrorMsg = 'Please ensure the ThemeProvider is correctly wrapped around the application.';
 
 export const useThemeFontSelector = () => {
   const themeFonts = useContextSelector(ThemeContext, values => values?.theme?.font);
   if (!themeFonts) {
-    throw new Error(`Theme fonts are unavailable. ${msg}`);
+    throw new Error(`Theme fonts are unavailable. ${themeErrorMsg}`);
   }
   return themeFonts;
 };
@@ -14,7 +14,7 @@ export const useThemeFontSelector = () => {
 export const useThemeColorsSelector = () => {
   const themeColors = useContextSelector(ThemeContext, values => values?.theme?.colors);
   if (!themeColors) {
-    throw new Error(`Theme colors are unavailable. ${msg}`);
+    throw new Error(`Theme colors are unavailable. ${themeErrorMsg}`);
   }
   return themeColors;
 };
@@ -22,7 +22,7 @@ export const useThemeColorsSelector = () => {
 export const useFontWeightSelector = () => {
   const themeFontWeight = useContextSelector(ThemeContext, values => values?.theme?.fontWeight);
   if (!themeFontWeight) {
-    throw new Error(`Theme font weight are unavailable. ${msg}`);
+    throw new Error(`Theme font weight are unavailable. ${themeErrorMsg}`);
   }
   return themeFontWeight;
 };
@@ -30,7 +30,7 @@ export const useFontWeightSelector = () => {
 export const useLatterSpacingSelector = () => {
   const latterSpacing = useContextSelector(ThemeContext, values => values?.theme?.latterSpacing);
   if (!latterSpacing) {
-    throw new Error(`Theme latterSpacing are unavailable. ${msg}`);
+    throw new Error(`Theme latterSpacing are unavailable. ${themeErrorMsg}`);
   }
   return latterSpacing;
 };
@@ -38,7 +38,7 @@ export const useLatterSpacingSelector = () => {
 export const useLineHeightSelector = () => {
   const lineHeight = useContextSelector(ThemeContext, values => values?.theme?.lineHeight);
   if (!lineHeight) {
-    throw new Error(`Theme lineHeight are unavailable. ${msg}`);
+    throw new Error(`Theme lineHeight are unavailable. ${themeErrorMsg}`);
   }
   return lineHeight;
 };
@@ -46,7 +46,7 @@ export const useLineHeightSelector = () => {
 export const useThemeSpacingSelector = () => {
   const themeSpacing = useContextSelector(ThemeContext, values => values?.theme?.spacing);
   if (!themeSpacing) {
-    throw new Error(`Theme spacing are unavailable. ${msg}`);
+    throw new Error(`Theme spacing are unavailable. ${themeErrorMsg}`);
   }
   return themeSpacing;
 };

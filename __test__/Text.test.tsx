@@ -195,15 +195,20 @@ describe('Text Component', () => {
   });
 
   it('should throw an error when using the maxLength prop with a non-string value', () => {
-    const renderComponent = () => {
+    let caughtError: Error | null = null;
+
+    try {
       render(
         <Text maxLength={10}>
           <></>
         </Text>,
       );
-    };
+    } catch (error: any) {
+      caughtError = error;
+    }
 
-    expect(renderComponent).toThrowError('maxLength props must be used with string');
+    expect(caughtError).not.toBeNull();
+    expect(caughtError?.message).toContain('maxLength props must be used with string');
   });
 
   it('should apply the gutterBottomSpace property from theme provider', () => {

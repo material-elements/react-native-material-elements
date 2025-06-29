@@ -133,7 +133,7 @@ describe('useThemedProps', () => {
     const iconFn = jest.fn(() => <View />);
     const props = { icon: iconFn };
 
-    const { rerender } = renderHook(() => useThemedProps(props), {
+    const { rerender } = renderHook(useThemedProps, {
       wrapper: ThemeWrapper,
       initialProps: props,
     });
