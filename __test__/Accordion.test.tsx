@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
-import { Accordion, AccordionDetails, AccordionDetailsProps, AccordionSummary, Text } from '../src';
-import { render, waitFor } from './test-utils';
+import { Accordion, AccordionDetails, AccordionDetailsProps, AccordionSummary, grey, Text } from '../src';
+import { fireEvent, render, waitFor } from './test-utils';
 
 describe('Accordion Component', () => {
   const mockAccordionTestId = 'accordion-test-id';
@@ -56,6 +56,9 @@ describe('Accordion Component', () => {
 
 describe('AccordionSummary Component', () => {
   const mockRef = React.createRef<View>();
+  const mockOnPress = jest.fn();
+  const mockHeaderTestId = 'mock-accordion-summary-header-test-id';
+  const mockTestId = 'mock-accordion-summary-test-id';
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -79,6 +82,37 @@ describe('AccordionSummary Component', () => {
 
     const expandIcon = getByText('expandIcon');
     expect(expandIcon).toBeDefined();
+  });
+
+  it('should show the top border', () => {
+    const { getByTestId } = render(<AccordionSummary headerTestId={mockHeaderTestId} topBorder />);
+    const element = getByTestId(mockHeaderTestId);
+
+    expect(element).toBeDefined();
+
+    const flattenStyles = StyleSheet.flatten(element.props.style);
+
+    expect(flattenStyles.borderTopWidth).toEqual(1);
+    expect(flattenStyles.borderTopColor).toEqual(grey[300]);
+  });
+
+  it('should show the bottom border', () => {
+    const { getByTestId } = render(<AccordionSummary headerTestId={mockHeaderTestId} bottomBorder />);
+    const element = getByTestId(mockHeaderTestId);
+
+    expect(element).toBeDefined();
+
+    const flattenStyles = StyleSheet.flatten(element.props.style);
+
+    expect(flattenStyles.borderBottomWidth).toEqual(1);
+    expect(flattenStyles.borderBottomColor).toEqual(grey[300]);
+  });
+
+  it('should call the onPress function', () => {
+    const { getByTestId } = render(<AccordionSummary onPress={mockOnPress} testID={mockTestId} />);
+    const element = getByTestId(mockTestId);
+    fireEvent.press(element);
+    expect(mockOnPress).toHaveBeenCalled();
   });
 });
 

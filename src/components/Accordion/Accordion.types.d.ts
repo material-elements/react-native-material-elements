@@ -85,4 +85,6 @@ export interface AccordionSummaryProps extends React.ComponentPropsWithRef<typeo
    * Styles for the child node wrapper
    */
   childrenWrapperStyles?: StyleProp<ViewStyle>;
+
+  headerTestId?: string;
 }
