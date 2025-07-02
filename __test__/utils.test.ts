@@ -1,6 +1,6 @@
-import { StyleProp, ViewStyle } from 'react-native';
-import { generateUniqueId, gutter, maxLength, merge } from '../src';
 import _ from 'lodash';
+import { StyleProp, ViewStyle } from 'react-native';
+import { defaultLightTheme, generateUniqueId, getVariant, gutter, maxLength, merge } from '../src';
 
 describe('generateUniqueId', () => {
   it('should return a non-empty string', () => {
@@ -153,5 +153,150 @@ describe('merge utility', () => {
     const themeComponentStyles: ViewStyle = { backgroundColor: 'green', borderRadius: 100, top: 200, right: 10 };
     const result = merge(componentStyles, themeComponentStyles);
     expect(result).toEqual({ backgroundColor: 'green', borderWidth: 10, borderRadius: 100, marginTop: 10, top: 200, right: 10 });
+  });
+});
+
+describe('getVariant', () => {
+  it('should return primary color from config if available', () => {
+    const result = getVariant({
+      variant: 'primary',
+      colors: defaultLightTheme.colors,
+      config: { primary: { color: 'red' } },
+    });
+    expect(result).toEqual('red');
+  });
+
+  it('should return primary color from colors fallback if not in config', () => {
+    const result = getVariant({
+      variant: 'primary',
+      colors: defaultLightTheme.colors,
+    });
+    expect(result).toBe(defaultLightTheme.colors.primary[500]);
+  });
+
+  it('should return secondary color from config if available', () => {
+    const result = getVariant({
+      variant: 'secondary',
+      colors: defaultLightTheme.colors,
+      config: { secondary: { color: '#FEDCBA' } },
+    });
+    expect(result).toBe('#FEDCBA');
+  });
+
+  it('should return secondary color from colors fallback if not in config', () => {
+    const result = getVariant({
+      variant: 'secondary',
+      colors: defaultLightTheme.colors,
+    });
+    expect(result).toBe(defaultLightTheme.colors.secondary[500]);
+  });
+
+  it('should return error color from config if available', () => {
+    const result = getVariant({
+      variant: 'error',
+      colors: defaultLightTheme.colors,
+      config: { error: { color: '#FF1111' } },
+    });
+    expect(result).toBe('#FF1111');
+  });
+
+  it('should return error color from colors fallback if not in config', () => {
+    const result = getVariant({
+      variant: 'error',
+      colors: defaultLightTheme.colors,
+    });
+    expect(result).toBe(defaultLightTheme.colors.red[500]);
+  });
+
+  it('should return info color from config if available', () => {
+    const result = getVariant({
+      variant: 'info',
+      colors: defaultLightTheme.colors,
+      config: { info: { color: '#0099FF' } },
+    });
+    expect(result).toBe('#0099FF');
+  });
+
+  it('should return info color from colors fallback if not in config', () => {
+    const result = getVariant({
+      variant: 'info',
+      colors: defaultLightTheme.colors,
+    });
+    expect(result).toBe(defaultLightTheme.colors.lightBlue[500]);
+  });
+
+  it('should return success color from config if available', () => {
+    const result = getVariant({
+      variant: 'success',
+      colors: defaultLightTheme.colors,
+      config: { success: { color: '#00CC00' } },
+    });
+    expect(result).toBe('#00CC00');
+  });
+
+  it('should return success color from colors fallback if not in config', () => {
+    const result = getVariant({
+      variant: 'success',
+      colors: defaultLightTheme.colors,
+    });
+    expect(result).toBe(defaultLightTheme.colors.green[500]);
+  });
+
+  it('should return warning color from config if available', () => {
+    const result = getVariant({
+      variant: 'warning',
+      colors: defaultLightTheme.colors,
+      config: { warning: { color: '#FFCC00' } },
+    });
+    expect(result).toBe('#FFCC00');
+  });
+
+  it('should return warning color from colors fallback if not in config', () => {
+    const result = getVariant({
+      variant: 'warning',
+      colors: defaultLightTheme.colors,
+    });
+    expect(result).toBe(defaultLightTheme.colors.yellow[500]);
+  });
+
+  it('should return grey color from config if available', () => {
+    const result = getVariant({
+      variant: 'grey',
+      colors: defaultLightTheme.colors,
+      config: { grey: { color: '#999999' } },
+    });
+    expect(result).toBe('#999999');
+  });
+
+  it('should return grey color from colors fallback if not in config', () => {
+    const result = getVariant({
+      variant: 'grey',
+      colors: defaultLightTheme.colors,
+    });
+    expect(result).toBe(defaultLightTheme.colors.grey[500]);
+  });
+
+  it('should return lightGrey color from config if available', () => {
+    const result = getVariant({
+      variant: 'lightGrey',
+      colors: defaultLightTheme.colors,
+      config: { lightGrey: { color: '#EEEEEE' } },
+    });
+    expect(result).toBe('#EEEEEE');
+  });
+
+  it('should return lightGrey color from colors fallback if not in config', () => {
+    const result = getVariant({
+      variant: 'lightGrey',
+      colors: defaultLightTheme.colors,
+    });
+    expect(result).toBe(defaultLightTheme.colors.grey[200]);
+  });
+
+  it('should return secondary[500] as default for unknown variant', () => {
+    const result = getVariant({
+      colors: defaultLightTheme.colors,
+    });
+    expect(result).toBe(defaultLightTheme.colors.secondary[500]);
   });
 });
