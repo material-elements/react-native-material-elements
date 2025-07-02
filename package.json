@@ -18,7 +18,7 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "peerDependencies": {
     "lodash": ">=4.17.0",

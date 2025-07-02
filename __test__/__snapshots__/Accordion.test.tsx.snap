@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Accordion Component should render correctly 1`] = `
 <View
@@ -19,6 +19,59 @@ exports[`Accordion Component should render correctly 1`] = `
     ]
   }
 />
+`;
+
+exports[`AccordionDetails Component should render accordion details correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "opacity": 1,
+        "paddingBottom": 15,
+        "paddingHorizontal": 12,
+        "paddingTop": 8,
+        "width": "100%",
+      },
+      {},
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`AccordionDetails Component should render child component 1`] = `
+<View
+  style={
+    [
+      {
+        "opacity": 1,
+        "paddingBottom": 15,
+        "paddingHorizontal": 12,
+        "paddingTop": 8,
+        "width": "100%",
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  <View>
+    <Text
+      collapsable={false}
+      style={{}}
+    >
+      First child
+    </Text>
+  </View>
+  <View>
+    <Text
+      collapsable={false}
+      style={{}}
+    >
+      Second child
+    </Text>
+  </View>
+</View>
 `;
 
 exports[`AccordionSummary Component should render correctly 1`] = `

@@ -44,6 +44,7 @@ export const AccordionSummary = React.forwardRef<View, AccordionSummaryProps>(
       rotateAnimationDuration = ROTATE_ANIMATION_DURATION,
       heightValueAnimationDuration = HEIGHT_VALUE_ANIMATION_DURATION,
       rotateAnimationRange = ROTATE_ANIMATION_RANGE,
+      headerTestId,
       ...props
     },
     ref,
@@ -150,7 +151,8 @@ export const AccordionSummary = React.forwardRef<View, AccordionSummaryProps>(
       <View ref={ref}>
         <TouchableWithoutFeedback onPress={onPress} disabled={disabled} {...props}>
           <View
-            style={[accordionSummaryStyles.accordionSummaryWrapperContainer, summaryWrapperStyles, getStyleFromProps(), style]}>
+            style={[accordionSummaryStyles.accordionSummaryWrapperContainer, summaryWrapperStyles, getStyleFromProps(), style]}
+            testID={headerTestId}>
             <View style={[accordionSummaryStyles.accordionSummaryChildWrapper, summaryChildWrapperStyles]}>
               {startAdornment && (
                 <View style={[accordionSummaryStyles.startAdornmentContainer, startAdornmentContainerStyle]}>

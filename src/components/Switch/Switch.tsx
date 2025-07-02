@@ -4,6 +4,7 @@ import { useThemeColorsSelector, useThemeSwitchConfigSelector } from '../../libr
 import { BaseStyles } from '../../libraries/style/styleTypes';
 import { DefaultVariationOptions, generateElementStyles, getVariant, VariantTypes, VariationThemeConfig } from '../../utils';
 import { getSwitchSizes } from './utils';
+import { ThemedIconProp, useThemedProps } from '../../hooks';
 
 export type SwitchThemeConfig = {
   colors?: VariationThemeConfig<DefaultVariationOptions>;
@@ -13,6 +14,8 @@ export type SwitchThemeConfig = {
  * Define a union type for the possible size of a switch component
  */
 export type SwitchSize = 'small' | 'medium' | 'large';
+
+export type SwitchType = 'ios' | 'android';
 
 export interface SwitchProps extends Omit<React.ComponentPropsWithoutRef<typeof TouchableWithoutFeedback>, 'onPress' | 'style'> {
   /**
@@ -94,9 +97,19 @@ export interface SwitchProps extends Omit<React.ComponentPropsWithoutRef<typeof 
    * Active state of the switch
    */
   isActive?: boolean;
+
+  /**
+   * Switch type
+   */
+  type?: SwitchType;
+
+  /**
+   * Thumb icon
+   */
+  thumbIcon?: ThemedIconProp;
 }
 
-export interface GetSwitchSizesArgs extends Pick<SwitchProps, 'size'> {}
+export interface GetSwitchSizesArgs extends Pick<SwitchProps, 'size' | 'type'> {}
 
 export const Switch = React.forwardRef<View, SwitchProps>(
   (
@@ -111,15 +124,23 @@ export const Switch = React.forwardRef<View, SwitchProps>(
       thumbTestID,
       variant = 'primary',
       size = 'medium',
+      type = 'ios',
       overrideRootToggleBgDuration = false,
       toggleWrapperBgDuration = 200,
       toggleDuration = 220,
       overrideRootToggleDuration = false,
       isActive = false,
+      thumbIcon,
       ...props
     },
     ref,
   ) => {
+    const isAndroidSwitch = type === 'android';
+
+    const { thumbIcon: thumbThemedIcon } = useThemedProps({
+      thumbIcon,
+    });
+
     const animatedValue = useRef(new Animated.Value(0)).current;
     const switchWrapperBgAnimatedValue = useRef(new Animated.Value(0)).current;
 
@@ -172,12 +193,17 @@ export const Switch = React.forwardRef<View, SwitchProps>(
       setThumbWidth(event.nativeEvent.layout.width);
     };
 
+    const outputRangeSwitchThumb: [number, number] = [
+      isAndroidSwitch ? -4 : 0,
+      isAndroidSwitch ? containerWidth - thumbWidth : containerWidth - thumbWidth - 4,
+    ];
+
     const switchThumbAnimationStyles: ViewStyle = {
       transform: [
         {
           translateX: animatedValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, containerWidth - thumbWidth - 4],
+            outputRange: outputRangeSwitchThumb,
           }),
         },
       ],
@@ -197,7 +223,7 @@ export const Switch = React.forwardRef<View, SwitchProps>(
           <Animated.View
             style={StyleSheet.flatten([
               styles.switchContainer,
-              getSwitchSizes({ size }).thumbContainerStyles,
+              getSwitchSizes({ size, type }).thumbContainerStyles,
               { backgroundColor: backgroundColorInterpolation },
               switchThemeConfig?.style,
               style,
@@ -214,8 +240,9 @@ export const Switch = React.forwardRef<View, SwitchProps>(
                 thumbStyles,
               ])}
               onLayout={handleThumbLayout}
-              testID={thumbTestID}
-            />
+              testID={thumbTestID}>
+              {thumbThemedIcon && <View style={styles.thumbIconContainer}>{thumbThemedIcon}</View>}
+            </Animated.View>
           </Animated.View>
         </TouchableWithoutFeedback>
       </View>
@@ -238,5 +265,11 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.2,
     shadowRadius: 1,
+  },
+  thumbIconContainer: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

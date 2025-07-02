@@ -68,7 +68,7 @@ export const gutter = <T extends keyof SpacingStyle, U extends StylePalette[T]>(
  * Helper function to merge two objects into one.
  * This spreads the properties of both objects into a new object, ensuring no overwriting of properties.
  */
-const mergeObjects = <T, U>(obj1: T, obj2: U): T & U => ({ ...obj1, ...obj2 });
+const mergeObjects = <T extends {}, U extends {}>(obj1: T, obj2: U): T & U => ({ ...obj1, ...obj2 });
 /**
  * Function to merge an array of objects into a single object.
  * Each object in the array is spread into the accumulator, effectively combining them into one object.
@@ -81,38 +81,25 @@ const mergeArraysToObject = <T extends Record<string, any>>(array: T[]): T => {
  * It handles different cases based on whether the arguments are arrays or objects.
  * If the arguments are arrays, they are merged into objects first before merging them.
  */
-export const merge = <T1, T2>(param1: T1, param2: T2): T1 & T2 => {
-  if (!Array.isArray(param1) && !Array.isArray(param2)) {
+export const merge = <T1 extends object | any[] | undefined, T2 extends object | any[] | undefined>(
+  param1: T1,
+  param2: T2,
+): (T1 & T2) | undefined => {
+  if (param1 && !Array.isArray(param1) && param2 && !Array.isArray(param2)) {
     return mergeObjects(param1, param2);
-  }
-
-  if (Array.isArray(param1) && Array.isArray(param2)) {
+  } else if (Array.isArray(param1) && Array.isArray(param2)) {
     const mergedArray1 = mergeArraysToObject(param1);
     const mergedArray2 = mergeArraysToObject(param2);
     return mergeObjects(mergedArray1, mergedArray2);
-  }
-
-  if (Array.isArray(param1) && !Array.isArray(param2)) {
+  } else if (Array.isArray(param1) && param2 && !Array.isArray(param2)) {
     const mergedArray1 = mergeArraysToObject(param1);
     return mergeObjects(mergedArray1, param2);
-  }
-
-  if (!Array.isArray(param1) && Array.isArray(param2)) {
+  } else if (param1 && !Array.isArray(param1) && Array.isArray(param2)) {
     const mergedArray2 = mergeArraysToObject(param2);
     return mergeObjects(param1, mergedArray2);
+  } else if (param1 && param2) {
+    return mergeObjects(param1, param2);
   }
 
-  return mergeObjects(param1, param2);
+  return undefined;
 };
-
-export function mergeRefs<T>(...refs: (React.Ref<T> | null | undefined)[]) {
-  return (instance: T | null) => {
-    refs.forEach(ref => {
-      if (typeof ref === 'function') {
-        ref(instance);
-      } else if (ref) {
-        (ref as React.MutableRefObject<T | null>).current = instance;
-      }
-    });
-  };
-}

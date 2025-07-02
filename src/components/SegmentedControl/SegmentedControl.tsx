@@ -87,7 +87,7 @@ export const SegmentedControl = <T extends string | number>({
   };
 
   const getSegmentItemHeadingStyle = function (index: number) {
-    if (applySegmentItemTextStyleIndex == null || applySegmentItemTextStyleIndex == undefined) {
+    if (applySegmentItemTextStyleIndex === null || applySegmentItemTextStyleIndex === undefined) {
       return segmentTextStyle;
     }
 
