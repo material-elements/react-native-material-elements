@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Box Component should match the snapshot 1`] = `
 <View
@@ -50,4 +50,11 @@ exports[`Box Component should match the snapshot with sx styles 1`] = `
 >
   <View />
 </View>
+`;
+
+exports[`Box Component should render the animated view 1`] = `
+<View
+  collapsable={false}
+  style={{}}
+/>
 `;

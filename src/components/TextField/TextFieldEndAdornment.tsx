@@ -11,6 +11,7 @@ export interface TextFieldEndAdornmentProps {
   loadingIndicatorProps?: ActivityIndicatorProps;
   isFocused?: boolean;
   endAdornmentContainerProps?: Omit<BoxProps, 'children'>;
+  testID?: string;
 }
 
 const TextFieldEndAdornment: React.FC<TextFieldEndAdornmentProps> = ({
@@ -20,6 +21,7 @@ const TextFieldEndAdornment: React.FC<TextFieldEndAdornmentProps> = ({
   isFocused,
   loadingIndicatorProps,
   endAdornmentContainerProps,
+  testID,
 }) => {
   if (!loading && !endAdornment) {
     return null;
@@ -42,7 +44,7 @@ const TextFieldEndAdornment: React.FC<TextFieldEndAdornmentProps> = ({
   }
 
   return (
-    <Box sx={{ me: 8, ms: 8 }} {...endAdornmentContainerProps}>
+    <Box sx={{ me: 8, ms: 8 }} {...endAdornmentContainerProps} testID={testID}>
       {element}
     </Box>
   );

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`AppBar should render correctly without any props 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      [
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "paddingHorizontal": 8,
+          "paddingVertical": 6,
+          "width": "100%",
+        },
+        undefined,
+      ],
+    ]
+  }
+/>
+`;
+
+exports[`AppBarItem should render correctly without any props 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      [
+        {
+          "padding": 4,
+        },
+        undefined,
+      ],
+    ]
+  }
+/>
+`;

@@ -7,6 +7,7 @@ import { PortalProps } from '../types';
 
 export interface BackdropProps extends PortalProps {
   childWrapperContainerStyles?: StyleProp<ViewStyle>;
+  activityIndicatorTestId?: string;
 }
 
 export const Backdrop: React.FC<BackdropProps> = ({
@@ -16,6 +17,7 @@ export const Backdrop: React.FC<BackdropProps> = ({
   animationType = 'fade',
   childWrapperContainerStyles,
   children,
+  activityIndicatorTestId,
   ...props
 }) => {
   const { style, ...rest } = modalContainerProps || {};
@@ -30,7 +32,9 @@ export const Backdrop: React.FC<BackdropProps> = ({
       }}
       onClose={onClose}
       {...props}>
-      <View style={childWrapperContainerStyles}>{children ?? <ActivityIndicator size="large" color={grey[50]} />}</View>
+      <View style={childWrapperContainerStyles}>
+        {children ?? <ActivityIndicator testID={activityIndicatorTestId} size="large" color={grey[50]} />}
+      </View>
     </Portal>
   );
 };

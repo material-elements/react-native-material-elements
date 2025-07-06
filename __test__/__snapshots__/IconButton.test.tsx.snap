@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`IconButton should render correctly with default props 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      {
+        "alignSelf": "flex-start",
+      },
+    ]
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    pointerEvents="box-only"
+    style={
+      {
+        "alignItems": "center",
+        "alignSelf": "auto",
+        "aspectRatio": 1,
+        "borderColor": "#03A9F4",
+        "borderRadius": 100,
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "overflow": "hidden",
+        "padding": 5,
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "bottom": 0,
+            "left": 0,
+            "overflow": "hidden",
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
