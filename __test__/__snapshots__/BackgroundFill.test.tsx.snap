@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BackgroundFill should render children correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "position": "relative",
+        "width": "100%",
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "zIndex": 10,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      collapsable={false}
+      style={{}}
+    >
+      Hi
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`BackgroundFill should render correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "position": "relative",
+        "width": "100%",
+      },
+      {},
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`BackgroundFill should render image 1`] = `
+<View
+  style={
+    [
+      {
+        "position": "relative",
+        "width": "100%",
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  <Image
+    source={
+      {
+        "uri": "https://demo.image",
+      }
+    }
+    style={
+      [
+        {
+          "bottom": 0,
+          "height": "100%",
+          "left": 0,
+          "pointerEvents": "none",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": "100%",
+          "zIndex": 1,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`BackgroundFill should render the overlay 1`] = `
+<View
+  style={
+    [
+      {
+        "position": "relative",
+        "width": "100%",
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "rgba(0, 0, 0, .2)",
+          "bottom": 0,
+          "left": 0,
+          "pointerEvents": "none",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 2,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;

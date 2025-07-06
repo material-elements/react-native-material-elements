@@ -131,4 +131,9 @@ describe('Box Component', () => {
     expect(flattenedStyle.justifyContent).toEqual('center');
     expect(flattenedStyle.alignItems).toEqual('center');
   });
+
+  it('should render the animated view', () => {
+    const { toJSON } = render(<Box animatedView />);
+    expect(toJSON()).toMatchSnapshot();
+  });
 });

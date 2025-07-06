@@ -24,6 +24,8 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node', 'mjs', 'svg', 'png'],
   testEnvironment: 'node',
 
+  setupFiles: ['./jest.setup.ts'],
+
   coverageThreshold: {
     global: {
       branches: 80,

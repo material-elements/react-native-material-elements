@@ -14,6 +14,10 @@ describe('Base button component', () => {
     jest.clearAllMocks();
   });
 
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   it('should render correctly', async () => {
     const { toJSON } = render(<BaseButton />);
     await waitFor(() => {
@@ -55,5 +59,14 @@ describe('Base button component', () => {
     const animatedView = getByTestId(mockTestId);
 
     expect(animatedView.props.style.transform[0].scale).toEqual(1);
+  });
+
+  it('should called the onPress function', () => {
+    jest.useFakeTimers();
+    const { getByTestId } = render(<BaseButton onPress={mockOnPress} testID={mockTestId} />);
+    const button = getByTestId(mockTestId);
+    fireEvent.press(button, { nativeEvent: {} });
+    expect(mockOnPress).toHaveBeenCalled();
+    expect(mockOnPress).toHaveBeenCalledTimes(1);
   });
 });
