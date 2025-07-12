@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Card Component should render correctly 1`] = `
 <View
@@ -15,6 +15,136 @@ exports[`Card Component should render correctly 1`] = `
     ]
   }
 />
+`;
+
+exports[`CardAction should render correctly with default props 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      undefined,
+    ]
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    pointerEvents="box-only"
+    style={
+      {
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "bottom": 0,
+            "left": 0,
+            "overflow": "hidden",
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`CardAction should render the child component correctly 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      undefined,
+    ]
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    pointerEvents="box-only"
+    style={
+      {
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
+      }
+    }
+  >
+    <Text
+      collapsable={false}
+      style={{}}
+    >
+      Hello
+    </Text>
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "bottom": 0,
+            "left": 0,
+            "overflow": "hidden",
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
 `;
 
 exports[`CardContent Component should render correctly 1`] = `
@@ -44,5 +174,36 @@ exports[`CardHeader Component should render correctly 1`] = `
       ],
     ]
   }
+/>
+`;
+
+exports[`CardMedia should render correctly with default props 1`] = `
+<Image
+  collapsable={false}
+  style={
+    {
+      "height": undefined,
+      "width": undefined,
+    }
+  }
+/>
+`;
+
+exports[`CardMedia should render the image 1`] = `
+<Image
+  collapsable={false}
+  source={
+    {
+      "uri": "https://mock-image-url.com",
+    }
+  }
+  style={
+    {
+      "height": undefined,
+      "testID": "card-media-test-id",
+      "width": undefined,
+    }
+  }
+  testID="card-media-test-id"
 />
 `;

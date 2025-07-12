@@ -1,23 +1,25 @@
 import React, { forwardRef, useMemo } from 'react';
-import { GestureResponderEvent, TouchableWithoutFeedback, View } from 'react-native';
+import { TouchableWithoutFeedback, View } from 'react-native';
 import { Box } from '../Box';
-import { ModalContainerProps } from './Portal.types';
 import { createModalBackgroundStyles } from './Portal.styles';
+import { ModalContainerProps } from './Portal.types';
 
-export const ModalContainer = forwardRef<View, ModalContainerProps>(({ style, sx, onClose, children, ...props }, ref) => {
-  const styles = useMemo(() => createModalBackgroundStyles(), []);
+export const ModalContainer = forwardRef<View, ModalContainerProps>(
+  ({ style, sx, onClose, children, rootWrapperTestID, ...props }, ref) => {
+    const styles = useMemo(() => createModalBackgroundStyles(), []);
 
-  const onPressHandler = (_: GestureResponderEvent) => {
-    if (onClose) {
-      onClose();
-    }
-  };
+    const onPressHandler = () => {
+      if (onClose) {
+        onClose();
+      }
+    };
 
-  return (
-    <TouchableWithoutFeedback onPress={onPressHandler}>
-      <Box style={[styles, style]} sx={sx} ref={ref} {...props}>
-        <TouchableWithoutFeedback accessible={false}>{children}</TouchableWithoutFeedback>
-      </Box>
-    </TouchableWithoutFeedback>
-  );
-});
+    return (
+      <TouchableWithoutFeedback onPress={onPressHandler} testID={rootWrapperTestID}>
+        <Box style={[styles, style]} sx={sx} ref={ref} {...props}>
+          <TouchableWithoutFeedback accessible={false}>{children}</TouchableWithoutFeedback>
+        </Box>
+      </TouchableWithoutFeedback>
+    );
+  },
+);

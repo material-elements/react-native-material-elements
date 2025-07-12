@@ -37,6 +37,8 @@ export interface ModalContainerProps extends BoxProps {
    * function which is used to hide the modal.
    */
   onClose?: () => void;
+
+  rootWrapperTestID?: string;
 }
 
 /**

@@ -1,7 +1,7 @@
-import { render as testRenderer, waitFor } from '@testing-library/react-native';
+import { fireEvent, render as testRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Card, CardContent, CardHeader, grey, ThemeProvider } from '../src';
+import { Card, CardAction, CardContent, CardHeader, CardMedia, grey, Text, ThemeProvider } from '../src';
 import { render } from './test-utils';
 
 describe('Card Component', () => {
@@ -152,5 +152,63 @@ describe('CardContent Component', () => {
     const cardHeader = getByTestId(mockCardContentTestId);
     const flattenedStyle = StyleSheet.flatten(cardHeader.props.style);
     expect(flattenedStyle.backgroundColor).toEqual('red');
+  });
+});
+
+describe('CardAction', () => {
+  const mockOnPress = jest.fn();
+  const cardActionMockTestId = 'card-action-test-id';
+
+  beforeEach(() => {
+    jest.clearAllTimers();
+  });
+
+  it('should render correctly with default props', () => {
+    const { toJSON } = render(<CardAction />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render the child component correctly', () => {
+    const { toJSON, getByText } = render(
+      <CardAction>
+        <Text>Hello</Text>
+      </CardAction>,
+    );
+    const element = getByText('Hello');
+    expect(element).toBeDefined();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should call the function when press in action component', () => {
+    jest.useFakeTimers();
+    const { getByTestId } = render(
+      <CardAction onPress={mockOnPress} testID={cardActionMockTestId}>
+        <Text>Hello</Text>
+      </CardAction>,
+    );
+
+    const element = getByTestId(cardActionMockTestId);
+    fireEvent.press(element, { nativeEvent: {} });
+    expect(mockOnPress).toHaveBeenCalled();
+    expect(mockOnPress).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('CardMedia', () => {
+  const cardMediaMockTestId = 'card-media-test-id';
+
+  it('should render correctly with default props', () => {
+    const { toJSON } = render(<CardMedia />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render the image', () => {
+    const { getByTestId, toJSON } = render(
+      <CardMedia testID={cardMediaMockTestId} source={{ uri: 'https://mock-image-url.com' }} />,
+    );
+    const element = getByTestId(cardMediaMockTestId);
+
+    expect(element.props.source.uri).toEqual('https://mock-image-url.com');
+    expect(toJSON()).toMatchSnapshot();
   });
 });
