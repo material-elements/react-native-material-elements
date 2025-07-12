@@ -243,17 +243,3 @@ exports[`DialogTitle should match the snapshot with default props 1`] = `
   Mock
 </Text>
 `;
-
-exports[`Text Component should match the snapshot with default props 1`] = `
-<Text
-  collapsable={false}
-  style={
-    {
-      "color": "#FAFAFA",
-      "fontSize": 14,
-    }
-  }
->
-  Mock
-</Text>
-`;

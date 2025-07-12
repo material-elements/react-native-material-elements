@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, waitFor } from './test-utils';
-import { grey, List, ListItem, ListItemText, Text } from '../src';
+import { grey, List, ListItem, ListItemText, Text, ThemeProvider } from '../src';
 import { StyleSheet, View } from 'react-native';
 import { BaseStyles } from '../src/libraries/style/styleTypes';
 import { BOTTOM_LARGE_SPACING, BOTTOM_MEDIUM_SPACING, BOTTOM_SMALL_SPACING } from '../src/components/List/constants';
@@ -256,6 +256,42 @@ describe('ListItem Component', () => {
     fireEvent.press(listItem, { nativeEvent: {} });
     expect(mockOnPress).not.toHaveBeenCalled();
     expect(mockOnPress).toHaveBeenCalledTimes(0);
+  });
+
+  it('should override ( overrideRootBottomSpacing ) root config', () => {
+    const { getByTestId } = render(
+      <ThemeProvider
+        components={{
+          listItemProps: {
+            disableBottomSpacing: false,
+          },
+        }}>
+        <ListItem overrideRootBottomSpacing disableBottomSpacing listItemContainerTestId={mockListItemContainerTestId} />
+      </ThemeProvider>,
+    );
+
+    const listItem = getByTestId(mockListItemContainerTestId);
+    const flattenStyles = StyleSheet.flatten(listItem.props.style);
+    expect(flattenStyles).toEqual(expect.objectContaining({ marginBottom: 'auto' }));
+  });
+
+  it('should render the actionType ( root ) component correctly', () => {
+    const { toJSON } = render(<ListItem actionType="root" />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should not render child if action type is not valid', () => {
+    const { getByTestId } = render(
+      <ListItem
+        overrideRootBottomSpacing
+        actionType={'unknown' as any}
+        disableBottomSpacing
+        listItemContainerTestId={mockListItemContainerTestId}
+      />,
+    );
+
+    const listItem = getByTestId(mockListItemContainerTestId);
+    expect(listItem.children.length).toEqual(0);
   });
 });
 
