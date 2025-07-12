@@ -83,3 +83,177 @@ exports[`Dialog should render correctly with default props 1`] = `
   </View>
 </Modal>
 `;
+
+exports[`DialogActions should render child correctly 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      [
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+          "paddingTop": 5,
+        },
+        undefined,
+      ],
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "paddingHorizontal": 10,
+        },
+        {
+          "maxWidth": 150,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      collapsable={false}
+      style={{}}
+    >
+      Hello
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`DialogActions should render correctly with default props 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      [
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+          "paddingTop": 5,
+        },
+        undefined,
+      ],
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "paddingHorizontal": 10,
+        },
+        {
+          "maxWidth": 150,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`DialogContent should render child correctly 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      [
+        {
+          "paddingBottom": 15,
+          "paddingHorizontal": 15,
+          "paddingTop": 10,
+        },
+        undefined,
+      ],
+    ]
+  }
+>
+  <Text
+    collapsable={false}
+    style={{}}
+  >
+    Hello
+  </Text>
+</View>
+`;
+
+exports[`DialogContent should render correctly with default props 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      [
+        {
+          "paddingBottom": 15,
+          "paddingHorizontal": 15,
+          "paddingTop": 10,
+        },
+        undefined,
+      ],
+    ]
+  }
+/>
+`;
+
+exports[`DialogContentText should match the snapshot with default props 1`] = `
+<Text
+  collapsable={false}
+  style={
+    {
+      "color": "#FAFAFA",
+      "fontSize": 14,
+    }
+  }
+>
+  Mock
+</Text>
+`;
+
+exports[`DialogTitle should match the snapshot with default props 1`] = `
+<Text
+  collapsable={false}
+  style={
+    {
+      "color": "#FAFAFA",
+      "fontSize": 16,
+      "paddingBottom": 8,
+      "paddingLeft": 15,
+      "paddingRight": 15,
+      "paddingTop": 15,
+    }
+  }
+>
+  Mock
+</Text>
+`;
+
+exports[`Text Component should match the snapshot with default props 1`] = `
+<Text
+  collapsable={false}
+  style={
+    {
+      "color": "#FAFAFA",
+      "fontSize": 14,
+    }
+  }
+>
+  Mock
+</Text>
+`;
