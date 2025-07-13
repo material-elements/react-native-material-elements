@@ -11,4 +11,5 @@ coverage/
 *.config.js
 .github
 .prettierrc.js
-LICENSE.md
+.LICENSE.md
+.jest.setup.ts
