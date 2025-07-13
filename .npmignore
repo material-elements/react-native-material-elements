@@ -3,6 +3,7 @@ examples/
 __tests__/
 __test__/
 docs/
+coverage/
 
 .editorconfig
 .eslintrc.js
