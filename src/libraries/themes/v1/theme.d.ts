@@ -137,6 +137,7 @@ type ButtonThemeConfig = Pick<
   | 'baseButtonContainerStyle'
   | 'rippleProps'
   | 'style'
+  | 'sizeConfig'
 >;
 type ButtonVariationConfig = Partial<
   Record<ButtonVariations, Pick<ButtonThemeConfig, 'labelStyles' | 'baseButtonStyles' | 'style'> | undefined>

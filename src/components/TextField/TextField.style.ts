@@ -207,10 +207,10 @@ export const getOtpInputStyles = ({
   };
 };
 
-export const getIconInputStyles = ({ hight }: GetIconInputStyles): ViewStyle => {
-  if (hight === 'small') {
+export const getIconInputStyles = ({ height }: GetIconInputStyles): ViewStyle => {
+  if (height === 'small') {
     return { minHeight: INPUT_SMALL_HEIGHT };
-  } else if (hight === 'medium') {
+  } else if (height === 'medium') {
     return { minHeight: INPUT_DEFAULT_HEIGHT };
   } else {
     return { minHeight: INPUT_LARGE_HEIGHT };

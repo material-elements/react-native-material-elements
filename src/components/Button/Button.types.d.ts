@@ -8,10 +8,10 @@ import { RipplePosition, RippleProps } from '../Ripple/Ripple.types';
 
 export type ButtonSizeVariant = 'small' | 'medium' | 'large';
 export type ButtonSizeConfig = Partial<{
-  [k in ButtonSizeVariant]: {
+  [k in ButtonSizeVariant]: Partial<{
     height: number;
     fontSize: number;
-  };
+  }>;
 }>;
 
 export interface BaseButtonProps extends React.ComponentPropsWithRef<typeof TouchableWithoutFeedback> {

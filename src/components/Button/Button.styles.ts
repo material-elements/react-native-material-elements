@@ -64,7 +64,7 @@ export const baseStyles = (size?: ButtonSizeVariant, sizeConfig?: ButtonSizeConf
       height = sizeConfig?.small?.height ?? 20;
       break;
     case 'medium':
-      height = sizeConfig?.medium?.height ?? 30;
+      height = sizeConfig?.medium?.height ?? 35;
       break;
     case 'large':
       height = sizeConfig?.large?.height ?? 40;

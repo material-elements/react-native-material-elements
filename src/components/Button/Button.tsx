@@ -37,7 +37,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       loadingIndicatorVariant = 'grey',
       switchSpinnerMode = false,
       loadingIndicatorSize,
-      size = 'large',
+      size = 'medium',
       sizeConfig,
       overrideRootDisableScaleAnimation = false,
       overrideRootScaleAnimationValue = false,
@@ -152,7 +152,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
         square: applySquareStyle,
         backgroundColor,
         size,
-        sizeConfig,
+        sizeConfig: buttonThemeConfig?.sizeConfig ?? sizeConfig,
       });
     }, [
       overrideRootSquareConfig,
@@ -165,6 +165,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       backgroundColor,
       size,
       sizeConfig,
+      buttonThemeConfig?.sizeConfig,
     ]);
 
     const renderChild = () => {
@@ -201,7 +202,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
           <Text
             style={StyleSheet.flatten([
               { color: textColor },
-              buttonLabelStyles({ size, sizeConfig }),
+              buttonLabelStyles({ size, sizeConfig: buttonThemeConfig?.sizeConfig ?? sizeConfig }),
               generateButtonLabelStyles(),
             ])}>
             {label}
