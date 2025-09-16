@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
   },
   dialogContainer: {
     paddingBottom: 8,
-    borderRadius: 10,
     zIndex: 100,
   },
   dialogContent: {
@@ -21,7 +20,6 @@ export const styles = StyleSheet.create({
     paddingTop: 5,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
     flexDirection: 'row',
   },
   dialogActionsContainer: {
@@ -38,7 +36,12 @@ export const styles = StyleSheet.create({
   },
 });
 
-export const dialogContainerStyles = ({ colors, fullWidth, maxWidth }: DialogContainerStylesInterface): ViewStyle => {
+export const dialogContainerStyles = ({
+  colors,
+  fullWidth,
+  maxWidth,
+  borderRadius,
+}: DialogContainerStylesInterface): ViewStyle => {
   let width: DimensionValue;
 
   switch (maxWidth) {
@@ -66,9 +69,25 @@ export const dialogContainerStyles = ({ colors, fullWidth, maxWidth }: DialogCon
   return {
     backgroundColor: colors.grey[800],
     maxWidth: mW,
+    borderRadius,
   };
 };
 
-export const dialogActionsContainerStyles = ({ maxWidth, fullWidth }: DialogActionsContainerStylesInterface): ViewStyle => ({
-  maxWidth: fullWidth ? '100%' : maxWidth,
-});
+export const dialogActionsContainerStyles = ({ align }: DialogActionsContainerStylesInterface): ViewStyle => {
+  let justifyContent: ViewStyle['justifyContent'];
+
+  switch (align) {
+    case 'left':
+      justifyContent = 'flex-start';
+      break;
+    case 'center':
+      justifyContent = 'center';
+      break;
+    case 'right':
+    default:
+      justifyContent = 'flex-end';
+      break;
+  }
+
+  return { justifyContent };
+};

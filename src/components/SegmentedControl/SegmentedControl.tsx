@@ -12,15 +12,22 @@ import {
 import { grey } from '../../libraries';
 import { styles } from './SegmentedControl.styles';
 import { SegmentedControlContainer, SegmentedControlContainerProps } from './SegmentedControlContainer';
-import { SegmentedControlItem } from './SegmentedControlItem';
+import {
+  SegmentedControlItem,
+  SegmentedControlDataInterface,
+  SegmentItemPressType,
+  SegmentedControlItemProps,
+} from './SegmentedControlItem';
 
-export interface SegmentedControlProps<T extends string | number> extends SegmentedControlContainerProps {
+export interface SegmentedControlProps
+  extends SegmentedControlContainerProps,
+    Pick<SegmentedControlItemProps, 'segmentItemContainerStyles'> {
   /** Array of values to be displayed in the segmented control */
-  values: T[];
+  data: SegmentedControlDataInterface[];
   /** Index of the currently selected segment */
   selectedIndex: number;
   /** Callback triggered when a segment is selected; returns the selected value */
-  onChange?: (value: T) => void;
+  onChange?: SegmentItemPressType;
   /** Background color for the active segment in dark mode */
   activeSegmentDarkModeBackgroundColor?: string;
   /** Background color for the active segment in light mode */
@@ -43,8 +50,8 @@ export interface SegmentedControlProps<T extends string | number> extends Segmen
   animatedSegmentStyle?: ViewStyle;
 }
 
-export const SegmentedControl = <T extends string | number>({
-  values,
+export const SegmentedControl = ({
+  data,
   onChange,
   activeSegmentDarkModeBackgroundColor,
   activeSegmentLightModeBackgroundColor,
@@ -53,23 +60,24 @@ export const SegmentedControl = <T extends string | number>({
   applySegmentItemStyleIndex,
   applySegmentItemTextStyleIndex,
   animatedSegmentStyle,
+  segmentItemContainerStyles,
   selectedIndex = 0,
   ...props
-}: SegmentedControlProps<T>) => {
+}: SegmentedControlProps) => {
   const animatedSegmentWidth = useRef(new Animated.Value(0));
   const animatedTranslateX = useRef(new Animated.Value(0));
   const themeAnimation = useRef(new Animated.Value(0));
 
   const colorScheme = useColorScheme();
 
-  const [selectedSegment, setSelectedSegment] = useState<T>(values[0]);
+  const [selectedSegment, setSelectedSegment] = useState<Partial<SegmentedControlDataInterface>>(data[0]);
   const [segmentRect, setSegmentRect] = useState<LayoutRectangle | null>(null);
 
-  const segmentedItemHandler = function (value: T) {
+  const segmentedItemHandler = function (value: Partial<SegmentedControlDataInterface>, index: number) {
     if (selectedSegment !== value) {
       setSelectedSegment(value);
       if (onChange) {
-        onChange(value);
+        onChange(value, index);
       }
     }
   };
@@ -91,7 +99,7 @@ export const SegmentedControl = <T extends string | number>({
       return segmentTextStyle;
     }
 
-    return values.length && index === applySegmentItemTextStyleIndex ? segmentTextStyle : undefined;
+    return data.length && index === applySegmentItemTextStyleIndex ? segmentTextStyle : undefined;
   };
 
   const backgroundColor = themeAnimation.current.interpolate({
@@ -114,7 +122,7 @@ export const SegmentedControl = <T extends string | number>({
   }, [colorScheme]);
 
   useEffect(() => {
-    if (segmentRect && values.length) {
+    if (segmentRect && data.length) {
       const width = segmentRect.width;
       animatedSegmentWidth.current.setValue(width);
 
@@ -124,24 +132,25 @@ export const SegmentedControl = <T extends string | number>({
       }).start();
     }
 
-    if (selectedIndex && selectedIndex < values.length) {
-      setSelectedSegment(values[selectedIndex]);
+    if (selectedIndex && selectedIndex < data.length) {
+      setSelectedSegment(data[selectedIndex]);
     }
-  }, [segmentRect, selectedIndex, values]);
+  }, [segmentRect, selectedIndex, data]);
 
   return (
     <SegmentedControlContainer {...props}>
       <View style={styles.segmentContainer}>
         <Animated.View style={[styles.animatedSegmentContainer, animatedViewStyles, animatedSegmentStyle]} />
-        {values.map((value, index) => (
+        {data.map((value, index) => (
           <SegmentedControlItem
             onLayout={index === 0 ? onLayout : undefined}
             onPress={segmentedItemHandler}
-            value={value}
+            data={value}
             index={index}
             key={index}
             headingStyles={getSegmentItemHeadingStyle(index)}
             style={getSegmentItemStyle(index)}
+            segmentItemContainerStyles={segmentItemContainerStyles}
           />
         ))}
       </View>

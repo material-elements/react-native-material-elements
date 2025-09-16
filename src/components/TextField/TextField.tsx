@@ -18,6 +18,7 @@ import { generateElementStyles } from '../../utils';
 import { Box } from '../Box';
 import { BaseInput } from './BaseInput';
 import {
+  INPUT_DEFAULT_BORDER_RADIUS,
   LABELED_ANIMATION_DURATION,
   PLACEHOLDER_FILED_INPUT_LEFT_POSITION,
   PLACEHOLDER_OUTLINE_LEFT_POSITION,
@@ -65,6 +66,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
       overrideRootIgnoreOpacity = false,
       showLoadingIndicatorWhenFocused = false,
       loading = false,
+      borderRadius = INPUT_DEFAULT_BORDER_RADIUS,
       ...props
     },
     ref,
@@ -85,16 +87,25 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
       errorColor: textFieldOutlinedErrorColor,
       inputStyles: textFieldOutlinedInputStyles,
       style: textFieldOutlinedStyle,
+      height: textFieldOutlinedHeight,
     } = textFieldThemeConfig?.outlined || {};
     const {
       activeColor: textFieldFieldActiveColor,
       errorColor: textFieldFieldErrorColor,
       inputStyles: textFieldFieldInputStyles,
       style: textFieldFieldStyle,
+      height: textFieldFieldHeight,
     } = textFieldThemeConfig?.filled || {};
 
     const placeHolderLeftPos = !isOutlined ? PLACEHOLDER_FILED_INPUT_LEFT_POSITION : PLACEHOLDER_OUTLINE_LEFT_POSITION;
     const shouldApplySquareShape = square ?? textFieldThemeConfig?.square ?? false;
+
+    const getTextFiledHeight = () => {
+      if (height) return height;
+      else if (isOutlined && textFieldOutlinedHeight) return textFieldOutlinedHeight;
+      else if (!isOutlined && textFieldFieldHeight) return textFieldFieldHeight;
+      return textFieldThemeConfig?.height;
+    };
 
     const getTextFieldActiveColor = (): ColorValue | undefined => {
       if (activeColor) {
@@ -234,6 +245,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
         square={shouldApplySquareShape}
         ref={ref}
         testID={outlineContainerTestId}
+        borderRadius={borderRadius}
         {...outlineProps}>
         {!shouldHideLabel() && placeholder && (
           <InputLabel
@@ -269,7 +281,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
           variant={variant}
           placeholder={shouldHideLabel() ? placeholder : undefined}
           multiline={multiline}
-          height={height}
+          height={getTextFiledHeight()}
           {...props}
         />
         <TextFieldEndAdornment

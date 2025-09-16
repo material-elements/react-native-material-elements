@@ -55,9 +55,14 @@ export interface ProgressBarProps extends React.ComponentPropsWithRef<typeof Vie
    * When `true`, the bar animates to show an ongoing activity without a defined progress value.
    */
   indeterminate?: boolean;
+
+  /**
+   * Border radius of the progress bar
+   */
+  borderRadius?: number;
 }
 export interface ProgressBarContainerStylesParams
-  extends Pick<ProgressBarProps, 'borderColor' | 'removeBorder' | 'borderWidth' | 'height'> {
+  extends Pick<ProgressBarProps, 'borderColor' | 'removeBorder' | 'borderWidth' | 'height' | 'borderRadius'> {
   colors: Theme;
   variant?: VariantTypes;
 }
@@ -82,6 +87,7 @@ export const ProgressBar = React.forwardRef<View, ProgressBarProps>(
       removeBorder = false,
       borderWidth = 0.6,
       progress = 0,
+      borderRadius = 3,
       ...rest
     },
     ref,
@@ -96,8 +102,16 @@ export const ProgressBar = React.forwardRef<View, ProgressBarProps>(
     const [prevWidth, setPrevWidth] = useState(0);
 
     const progressBarContainerStyles = useMemo(() => {
-      return getProgressBarContainerStyles({ colors: themeColors, variant, borderColor, removeBorder, borderWidth, height });
-    }, [themeColors, variant, borderColor, removeBorder, borderWidth, height]);
+      return getProgressBarContainerStyles({
+        colors: themeColors,
+        variant,
+        borderColor,
+        removeBorder,
+        borderWidth,
+        height,
+        borderRadius,
+      });
+    }, [themeColors, variant, borderColor, removeBorder, borderWidth, height, borderRadius]);
 
     const progressBarIndicatorStyles = useMemo(() => {
       return getProgressBarIndicatorStyles({ variant, colors: themeColors, backgroundColor });

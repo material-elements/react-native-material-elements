@@ -9,13 +9,14 @@ export interface DialogProps extends PortalProps {
   dialogContainerProps?: Omit<BoxProps, 'children'>;
   fullWidth?: boolean;
   maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  borderRadius?: number;
 }
-export interface DialogContainerStylesInterface extends Pick<DialogProps, 'fullWidth' | 'maxWidth'> {
+export interface DialogContainerStylesInterface extends Pick<DialogProps, 'fullWidth' | 'maxWidth' | 'borderRadius'> {
   colors: Theme;
 }
 export interface DialogActionsProps extends BoxProps {
   dialogActionsContainerStyles?: ViewStyle;
-  maxWidth?: number;
-  fullWidth?: boolean;
+  align?: 'left' | 'right' | 'center';
 }
-export interface DialogActionsContainerStylesInterface extends Pick<DialogActionsProps, 'maxWidth' | 'fullWidth'> {}
+
+export type DialogActionsContainerStylesInterface = Pick<DialogActionsProps, 'align'>;

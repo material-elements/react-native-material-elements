@@ -38,6 +38,15 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 1,
   },
+  itemValueContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  iconContainer: {
+    marginHorizontal: 8,
+  },
 });
 
 export const generateSegmentContainerStyle = ({ themeColors }: GenerateSegmentContainerStyle): ViewStyle => ({

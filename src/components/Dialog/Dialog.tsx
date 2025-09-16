@@ -12,6 +12,7 @@ export const Dialog: React.FC<DialogProps> = ({
   dialogContainerProps,
   maxWidth,
   fullWidth = false,
+  borderRadius = 10,
   ...props
 }) => {
   const themeColors = useThemeColorsSelector();
@@ -26,7 +27,7 @@ export const Dialog: React.FC<DialogProps> = ({
       <Box
         style={StyleSheet.flatten([
           styles.dialogContainer,
-          dialogContainerStyles({ colors: themeColors, fullWidth, maxWidth }),
+          dialogContainerStyles({ colors: themeColors, fullWidth, maxWidth, borderRadius }),
           dialogContainerStyle,
         ])}
         {...dialogOtherProps}>

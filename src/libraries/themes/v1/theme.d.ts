@@ -116,9 +116,13 @@ type TextFileThemeConfig = Pick<
   | 'errorColor'
   | 'ignoreOpacityOnNonEditable'
   | 'square'
+  | 'height'
 >;
 type TextFieldVariationConfig = Partial<
-  Record<TextFiledVariation, Pick<TextFileThemeConfig, 'activeColor' | 'errorColor' | 'inputStyles' | 'style'> | undefined>
+  Record<
+    TextFiledVariation,
+    Pick<TextFileThemeConfig, 'activeColor' | 'errorColor' | 'inputStyles' | 'style' | 'height'> | undefined
+  >
 >;
 type ButtonThemeConfig = Pick<
   ButtonProps,

@@ -9,12 +9,14 @@ export const getProgressBarContainerStyles = ({
   borderColor: progressBarBorderColor,
   borderWidth,
   height,
+  borderRadius,
 }: ProgressBarContainerStylesParams): ViewStyle => {
   const borderColor = progressBarBorderColor ?? getVariant({ variant, colors });
 
   return {
     borderColor,
     height,
+    borderRadius,
     ...(!removeBorder && { borderWidth }),
   };
 };

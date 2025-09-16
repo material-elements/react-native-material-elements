@@ -16,6 +16,7 @@ export const Outline = React.forwardRef<View, OutlineProps>(
       ignoreOpacityOnNonEditable,
       square,
       variant = 'outlined',
+      borderRadius,
       ...props
     },
     ref,
@@ -35,9 +36,21 @@ export const Outline = React.forwardRef<View, OutlineProps>(
           variant,
           ignoreOpacityOnNonEditable,
           square,
+          borderRadius,
         }),
       };
-    }, [error, errorColor, isFocused, activeColor, themeColors, editable, variant, ignoreOpacityOnNonEditable, square]);
+    }, [
+      error,
+      errorColor,
+      isFocused,
+      activeColor,
+      themeColors,
+      editable,
+      variant,
+      ignoreOpacityOnNonEditable,
+      square,
+      borderRadius,
+    ]);
 
     return <View ref={ref} style={StyleSheet.flatten([outlineGeneratedStyles, style])} {...props} />;
   },

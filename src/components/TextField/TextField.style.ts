@@ -85,6 +85,7 @@ export const outlineStyles = ({
   variant,
   ignoreOpacityOnNonEditable,
   square,
+  borderRadius,
 }: OutlineStyles): ViewStyle => {
   const baseStyles: ViewStyle = {
     borderWidth: variant === 'outlined' ? 0.6 : 0,
@@ -93,7 +94,7 @@ export const outlineStyles = ({
     flexDirection: 'row',
     alignItems: 'center',
     opacity: editable || ignoreOpacityOnNonEditable ? 1 : 0.6,
-    borderRadius: square ? 0 : INPUT_DEFAULT_BORDER_RADIUS,
+    borderRadius: square ? 0 : borderRadius,
   };
 
   let borderColor: ColorValue;

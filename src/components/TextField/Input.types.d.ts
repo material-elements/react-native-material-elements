@@ -61,6 +61,10 @@ export interface BaseInputProps extends TextInputProps {
    * Customize input height
    */
   height?: DimensionValue;
+  /**
+   * Border radius of the text field input
+   */
+  borderRadius?: number;
 }
 
 /**
@@ -167,7 +171,15 @@ export interface OutlineProps
   extends React.ComponentPropsWithRef<typeof View>,
     Pick<
       BaseInputProps,
-      'error' | 'activeColor' | 'isFocused' | 'errorColor' | 'variant' | 'editable' | 'ignoreOpacityOnNonEditable' | 'square'
+      | 'error'
+      | 'activeColor'
+      | 'isFocused'
+      | 'errorColor'
+      | 'variant'
+      | 'editable'
+      | 'ignoreOpacityOnNonEditable'
+      | 'square'
+      | 'borderRadius'
     > {}
 
 /**
@@ -188,7 +200,15 @@ export interface LabelTransformStyleProps
 export interface OutlineStyles
   extends Pick<
     OutlineProps,
-    'error' | 'errorColor' | 'isFocused' | 'activeColor' | 'editable' | 'variant' | 'ignoreOpacityOnNonEditable' | 'square'
+    | 'error'
+    | 'errorColor'
+    | 'isFocused'
+    | 'activeColor'
+    | 'editable'
+    | 'variant'
+    | 'ignoreOpacityOnNonEditable'
+    | 'square'
+    | 'borderRadius'
   > {
   colors: Theme;
 }
