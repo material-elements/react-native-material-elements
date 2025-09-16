@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform, SafeAreaView, ScrollView } from 'react-native';
-import { Button, Container, SNACK_BAR, snackbar, Snackbar, ThemeProvider } from '../../src';
+import { Button, Container, snackbar, Snackbar, ThemeProvider } from '../../src';
 
 function App(): React.JSX.Element {
   return (
@@ -16,7 +16,6 @@ function App(): React.JSX.Element {
                   message: 'Marked as read',
                   showActionButton: true,
                   shouldHideWhenClickedOnActionButton: true,
-                  hideDuration: SNACK_BAR.LENGTH_SHORT,
                   type: 'info',
                 })
               }

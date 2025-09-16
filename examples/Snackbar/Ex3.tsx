@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform, SafeAreaView, ScrollView } from 'react-native';
-import { Button, Container, SNACK_BAR, snackbar, Snackbar, ThemeProvider } from '../../src';
+import { Button, Container, snackbar, Snackbar, ThemeProvider } from '../../src';
 
 function App(): React.JSX.Element {
   return (
@@ -16,9 +16,7 @@ function App(): React.JSX.Element {
                   message: `Oops! Something went wrong on our end. We're working to fix it as soon as possible. Please try again in a few moments or check back later.`,
                   showActionButton: false,
                   shouldHideWhenClickedOnActionButton: true,
-                  hideDuration: 60,
                   actionButtonLabel: 'Close',
-                  animationDuration: 50,
                   type: 'error',
                 })
               }

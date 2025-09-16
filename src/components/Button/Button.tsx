@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { ColorValue, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
-import { grey, useThemeButtonConfigSelector, useThemeColorsSelector, useThemeSpacingSelector } from '../../libraries';
+import { useThemedProps } from '../../hooks';
+import { grey, useThemeButtonConfigSelector, useThemeColorsSelector } from '../../libraries';
 import { getVariant, merge } from '../../utils';
 import { ActivityIndicator } from '../ActivityIndicator';
 import { Box } from '../Box';
@@ -8,7 +9,6 @@ import { Text } from '../Typography';
 import { BaseButton } from './BaseButton';
 import { buttonLabelStyles, buttonRootContainerStyles, getButtonStyles, styles } from './Button.styles';
 import { ButtonProps } from './Button.types';
-import { useThemedProps } from '../../hooks';
 
 export const Button = React.forwardRef<View, ButtonProps>(
   (
@@ -38,6 +38,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       switchSpinnerMode = false,
       loadingIndicatorSize,
       size = 'large',
+      sizeConfig,
       overrideRootDisableScaleAnimation = false,
       overrideRootScaleAnimationValue = false,
       overrideRootRippleEdge = false,
@@ -50,7 +51,6 @@ export const Button = React.forwardRef<View, ButtonProps>(
     ref,
   ) => {
     const themeColors = useThemeColorsSelector();
-    const themeSpacing = useThemeSpacingSelector();
     const buttonThemeConfig = useThemeButtonConfigSelector();
 
     const isContainedButton = variation === 'contained';
@@ -145,7 +145,6 @@ export const Button = React.forwardRef<View, ButtonProps>(
       }
 
       return getButtonStyles({
-        spacing: themeSpacing,
         themeColors,
         variation,
         disabled,
@@ -153,10 +152,10 @@ export const Button = React.forwardRef<View, ButtonProps>(
         square: applySquareStyle,
         backgroundColor,
         size,
+        sizeConfig,
       });
     }, [
       overrideRootSquareConfig,
-      themeSpacing,
       themeColors,
       variation,
       disabled,
@@ -165,6 +164,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       buttonThemeConfig?.square,
       backgroundColor,
       size,
+      sizeConfig,
     ]);
 
     const renderChild = () => {
@@ -198,7 +198,12 @@ export const Button = React.forwardRef<View, ButtonProps>(
 
       return (
         <View style={styles.buttonLabelContainer}>
-          <Text style={StyleSheet.flatten([{ color: textColor }, buttonLabelStyles({ size }), generateButtonLabelStyles()])}>
+          <Text
+            style={StyleSheet.flatten([
+              { color: textColor },
+              buttonLabelStyles({ size, sizeConfig }),
+              generateButtonLabelStyles(),
+            ])}>
             {label}
           </Text>
         </View>

@@ -1,9 +1,9 @@
 import { ColorValue, StyleSheet, TextStyle, ViewStyle } from 'react-native';
-import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
 import { getVariant } from '../../utils';
 import {
   ButtonLabelStylesParams,
   ButtonRootContainerStylesInterface,
+  ButtonSizeConfig,
   ButtonSizeVariant,
   ButtonVariationsType,
   GetButtonStylesProps,
@@ -56,18 +56,18 @@ export const buttonRootContainerStyles = ({ flex }: ButtonRootContainerStylesInt
   ...(flex && { flex }),
 });
 
-export const baseStyles = (size?: ButtonSizeVariant): ViewStyle => {
+export const baseStyles = (size?: ButtonSizeVariant, sizeConfig?: ButtonSizeConfig): ViewStyle => {
   let height: number;
 
   switch (size) {
     case 'small':
-      height = 20;
+      height = sizeConfig?.small?.height ?? 20;
       break;
     case 'medium':
-      height = 30;
+      height = sizeConfig?.medium?.height ?? 30;
       break;
     case 'large':
-      height = 40;
+      height = sizeConfig?.large?.height ?? 40;
       break;
     default:
       height = 40;
@@ -81,46 +81,15 @@ export const baseStyles = (size?: ButtonSizeVariant): ViewStyle => {
   };
 };
 
-export const disabledStyles: ViewStyle = {
-  opacity: 0.7,
-};
-
-export const buttonVariationStyles = (
-  spacing: ThemeDimensions['spacing'],
-  colors: Theme,
-  variation: ButtonVariationsType,
-  size: ButtonSizeVariant,
-) => {
-  const variations: Record<ButtonVariationsType, ViewStyle> = {
-    outlined: {
-      ...baseStyles(size),
-      backgroundColor: 'transparent',
-      borderColor: colors.grey[400],
-      borderWidth: 1,
-    },
-    contained: baseStyles(size),
-    text: {
-      ...baseStyles(size),
-      backgroundColor: 'transparent',
-    },
-    roundedIconButton: styles.iconButton,
-    squareIconButton: {
-      ...styles.iconButton,
-      borderRadius: 5,
-    },
-  };
-  return variations[variation];
-};
-
 export const getButtonStyles = ({
   themeColors,
   buttonColor,
   disabled,
   square,
-  spacing,
   backgroundColor,
   variation = 'contained',
   size = 'large',
+  sizeConfig,
 }: GetButtonStylesProps): ViewStyle => {
   const isContainedVariation = variation === 'contained';
   let buttonBackgroundColor: ColorValue | undefined;
@@ -130,27 +99,47 @@ export const getButtonStyles = ({
   } else if (buttonColor) {
     buttonBackgroundColor = getVariant({ variant: buttonColor, colors: themeColors });
   }
+
+  const variations: Record<ButtonVariationsType, ViewStyle> = {
+    outlined: {
+      ...baseStyles(size, sizeConfig),
+      backgroundColor: 'transparent',
+      borderColor: themeColors.grey[400],
+      borderWidth: 1,
+    },
+    contained: baseStyles(size, sizeConfig),
+    text: {
+      ...baseStyles(size, sizeConfig),
+      backgroundColor: 'transparent',
+    },
+    roundedIconButton: styles.iconButton,
+    squareIconButton: {
+      ...styles.iconButton,
+      borderRadius: 5,
+    },
+  };
+
   return {
     ...(buttonBackgroundColor && { backgroundColor: buttonBackgroundColor }),
-    ...buttonVariationStyles(spacing, themeColors, variation, size),
+    ...variations[variation],
     ...(!isContainedVariation && { borderColor: getVariant({ variant: buttonColor, colors: themeColors }) }),
-    ...(disabled && disabledStyles),
+    ...(disabled && { opacity: 0.7 }),
     ...(square && { borderRadius: 0 }),
   };
 };
 
-export const buttonLabelStyles = ({ size }: ButtonLabelStylesParams): TextStyle => {
+export const buttonLabelStyles = ({ size, sizeConfig }: ButtonLabelStylesParams): TextStyle => {
   let fontSize: number;
 
   switch (size) {
     case 'small':
-      fontSize = 12;
+      fontSize = sizeConfig?.small?.fontSize ?? 12;
       break;
     case 'medium':
-      fontSize = 13;
+      fontSize = sizeConfig?.medium?.fontSize ?? 13;
       break;
     default:
-      fontSize = 14;
+      fontSize = sizeConfig?.large?.fontSize ?? 14;
       break;
   }
 

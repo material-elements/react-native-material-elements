@@ -21,7 +21,7 @@ import { maxLength as maxLengthUtile, screenHeight, VariantTypes } from '../../u
 import { Button } from '../Button';
 import { ButtonProps } from '../types';
 import { Text } from '../Typography';
-import { HIDE_SNACK_BAR_MESSAGE, SHOW_SNACK_BAR_MESSAGE, SNACK_BAR, SNACK_BAR_SCREEN_GAP } from './constants';
+import { HIDE_SNACK_BAR_MESSAGE, SHOW_SNACK_BAR_MESSAGE, SNACK_BAR_SCREEN_GAP } from './constants';
 import { snackbarContainerStyles, snackBarLabelStyles, snackbarRootContainerStyle, styles } from './Snackbar.styles';
 
 export type SnackbarType = 'error' | 'info' | 'success' | 'warning';
@@ -39,10 +39,6 @@ export interface SnackbarProperties {
    * Receives the GestureResponderEvent as an argument.
    */
   actionButtonOnPress?: (event: GestureResponderEvent) => void;
-  /** Duration of the Snackbar's entrance/exit animations in milliseconds. */
-  animationDuration?: number;
-  /** Duration in milliseconds after which the Snackbar will hide automatically. */
-  hideDuration?: number;
   /** Whether the Snackbar should hide when the action button is clicked. */
   shouldHideWhenClickedOnActionButton?: boolean;
   /** Optional start adornment (e.g., icon) to display in the Snackbar. */
@@ -137,8 +133,6 @@ export const Snackbar: React.FC<SnackbarProps> = ({
 }) => {
   const positionRef = useRef(position);
   const autoHideRef = useRef(autoHide);
-  const hideDuration = useRef(SNACK_BAR.LENGTH_SHORT);
-  const animationDuration = useRef(SNACK_BAR.LENGTH_SHORT);
 
   const opacityValue = useRef(new Animated.Value(0)).current;
   const translateY = useRef(new Animated.Value(position === 'top' ? -100 : screenHeight)).current;
@@ -169,14 +163,6 @@ export const Snackbar: React.FC<SnackbarProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position, screenHeight]);
 
-  useEffect(() => {
-    if (snackbarConfig?.hideDuration) {
-      hideDuration.current = snackbarConfig.hideDuration;
-    } else if (snackbarConfig?.animationDuration) {
-      animationDuration.current = snackbarConfig.animationDuration;
-    }
-  }, [snackbarConfig?.hideDuration, snackbarConfig?.animationDuration]);
-
   const snackbarRootContainerOnLayout = (event: LayoutChangeEvent) => {
     if (onLayout && typeof onLayout === 'function') {
       onLayout(event);
@@ -196,18 +182,16 @@ export const Snackbar: React.FC<SnackbarProps> = ({
     Animated.parallel([
       Animated.timing(opacityValue, {
         toValue: 0,
-        duration: animationDuration.current,
         useNativeDriver: true,
       }),
-      Animated.timing(translateY, {
+      Animated.spring(translateY, {
         toValue: translateYToValue,
-        duration: animationDuration.current,
         useNativeDriver: true,
       }),
     ]).start(({ finished }) => {
       if (finished) {
         setSnackbarConfig(null);
-        setVisible(true);
+        setVisible(false);
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -222,7 +206,6 @@ export const Snackbar: React.FC<SnackbarProps> = ({
     Animated.parallel([
       Animated.timing(opacityValue, {
         toValue: 1,
-        duration: animationDuration.current,
         useNativeDriver: true,
       }),
       Animated.spring(translateY, {
@@ -233,7 +216,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
       if (finished && autoHideRef.current) {
         setTimeout(() => {
           hideAnimation();
-        }, hideDuration.current);
+        }, 500);
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

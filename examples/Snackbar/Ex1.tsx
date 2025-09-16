@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView } from 'react-native';
-import { ActivityIndicator, Avatar, Button, Container, SNACK_BAR, snackbar, Snackbar, ThemeProvider } from '../../src';
+import { ActivityIndicator, Avatar, Button, Container, snackbar, Snackbar, ThemeProvider } from '../../src';
 
 function App(): React.JSX.Element {
   const [active, setActive] = useState(false);
@@ -27,7 +27,6 @@ function App(): React.JSX.Element {
                   actionButtonOnPress: () => {
                     setActive(true);
                   },
-                  hideDuration: SNACK_BAR.LENGTH_SHORT,
                   type: 'warning',
                   startAdornment: (
                     <Avatar

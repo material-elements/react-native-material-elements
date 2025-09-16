@@ -7,6 +7,13 @@ import { VariantTypes } from '../../utils';
 import { RipplePosition, RippleProps } from '../Ripple/Ripple.types';
 
 export type ButtonSizeVariant = 'small' | 'medium' | 'large';
+export type ButtonSizeConfig = Partial<{
+  [k in ButtonSizeVariant]: {
+    height: number;
+    fontSize: number;
+  };
+}>;
+
 export interface BaseButtonProps extends React.ComponentPropsWithRef<typeof TouchableWithoutFeedback> {
   /**
    * Custom styles to apply to the Box component.
@@ -138,6 +145,10 @@ export interface ButtonProps extends Omit<BaseButtonProps, 'sx'> {
    */
   size?: ButtonSizeVariant;
   /**
+   * Button size config
+   */
+  sizeConfig?: ButtonSizeConfig;
+  /**
    * Button start icon
    */
   startIcon?: ThemedIconProp;
@@ -201,7 +212,6 @@ export interface IconButtonProps extends Omit<BaseButtonProps, 'sx' | 'size'>, S
 export type ButtonVariationsType = ButtonVariations | IconButtonVariations;
 export interface GetButtonStylesProps extends Omit<ButtonProps, 'sx' | 'children' | 'ripple'> {
   themeColors: Theme;
-  spacing: ThemeDimensions['spacing'];
   variation?: ButtonVariationsType;
 }
-export interface ButtonLabelStylesParams extends Pick<ButtonProps, 'size'> {}
+export interface ButtonLabelStylesParams extends Pick<ButtonProps, 'size' | 'sizeConfig'> {}
