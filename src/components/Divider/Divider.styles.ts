@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   line: {
-    borderWidth: 0.4,
+    borderWidth: 0.9,
   },
 });
 
@@ -52,6 +52,12 @@ export const dividerLineStyles = ({
       break;
   }
 
+  if (isStartLine) {
+    baseStyles.borderEndWidth = 0;
+  } else {
+    baseStyles.borderStartWidth = 0;
+  }
+
   return baseStyles;
 };
 
@@ -69,7 +75,6 @@ export const dividerRootContainerStyles = ({
     ? {
         paddingHorizontal: 2,
         alignSelf: 'auto',
-        flex: 1,
         flexDirection: 'column',
       }
     : { paddingVertical: 2 };

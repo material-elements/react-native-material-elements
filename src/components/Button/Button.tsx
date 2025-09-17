@@ -169,11 +169,34 @@ export const Button = React.forwardRef<View, ButtonProps>(
     ]);
 
     const renderChild = () => {
+      let textColor: ColorValue;
+      let _loadingIndicatorColor = loadingIndicatorColor;
+
+      if (labelColor) {
+        textColor = labelColor;
+      } else if (buttonThemeConfig?.labelColor) {
+        textColor = buttonThemeConfig.labelColor;
+      } else if (isContainedButton) {
+        if (buttonColor === 'lightGrey') {
+          textColor = themeColors.grey[900];
+          _loadingIndicatorColor = themeColors.grey[900];
+        } else if (buttonColor === 'warning') {
+          textColor = grey[900];
+          _loadingIndicatorColor = grey[900];
+        } else {
+          textColor = grey[50];
+        }
+      } else if (isOutlinedButton && (buttonColor === 'grey' || buttonColor === 'lightGrey')) {
+        textColor = themeColors.grey[900];
+      } else {
+        textColor = getVariant({ variant: buttonColor, colors: themeColors });
+      }
+
       if (loading) {
         return (
           <ActivityIndicator
             variant={loadingIndicatorVariant}
-            color={loadingIndicatorColor}
+            color={_loadingIndicatorColor}
             switchMode={switchSpinnerMode}
             size={loadingIndicatorSize}
           />
@@ -182,21 +205,6 @@ export const Button = React.forwardRef<View, ButtonProps>(
       if (children) {
         return children;
       }
-
-      let textColor: ColorValue;
-
-      if (labelColor) {
-        textColor = labelColor;
-      } else if (buttonThemeConfig?.labelColor) {
-        textColor = buttonThemeConfig.labelColor;
-      } else if (isContainedButton) {
-        textColor = grey[50];
-      } else if (isOutlinedButton && (buttonColor === 'grey' || buttonColor === 'lightGrey')) {
-        textColor = themeColors.grey[900];
-      } else {
-        textColor = getVariant({ variant: buttonColor, colors: themeColors });
-      }
-
       return (
         <View style={styles.buttonLabelContainer}>
           <Text

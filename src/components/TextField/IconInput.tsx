@@ -47,10 +47,10 @@ export interface IconInputProps extends TextInputProps, Pick<BoxProps, 'sx'> {
   /**
    * Hight of the input component
    */
-  height?: 'small' | 'medium' | 'large';
+  inputHeight?: 'small' | 'medium' | 'large';
 }
 
-export interface GetIconInputStyles extends Pick<IconInputProps, 'height'> {}
+export interface GetIconInputStyles extends Pick<IconInputProps, 'inputHeight'> {}
 
 export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconInputProps>(
   (
@@ -65,7 +65,7 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
       labelContainerStyles,
       label,
       labelStyles,
-      height = 'medium',
+      inputHeight = 'medium',
       testID,
       ...props
     },
@@ -109,7 +109,7 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
             </Box>
           )}
           <BaseInput
-            style={[styles.baseButtonStyles, { color: themeColors.white[900] }, getIconInputStyles({ height }), style]}
+            style={[styles.baseButtonStyles, { color: themeColors.white[900] }, getIconInputStyles({ inputHeight }), style]}
             placeholderTextColor={themeColors.grey[600]}
             testID={testID}
             {...props}

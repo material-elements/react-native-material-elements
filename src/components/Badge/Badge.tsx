@@ -87,7 +87,7 @@ export const Badge = React.forwardRef<View, BadgeProps>(
         }
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [badgeContent, max, themeBadgeConfig, overrideRootConfig],
+      [badgeContent, max, themeBadgeConfig, overrideRootConfig, variant],
     );
 
     const renderTextBadgeContent = useCallback(
@@ -144,8 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
   },
   container: {
-    minWidth: 40,
-    minHeight: 40,
+    minWidth: 30,
     alignSelf: 'flex-start',
   },
   badgeContainer: {

@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
-import { useThemeColorsSelector, useThemeIconButtonConfigSelector, useThemeSpacingSelector } from '../../libraries';
+import { useRestyle, useThemedProps } from '../../hooks';
+import { useThemeColorsSelector, useThemeIconButtonConfigSelector } from '../../libraries';
 import { merge } from '../../utils';
 import { BaseButton } from './BaseButton';
 import { getButtonStyles, styles } from './Button.styles';
 import { IconButtonProps } from './Button.types';
-import { useRestyle, useThemedProps } from '../../hooks';
 
 export const IconButton = React.forwardRef<View, IconButtonProps>(
   (
@@ -28,7 +28,6 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
   ) => {
     const { getStyleFromProps } = useRestyle(props);
     const themeColors = useThemeColorsSelector();
-    const themeSpacing = useThemeSpacingSelector();
     const iconButtonThemeConfig = useThemeIconButtonConfigSelector();
     const { icon: themedIcon } = useThemedProps({
       icon,
@@ -86,10 +85,9 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
           variation: iconButtonVariation(),
           disabled,
           themeColors,
-          spacing: themeSpacing,
         }),
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [disabled, overrideRootVariation, themeColors, themeSpacing, variation],
+      [disabled, overrideRootVariation, themeColors, variation],
     );
 
     return (

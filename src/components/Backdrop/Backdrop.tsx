@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { ActivityIndicatorProps, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { grey } from '../../libraries';
 import { ActivityIndicator } from '../ActivityIndicator';
 import { Portal } from '../Portal';
@@ -8,6 +8,7 @@ import { PortalProps } from '../types';
 export interface BackdropProps extends PortalProps {
   childWrapperContainerStyles?: StyleProp<ViewStyle>;
   activityIndicatorTestId?: string;
+  activityIndicatorProps?: ActivityIndicatorProps;
 }
 
 export const Backdrop: React.FC<BackdropProps> = ({
@@ -18,6 +19,7 @@ export const Backdrop: React.FC<BackdropProps> = ({
   childWrapperContainerStyles,
   children,
   activityIndicatorTestId,
+  activityIndicatorProps,
   ...props
 }) => {
   const { style, ...rest } = modalContainerProps || {};
@@ -33,7 +35,9 @@ export const Backdrop: React.FC<BackdropProps> = ({
       onClose={onClose}
       {...props}>
       <View style={childWrapperContainerStyles}>
-        {children ?? <ActivityIndicator testID={activityIndicatorTestId} size="large" color={grey[50]} />}
+        {children ?? (
+          <ActivityIndicator testID={activityIndicatorTestId} size="large" color={grey[50]} {...activityIndicatorProps} />
+        )}
       </View>
     </Portal>
   );

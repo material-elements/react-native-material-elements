@@ -121,7 +121,6 @@ export const ButtonGroup = React.forwardRef<View, ButtonGroupProps>(
             variation,
             buttonColor,
             disableRipple: buttonGroupDisableRipple,
-            style: { flex: 1 },
             ...child?.props,
           };
           return React.cloneElement(child, childProps);
@@ -144,7 +143,7 @@ export const ButtonGroup = React.forwardRef<View, ButtonGroupProps>(
 
     return (
       <Box
-        style={(styles.buttonGroupContainer, themeButtonGroupConfig?.style, getStyleFromProps(), style)}
+        style={[styles.buttonGroupContainer, themeButtonGroupConfig?.style, getStyleFromProps(), style]}
         sx={sx}
         {...props}
         ref={ref}>
