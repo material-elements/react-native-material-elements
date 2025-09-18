@@ -21,6 +21,7 @@ exports[`Container Component should match the snapshot 1`] = `
           "width": "100%",
         },
         {},
+        {},
         undefined,
       ]
     }
@@ -44,12 +45,15 @@ exports[`Container Component should match the snapshot with sx styles 1`] = `
     style={
       [
         {
-          "backgroundColor": "red",
-          "borderRadius": 5,
           "margin": "auto",
-          "marginTop": 10,
           "padding": 10,
           "width": "100%",
+        },
+        {
+          "backgroundColor": "red",
+          "borderRadius": 5,
+          "marginTop": 10,
+          "padding": 10,
         },
         {},
         undefined,

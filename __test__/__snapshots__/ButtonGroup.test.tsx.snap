@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ButtonGroup should render child button component correctly 1`] = `
 <View
@@ -6,7 +6,15 @@ exports[`ButtonGroup should render child button component correctly 1`] = `
     [
       {},
       {},
-      undefined,
+      [
+        {
+          "display": "flex",
+          "flexDirection": "row",
+        },
+        undefined,
+        {},
+        undefined,
+      ],
     ]
   }
 >
@@ -17,11 +25,7 @@ exports[`ButtonGroup should render child button component correctly 1`] = `
         {},
         [
           {},
-          [
-            {
-              "flex": 1,
-            },
-          ],
+          [],
         ],
       ]
     }
@@ -71,7 +75,7 @@ exports[`ButtonGroup should render child button component correctly 1`] = `
             "borderTopRightRadius": 0,
             "display": "flex",
             "flexDirection": "row",
-            "height": 40,
+            "height": 35,
             "justifyContent": "center",
             "overflow": "hidden",
             "transform": [
@@ -99,7 +103,7 @@ exports[`ButtonGroup should render child button component correctly 1`] = `
             style={
               {
                 "color": "#FAFAFA",
-                "fontSize": 14,
+                "fontSize": 13,
               }
             }
           >
@@ -132,11 +136,7 @@ exports[`ButtonGroup should render child button component correctly 1`] = `
         {},
         [
           {},
-          [
-            {
-              "flex": 1,
-            },
-          ],
+          [],
         ],
       ]
     }
@@ -186,7 +186,7 @@ exports[`ButtonGroup should render child button component correctly 1`] = `
             "borderTopRightRadius": undefined,
             "display": "flex",
             "flexDirection": "row",
-            "height": 40,
+            "height": 35,
             "justifyContent": "center",
             "overflow": "hidden",
             "transform": [
@@ -214,7 +214,7 @@ exports[`ButtonGroup should render child button component correctly 1`] = `
             style={
               {
                 "color": "#FAFAFA",
-                "fontSize": 14,
+                "fontSize": 13,
               }
             }
           >
@@ -249,7 +249,15 @@ exports[`ButtonGroup should render correctly with default props 1`] = `
     [
       {},
       {},
-      undefined,
+      [
+        {
+          "display": "flex",
+          "flexDirection": "row",
+        },
+        undefined,
+        {},
+        undefined,
+      ],
     ]
   }
 />

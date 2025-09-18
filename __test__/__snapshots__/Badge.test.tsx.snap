@@ -6,8 +6,7 @@ exports[`Badge should render correctly 1`] = `
     [
       {
         "alignSelf": "flex-start",
-        "minHeight": 40,
-        "minWidth": 40,
+        "minWidth": 30,
       },
       undefined,
     ]
@@ -68,8 +67,7 @@ exports[`Badge should render correctly with inner component 1`] = `
     [
       {
         "alignSelf": "flex-start",
-        "minHeight": 40,
-        "minWidth": 40,
+        "minWidth": 30,
       },
       undefined,
     ]

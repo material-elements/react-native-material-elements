@@ -1,5 +1,5 @@
-import { HIDE_SNACK_BAR_MESSAGE, SHOW_SNACK_BAR_MESSAGE, SNACK_BAR, snackbar, SnackbarProperties } from '../src';
 import { DeviceEventEmitter } from 'react-native';
+import { HIDE_SNACK_BAR_MESSAGE, SHOW_SNACK_BAR_MESSAGE, snackbar, SnackbarProperties } from '../src';
 
 describe('snackbar utils', () => {
   beforeEach(() => {
@@ -16,7 +16,6 @@ describe('snackbar utils', () => {
       message: 'Marked as read',
       showActionButton: true,
       shouldHideWhenClickedOnActionButton: false,
-      hideDuration: SNACK_BAR.LENGTH_SHORT,
       type: 'warning',
     };
     snackbar.show(config);

@@ -106,7 +106,7 @@ exports[`DropDown Component should render correctly 1`] = `
             "backgroundColor": "transparent",
             "color": "#424242",
             "flex": 1,
-            "minHeight": 48,
+            "minHeight": 35,
             "position": "relative",
             "width": "100%",
             "zIndex": 12,

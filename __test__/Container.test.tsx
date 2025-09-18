@@ -1,6 +1,6 @@
 import { render, waitFor } from '@testing-library/react-native';
 import React from 'react';
-import { StyleProp, Text, View, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { Container } from '../src';
 import { LG_MAX_WIDTH, MD_MAX_WIDTH, SM_MAX_WIDTH, XS_MAX_WIDTH } from '../src/components/Box/constants';
 
@@ -50,9 +50,8 @@ describe('Container Component', () => {
     );
 
     const container = getByTestId(containerMockTestId);
-    expect(container.props.style).toEqual(
-      expect.arrayContaining([{ backgroundColor: 'blue', padding: 20, margin: 'auto', width: '90%' }]),
-    );
+    const fattenStyles = StyleSheet.flatten(container.props.style);
+    expect(fattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'blue', padding: 20, margin: 'auto', width: '90%' }));
   });
 
   it('should remove the padding from the container when disabled disableGutters prop passed', () => {
@@ -165,11 +164,18 @@ describe('Container Component', () => {
     );
 
     const container = getByTestId(containerMockTestId);
-    const expectedStyles: StyleProp<ViewStyle> = [
-      { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: 'auto', width: '100%' },
-    ];
+    const fattenStyles = StyleSheet.flatten(container.props.style);
 
-    expect(container.props.style).toEqual(expect.arrayContaining(expectedStyles));
+    expect(fattenStyles).toEqual(
+      expect.objectContaining({
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 'auto',
+        width: '100%',
+      }),
+    );
   });
 
   it('should forward the ref correctly', () => {

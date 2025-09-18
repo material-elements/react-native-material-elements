@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dialog should render correctly with default props 1`] = `
 <Modal
@@ -95,8 +95,10 @@ exports[`DialogActions should render child correctly 1`] = `
           "alignItems": "center",
           "display": "flex",
           "flexDirection": "row",
-          "justifyContent": "flex-end",
           "paddingTop": 5,
+        },
+        {
+          "justifyContent": "flex-end",
         },
         undefined,
       ],
@@ -111,9 +113,6 @@ exports[`DialogActions should render child correctly 1`] = `
           "display": "flex",
           "flexDirection": "row",
           "paddingHorizontal": 10,
-        },
-        {
-          "maxWidth": 150,
         },
         undefined,
       ]
@@ -140,8 +139,10 @@ exports[`DialogActions should render correctly with default props 1`] = `
           "alignItems": "center",
           "display": "flex",
           "flexDirection": "row",
-          "justifyContent": "flex-end",
           "paddingTop": 5,
+        },
+        {
+          "justifyContent": "flex-end",
         },
         undefined,
       ],
@@ -156,9 +157,6 @@ exports[`DialogActions should render correctly with default props 1`] = `
           "display": "flex",
           "flexDirection": "row",
           "paddingHorizontal": 10,
-        },
-        {
-          "maxWidth": 150,
         },
         undefined,
       ]

@@ -32,7 +32,7 @@ exports[`IconInput should render correctly 1`] = `
         {
           "color": "#212121",
           "flex": 1,
-          "minHeight": 48,
+          "minHeight": 35,
           "width": "100%",
         }
       }
