@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    gap: 10,
+    gap: 6,
   },
   chipInnerComponentWrapper: {
     minWidth: ADORNMENT_WRAPPER_SPACE,

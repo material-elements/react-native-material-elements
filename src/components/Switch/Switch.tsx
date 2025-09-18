@@ -143,6 +143,7 @@ export const Switch = React.forwardRef<View, SwitchProps>(
 
     const animatedValue = useRef(new Animated.Value(0)).current;
     const switchWrapperBgAnimatedValue = useRef(new Animated.Value(0)).current;
+    const switchScaleXAnimatedValue = useRef(new Animated.Value(0)).current;
 
     const [containerWidth, setContainerWidth] = useState(0);
     const [thumbWidth, setThumbWidth] = useState(0);
@@ -181,9 +182,21 @@ export const Switch = React.forwardRef<View, SwitchProps>(
           duration: switchToggleBgDuration(),
           useNativeDriver: true,
         }),
+        Animated.sequence([
+          Animated.timing(switchScaleXAnimatedValue, {
+            toValue: 1,
+            duration: 150,
+            useNativeDriver: true,
+          }),
+          Animated.timing(switchScaleXAnimatedValue, {
+            toValue: 0,
+            duration: 150,
+            useNativeDriver: true,
+          }),
+        ]),
       ]).start();
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isActive]);
+    }, [isActive, size, type]);
 
     const handleContainerLayout = (event: LayoutChangeEvent) => {
       setContainerWidth(event.nativeEvent.layout.width);
@@ -204,6 +217,12 @@ export const Switch = React.forwardRef<View, SwitchProps>(
           translateX: animatedValue.interpolate({
             inputRange: [0, 1],
             outputRange: outputRangeSwitchThumb,
+          }),
+        },
+        {
+          scaleX: switchScaleXAnimatedValue.interpolate({
+            inputRange: [0, 1],
+            outputRange: [1, 1.1],
           }),
         },
       ],

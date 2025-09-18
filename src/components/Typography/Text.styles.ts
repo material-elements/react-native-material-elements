@@ -45,7 +45,7 @@ export const generateTextStyles = ({
       fontSize = themeComponentConfig?.body2?.fontSize ?? themeFonts['text-3xl'];
       break;
     case 'caption':
-      fontSize = themeComponentConfig?.caption?.fontSize ?? themeFonts['text-4xl'];
+      fontSize = themeComponentConfig?.caption?.fontSize ?? themeFonts['text-sm'];
       break;
     case 'h1':
       fontSize = themeComponentConfig?.h1?.fontSize ?? themeFonts['text-xl'];

@@ -52,6 +52,20 @@ describe('Accordion Component', () => {
     expect(flattenedStyle.flex).toEqual(1);
     expect(flattenedStyle.alignItems).toEqual('center');
   });
+
+  it('should render the multiple components correctly', () => {
+    const { getByText } = render(
+      <Accordion>
+        <Text>Hello_1</Text>
+        <Text>Hello_2</Text>
+      </Accordion>,
+    );
+    const firstText = getByText('Hello_1');
+    expect(firstText).toBeDefined();
+
+    const secondText = getByText('Hello_2');
+    expect(secondText).toBeDefined();
+  });
 });
 
 describe('AccordionSummary Component', () => {
@@ -237,5 +251,19 @@ describe('AccordionDetails Component', () => {
     const view = getByTestId('accordion-details');
     expect(view.props.accessibilityLabel).toBe('accordion details');
     expect(view.props.accessible).toBe(true);
+  });
+
+  it('should render the multiple components correctly', () => {
+    const { getByText } = render(
+      <AccordionDetails>
+        <Text>Hello_1</Text>
+        <Text>Hello_2</Text>
+      </AccordionDetails>,
+    );
+    const firstText = getByText('Hello_1');
+    expect(firstText).toBeDefined();
+
+    const secondText = getByText('Hello_2');
+    expect(secondText).toBeDefined();
   });
 });
