@@ -40,7 +40,9 @@ export const generateElementStyles = (args: StylePalette) => {
   for (let property of keys) {
     const elementPropertyName = property as keyof typeof styles;
     if (args[elementPropertyName] === undefined) {
-      console.warn(`Invalid element property name: ${String(args[elementPropertyName])}`);
+      console.warn(
+        `Invalid element property name: ${args[elementPropertyName]}, and value: ${String(args[elementPropertyName])}`,
+      );
       continue;
     }
     nativeStyles = {

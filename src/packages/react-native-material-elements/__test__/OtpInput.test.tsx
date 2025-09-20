@@ -3,6 +3,8 @@ import { OTPInput } from '../src';
 import { fireEvent, render } from './test-utils';
 
 describe('OTP Component', () => {
+  const mockOtpInputTestId = 'mock-otp-input-test-id';
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -92,5 +94,21 @@ describe('OTP Component', () => {
     updatedInputs.forEach(input => {
       expect(input.props.value).toBe('');
     });
+  });
+
+  it('should set the default values', () => {
+    const { getByTestId } = render(<OTPInput testID={mockOtpInputTestId} length={3} defaultValue={'123'} />);
+
+    const firstInput = getByTestId(`${mockOtpInputTestId}-0`);
+    expect(firstInput).toBeDefined();
+    expect(firstInput.props.value).toEqual('1');
+
+    const secondInput = getByTestId(`${mockOtpInputTestId}-1`);
+    expect(secondInput).toBeDefined();
+    expect(secondInput.props.value).toEqual('2');
+
+    const thirdInput = getByTestId(`${mockOtpInputTestId}-2`);
+    expect(thirdInput).toBeDefined();
+    expect(thirdInput.props.value).toEqual('3');
   });
 });

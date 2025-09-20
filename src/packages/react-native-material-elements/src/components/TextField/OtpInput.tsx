@@ -11,7 +11,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import { useThemeColorsSelector } from '../../libraries';
-import { Theme } from '../../libraries/themes/types';
+import { Theme } from '../../libraries/types';
 import { VariantTypes } from '../../utils';
 import { getOtpInputStyles } from './TextField.style';
 

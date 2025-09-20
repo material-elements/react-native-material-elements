@@ -17,6 +17,9 @@ module.exports = {
     '.enum.ts',
     '/config/',
     '/coverage/',
+    '.eslintrc.js',
+    '.prettierrc.js',
+    'babel.config.js',
   ],
 
   coverageReporters: ['html', 'text', 'lcov', 'text-summary'],
