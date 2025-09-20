@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Avatar Component should match the snapshot with  props 1`] = `
+<View>
+  <View
+    style={
+      [
+        {},
+        {},
+        {
+          "alignSelf": "flex-start",
+          "position": "relative",
+        },
+      ]
+    }
+  >
+    <Image
+      collapsable={false}
+      source={
+        {
+          "uri": "avatar.jpg",
+        }
+      }
+      style={
+        {
+          "height": undefined,
+          "width": undefined,
+        }
+      }
+    />
+  </View>
+</View>
+`;

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TextField Component should render correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderColor": "#BDBDBD",
+      "borderRadius": 5,
+      "borderWidth": 0.6,
+      "display": "flex",
+      "flexDirection": "row",
+      "opacity": 1,
+      "paddingHorizontal": 14,
+      "position": "relative",
+      "width": "100%",
+    }
+  }
+>
+  <TextInput
+    editable={true}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onLayout={[Function]}
+    style={
+      {
+        "backgroundColor": "transparent",
+        "color": "#424242",
+        "flex": 1,
+        "minHeight": 35,
+        "position": "relative",
+        "width": "100%",
+        "zIndex": 12,
+      }
+    }
+  />
+</View>
+`;

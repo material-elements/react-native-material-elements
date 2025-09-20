@@ -1,0 +1,371 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Chip Component should match the snapshot with default props 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      undefined,
+    ]
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    pointerEvents="box-only"
+    style={
+      {
+        "alignSelf": "flex-start",
+        "backgroundColor": "#03A9F4",
+        "borderRadius": 20,
+        "paddingBottom": 5,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+        "paddingTop": 5,
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {},
+          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 6,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <Text
+        collapsable={false}
+        style={
+          {
+            "color": "#FAFAFA",
+            "fontSize": 14,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Chip Component should render correctly with end icon 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      undefined,
+    ]
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignSelf": "flex-start",
+        "backgroundColor": "#03A9F4",
+        "borderRadius": 20,
+        "paddingBottom": 5,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+        "paddingTop": 5,
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
+      }
+    }
+    testID="chip-test-id"
+  >
+    <View
+      style={
+        [
+          {},
+          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 6,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <Text
+        collapsable={false}
+        style={
+          {
+            "color": "#FAFAFA",
+            "fontSize": 14,
+          }
+        }
+      />
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+          }
+        }
+      >
+        <View>
+          <View
+            style={
+              [
+                {},
+                {},
+                {
+                  "alignSelf": "flex-start",
+                  "position": "relative",
+                },
+              ]
+            }
+          >
+            <Image
+              collapsable={false}
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1568409938619-12e139227838?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+                }
+              }
+              style={
+                {
+                  "borderRadius": 100,
+                  "height": 20,
+                  "testID": "end-icon-test-id",
+                  "width": 20,
+                }
+              }
+              testID="end-icon-test-id"
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Chip Component should render correctly with start icon 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      undefined,
+    ]
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignSelf": "flex-start",
+        "backgroundColor": "#03A9F4",
+        "borderRadius": 20,
+        "paddingBottom": 5,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+        "paddingTop": 5,
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
+      }
+    }
+    testID="chip-test-id"
+  >
+    <View
+      style={
+        [
+          {},
+          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 6,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+          }
+        }
+      >
+        <View>
+          <View
+            style={
+              [
+                {},
+                {},
+                {
+                  "alignSelf": "flex-start",
+                  "position": "relative",
+                },
+              ]
+            }
+          >
+            <Image
+              collapsable={false}
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1568409938619-12e139227838?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+                }
+              }
+              style={
+                {
+                  "borderRadius": 100,
+                  "height": 20,
+                  "testID": "start-icon-test-id",
+                  "width": 20,
+                }
+              }
+              testID="start-icon-test-id"
+            />
+          </View>
+        </View>
+      </View>
+      <Text
+        collapsable={false}
+        style={
+          {
+            "color": "#FAFAFA",
+            "fontSize": 14,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

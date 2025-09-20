@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`OTP Component should render correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <TextInput
+    keyboardType="number-pad"
+    maxLength={1}
+    onBlur={[Function]}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    onKeyPress={[Function]}
+    selectTextOnFocus={true}
+    style={
+      {
+        "borderColor": "#BDBDBD",
+        "borderRadius": 8,
+        "borderWidth": 0.8,
+        "color": "#212121",
+        "fontSize": 18,
+        "height": 50,
+        "marginHorizontal": 5,
+        "textAlign": "center",
+        "width": 50,
+      }
+    }
+    testID="otp-input-0"
+    value=""
+  />
+  <TextInput
+    keyboardType="number-pad"
+    maxLength={1}
+    onBlur={[Function]}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    onKeyPress={[Function]}
+    selectTextOnFocus={true}
+    style={
+      {
+        "borderColor": "#BDBDBD",
+        "borderRadius": 8,
+        "borderWidth": 0.8,
+        "color": "#212121",
+        "fontSize": 18,
+        "height": 50,
+        "marginHorizontal": 5,
+        "textAlign": "center",
+        "width": 50,
+      }
+    }
+    testID="otp-input-1"
+    value=""
+  />
+  <TextInput
+    keyboardType="number-pad"
+    maxLength={1}
+    onBlur={[Function]}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    onKeyPress={[Function]}
+    selectTextOnFocus={true}
+    style={
+      {
+        "borderColor": "#BDBDBD",
+        "borderRadius": 8,
+        "borderWidth": 0.8,
+        "color": "#212121",
+        "fontSize": 18,
+        "height": 50,
+        "marginHorizontal": 5,
+        "textAlign": "center",
+        "width": 50,
+      }
+    }
+    testID="otp-input-2"
+    value=""
+  />
+  <TextInput
+    keyboardType="number-pad"
+    maxLength={1}
+    onBlur={[Function]}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    onKeyPress={[Function]}
+    selectTextOnFocus={true}
+    style={
+      {
+        "borderColor": "#BDBDBD",
+        "borderRadius": 8,
+        "borderWidth": 0.8,
+        "color": "#212121",
+        "fontSize": 18,
+        "height": 50,
+        "marginHorizontal": 5,
+        "textAlign": "center",
+        "width": 50,
+      }
+    }
+    testID="otp-input-3"
+    value=""
+  />
+  <TextInput
+    keyboardType="number-pad"
+    maxLength={1}
+    onBlur={[Function]}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    onKeyPress={[Function]}
+    selectTextOnFocus={true}
+    style={
+      {
+        "borderColor": "#BDBDBD",
+        "borderRadius": 8,
+        "borderWidth": 0.8,
+        "color": "#212121",
+        "fontSize": 18,
+        "height": 50,
+        "marginHorizontal": 5,
+        "textAlign": "center",
+        "width": 50,
+      }
+    }
+    testID="otp-input-4"
+    value=""
+  />
+</View>
+`;

@@ -1,0 +1,264 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ButtonGroup should render child button component correctly 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      [
+        {
+          "display": "flex",
+          "flexDirection": "row",
+        },
+        undefined,
+        {},
+        undefined,
+      ],
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {},
+        {},
+        [
+          {},
+          [],
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {},
+          {},
+          undefined,
+        ]
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onLayout={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        pointerEvents="box-only"
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#03A9F4",
+            "borderBottomLeftRadius": undefined,
+            "borderBottomRightRadius": 0,
+            "borderColor": "#EEEEEE",
+            "borderLeftWidth": 0,
+            "borderRadius": 8,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": undefined,
+            "borderTopRightRadius": 0,
+            "display": "flex",
+            "flexDirection": "row",
+            "height": 35,
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "height": "100%",
+              "justifyContent": "center",
+              "paddingHorizontal": 10,
+            }
+          }
+        >
+          <Text
+            collapsable={false}
+            style={
+              {
+                "color": "#FAFAFA",
+                "fontSize": 13,
+              }
+            }
+          >
+            Save
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "bottom": 0,
+                "left": 0,
+                "overflow": "hidden",
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              undefined,
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      [
+        {},
+        {},
+        [
+          {},
+          [],
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {},
+          {},
+          undefined,
+        ]
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onLayout={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        pointerEvents="box-only"
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#03A9F4",
+            "borderBottomLeftRadius": 0,
+            "borderBottomRightRadius": undefined,
+            "borderColor": "#EEEEEE",
+            "borderLeftWidth": 1,
+            "borderRadius": 8,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": 0,
+            "borderTopRightRadius": undefined,
+            "display": "flex",
+            "flexDirection": "row",
+            "height": 35,
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "height": "100%",
+              "justifyContent": "center",
+              "paddingHorizontal": 10,
+            }
+          }
+        >
+          <Text
+            collapsable={false}
+            style={
+              {
+                "color": "#FAFAFA",
+                "fontSize": 13,
+              }
+            }
+          >
+            Delete
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "bottom": 0,
+                "left": 0,
+                "overflow": "hidden",
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              undefined,
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`ButtonGroup should render correctly with default props 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      [
+        {
+          "display": "flex",
+          "flexDirection": "row",
+        },
+        undefined,
+        {},
+        undefined,
+      ],
+    ]
+  }
+/>
+`;

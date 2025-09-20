@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Box Component should match the snapshot 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "red",
+        "borderRadius": 10,
+        "height": 20,
+        "width": 20,
+      },
+      {},
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`Box Component should match the snapshot with custom styles 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      {
+        "backgroundColor": "blue",
+        "padding": 20,
+      },
+    ]
+  }
+>
+  <View />
+</View>
+`;
+
+exports[`Box Component should match the snapshot with sx styles 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "red",
+        "borderRadius": 5,
+        "padding": 10,
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  <View />
+</View>
+`;
+
+exports[`Box Component should render the animated view 1`] = `
+<View
+  collapsable={false}
+  style={{}}
+/>
+`;

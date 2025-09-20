@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Container Component should match the snapshot 1`] = `
+<View
+  style={
+    [
+      {
+        "width": "100%",
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "margin": "auto",
+          "padding": 10,
+          "width": "100%",
+        },
+        {},
+        {},
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`Container Component should match the snapshot with sx styles 1`] = `
+<View
+  style={
+    [
+      {
+        "width": "100%",
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "margin": "auto",
+          "padding": 10,
+          "width": "100%",
+        },
+        {
+          "backgroundColor": "red",
+          "borderRadius": 5,
+          "marginTop": 10,
+          "padding": 10,
+        },
+        {},
+        undefined,
+      ]
+    }
+  >
+    <View />
+  </View>
+</View>
+`;

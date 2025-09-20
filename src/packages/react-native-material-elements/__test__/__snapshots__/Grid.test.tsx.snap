@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Grid component should render correctly 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      [
+        {
+          "display": "flex",
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+        },
+        {
+          "width": "100%",
+        },
+        {},
+        undefined,
+      ],
+    ]
+  }
+/>
+`;

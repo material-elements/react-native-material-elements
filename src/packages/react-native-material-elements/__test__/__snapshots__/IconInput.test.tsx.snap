@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`IconInput should render correctly 1`] = `
+<View>
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "#ECEFF1",
+        },
+        {
+          "testID": "undefined-wrapper",
+        },
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "paddingHorizontal": 10,
+            "width": "100%",
+          },
+          undefined,
+          undefined,
+        ],
+      ]
+    }
+    testID="undefined-wrapper"
+  >
+    <TextInput
+      placeholderTextColor="#757575"
+      style={
+        {
+          "color": "#212121",
+          "flex": 1,
+          "minHeight": 35,
+          "width": "100%",
+        }
+      }
+    />
+  </View>
+</View>
+`;

@@ -1,0 +1,3 @@
+export const ADORNMENT_WRAPPER_SPACE = 20;
+export const DEFAULT_BORDER_RADIUS = 20;
+export const SQUARE_BORDER_RADIUS = 2;

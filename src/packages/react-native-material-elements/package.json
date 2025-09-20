@@ -1,0 +1,88 @@
+{
+  "name": "react-native-material-elements",
+  "description": "React native material elements is a sophisticated UI library crafted to enhance your React Native development workflow. Designed for simplicity and elegance, nex-ui provides a rich collection of components and utilities to effortlessly create polished mobile applications.",
+  "version": "1.1.35",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/material-elements/react-native-material-elements/tree/master"
+  },
+  "author": "RN M-ELEMENTS Team",
+  "license": "MIT",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "bugs": {
+    "url": "https://github.com/material-elements/react-native-material-elements/issues"
+  },
+  "homepage": "https://github.com/material-elements/react-native-material-elements",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "lint": "eslint .",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "lodash": ">=4.17.0",
+    "react": "*",
+    "react-native": "*",
+    "use-context-selector": ">=2.0.0"
+  },
+  "keywords": [
+    "react native material ui",
+    "react native material components",
+    "material design for react native",
+    "react native material library",
+    "react native material kit",
+    "react native material elements library",
+    "material theme react native",
+    "react native material buttons",
+    "material input react native",
+    "react native ui kit material",
+    "react native material card components",
+    "react-native",
+    "ios",
+    "android",
+    "ui-components",
+    "typescript",
+    "component-library",
+    "mobile",
+    "user-interface",
+    "modern-design",
+    "responsive",
+    "native",
+    "cross-platform",
+    "customizable",
+    "animations",
+    "styled-components",
+    "accessibility",
+    "design-system",
+    "lightweight",
+    "performance",
+    "developer-friendly",
+    "mobile-app",
+    "visual-design",
+    "material-elements"
+  ],
+  "devDependencies": {
+    "@babel/runtime": "^7.20.0",
+    "@react-native/babel-preset": "0.74.81",
+    "@react-native/eslint-config": "0.74.81",
+    "@react-native/metro-config": "0.74.81",
+    "@react-native/typescript-config": "0.74.81",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@types/jest": "^29.5.12",
+    "@types/lodash": "*",
+    "@types/react": "^18.2.6",
+    "@types/react-native-material-ripple": "^0.9.6",
+    "babel-jest": "^29.6.3",
+    "eslint": "^8.19.0",
+    "jest": "^29.6.3",
+    "prettier": "2.8.8",
+    "react-native-builder-bob": "^0.23.2",
+    "typescript": "5.0.4",
+    "@types/react-test-renderer": "^18.0.0",
+    "react-test-renderer": "18.2.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

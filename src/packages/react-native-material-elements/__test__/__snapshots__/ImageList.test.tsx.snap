@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ImageList Component should render correctly with default props 1`] = `
+<RCTScrollView
+  contentContainerStyle={
+    {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+    }
+  }
+  style={
+    [
+      undefined,
+    ]
+  }
+>
+  <View />
+</RCTScrollView>
+`;
+
+exports[`ImageListItem Component should render correctly 1`] = `[Function]`;

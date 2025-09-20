@@ -1,0 +1,16 @@
+export const lineHeight = {
+  'leading-3': 0.75,
+  'leading-4': 1,
+  'leading-5': 1.25,
+  'leading-6': 1.5,
+  'leading-7': 1.75,
+  'leading-8': 2,
+  'leading-9': 2.25,
+  'leading-10': 2.5,
+  'leading-none': 1,
+  'leading-tight': 1.25,
+  'leading-snug': 1.375,
+  'leading-normal': 1.5,
+  'leading-relaxed': 1.625,
+  'leading-loose': 2,
+};

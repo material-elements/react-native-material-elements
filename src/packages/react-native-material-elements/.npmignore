@@ -1,0 +1,15 @@
+node_modules/
+examples/
+__tests__/
+__test__/
+docs/
+coverage/
+
+.editorconfig
+.eslintrc.js
+*.md
+*.config.js
+.github
+.prettierrc.js
+.LICENSE.md
+.jest.setup.ts

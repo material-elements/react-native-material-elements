@@ -1,0 +1,16 @@
+blank_issues_enabled: false
+issue_templates:
+  - name: 'Bug Report'
+    description: 'Report a bug or unexpected behavior.'
+    file: 'bug_report.md'
+    labels: ['bug']
+
+  - name: 'Feature Request'
+    description: 'Suggest a new feature or improvement.'
+    file: 'feature_request.md'
+    labels: ['enhancement']
+
+  - name: 'Question'
+    description: 'Ask a question about the project.'
+    file: 'question.md'
+    labels: ['question']

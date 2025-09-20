@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Divider Component should render correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+      },
+      {
+        "gap": 0,
+        "paddingVertical": 2,
+      },
+      undefined,
+      {},
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "borderWidth": 0.9,
+        },
+        {
+          "borderColor": "#BDBDBD",
+          "borderEndWidth": 0,
+          "flex": 1,
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  />
+  <View
+    style={
+      [
+        {
+          "borderWidth": 0.9,
+        },
+        {
+          "borderColor": "#BDBDBD",
+          "borderStartWidth": 0,
+          "flex": 1,
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`Divider Component should render the children correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+      },
+      {
+        "gap": 10,
+        "paddingVertical": 2,
+      },
+      undefined,
+      {},
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "borderWidth": 0.9,
+        },
+        {
+          "borderColor": "#BDBDBD",
+          "borderEndWidth": 0,
+          "flex": 1,
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  />
+  <Text
+    collapsable={false}
+    style={{}}
+  >
+    test-label
+  </Text>
+  <View
+    style={
+      [
+        {
+          "borderWidth": 0.9,
+        },
+        {
+          "borderColor": "#BDBDBD",
+          "borderStartWidth": 0,
+          "flex": 1,
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  />
+</View>
+`;

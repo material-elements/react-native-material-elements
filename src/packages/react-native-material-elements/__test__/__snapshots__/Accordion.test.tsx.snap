@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Accordion Component should render correctly 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      [
+        {
+          "backgroundColor": "#EEEEEE",
+          "borderRadius": 8,
+          "opacity": 1,
+          "width": "100%",
+        },
+        {},
+        undefined,
+      ],
+    ]
+  }
+/>
+`;
+
+exports[`AccordionDetails Component should render accordion details correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "opacity": 1,
+        "paddingBottom": 15,
+        "paddingHorizontal": 12,
+        "paddingTop": 8,
+        "width": "100%",
+      },
+      {},
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`AccordionDetails Component should render child component 1`] = `
+<View
+  style={
+    [
+      {
+        "opacity": 1,
+        "paddingBottom": 15,
+        "paddingHorizontal": 12,
+        "paddingTop": 8,
+        "width": "100%",
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  <View>
+    <Text
+      collapsable={false}
+      style={{}}
+    >
+      First child
+    </Text>
+  </View>
+  <View>
+    <Text
+      collapsable={false}
+      style={{}}
+    >
+      Second child
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`AccordionSummary Component should render correctly 1`] = `
+<View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "padding": 13,
+          "width": "100%",
+        },
+        {},
+        {},
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignContent": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "width": "90%",
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            {},
+            [
+              {
+                "flex": 1,
+              },
+              undefined,
+            ],
+          ]
+        }
+      />
+    </View>
+    <View
+      collapsable={false}
+      style={
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "transform": [
+            {
+              "rotate": "0deg",
+            },
+          ],
+          "width": "10%",
+        }
+      }
+    />
+  </View>
+  <View
+    collapsable={false}
+    style={
+      {
+        "height": 0,
+        "opacity": 0,
+        "overflow": "hidden",
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "width": "100%",
+          },
+          {
+            "height": null,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+  <View
+    onLayout={[Function]}
+    style={
+      {
+        "opacity": 0,
+        "position": "absolute",
+        "zIndex": -1,
+      }
+    }
+  />
+</View>
+`;
