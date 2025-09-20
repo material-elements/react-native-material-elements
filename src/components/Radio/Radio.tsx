@@ -301,7 +301,7 @@ const RadioOutline: React.FC<RadioOutlineProps> = ({ style, isActive, children, 
 
   const borderColorInterpolation = borderColorValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [themeColors.grey[400], themeColors.grey[800]],
+    outputRange: [themeColors.gray[400], themeColors.gray[800]],
   });
 
   return (

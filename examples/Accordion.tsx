@@ -13,7 +13,7 @@ export const App: React.FC = () => {
         items: 'center',
         content: 'center',
         p: 10,
-        bg: theme.colors.grey[800],
+        bg: theme.colors.gray[800],
       }}>
       <Accordion square>
         <AccordionSummary

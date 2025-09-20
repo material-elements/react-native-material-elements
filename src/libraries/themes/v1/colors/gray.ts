@@ -1,6 +1,6 @@
-import { ColorShades } from '../theme';
+import { ColorShades } from '../../theme';
 
-export const grey: ColorShades = {
+export const gray: ColorShades = {
   50: '#FAFAFA',
   100: '#F5F5F5',
   200: '#EEEEEE',

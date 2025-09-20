@@ -7,5 +7,5 @@ import { TextProps } from '../Typography/Text.types';
 export const DialogContentText = React.forwardRef<RnText, TextProps>(({ color, ...props }, ref) => {
   const themeColors = useThemeColorsSelector();
 
-  return <Text variation="h4" ref={ref} color={color ?? themeColors.grey[50]} {...props} />;
+  return <Text variation="h4" ref={ref} color={color ?? themeColors.gray[50]} {...props} />;
 });

@@ -11,7 +11,7 @@ export const Ex1: React.FC = () => {
         sx={{
           w: 200,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -28,7 +28,7 @@ export const Ex2: React.FC = () => {
         sx={{
           w: 200,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -45,7 +45,7 @@ export const Ex3: React.FC = () => {
         sx={{
           w: 200,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -62,7 +62,7 @@ export const Ex4: React.FC = () => {
         sx={{
           w: 200,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -79,7 +79,7 @@ export const Ex5: React.FC = () => {
         sx={{
           w: 200,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -96,7 +96,7 @@ export const Ex6: React.FC = () => {
         sx={{
           w: 200,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -113,7 +113,7 @@ export const Ex7: React.FC = () => {
         sx={{
           w: 200,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -137,7 +137,7 @@ export const Ex8: React.FC = () => {
         sx={{
           w: 200,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -162,7 +162,7 @@ export const Ex9: React.FC = () => {
         sx={{
           w: 200,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -187,7 +187,7 @@ export const Ex10: React.FC = () => {
         sx={{
           w: 200,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -210,7 +210,7 @@ export const Ex11: React.FC = () => {
         sx={{
           w: 200,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -233,7 +233,7 @@ export const Ex12: React.FC = () => {
         sx={{
           w: 200,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -255,7 +255,7 @@ export const Ex13: React.FC = () => {
         sx={{
           w: 100,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -277,7 +277,7 @@ export const Ex14: React.FC = () => {
         sx={{
           w: 100,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -299,7 +299,7 @@ export const Ex15: React.FC = () => {
         sx={{
           w: 100,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -321,7 +321,7 @@ export const Ex16: React.FC = () => {
         sx={{
           w: 100,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />
@@ -343,7 +343,7 @@ export const Ex17: React.FC = () => {
         sx={{
           w: 100,
           h: 50,
-          bg: theme.colors.grey[400],
+          bg: theme.colors.gray[400],
           r: 10,
         }}
       />

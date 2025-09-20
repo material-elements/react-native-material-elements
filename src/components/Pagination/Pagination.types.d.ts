@@ -1,6 +1,6 @@
 import React from 'react';
 import { Animated, ColorValue, GestureResponderEvent, StyleProp, TextStyle } from 'react-native';
-import { Theme } from '../../libraries/themes/v1/theme';
+import { Theme } from '../../libraries/themes/theme';
 import { DefaultVariationOptions, VariantTypes, VariationThemeConfig } from '../../utils';
 import { BoxProps } from '../Box/Box.types';
 import { BaseButtonProps } from '../Button/Button.types';

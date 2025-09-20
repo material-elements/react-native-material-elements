@@ -1,4 +1,4 @@
-import { ColorShades } from '../theme';
+import { ColorShades } from '../../theme';
 
 export const amber: ColorShades = {
   50: '#FFF8E1',

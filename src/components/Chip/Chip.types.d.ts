@@ -1,6 +1,6 @@
 import { ColorValue, StyleProp, TouchableOpacityProps, ViewStyle } from 'react-native';
 import { ThemedIconProp } from '../../hooks';
-import { Theme } from '../../libraries/themes/v1/theme';
+import { Theme } from '../../libraries/themes/theme';
 import { DefaultVariationOptions, GetVariantArgs, VariantTypes, VariationThemeConfig } from '../../utils';
 import { BaseButtonProps } from '../Button/Button.types';
 

@@ -1,4 +1,4 @@
-import { ColorShades } from '../theme';
+import { ColorShades } from '../../theme';
 
 export const secondary: ColorShades = {
   50: '#E1F5FE',

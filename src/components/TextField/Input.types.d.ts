@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { ThemedIconProp } from '../../hooks';
 import { BaseStyles } from '../../libraries/style/styleTypes';
-import { Theme } from '../../libraries/themes/v1/theme';
+import { Theme } from '../../libraries/themes/theme';
 import { BoxProps } from '../Box/Box.types';
 import { TextProps } from '../Typography/Text.types';
 

@@ -72,14 +72,14 @@ export const App: React.FC = () => {
       <Box
         sx={{
           w: '100%',
-          bg: theme.colors.grey[300],
+          bg: theme.colors.gray[300],
           px: 10,
           py: 5,
           r: 8,
-          bColor: theme.colors.grey[400],
+          bColor: theme.colors.gray[400],
           bWidth: 1,
         }}>
-        <BaseInput placeholder="Base input" style={{ color: theme.colors.grey[800] }} />
+        <BaseInput placeholder="Base input" style={{ color: theme.colors.gray[800] }} />
       </Box>
       <TextField
         variant="outlined"

@@ -110,7 +110,7 @@ export const IconInput: React.FC<IconInputProps> = React.forwardRef<View, IconIn
           )}
           <BaseInput
             style={[styles.baseButtonStyles, { color: themeColors.white[900] }, getIconInputStyles({ inputHeight }), style]}
-            placeholderTextColor={themeColors.grey[600]}
+            placeholderTextColor={themeColors.gray[600]}
             testID={testID}
             {...props}
           />

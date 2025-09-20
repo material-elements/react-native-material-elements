@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Chip Component should match the snapshot with default props 1`] = `
 <View
@@ -58,7 +58,7 @@ exports[`Chip Component should match the snapshot with default props 1`] = `
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
-            "gap": 10,
+            "gap": 6,
             "justifyContent": "center",
           },
         ]
@@ -137,7 +137,7 @@ exports[`Chip Component should render correctly with end icon 1`] = `
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
-            "gap": 10,
+            "gap": 6,
             "justifyContent": "center",
           },
         ]
@@ -283,7 +283,7 @@ exports[`Chip Component should render correctly with start icon 1`] = `
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
-            "gap": 10,
+            "gap": 6,
             "justifyContent": "center",
           },
         ]

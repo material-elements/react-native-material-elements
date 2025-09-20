@@ -48,7 +48,7 @@ export const Ex1: React.FC = () => {
 
   return (
     <Box sx={{ f: 1, d: 'flex', items: 'center', content: 'center', px: 10, fDirection: 'column', gap: 10 }}>
-      <Card sx={{ maxW: 350, bg: theme.colors.grey[500], r: 10, overflow: 'hidden' }}>
+      <Card sx={{ maxW: 350, bg: theme.colors.gray[500], r: 10, overflow: 'hidden' }}>
         <CardHeader sx={{ p: 10, d: 'flex', items: 'center', fDirection: 'row', gap: 10 }}>
           <Avatar source={{ uri: 'your-image-source' }} size={40} variation="rounded" />
           <Box>

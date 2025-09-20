@@ -97,7 +97,7 @@ export const CheckBox = React.forwardRef<View, CheckBoxProps>(
       } else if (isChecked) {
         tintColor = getVariant({ variant, colors: themeColors, config: themeVariantColors });
       } else {
-        tintColor = themeColors.grey[600];
+        tintColor = themeColors.gray[600];
       }
 
       return <Image source={source} style={StyleSheet.flatten([{ tintColor }, sizeStyles])} testID={checkBoxImageTestId} />;

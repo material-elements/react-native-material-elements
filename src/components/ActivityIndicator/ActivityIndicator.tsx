@@ -5,7 +5,7 @@ import { getActivityIndicatorColor } from './ActivityIndicator.styles';
 import { useThemeColorsSelector } from '../../libraries';
 
 export const ActivityIndicator = React.forwardRef<RnActivityIndicator, ActivityIndicatorProps>(
-  ({ variant = 'grey', color, switchMode = true, ...props }, ref) => {
+  ({ variant = 'gray', color, switchMode = true, ...props }, ref) => {
     const themeColors = useThemeColorsSelector();
 
     const activityColor = useMemo(

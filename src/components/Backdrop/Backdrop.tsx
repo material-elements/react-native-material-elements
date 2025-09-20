@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActivityIndicatorProps, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
-import { grey } from '../../libraries';
+import { gray } from '../../libraries';
 import { ActivityIndicator } from '../ActivityIndicator';
 import { Portal } from '../Portal';
 import { PortalProps } from '../types';
@@ -36,7 +36,7 @@ export const Backdrop: React.FC<BackdropProps> = ({
       {...props}>
       <View style={childWrapperContainerStyles}>
         {children ?? (
-          <ActivityIndicator testID={activityIndicatorTestId} size="large" color={grey[50]} {...activityIndicatorProps} />
+          <ActivityIndicator testID={activityIndicatorTestId} size="large" color={gray[50]} {...activityIndicatorProps} />
         )}
       </View>
     </Portal>

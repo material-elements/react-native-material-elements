@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { grey, lightBlue, red, TextField, ThemeProvider } from '../src';
+import { gray, lightBlue, red, TextField, ThemeProvider } from '../src';
 import { fireEvent, render } from './test-utils';
 import { render as testRenderer, waitFor } from '@testing-library/react-native';
 
@@ -250,7 +250,7 @@ describe('TextField Component', () => {
     const { getByTestId } = render(<TextField variant="filled" outlineContainerTestId={mockTextFieldOutlineTestId} />);
 
     const input = getByTestId(mockTextFieldOutlineTestId);
-    expect(input.props.style).toEqual(expect.objectContaining({ backgroundColor: grey[500] }));
+    expect(input.props.style).toEqual(expect.objectContaining({ backgroundColor: gray[500] }));
   });
 
   it('should render the error border color when input variant is (filled)', () => {

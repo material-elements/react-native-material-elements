@@ -1,7 +1,7 @@
 import { ColorValue } from 'react-native';
 import { getVariant, GetVariantArgs } from '../../utils';
 import { GetActivityIndicatorColor } from './ActivityIndicator.types';
-import { green, grey, lightBlue, primary, red, secondary, yellow } from '../../libraries';
+import { green, gray, lightBlue, primary, red, secondary, yellow } from '../../libraries';
 
 const colorConfig: GetVariantArgs<unknown>['config'] = {
   primary: { color: primary[500] },
@@ -10,8 +10,8 @@ const colorConfig: GetVariantArgs<unknown>['config'] = {
   info: { color: lightBlue[500] },
   success: { color: green[500] },
   warning: { color: yellow[500] },
-  grey: { color: grey[50] },
-  lightGrey: { color: grey[500] },
+  gray: { color: gray[50] },
+  lightGray: { color: gray[500] },
 };
 
 export const getActivityIndicatorColor = ({ variant, colors, switchMode }: GetActivityIndicatorColor): ColorValue => {

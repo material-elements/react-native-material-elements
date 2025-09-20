@@ -1,4 +1,4 @@
-import { ColorShades } from '../theme';
+import { ColorShades } from '../../theme';
 
 export const lime: ColorShades = {
   50: '#F9FBE7',

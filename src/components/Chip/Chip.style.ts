@@ -1,5 +1,5 @@
 import { ColorValue, StyleSheet, TextStyle, ViewStyle } from 'react-native';
-import { grey } from '../../libraries';
+import { gray } from '../../libraries';
 import { getVariant } from '../../utils';
 import { GenerateChipStylesProps, LabelStylesInterface } from './Chip.types';
 import { ADORNMENT_WRAPPER_SPACE } from './constants';
@@ -83,22 +83,22 @@ export const labelStyles = ({
   let textColor: ColorValue;
 
   if (isActive) {
-    textColor = activeLabelColor ?? grey[50];
+    textColor = activeLabelColor ?? gray[50];
   } else if (
     color === 'secondary' ||
     color === 'error' ||
     color === 'success' ||
     color === 'info' ||
     color === 'primary' ||
-    color === 'grey'
+    color === 'gray'
   ) {
-    textColor = grey[50];
-  } else if (color === 'lightGrey') {
-    textColor = colors.grey[800];
+    textColor = gray[50];
+  } else if (color === 'lightGray') {
+    textColor = colors.gray[800];
   } else if (color === 'warning') {
-    textColor = grey[800];
+    textColor = gray[800];
   } else {
-    textColor = colors.grey[50];
+    textColor = colors.gray[50];
   }
 
   let resolvedColor;
@@ -108,7 +108,7 @@ export const labelStyles = ({
   } else if (labelColor) {
     resolvedColor = labelColor;
   } else {
-    const rColor = isOutlinedVariant ? colors.grey[900] : textColor;
+    const rColor = isOutlinedVariant ? colors.gray[900] : textColor;
     resolvedColor = activeLabelColor ?? rColor;
   }
 

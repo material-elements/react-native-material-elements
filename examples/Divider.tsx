@@ -6,7 +6,7 @@ export const Ex1: React.FC = () => {
 
   return (
     <Box sx={{ d: 'flex', items: 'center', content: 'center', px: 10 }}>
-      <Box sx={{ w: 350, bg: theme.colors.grey[800], r: 2, pb: 20 }}>
+      <Box sx={{ w: 350, bg: theme.colors.gray[800], r: 2, pb: 20 }}>
         <Box sx={{ p: 10 }}>
           <Text>This is first line</Text>
         </Box>
@@ -99,7 +99,7 @@ export const Ex2: React.FC = () => {
       <Box
         sx={{
           w: 350,
-          bg: theme.colors.grey[800],
+          bg: theme.colors.gray[800],
           r: 2,
           d: 'flex',
           h: 80,
@@ -123,7 +123,7 @@ export const Ex2: React.FC = () => {
       <Box
         sx={{
           w: 400,
-          bg: theme.colors.grey[800],
+          bg: theme.colors.gray[800],
           r: 2,
           d: 'flex',
           h: 80,
@@ -151,7 +151,7 @@ export const Ex2: React.FC = () => {
       <Box
         sx={{
           w: 400,
-          bg: theme.colors.grey[800],
+          bg: theme.colors.gray[800],
           r: 2,
           d: 'flex',
           h: 80,

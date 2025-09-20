@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, waitFor } from './test-utils';
-import { grey, List, ListItem, ListItemText, Text, ThemeProvider } from '../src';
+import { gray, List, ListItem, ListItemText, Text, ThemeProvider } from '../src';
 import { StyleSheet, View } from 'react-native';
 import { BaseStyles } from '../src/libraries/style/styleTypes';
 import { BOTTOM_LARGE_SPACING, BOTTOM_MEDIUM_SPACING, BOTTOM_SMALL_SPACING } from '../src/components/List/constants';
@@ -148,7 +148,7 @@ describe('ListItem Component', () => {
 
     const listItem = getByTestId(mockListItemContainerTestId);
     const flattenedStyle = StyleSheet.flatten(listItem.props.style);
-    expect(flattenedStyle.backgroundColor).toEqual(grey[100]);
+    expect(flattenedStyle.backgroundColor).toEqual(gray[100]);
   });
 
   it('should apply the active custom color on the selected item when passed the selected and selectedColor props', () => {
@@ -198,7 +198,7 @@ describe('ListItem Component', () => {
 
     const listItem = getByTestId(mockListItemContainerTestId);
     const flattenedStyle = StyleSheet.flatten(listItem.props.style);
-    expect(flattenedStyle.borderColor).toEqual(grey[400]);
+    expect(flattenedStyle.borderColor).toEqual(gray[400]);
   });
 
   it('should apply the outline width when outlineWidth prop is passed', () => {
@@ -208,7 +208,7 @@ describe('ListItem Component', () => {
 
     const listItem = getByTestId(mockListItemContainerTestId);
     const flattenedStyle = StyleSheet.flatten(listItem.props.style);
-    expect(flattenedStyle.borderColor).toEqual(grey[400]);
+    expect(flattenedStyle.borderColor).toEqual(gray[400]);
     expect(flattenedStyle.borderWidth).toEqual(2);
   });
 
@@ -223,12 +223,12 @@ describe('ListItem Component', () => {
     expect(flattenedStyle.borderColor).toEqual('red');
   });
 
-  it('should apply the grey color when showDefaultBg prop is passed', () => {
+  it('should apply the gray color when showDefaultBg prop is passed', () => {
     const { getByTestId } = render(<ListItem showDefaultBg listItemContainerTestId={mockListItemContainerTestId} />);
 
     const listItem = getByTestId(mockListItemContainerTestId);
     const flattenedStyle = StyleSheet.flatten(listItem.props.style);
-    expect(flattenedStyle.backgroundColor).toEqual(grey[50]);
+    expect(flattenedStyle.backgroundColor).toEqual(gray[50]);
   });
 
   it('should apply the soft border radius when softRadius prop passed', () => {

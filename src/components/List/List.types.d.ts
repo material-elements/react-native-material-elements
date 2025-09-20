@@ -2,7 +2,7 @@ import React from 'react';
 import { ColorValue, TextStyle, View, ViewStyle } from 'react-native';
 import { ThemedIconProp } from '../../hooks';
 import { BaseStyles, StyledProps } from '../../libraries/style/styleTypes';
-import { Theme } from '../../libraries/themes/v1/theme';
+import { Theme } from '../../libraries/themes/theme';
 import { BaseButtonProps } from '../Button/Button.types';
 import { TextProps } from '../Typography/Text.types';
 import { BoxProps } from '../types';

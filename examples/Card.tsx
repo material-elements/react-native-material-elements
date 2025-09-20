@@ -18,7 +18,7 @@ export const Ex1: React.FC = () => {
       <Card
         sx={{
           maxW: 350,
-          bg: theme.colors.grey[500],
+          bg: theme.colors.gray[500],
           r: 10,
           overflow: 'hidden',
         }}>
@@ -73,7 +73,7 @@ export const Ex2: React.FC = () => {
       <Card
         sx={{
           maxW: 350,
-          bg: theme.colors.grey[500],
+          bg: theme.colors.gray[500],
           r: 10,
           overflow: 'hidden',
         }}>
@@ -117,7 +117,7 @@ export const Ex3: React.FC = () => {
       <Card
         sx={{
           maxW: 350,
-          bg: theme.colors.grey[500],
+          bg: theme.colors.gray[500],
           r: 10,
           overflow: 'hidden',
         }}>
@@ -164,7 +164,7 @@ export const Ex4: React.FC = () => {
       <Card
         sx={{
           maxW: 350,
-          bg: theme.colors.grey[500],
+          bg: theme.colors.gray[500],
           r: 10,
           overflow: 'hidden',
         }}>
@@ -199,7 +199,7 @@ export const Ex5: React.FC = () => {
       <Card
         sx={{
           maxW: 350,
-          bg: theme.colors.grey[500],
+          bg: theme.colors.gray[500],
           r: 10,
           sColor: 'red',
           sOffset: { width: 0, height: 1 },

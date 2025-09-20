@@ -231,7 +231,7 @@ export const Switch = React.forwardRef<View, SwitchProps>(
     const backgroundColorInterpolation = switchWrapperBgAnimatedValue.interpolate({
       inputRange: [0, 1],
       outputRange: [
-        switchWrapperDefaultBgColor ?? themeColors.grey[300],
+        switchWrapperDefaultBgColor ?? themeColors.gray[300],
         switchWrapperActiveBgColor ?? (getVariant({ variant, colors: themeColors, config: themeColorScheme }) as string),
       ],
     });

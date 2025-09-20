@@ -50,5 +50,5 @@ export const styles = StyleSheet.create({
 });
 
 export const generateSegmentContainerStyle = ({ themeColors }: GenerateSegmentContainerStyle): ViewStyle => ({
-  backgroundColor: themeColors.grey[300],
+  backgroundColor: themeColors.gray[300],
 });

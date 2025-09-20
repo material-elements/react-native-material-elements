@@ -1,4 +1,4 @@
-import { ColorShades } from '../theme';
+import { ColorShades } from '../../theme';
 
 export const accent: ColorShades = {
   50: '#FCE4EC',

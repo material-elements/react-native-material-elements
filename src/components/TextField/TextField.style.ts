@@ -1,5 +1,5 @@
 import { ColorValue, StyleProp, TextStyle, ViewStyle } from 'react-native';
-import { Theme } from '../../libraries/themes/v1/theme';
+import { Theme } from '../../libraries/themes/theme';
 import { getVariant, screenWidth } from '../../utils';
 import {
   INPUT_DEFAULT_BORDER_RADIUS,
@@ -53,7 +53,7 @@ export const labelTextStyles = ({
   let color: ColorValue;
 
   if (variant === 'outlined' && !error) {
-    color = colors.grey[800];
+    color = colors.gray[800];
   } else if (error) {
     color = errorColor ?? colors.red[500];
   } else {
@@ -68,7 +68,7 @@ export const labelTextStyles = ({
 
 export const baseInputStyles = ({ colors, variant, height = INPUT_DEFAULT_HEIGHT }: BaseInputStylesProps): TextStyle => {
   const baseStyles: TextStyle = {
-    color: variant === 'outlined' ? colors.grey[800] : colors.grey[200],
+    color: variant === 'outlined' ? colors.gray[800] : colors.gray[200],
     minHeight: height,
     width: '100%',
   };
@@ -89,7 +89,7 @@ export const outlineStyles = ({
 }: OutlineStyles): ViewStyle => {
   const baseStyles: ViewStyle = {
     borderWidth: variant === 'outlined' ? 0.6 : 0,
-    borderColor: colors.grey[400],
+    borderColor: colors.gray[400],
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -104,7 +104,7 @@ export const outlineStyles = ({
   } else if (isFocused) {
     borderColor = activeColor ?? colors.lightBlue[500];
   } else {
-    borderColor = colors.grey[400];
+    borderColor = colors.gray[400];
   }
 
   return { ...baseStyles, borderColor };
@@ -115,7 +115,7 @@ export const inputOutlineVariationStyles = (variation: TextFiledVariation, color
     width: '100%',
     borderRadius: 6,
     borderWidth: INPUT_DEFAULT_BORDER_WIDTH,
-    borderColor: colors.grey[500],
+    borderColor: colors.gray[500],
     paddingHorizontal: 14,
     position: 'relative',
     backgroundColor: 'transparent',
@@ -129,7 +129,7 @@ export const inputOutlineVariationStyles = (variation: TextFiledVariation, color
         ...outlineDefaultStyles,
         borderWidth: 0,
         borderColor: 'transparent',
-        backgroundColor: colors.grey[500],
+        backgroundColor: colors.gray[500],
         borderBottomRightRadius: 0,
         borderBottomLeftRadius: 0,
         borderBottomWidth: INPUT_DEFAULT_BORDER_WIDTH,
@@ -196,12 +196,12 @@ export const getOtpInputStyles = ({
   } else if (isFocused) {
     borderColor = getVariant({ variant, colors });
   } else {
-    borderColor = colors.grey[400];
+    borderColor = colors.gray[400];
   }
 
   return {
     ...(isExpanded ? { flex: 1 } : { width: defaultWidth }),
-    color: colors.grey[900],
+    color: colors.gray[900],
     borderColor,
     borderRadius: square ? 0 : 8,
   };

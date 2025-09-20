@@ -33,15 +33,15 @@ The `Badge` component accepts all props from the React Native `View` component, 
 
 ```tsx
 import React from 'react';
-import {Badge, Box, useTheme} from 'react-native-material-elements';
+import { Badge, Box, useTheme } from 'react-native-material-elements';
 
 export const Ex1: React.FC = () => {
-  const {theme} = useTheme();
+  const { theme } = useTheme();
 
   return (
-    <Box sx={{f: 1, d: 'flex', items: 'center', content: 'center'}}>
+    <Box sx={{ f: 1, d: 'flex', items: 'center', content: 'center' }}>
       <Badge badgeContent={100}>
-        <Box sx={{w: 200, h: 50, bg: theme.colors.grey[400], r: 10}} />
+        <Box sx={{ w: 200, h: 50, bg: theme.colors.gray[400], r: 10 }} />
       </Badge>
     </Box>
   );

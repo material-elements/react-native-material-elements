@@ -1,7 +1,7 @@
 import { TextStyle, ViewStyle } from 'react-native';
 import { GetAlertContainerStylesParams, GetAlertTitleStylesParams } from './Alert';
 import { getVariant } from '../../utils';
-import { grey } from '../../libraries';
+import { gray } from '../../libraries';
 
 export const getAlertContainerStyles = ({ colors, variant, variation }: GetAlertContainerStylesParams): ViewStyle => {
   const variantColor = getVariant({ variant, colors });
@@ -21,14 +21,14 @@ export const getAlertTitleStyles = ({ variant, variation, colorScheme }: GetAler
   const isLight = colorScheme === 'light';
 
   const isWarningVariant = variant === 'warning';
-  const isLightGreyVariant = variant === 'lightGrey';
+  const islightGrayVariant = variant === 'lightGray';
   const isOutlinedAlert = variation === 'outlined';
 
-  if (isLightGreyVariant && isLight) {
-    return { color: grey[900] };
+  if (islightGrayVariant && isLight) {
+    return { color: gray[900] };
   }
 
   return {
-    ...(!isOutlinedAlert && isWarningVariant && { color: grey[900] }),
+    ...(!isOutlinedAlert && isWarningVariant && { color: gray[900] }),
   };
 };

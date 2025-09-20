@@ -27,7 +27,7 @@ export const menuContainerStyle = function ({
     ...(width && { width }),
     ...(height && { height }),
     ...(fullWidth && { width: '100%' }),
-    borderColor: borderC || theme.grey[300],
-    backgroundColor: bg || theme.grey[100],
+    borderColor: borderC || theme.gray[300],
+    backgroundColor: bg || theme.gray[100],
   };
 };

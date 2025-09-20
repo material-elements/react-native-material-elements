@@ -7,7 +7,7 @@ import {
   RadioThemeConfig,
   SwitchProps,
   SwitchThemeConfig,
-} from '../../../components';
+} from '../../components';
 import {
   BadgeProps,
   BadgeVariationThemeConfig,
@@ -30,14 +30,14 @@ import {
   TextFiledVariation,
   TextProps,
   TextVariationThemeConfig,
-} from '../../../components/types';
-import { initialLightTheme } from './colors';
-import { font, fontWeight, latterSpacing, lineHeight, spacing } from './sizes';
+} from '../../components/types';
+import { initialLightTheme } from './v1/colors';
+import { font, fontWeight, latterSpacing, lineHeight, spacing } from './v1/sizes';
 import { themeDimensions } from './V2ThemeContext';
 
 /**
  * Interface representing a set of color shades, typically used for creating gradients or theme variations.
- * Each key represents a different level of color shade, from lightest (50) to darkest (900).
+ * Each key represents a different level of color shade,  in the light theme mode the lightest values will be (50) and darkest will be (900) and in the dark theme mode the lightest value will the (900) and darkest value will be (50).
  */
 export interface ColorShades {
   50: string;

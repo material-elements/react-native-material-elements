@@ -33,7 +33,7 @@ export const Ex1: React.FC = () => {
   return (
     <Box sx={{ f: 1, d: 'flex', items: 'center', content: 'center' }}>
       <Badge badgeContent={100}>
-        <Box sx={{ w: 200, h: 50, bg: theme.colors.grey[400], r: 10 }} />
+        <Box sx={{ w: 200, h: 50, bg: theme.colors.gray[400], r: 10 }} />
       </Badge>
     </Box>
   );

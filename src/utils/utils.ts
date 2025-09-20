@@ -1,6 +1,6 @@
 import { ColorValue } from 'react-native';
 import { SpacingStyle, StylePalette } from '../libraries/style/styleTypes';
-import { ThemeType } from '../libraries/themes/v1/theme';
+import { ThemeType } from '../libraries/themes/theme';
 
 export const OFFSET = 20;
 export const WRAPPER_BOTTOM_OFFSET = 50;
@@ -9,7 +9,7 @@ export const WRAPPER_BOTTOM_OFFSET = 50;
  * Define the allowed variant types for themes, used to categorize styles like primary, secondary, etc.
  * These variants can be used to specify different styling options.
  */
-export type VariantTypes = 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning' | 'grey' | 'lightGrey';
+export type VariantTypes = 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning' | 'gray' | 'lightGray';
 /**
  * Interface for default options that can be applied to variations.
  * The `color` property is optional and represents the color value for the variation.
@@ -49,10 +49,10 @@ export const getVariant = <T>({ variant, colors, config }: GetVariantArgs<T>): C
     return config?.success?.color ?? colors.green[500];
   } else if (variant === 'warning') {
     return config?.warning?.color ?? colors.yellow[500];
-  } else if (variant === 'grey') {
-    return config?.grey?.color ?? colors.grey[500];
-  } else if (variant === 'lightGrey') {
-    return config?.lightGrey?.color ?? colors.grey[200];
+  } else if (variant === 'gray') {
+    return config?.gray?.color ?? colors.gray[500];
+  } else if (variant === 'lightGray') {
+    return config?.lightGray?.color ?? colors.gray[200];
   }
   return colors.secondary[500];
 };
