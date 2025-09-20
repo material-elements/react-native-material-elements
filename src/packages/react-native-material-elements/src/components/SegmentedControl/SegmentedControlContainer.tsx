@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, ViewProps } from 'react-native';
+import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector } from '../../libraries';
 import { StyledProps } from '../../libraries/style/styleTypes';
-import { Theme } from '../../libraries/themes/types';
+import { Theme } from '../../libraries/types';
 import { generateSegmentContainerStyle, styles } from './SegmentedControl.styles';
-import { useRestyle } from '../../hooks';
 
 export interface SegmentedControlContainerProps extends ViewProps, StyledProps {}
 export interface GenerateSegmentContainerStyle {

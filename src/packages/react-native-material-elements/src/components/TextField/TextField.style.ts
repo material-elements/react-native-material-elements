@@ -2,7 +2,6 @@ import { ColorValue, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { Theme } from '../../libraries/themes/theme';
 import { getVariant, screenWidth } from '../../utils';
 import {
-  INPUT_DEFAULT_BORDER_RADIUS,
   INPUT_DEFAULT_BORDER_WIDTH,
   INPUT_DEFAULT_HEIGHT,
   INPUT_LARGE_HEIGHT,

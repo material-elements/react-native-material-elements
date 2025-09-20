@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SegmentedControl component should render correctly with default props 1`] = `
+<View
+  style={
+    [
+      {
+        "borderRadius": 8,
+        "display": "flex",
+        "flexDirection": "row",
+        "height": 38,
+        "padding": 3,
+        "position": "relative",
+        "width": "100%",
+      },
+      {
+        "backgroundColor": "#E0E0E0",
+      },
+      {},
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      {
+        "flex": 1,
+        "flexDirection": "row",
+        "position": "relative",
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      style={
+        {
+          "backgroundColor": "rgba(245, 245, 245, 1)",
+          "borderRadius": 6,
+          "elevation": 5,
+          "height": "100%",
+          "position": "absolute",
+          "shadowColor": "#000",
+          "shadowOffset": {
+            "height": 1,
+            "width": 0,
+          },
+          "shadowOpacity": 0.2,
+          "shadowRadius": 1,
+          "transform": [
+            {
+              "translateX": 0,
+            },
+          ],
+          "width": 0,
+          "zIndex": 1,
+        }
+      }
+    />
+    <View
+      style={
+        [
+          {},
+          {},
+          {
+            "flex": 1,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onLayout={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        pointerEvents="box-only"
+        style={
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flex": 1,
+            "height": "100%",
+            "justifyContent": "center",
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+            "zIndex": 10,
+          }
+        }
+      >
+        <Text
+          collapsable={false}
+          style={{}}
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`SegmentedControlContainer component should render correctly with default props 1`] = `
+<View
+  style={
+    [
+      {
+        "borderRadius": 8,
+        "display": "flex",
+        "flexDirection": "row",
+        "height": 38,
+        "padding": 3,
+        "position": "relative",
+        "width": "100%",
+      },
+      {
+        "backgroundColor": "#E0E0E0",
+      },
+      {},
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`SegmentedControlItem component should render correctly with default props 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      {
+        "flex": 1,
+      },
+    ]
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    pointerEvents="box-only"
+    style={
+      {
+        "alignItems": "center",
+        "display": "flex",
+        "flex": 1,
+        "height": "100%",
+        "justifyContent": "center",
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
+        "zIndex": 10,
+      }
+    }
+  >
+    <Text
+      collapsable={false}
+      style={{}}
+    />
+  </View>
+</View>
+`;

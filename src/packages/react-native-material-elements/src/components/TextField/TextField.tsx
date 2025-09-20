@@ -101,9 +101,13 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
     const shouldApplySquareShape = square ?? textFieldThemeConfig?.square ?? false;
 
     const getTextFiledHeight = () => {
-      if (height) return height;
-      else if (isOutlined && textFieldOutlinedHeight) return textFieldOutlinedHeight;
-      else if (!isOutlined && textFieldFieldHeight) return textFieldFieldHeight;
+      if (height) {
+        return height;
+      } else if (isOutlined && textFieldOutlinedHeight) {
+        return textFieldOutlinedHeight;
+      } else if (!isOutlined && textFieldFieldHeight) {
+        return textFieldFieldHeight;
+      }
       return textFieldThemeConfig?.height;
     };
 

@@ -165,6 +165,7 @@ export const CheckBox = React.forwardRef<View, CheckBoxProps>(
     }, [isChecked, variant, themeColors, checkBoxColorValue, themeVariantColors, size]);
 
     return (
+      // eslint-disable-next-line react-native/no-inline-styles
       <View ref={ref} style={[styles.container, getStyleFromProps(), style, { opacity: disabled ? 0.5 : 1 }]} {...containerProps}>
         {shouldRenderAdornment && renderAdornment()}
         <View style={[styles.checkboxContainer, checkBoxThemeConfig?.checkBoxWrapperStyles, checkBoxWrapperStyles]}>

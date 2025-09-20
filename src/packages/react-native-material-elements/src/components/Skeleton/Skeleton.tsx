@@ -36,7 +36,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({ backgroundColor, animationDu
         }),
       ]),
     ).start();
-  }, []);
+  }, [animationDuration, shimmerAnim]);
 
   const opacity = shimmerAnim.interpolate({
     inputRange: [0, 1],

@@ -1,9 +1,6 @@
 import React from 'react';
-import {SafeAreaView, ScrollView} from 'react-native';
-import {
-  Container,
-  ThemeProvider,
-} from './src/packages/react-native-material-elements';
+import { SafeAreaView, ScrollView } from 'react-native';
+import { Container, ThemeProvider } from './src/packages/react-native-material-elements';
 
 function App(): React.JSX.Element {
   return (

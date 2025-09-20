@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
 import { ColorSchemeName, StyleSheet, TextStyle, useColorScheme, View, ViewStyle } from 'react-native';
+import { ThemedIconProp, useThemedProps } from '../../hooks';
 import { useThemeColorsSelector } from '../../libraries';
-import { Theme } from '../../libraries/themes/types';
+import { Theme } from '../../libraries/types';
 import { VariantTypes } from '../../utils';
 import { Box } from '../Box';
 import { BoxProps } from '../types';
 import { Text } from '../Typography';
 import { getAlertContainerStyles, getAlertTitleStyles } from './utils';
-import { ThemedIconProp, useThemedProps } from '../../hooks';
 
 export interface AlertProps extends BoxProps {
   /** Main title text displayed in the alert */

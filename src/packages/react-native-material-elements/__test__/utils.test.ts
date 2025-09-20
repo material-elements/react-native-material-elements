@@ -154,6 +154,11 @@ describe('merge utility', () => {
     const result = merge(componentStyles, themeComponentStyles);
     expect(result).toEqual({ backgroundColor: 'green', borderWidth: 10, borderRadius: 100, marginTop: 10, top: 200, right: 10 });
   });
+
+  it('merges when both param1 and param2 are truthy non-array, non-object values', () => {
+    const result = merge('hello' as any, 123 as any);
+    expect(result).toEqual({ 0: 'h', 1: 'e', 2: 'l', 3: 'l', 4: 'o' });
+  });
 });
 
 describe('getVariant', () => {

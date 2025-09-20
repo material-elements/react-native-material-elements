@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '../src';
+import { ActivityIndicator, Text } from '../src';
 import TextFieldEndAdornment from '../src/components/TextField/TextFieldEndAdornment';
 import { render } from './test-utils';
 
@@ -30,5 +30,42 @@ describe('TextFieldEndAdornment', () => {
 
     const loaderComponent = getByTestId(mockLoadingIndicatorTestId);
     expect(loaderComponent).toBeDefined();
+  });
+
+  it('should render the loading indicator when loading prop passed', () => {
+    const { getByTestId } = render(<TextFieldEndAdornment loadingIndicatorProps={{ testID: 'loader' }} loading />);
+
+    const loader = getByTestId('loader');
+    expect(loader).toBeDefined();
+  });
+
+  it('renders ActivityIndicator when loading=true and showLoadingIndicatorWhenFocused=false', () => {
+    const { getByTestId, UNSAFE_getByType } = render(
+      <TextFieldEndAdornment loading showLoadingIndicatorWhenFocused={false} testID="endAdornment" />,
+    );
+
+    const container = getByTestId('endAdornment');
+    expect(container).toBeTruthy();
+    expect(UNSAFE_getByType(ActivityIndicator)).toBeTruthy();
+  });
+
+  it('renders ActivityIndicator when loading=true, showLoadingIndicatorWhenFocused=true, and isFocused=true', () => {
+    const { getByTestId, UNSAFE_getByType } = render(
+      <TextFieldEndAdornment loading showLoadingIndicatorWhenFocused isFocused testID="endAdornment" />,
+    );
+
+    const container = getByTestId('endAdornment');
+    expect(container).toBeTruthy();
+    expect(UNSAFE_getByType(ActivityIndicator)).toBeTruthy();
+  });
+
+  it('returns null when no loading and no endAdornment', () => {
+    const { toJSON } = render(<TextFieldEndAdornment />);
+    expect(toJSON()).toBeNull();
+  });
+
+  it('returns null when showLoadingIndicatorWhenFocused=true but not focused', () => {
+    const { toJSON } = render(<TextFieldEndAdornment loading showLoadingIndicatorWhenFocused isFocused={false} />);
+    expect(toJSON()).toBeNull();
   });
 });
