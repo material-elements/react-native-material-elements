@@ -1,3 +1,7 @@
 {
-  "cSpell.words": ["Cocoapods"]
+  "cSpell.words": ["Cocoapods"],
+  "sonarlint.connectedMode.project": {
+    "connectionId": "material-elements",
+    "projectKey": "material-elements_react-native-material-elements"
+  }
 }
