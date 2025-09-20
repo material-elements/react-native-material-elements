@@ -11,7 +11,7 @@ const colorConfig: GetVariantArgs<unknown>['config'] = {
   success: { color: green[500] },
   warning: { color: yellow[500] },
   gray: { color: gray[50] },
-  lightGrey: { color: gray[500] },
+  lightGray: { color: gray[500] },
 };
 
 export const getActivityIndicatorColor = ({ variant, colors, switchMode }: GetActivityIndicatorColor): ColorValue => {

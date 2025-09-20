@@ -21,10 +21,10 @@ export const getAlertTitleStyles = ({ variant, variation, colorScheme }: GetAler
   const isLight = colorScheme === 'light';
 
   const isWarningVariant = variant === 'warning';
-  const isLightGreyVariant = variant === 'lightGrey';
+  const islightGrayVariant = variant === 'lightGray';
   const isOutlinedAlert = variation === 'outlined';
 
-  if (isLightGreyVariant && isLight) {
+  if (islightGrayVariant && isLight) {
     return { color: gray[900] };
   }
 

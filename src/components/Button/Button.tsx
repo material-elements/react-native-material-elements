@@ -177,7 +177,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       } else if (buttonThemeConfig?.labelColor) {
         textColor = buttonThemeConfig.labelColor;
       } else if (isContainedButton) {
-        if (buttonColor === 'lightGrey') {
+        if (buttonColor === 'lightGray') {
           textColor = themeColors.gray[900];
           _loadingIndicatorColor = themeColors.gray[900];
         } else if (buttonColor === 'warning') {
@@ -186,7 +186,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
         } else {
           textColor = gray[50];
         }
-      } else if (isOutlinedButton && (buttonColor === 'gray' || buttonColor === 'lightGrey')) {
+      } else if (isOutlinedButton && (buttonColor === 'gray' || buttonColor === 'lightGray')) {
         textColor = themeColors.gray[900];
       } else {
         textColor = getVariant({ variant: buttonColor, colors: themeColors });

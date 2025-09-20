@@ -93,7 +93,7 @@ export const labelStyles = ({
     color === 'gray'
   ) {
     textColor = gray[50];
-  } else if (color === 'lightGrey') {
+  } else if (color === 'lightGray') {
     textColor = colors.gray[800];
   } else if (color === 'warning') {
     textColor = gray[800];
