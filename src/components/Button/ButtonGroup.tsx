@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { useCallback } from 'react';
 import { View, ViewProps, ViewStyle } from 'react-native';
-import { grey, useThemeButtonGroupConfigSelector, useThemeColorsSelector } from '../../libraries';
+import { gray, useThemeButtonGroupConfigSelector, useThemeColorsSelector } from '../../libraries';
 import { StyledProps } from '../../libraries/style/styleTypes';
 import { getVariant, VariantTypes } from '../../utils';
 import { Box } from '../Box';
@@ -99,7 +99,7 @@ export const ButtonGroup = React.forwardRef<View, ButtonGroupProps>(
           borderBottomLeftRadius: isFirst ? buttonGroupRoundSize : 0,
           borderTopRightRadius: isLast ? buttonGroupRoundSize : 0,
           borderBottomRightRadius: isLast ? buttonGroupRoundSize : 0,
-          borderColor: isOutlinedButton ? getVariant({ variant: buttonColor, colors: themeColors }) : grey[200],
+          borderColor: isOutlinedButton ? getVariant({ variant: buttonColor, colors: themeColors }) : gray[200],
           borderLeftWidth: getBorderWidth({
             position: 'left',
             isFirst,

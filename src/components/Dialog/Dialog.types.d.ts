@@ -1,5 +1,5 @@
 import { ViewStyle } from 'react-native';
-import { Theme } from '../../libraries/themes/v1/theme';
+import { Theme } from '../../libraries/themes/theme';
 import { BoxProps } from '../Box/Box.types';
 import { PortalProps } from '../Portal/Portal.types';
 import { TextProps } from '../types';

@@ -67,7 +67,7 @@ export const dialogContainerStyles = ({
   const mW = fullWidth ? '100%' : width;
 
   return {
-    backgroundColor: colors.grey[800],
+    backgroundColor: colors.gray[800],
     maxWidth: mW,
     borderRadius,
   };

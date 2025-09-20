@@ -30,7 +30,7 @@ describe('Badge', () => {
       success: { color: 'yellow' },
       error: { color: 'pink' },
       info: { color: 'blue' },
-      grey: { color: 'red' },
+      gray: { color: 'red' },
       lightGrey: { color: 'green' },
       warning: { color: 'blue' },
     },

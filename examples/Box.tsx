@@ -25,7 +25,7 @@ export const Ex2: React.FC = () => {
     <Box
       sx={{
         w: 200,
-        bg: theme.colors.grey[400],
+        bg: theme.colors.gray[400],
         r: 10,
         p: 10,
         d: 'flex',
@@ -46,7 +46,7 @@ export const Ex3: React.FC = () => {
       sx={{
         w: 200,
         h: 50,
-        bg: theme.colors.grey[400],
+        bg: theme.colors.gray[400],
         ret: 10,
         p: 10,
       }}
@@ -62,7 +62,7 @@ export const Ex4: React.FC = () => {
       sx={{
         w: 200,
         h: 50,
-        bg: theme.colors.grey[400],
+        bg: theme.colors.gray[400],
         reb: 10,
         p: 10,
       }}
@@ -78,7 +78,7 @@ export const Ex5: React.FC = () => {
       sx={{
         w: 200,
         h: 50,
-        bg: theme.colors.grey[400],
+        bg: theme.colors.gray[400],
         rsb: 10,
         p: 10,
       }}
@@ -94,7 +94,7 @@ export const Ex6: React.FC = () => {
       sx={{
         w: 200,
         h: 50,
-        bg: theme.colors.grey[400],
+        bg: theme.colors.gray[400],
         rst: 10,
         p: 10,
       }}
@@ -110,7 +110,7 @@ export const Ex7: React.FC = () => {
       sx={{
         w: 200,
         h: 50,
-        bg: theme.colors.grey[400],
+        bg: theme.colors.gray[400],
         rst: 20,
         rsb: 20,
         reb: 6,
@@ -129,7 +129,7 @@ export const Ex8: React.FC = () => {
       sx={{
         w: 200,
         h: 50,
-        bg: theme.colors.grey[400],
+        bg: theme.colors.gray[400],
         rst: 20,
         rsb: 20,
         reb: 6,
@@ -151,7 +151,7 @@ export const Ex9: React.FC = () => {
       sx={{
         w: 200,
         h: 50,
-        bg: theme.colors.grey[400],
+        bg: theme.colors.gray[400],
         rst: 20,
         rsb: 20,
         reb: 6,
@@ -173,7 +173,7 @@ export const Ex10: React.FC = () => {
       sx={{
         w: 200,
         h: 50,
-        bg: theme.colors.grey[400],
+        bg: theme.colors.gray[400],
         rst: 20,
         rsb: 20,
         reb: 6,

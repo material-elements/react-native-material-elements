@@ -8,5 +8,5 @@ import { DialogTitleProps } from './Dialog.types';
 export const DialogTitle = React.forwardRef<RnText, DialogTitleProps>(({ style, color, ...props }, ref) => {
   const themeColors = useThemeColorsSelector();
 
-  return <Text variation="h3" style={[styles.dialogTitle, style]} color={color ?? themeColors.grey[50]} {...props} ref={ref} />;
+  return <Text variation="h3" style={[styles.dialogTitle, style]} color={color ?? themeColors.gray[50]} {...props} ref={ref} />;
 });

@@ -1,5 +1,5 @@
 import { ColorValue, DimensionValue, StyleSheet, TextStyle, ViewStyle } from 'react-native';
-import { green, grey } from '../../libraries';
+import { green, gray } from '../../libraries';
 import { getVariant, isAndroid, isIso, isLargeScreen } from '../../utils';
 import { SnackbarContainerStylesInterface, SnackBarLabelStyles, SnackbarRootContainerStylesInterface } from './Snackbar';
 
@@ -90,7 +90,7 @@ export const snackbarRootContainerStyle = ({
 
 export const snackbarContainerStyles = ({ colors, variant }: SnackbarContainerStylesInterface): ViewStyle => {
   return {
-    backgroundColor: variant ? getVariant({ variant: variant, colors }) : grey[900],
+    backgroundColor: variant ? getVariant({ variant: variant, colors }) : gray[900],
   };
 };
 
@@ -98,9 +98,9 @@ export const snackBarLabelStyles = ({ variant }: SnackBarLabelStyles): TextStyle
   let textColor: ColorValue;
 
   if (variant === 'warning') {
-    textColor = grey[900];
+    textColor = gray[900];
   } else {
-    textColor = grey[50];
+    textColor = gray[50];
   }
 
   return { color: textColor };

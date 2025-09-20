@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { ColorValue, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 import { useThemedProps } from '../../hooks';
-import { grey, useThemeButtonConfigSelector, useThemeColorsSelector } from '../../libraries';
+import { gray, useThemeButtonConfigSelector, useThemeColorsSelector } from '../../libraries';
 import { getVariant, merge } from '../../utils';
 import { ActivityIndicator } from '../ActivityIndicator';
 import { Box } from '../Box';
@@ -34,7 +34,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       startIcon,
       endIcon,
       loadingIndicatorColor,
-      loadingIndicatorVariant = 'grey',
+      loadingIndicatorVariant = 'gray',
       switchSpinnerMode = false,
       loadingIndicatorSize,
       size = 'medium',
@@ -178,16 +178,16 @@ export const Button = React.forwardRef<View, ButtonProps>(
         textColor = buttonThemeConfig.labelColor;
       } else if (isContainedButton) {
         if (buttonColor === 'lightGrey') {
-          textColor = themeColors.grey[900];
-          _loadingIndicatorColor = themeColors.grey[900];
+          textColor = themeColors.gray[900];
+          _loadingIndicatorColor = themeColors.gray[900];
         } else if (buttonColor === 'warning') {
-          textColor = grey[900];
-          _loadingIndicatorColor = grey[900];
+          textColor = gray[900];
+          _loadingIndicatorColor = gray[900];
         } else {
-          textColor = grey[50];
+          textColor = gray[50];
         }
-      } else if (isOutlinedButton && (buttonColor === 'grey' || buttonColor === 'lightGrey')) {
-        textColor = themeColors.grey[900];
+      } else if (isOutlinedButton && (buttonColor === 'gray' || buttonColor === 'lightGrey')) {
+        textColor = themeColors.gray[900];
       } else {
         textColor = getVariant({ variant: buttonColor, colors: themeColors });
       }

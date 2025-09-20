@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
-import { Accordion, AccordionDetails, AccordionDetailsProps, AccordionSummary, grey, Text } from '../src';
+import { Accordion, AccordionDetails, AccordionDetailsProps, AccordionSummary, gray, Text } from '../src';
 import { fireEvent, render, waitFor } from './test-utils';
 
 describe('Accordion Component', () => {
@@ -107,7 +107,7 @@ describe('AccordionSummary Component', () => {
     const flattenStyles = StyleSheet.flatten(element.props.style);
 
     expect(flattenStyles.borderTopWidth).toEqual(1);
-    expect(flattenStyles.borderTopColor).toEqual(grey[300]);
+    expect(flattenStyles.borderTopColor).toEqual(gray[300]);
   });
 
   it('should show the bottom border', () => {
@@ -119,7 +119,7 @@ describe('AccordionSummary Component', () => {
     const flattenStyles = StyleSheet.flatten(element.props.style);
 
     expect(flattenStyles.borderBottomWidth).toEqual(1);
-    expect(flattenStyles.borderBottomColor).toEqual(grey[300]);
+    expect(flattenStyles.borderBottomColor).toEqual(gray[300]);
   });
 
   it('should call the onPress function', () => {

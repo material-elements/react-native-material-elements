@@ -3,7 +3,7 @@ import { ColorSchemeName, ColorValue, StyleProp, useColorScheme, View, ViewProps
 import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector, useThemeDividerConfigSelector, useThemeSpacingSelector } from '../../libraries';
 import { StyledProps } from '../../libraries/style/styleTypes';
-import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
+import { Theme, ThemeDimensions } from '../../libraries/themes/theme';
 import { DefaultVariationOptions, GetVariantArgs, VariantTypes, VariationThemeConfig } from '../../utils';
 import { dividerLineStyles, dividerRootContainerStyles, styles } from './Divider.styles';
 

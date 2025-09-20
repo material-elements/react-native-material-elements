@@ -104,7 +104,7 @@ export const getButtonStyles = ({
     outlined: {
       ...baseStyles(size, sizeConfig),
       backgroundColor: 'transparent',
-      borderColor: themeColors.grey[400],
+      borderColor: themeColors.gray[400],
       borderWidth: 1,
     },
     contained: baseStyles(size, sizeConfig),

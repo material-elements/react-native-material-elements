@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react-hooks';
 import React from 'react';
 import { View } from 'react-native';
-import { ThemeWrapper } from '../../../../../__test__/test-utils';
-import { initialLightTheme } from '../colors';
+import { ThemeWrapper } from '../../../../__test__/test-utils';
+import { initialLightTheme } from '../v1/colors';
 import {
   themeErrorMsg,
   useFontWeightSelector,
@@ -29,7 +29,7 @@ import {
   useThemeTextConfigSelector,
   useThemeTextFieldConfigSelector,
 } from '../hooks';
-import { font, fontWeight, latterSpacing, lineHeight, spacing } from '../sizes';
+import { font, fontWeight, latterSpacing, lineHeight, spacing } from '../v1/sizes';
 import { ThemeProviderProps } from '../theme';
 
 describe('Theme Hooks', () => {

@@ -259,21 +259,21 @@ describe('getVariant', () => {
     expect(result).toBe(defaultLightTheme.colors.yellow[500]);
   });
 
-  it('should return grey color from config if available', () => {
+  it('should return gray color from config if available', () => {
     const result = getVariant({
-      variant: 'grey',
+      variant: 'gray',
       colors: defaultLightTheme.colors,
-      config: { grey: { color: '#999999' } },
+      config: { gray: { color: '#999999' } },
     });
     expect(result).toBe('#999999');
   });
 
-  it('should return grey color from colors fallback if not in config', () => {
+  it('should return gray color from colors fallback if not in config', () => {
     const result = getVariant({
-      variant: 'grey',
+      variant: 'gray',
       colors: defaultLightTheme.colors,
     });
-    expect(result).toBe(defaultLightTheme.colors.grey[500]);
+    expect(result).toBe(defaultLightTheme.colors.gray[500]);
   });
 
   it('should return lightGrey color from config if available', () => {
@@ -290,7 +290,7 @@ describe('getVariant', () => {
       variant: 'lightGrey',
       colors: defaultLightTheme.colors,
     });
-    expect(result).toBe(defaultLightTheme.colors.grey[200]);
+    expect(result).toBe(defaultLightTheme.colors.gray[200]);
   });
 
   it('should return secondary[500] as default for unknown variant', () => {

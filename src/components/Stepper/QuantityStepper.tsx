@@ -47,7 +47,7 @@ export const QuantityStepper = React.forwardRef<View, QuantityStepperProps>(
     const stepperOptionsStyles = useCallback(
       (type: 'INC' | 'DEC', stepperButtonType: QuantityStepperProps['buttonType']): ViewStyle => {
         let baseStyles: ViewStyle = {
-          borderColor: themeColors.grey[800],
+          borderColor: themeColors.gray[800],
           opacity: 1,
           borderRadius: stepperButtonType === 'round' ? DEFAULT_ROUND_RADIUS : DEFAULT_SQUARE_RADIUS,
         };
@@ -58,7 +58,7 @@ export const QuantityStepper = React.forwardRef<View, QuantityStepperProps>(
 
         return baseStyles;
       },
-      [themeColors.grey, shouldDisableIncrement, shouldDisableDecrement],
+      [themeColors.gray, shouldDisableIncrement, shouldDisableDecrement],
     );
 
     return (

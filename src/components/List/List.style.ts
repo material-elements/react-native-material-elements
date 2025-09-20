@@ -63,8 +63,8 @@ export const listItemContainerStyles = ({
   showDefaultBg,
   softRadius,
 }: ListItemContainerStylesProps): ViewStyle => {
-  const defaultBgColor = colors.grey[50];
-  const selectedBgColor = selectedColor ?? colors.grey[100];
+  const defaultBgColor = colors.gray[50];
+  const selectedBgColor = selectedColor ?? colors.gray[100];
 
   let baseStyles: ViewStyle = {
     backgroundColor: selected ? selectedBgColor : showDefaultBg ? defaultBgColor : 'transparent',
@@ -72,7 +72,7 @@ export const listItemContainerStyles = ({
 
   if (showOutline) {
     baseStyles.borderWidth = outlineWidth ?? 1;
-    baseStyles.borderColor = outlineColor ?? colors.grey[400];
+    baseStyles.borderColor = outlineColor ?? colors.gray[400];
   }
 
   if (softRadius) {

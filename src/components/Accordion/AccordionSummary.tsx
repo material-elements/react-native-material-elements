@@ -69,11 +69,11 @@ export const AccordionSummary = React.forwardRef<View, AccordionSummaryProps>(
       let styles: ViewStyle = {};
       if (topBorder) {
         styles.borderTopWidth = 1;
-        styles.borderTopColor = themeColor.grey[300];
+        styles.borderTopColor = themeColor.gray[300];
       }
 
       if (bottomBorder) {
-        styles.borderBottomColor = themeColor.grey[300];
+        styles.borderBottomColor = themeColor.gray[300];
         styles.borderBottomWidth = 1;
       }
 

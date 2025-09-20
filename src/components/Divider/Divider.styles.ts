@@ -1,6 +1,6 @@
 import { ColorValue, StyleSheet, ViewStyle } from 'react-native';
 import { DividerLineStyles, DividerRootContainerStyles } from './Divider';
-import { grey } from '../../libraries';
+import { gray } from '../../libraries';
 import { getVariant } from '../../utils';
 
 export const styles = StyleSheet.create({
@@ -30,9 +30,9 @@ export const dividerLineStyles = ({
   } else if (color) {
     borderColorValue = getVariant({ colors, variant: color, config: themeColorSchemeConfig });
   } else if (mode === 'light') {
-    borderColorValue = grey[400];
+    borderColorValue = gray[400];
   } else {
-    borderColorValue = grey[700];
+    borderColorValue = gray[700];
   }
 
   let baseStyles: ViewStyle = {

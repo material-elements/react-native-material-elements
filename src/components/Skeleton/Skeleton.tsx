@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Animated, useColorScheme } from 'react-native';
-import { grey } from '../../libraries';
+import { gray } from '../../libraries';
 import { Box } from '../Box';
 import { BoxProps } from '../types';
 
@@ -18,7 +18,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({ backgroundColor, animationDu
     if (backgroundColor) {
       return backgroundColor;
     }
-    return isDarkMode ? grey[800] : grey[400];
+    return isDarkMode ? gray[800] : gray[400];
   }, [backgroundColor, isDarkMode]);
 
   useEffect(() => {

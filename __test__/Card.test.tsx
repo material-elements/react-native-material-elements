@@ -1,7 +1,7 @@
 import { fireEvent, render as testRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Card, CardAction, CardContent, CardHeader, CardMedia, grey, Text, ThemeProvider } from '../src';
+import { Card, CardAction, CardContent, CardHeader, CardMedia, gray, Text, ThemeProvider } from '../src';
 import { render } from './test-utils';
 
 describe('Card Component', () => {
@@ -41,7 +41,7 @@ describe('Card Component', () => {
     const card = getByTestId(mockCardTestId);
     const flattenedStyle = StyleSheet.flatten(card.props.style);
     expect(flattenedStyle.borderWidth).toEqual(0.5);
-    expect(flattenedStyle.borderColor).toEqual(grey[500]);
+    expect(flattenedStyle.borderColor).toEqual(gray[500]);
   });
 
   it('should apply the root style', () => {

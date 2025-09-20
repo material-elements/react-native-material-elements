@@ -2,7 +2,7 @@ import React from 'react';
 import { ActivityIndicatorProps, ColorValue, TextStyle, TouchableWithoutFeedback, ViewProps, ViewStyle } from 'react-native';
 import { ThemedIconProp } from '../../hooks';
 import { BaseStyles, StyledProps } from '../../libraries/style/styleTypes';
-import { Theme, ThemeDimensions } from '../../libraries/themes/v1/theme';
+import { Theme, ThemeDimensions } from '../../libraries/themes/theme';
 import { VariantTypes } from '../../utils';
 import { RipplePosition, RippleProps } from '../Ripple/Ripple.types';
 

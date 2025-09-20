@@ -21,10 +21,10 @@ export const App: React.FC = () => {
         <Text>Click here</Text>
       </Button>
       <Button onPress={() => console.log('pressed')} variation="outlined">
-        <Text sx={{ color: 'grey' }}>Click here</Text>
+        <Text sx={{ color: 'gray' }}>Click here</Text>
       </Button>
       <Button onPress={() => console.log('pressed')} variation="text">
-        <Text sx={{ color: 'grey' }}>Click here</Text>
+        <Text sx={{ color: 'gray' }}>Click here</Text>
       </Button>
       <Button buttonColor="primary" onPress={() => console.log('pressed')}>
         <Text>Click here</Text>

@@ -14,7 +14,7 @@ import {
   View,
   ViewProps,
 } from 'react-native';
-import { grey, useThemeColorsSelector } from '../../libraries';
+import { gray, useThemeColorsSelector } from '../../libraries';
 import { MeasureElementRect } from '../../types';
 import { Box } from '../Box';
 import { ListItem, ListItemText } from '../List';
@@ -464,11 +464,11 @@ const DropDownListContainer = <T extends DropDownData>({
       let listItemTextColor: string;
 
       if (colorScheme === 'dark') {
-        listItemTextColor = themeColors.grey[900];
+        listItemTextColor = themeColors.gray[900];
       } else if (isSelected) {
-        listItemTextColor = grey[50];
+        listItemTextColor = gray[50];
       } else {
-        listItemTextColor = grey[900];
+        listItemTextColor = gray[900];
       }
 
       return (
@@ -527,7 +527,7 @@ const DropDownListContainer = <T extends DropDownData>({
         style={StyleSheet.flatten([
           styles.listContainer,
           {
-            backgroundColor: themeColors.grey[300],
+            backgroundColor: themeColors.gray[300],
             maxHeight,
             top: dropDownContainerRect.pageY + inputLayoutRectangle.height,
           },
@@ -538,7 +538,7 @@ const DropDownListContainer = <T extends DropDownData>({
           <Box sx={{ px: 5, py: 4 }} {...searchContainerProps}>
             <IconInput
               onChangeText={searchHandler}
-              inputWrapperStyles={{ borderColor: themeColors.grey[600], ...styles.dropDownInputWrapper }}
+              inputWrapperStyles={{ borderColor: themeColors.gray[600], ...styles.dropDownInputWrapper }}
               placeholder={searchPlaceholder ?? 'Search'}
               {...searchProps}
             />

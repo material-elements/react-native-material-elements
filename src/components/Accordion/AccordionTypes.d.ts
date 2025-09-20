@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleProp, TouchableWithoutFeedback, ViewStyle } from 'react-native';
-import { Theme } from '../../libraries/themes/v1/theme';
+import { Theme } from '../../libraries/themes/theme';
 import { AccordionProps } from './Accordion';
 
 /**

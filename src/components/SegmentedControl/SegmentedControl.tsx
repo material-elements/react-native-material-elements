@@ -9,7 +9,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { grey } from '../../libraries';
+import { gray } from '../../libraries';
 import { styles } from './SegmentedControl.styles';
 import { SegmentedControlContainer, SegmentedControlContainerProps } from './SegmentedControlContainer';
 import {
@@ -104,7 +104,7 @@ export const SegmentedControl = ({
 
   const backgroundColor = themeAnimation.current.interpolate({
     inputRange: [0, 1],
-    outputRange: [activeSegmentLightModeBackgroundColor ?? grey[100], activeSegmentDarkModeBackgroundColor ?? grey[400]],
+    outputRange: [activeSegmentLightModeBackgroundColor ?? gray[100], activeSegmentDarkModeBackgroundColor ?? gray[400]],
   }) as unknown as ColorValue;
 
   const animatedViewStyles: ViewStyle = {

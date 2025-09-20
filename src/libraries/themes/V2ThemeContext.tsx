@@ -2,8 +2,8 @@ import _ from 'lodash';
 import React, { useMemo } from 'react';
 import { ColorSchemeName, useColorScheme } from 'react-native';
 import { createContext, useContext } from 'use-context-selector';
-import { initialDarkTheme, initialLightTheme } from './colors';
-import { font, fontWeight, latterSpacing, lineHeight, spacing } from './sizes';
+import { initialDarkTheme, initialLightTheme } from './v1/colors';
+import { font, fontWeight, latterSpacing, lineHeight, spacing } from './v1/sizes';
 import {
   CreateColorShades,
   CreateColorShadesInterface,

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Switch Component should match the snapshot with default props 1`] = `
 <View>
@@ -53,6 +53,9 @@ exports[`Switch Component should match the snapshot with default props 1`] = `
           "transform": [
             {
               "translateX": 0,
+            },
+            {
+              "scaleX": 1,
             },
           ],
           "width": 22,
