@@ -20,5 +20,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run unit tests
-        run: yarn jest --coverage --forceExit --maxWorkers=2
+        run: yarn run test --coverage --forceExit --maxWorkers=2
         continue-on-error: false
