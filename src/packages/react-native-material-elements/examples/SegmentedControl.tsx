@@ -10,9 +10,9 @@ function App(): React.JSX.Element {
       <SafeAreaView>
         <Container>
           <SegmentedControl
-            values={['One', 'Two', 'Three', 'Four', 'Five']}
+            data={['One', 'Two', 'Three', 'Four', 'Five']}
             selectedIndex={index}
-            onChange={(value: string) => setIndex(['One', 'Two', 'Three', 'Four', 'Five'].findIndex(e => e === value) + 1)}
+            onChange={(_, index) => setIndex(index)}
           />
         </Container>
       </SafeAreaView>

@@ -1,15 +1,28 @@
 import React from 'react';
+import { View } from 'react-native';
 import {
+  getSwitchSizes,
   Switch,
+  SWITCH_CONTAINER_ANDROID_MODE_HEIGHT_LARGE,
+  SWITCH_CONTAINER_ANDROID_MODE_HEIGHT_MEDIUM,
+  SWITCH_CONTAINER_ANDROID_MODE_HEIGHT_SMALL,
+  SWITCH_CONTAINER_ANDROID_MODE_WIDTH_LARGE,
+  SWITCH_CONTAINER_ANDROID_MODE_WIDTH_MEDIUM,
+  SWITCH_CONTAINER_ANDROID_MODE_WIDTH_SMALL,
   SWITCH_CONTAINER_HEIGHT_LARGE,
   SWITCH_CONTAINER_HEIGHT_MEDIUM,
   SWITCH_CONTAINER_HEIGHT_SMALL,
   SWITCH_CONTAINER_WIDTH_LARGE,
   SWITCH_CONTAINER_WIDTH_MEDIUM,
   SWITCH_CONTAINER_WIDTH_SMALL,
+  SWITCH_THUMB_HEIGHT_LARGE,
+  SWITCH_THUMB_HEIGHT_MEDIUM,
+  SWITCH_THUMB_HEIGHT_SMALL,
+  SWITCH_THUMB_WIDTH_LARGE,
+  SWITCH_THUMB_WIDTH_MEDIUM,
+  SWITCH_THUMB_WIDTH_SMALL,
 } from '../src';
 import { fireEvent, render, waitFor } from './test-utils';
-import { View } from 'react-native';
 
 describe('Switch Component', () => {
   const switchMockTestId = 'switch-test-id';
@@ -71,5 +84,58 @@ describe('Switch Component', () => {
     const switchComponent = getByTestId(switchMockTestId);
     expect(switchComponent.props.style.width).toBe(SWITCH_CONTAINER_WIDTH_SMALL);
     expect(switchComponent.props.style.height).toBe(SWITCH_CONTAINER_HEIGHT_SMALL);
+  });
+});
+
+describe('getSwitchSizes', () => {
+  const sizes = ['small', 'medium', 'large'] as const;
+  const types = ['ios', 'android'] as const;
+
+  sizes.forEach(size => {
+    types.forEach(type => {
+      it(`returns correct styles for size=${size} and type=${type}`, () => {
+        const { thumbStyles, thumbContainerStyles } = getSwitchSizes({ size, type });
+
+        // check thumb styles
+        if (size === 'small') {
+          expect(thumbStyles.width).toBe(SWITCH_THUMB_WIDTH_SMALL);
+          expect(thumbStyles.height).toBe(SWITCH_THUMB_HEIGHT_SMALL);
+        }
+        if (size === 'medium') {
+          expect(thumbStyles.width).toBe(SWITCH_THUMB_WIDTH_MEDIUM);
+          expect(thumbStyles.height).toBe(SWITCH_THUMB_HEIGHT_MEDIUM);
+        }
+        if (size === 'large') {
+          expect(thumbStyles.width).toBe(SWITCH_THUMB_WIDTH_LARGE);
+          expect(thumbStyles.height).toBe(SWITCH_THUMB_HEIGHT_LARGE);
+        }
+
+        // check container styles
+        if (size === 'small') {
+          expect(thumbContainerStyles.width).toBe(
+            type === 'android' ? SWITCH_CONTAINER_ANDROID_MODE_WIDTH_SMALL : SWITCH_CONTAINER_WIDTH_SMALL,
+          );
+          expect(thumbContainerStyles.height).toBe(
+            type === 'android' ? SWITCH_CONTAINER_ANDROID_MODE_HEIGHT_SMALL : SWITCH_CONTAINER_HEIGHT_SMALL,
+          );
+        }
+        if (size === 'medium') {
+          expect(thumbContainerStyles.width).toBe(
+            type === 'android' ? SWITCH_CONTAINER_ANDROID_MODE_WIDTH_MEDIUM : SWITCH_CONTAINER_WIDTH_MEDIUM,
+          );
+          expect(thumbContainerStyles.height).toBe(
+            type === 'android' ? SWITCH_CONTAINER_ANDROID_MODE_HEIGHT_MEDIUM : SWITCH_CONTAINER_HEIGHT_MEDIUM,
+          );
+        }
+        if (size === 'large') {
+          expect(thumbContainerStyles.width).toBe(
+            type === 'android' ? SWITCH_CONTAINER_ANDROID_MODE_WIDTH_LARGE : SWITCH_CONTAINER_WIDTH_LARGE,
+          );
+          expect(thumbContainerStyles.height).toBe(
+            type === 'android' ? SWITCH_CONTAINER_ANDROID_MODE_HEIGHT_LARGE : SWITCH_CONTAINER_HEIGHT_LARGE,
+          );
+        }
+      });
+    });
   });
 });
