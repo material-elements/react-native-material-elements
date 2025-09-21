@@ -144,6 +144,11 @@ export interface DropDownListContainerProps<T extends Partial<DropDownData>>
    * The 'children' prop is omitted to prevent accidental overrides of the search input itself.
    */
   searchContainerProps?: Omit<BoxProps, 'children'>;
+
+  /**
+   * Dropdown list item test id
+   */
+  listItemTestId?: string;
 }
 
 /**
@@ -297,14 +302,14 @@ export const DropDown = <T extends DropDownData>({
   };
 
   const renderInput = useCallback(() => {
-    let value = '';
+    let value: string;
 
     if (multiselect) {
       value = multiselectMessage ?? `Selected items ${hasListSelectedItems ? selectedListItems?.length : selectedItems.length}`;
     } else if (hasListSelectedItems && selectedListItems?.length) {
       value = selectedListItems?.[0]?.title;
     } else {
-      value = selectedItems?.[0]?.title;
+      value = selectedItems?.[0]?.title ?? '';
     }
 
     const commonProps: TextFieldProps = {
@@ -386,7 +391,7 @@ export const DropDown = <T extends DropDownData>({
   );
 };
 
-const DropDownListContainer = <T extends DropDownData>({
+export const DropDownListContainer = <T extends DropDownData>({
   style,
   open,
   data,
@@ -410,6 +415,7 @@ const DropDownListContainer = <T extends DropDownData>({
   searchProps,
   searchContainerProps,
   maxHeight,
+  listItemTestId,
   ...props
 }: DropDownListContainerProps<T>) => {
   const flatListRef = useRef<FlatList>(null);
@@ -419,18 +425,18 @@ const DropDownListContainer = <T extends DropDownData>({
 
   const itemOnPressHandler = (item: DropDownData) => {
     if (!multiselect) {
-      if (!!onClose && typeof onClose === 'function') {
+      if (onClose) {
         onClose();
         setFilteredData(null);
       }
     }
-    if (!!onItemClicked && typeof onItemClicked === 'function') {
+    if (onItemClicked) {
       onItemClicked(item);
     }
   };
 
   const searchHandler = (searchString: string) => {
-    if (searchString) {
+    if (searchString && Array.isArray(data) && data.length) {
       const newData = (data as unknown as Array<DropDownData>).filter(item =>
         item.title.toLowerCase().includes(searchString.toLowerCase()),
       );
@@ -479,7 +485,8 @@ const DropDownListContainer = <T extends DropDownData>({
           onPress={() => itemOnPressHandler(item)}
           endAdornment={endAdornment}
           actionType="root"
-          style={[{ minHeight: listItemMinHeight }]}>
+          style={[{ minHeight: listItemMinHeight }]}
+          testID={listItemTestId}>
           <ListItemText
             secondaryLabelStyles={{ color: listItemTextColor }}
             disablePadding={disableTextPadding}

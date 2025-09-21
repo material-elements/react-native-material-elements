@@ -3,8 +3,8 @@ import React, { isValidElement } from 'react';
 import { Text, View } from 'react-native';
 import { useThemedProps } from '../src/hooks';
 import { render, ThemeWrapper } from './test-utils';
-import { Theme } from '../src/libraries/themes/types';
 import { green } from '../src';
+import { Theme } from '../src/libraries/types';
 
 describe('useThemedProps', () => {
   it('should match icon component snapshot correctly', () => {

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { isValidElement, useMemo } from 'react';
 import { useThemeColorsSelector } from '../libraries';
-import { Theme } from '../libraries/themes/types';
+import { Theme } from '../libraries/types';
 
 export type ThemedIconProp = ((theme: Theme) => React.ReactNode) | React.ReactNode;
 type ThemedProp<T = any> = T | ((themeColors: ReturnType<typeof useThemeColorsSelector>) => T);

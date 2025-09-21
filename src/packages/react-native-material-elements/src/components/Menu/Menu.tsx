@@ -12,7 +12,7 @@ import {
 import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector } from '../../libraries';
 import { StyledProps } from '../../libraries/style/styleTypes';
-import { Theme } from '../../libraries/themes/types';
+import { Theme } from '../../libraries/types';
 import { MeasureElementRect, PortalProps } from '../../types';
 import { screenHeight, screenWidth } from '../../utils';
 import { Portal } from '../Portal';

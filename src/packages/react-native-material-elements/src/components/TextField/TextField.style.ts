@@ -2,23 +2,22 @@ import { ColorValue, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { Theme } from '../../libraries/themes/theme';
 import { getVariant, screenWidth } from '../../utils';
 import {
-  INPUT_DEFAULT_BORDER_RADIUS,
   INPUT_DEFAULT_BORDER_WIDTH,
   INPUT_DEFAULT_HEIGHT,
   INPUT_LARGE_HEIGHT,
   INPUT_SMALL_HEIGHT,
   TRANSLATE_Y_ANIMATED_DEFAULT_POSITION,
 } from './constants';
+import { GetIconInputStyles } from './IconInput';
 import {
   BaseInputStylesProps,
+  GetOtpInputStylesParams,
   LabelTextStylesProps,
   LabelTransformStyleProps,
   OutlineStyles,
   TextFiledVariation,
   TextInputStylesProps,
 } from './Input.types';
-import { GetOtpInputStylesParams } from './OtpInput';
-import { GetIconInputStyles } from './IconInput';
 
 const baseInputDefaultStyles: ViewStyle = {
   position: 'relative',

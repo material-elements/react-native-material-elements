@@ -1,4 +1,4 @@
-import { Animated, LayoutRectangle, View, ViewStyle } from 'react-native';
+import { Animated, LayoutRectangle, View, ViewProps, ViewStyle } from 'react-native';
 
 /**
  * Interface defining the properties of a Ripple effect object.
@@ -45,7 +45,7 @@ export type onRippleAnimationType = (
 /**
  * Interface defining the properties for configuring a Ripple component.
  */
-export interface RippleProps {
+export interface RippleProps extends ViewProps {
   /**
    * Custom styles for the ripple effect
    */

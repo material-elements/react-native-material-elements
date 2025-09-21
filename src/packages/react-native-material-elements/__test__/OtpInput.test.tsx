@@ -3,6 +3,10 @@ import { OTPInput } from '../src';
 import { fireEvent, render } from './test-utils';
 
 describe('OTP Component', () => {
+  const mockOtpInputTestId = 'mock-otp-input-test-id';
+
+  const mockOnChange = jest.fn();
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -23,7 +27,6 @@ describe('OTP Component', () => {
   });
 
   it('calls onChange with the correct OTP value', () => {
-    const mockOnChange = jest.fn();
     const { getByTestId } = render(<OTPInput length={3} onChange={mockOnChange} />);
 
     const firstInput = getByTestId('otp-input-0');
@@ -92,5 +95,66 @@ describe('OTP Component', () => {
     updatedInputs.forEach(input => {
       expect(input.props.value).toBe('');
     });
+  });
+
+  it('should set the default values', () => {
+    const { getByTestId } = render(<OTPInput testID={mockOtpInputTestId} length={3} defaultValue={'123'} />);
+
+    const firstInput = getByTestId(`${mockOtpInputTestId}-0`);
+    expect(firstInput).toBeDefined();
+    expect(firstInput.props.value).toEqual('1');
+
+    const secondInput = getByTestId(`${mockOtpInputTestId}-1`);
+    expect(secondInput).toBeDefined();
+    expect(secondInput.props.value).toEqual('2');
+
+    const thirdInput = getByTestId(`${mockOtpInputTestId}-2`);
+    expect(thirdInput).toBeDefined();
+    expect(thirdInput.props.value).toEqual('3');
+  });
+
+  it('ignores text input when length > 1', () => {
+    const { getByTestId } = render(<OTPInput length={4} onChange={mockOnChange} />);
+    const firstInput = getByTestId('otp-input-0');
+
+    fireEvent.changeText(firstInput, '12');
+
+    expect(mockOnChange).not.toHaveBeenCalled();
+    expect(firstInput.props.value).toBe('');
+  });
+
+  it('calls onChange when a single character is entered', () => {
+    const { getByTestId } = render(<OTPInput length={4} onChange={mockOnChange} />);
+    const firstInput = getByTestId('otp-input-0');
+
+    fireEvent.changeText(firstInput, '1');
+
+    expect(mockOnChange).toHaveBeenCalledWith('1');
+    expect(firstInput.props.value).toBe('1');
+  });
+
+  it('throws error when defaultValue length > OTP length', () => {
+    const spy = jest.spyOn(console, 'error').mockImplementation();
+    expect(() => render(<OTPInput length={3} defaultValue="12345" />)).toThrow(
+      'Default value must be equal or less then otp length',
+    );
+    spy.mockRestore();
+  });
+
+  it('applies defaultValue when valid', () => {
+    const { getByTestId } = render(<OTPInput length={4} defaultValue="12" />);
+    expect(getByTestId('otp-input-0').props.value).toBe('1');
+    expect(getByTestId('otp-input-1').props.value).toBe('2');
+    expect(getByTestId('otp-input-2').props.value).toBe('');
+    expect(getByTestId('otp-input-3').props.value).toBe('');
+  });
+
+  it('focus handler is called on focus event', () => {
+    const { getByTestId } = render(<OTPInput length={4} />);
+    const secondInput = getByTestId('otp-input-1');
+
+    fireEvent(secondInput, 'focus');
+
+    expect(secondInput.props.selectTextOnFocus).toBe(true);
   });
 });

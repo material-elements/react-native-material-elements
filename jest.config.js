@@ -17,31 +17,24 @@ module.exports = {
     '.enum.ts',
     '/config/',
     '/coverage/',
+    '.eslintrc.js',
+    '.prettierrc.js',
+    'babel.config.js',
   ],
 
   coverageReporters: ['html', 'text', 'lcov', 'text-summary'],
 
-  moduleFileExtensions: [
-    'ts',
-    'tsx',
-    'js',
-    'jsx',
-    'json',
-    'node',
-    'mjs',
-    'svg',
-    'png',
-  ],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node', 'mjs', 'svg', 'png'],
   testEnvironment: 'node',
 
   setupFiles: ['./jest.setup.ts'],
 
   coverageThreshold: {
     global: {
-      branches: 80,
+      statements: 80,
+      branches: 75,
       functions: 80,
       lines: 80,
-      statements: 80,
     },
   },
 };

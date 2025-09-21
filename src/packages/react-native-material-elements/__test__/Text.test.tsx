@@ -1,7 +1,7 @@
 import { render as testingRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { Text as RnText, StyleSheet } from 'react-native';
-import { red, secondary, Text, ThemeProvider } from '../src';
+import { FormHelperText, red, secondary, Text, ThemeProvider } from '../src';
 import { TextVariation, TextVariationThemeConfig } from '../src/components/types';
 import { render } from './test-utils';
 
@@ -395,5 +395,12 @@ describe('Text Component', () => {
       const textElement = getByTestId(mockTestId);
       expect(textElement.props.style).toEqual(expect.objectContaining(expectedStyle));
     });
+  });
+});
+
+describe('FormHelperText component', () => {
+  it('should render correct', () => {
+    const { toJSON } = render(<FormHelperText>Hello</FormHelperText>);
+    expect(toJSON()).toMatchSnapshot();
   });
 });

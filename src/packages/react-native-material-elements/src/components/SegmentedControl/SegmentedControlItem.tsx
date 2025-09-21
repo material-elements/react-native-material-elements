@@ -68,7 +68,7 @@ export const SegmentedControlItem = ({
       );
     }
     return null;
-  }, [data, headingStyles]);
+  }, [data, headingStyles, segmentItemContainerStyles]);
 
   return (
     <BaseButton

@@ -72,7 +72,7 @@ export const BaseButton = React.forwardRef<View, BaseButtonProps>(
     };
 
     const buttonLongPressHandler = (event: GestureResponderEvent) => {
-      if (onLongPressHandler && typeof onLongPressHandler === 'function' && !disabled) {
+      if (onLongPressHandler && !disabled) {
         const { locationX, locationY } = event.nativeEvent;
         if (rippleRef.current && buttonLayoutRectangle) {
           if (rippleEdge) {
@@ -81,6 +81,7 @@ export const BaseButton = React.forwardRef<View, BaseButtonProps>(
             rippleRef.current.startRipple(locationX, locationY);
           }
         }
+        onLongPressHandler(event);
       }
     };
 

@@ -76,5 +76,15 @@ describe('Style Utilities', () => {
       expect(result).toEqual({});
       consoleSpy.mockRestore();
     });
+
+    it('should warn in the console if the styles property not valid', () => {
+      const consoleSpy = jest.spyOn(console, 'warn').mockImplementation();
+      const args: StylePalette = { unknown: undefined } as any;
+      const result = generateElementStyles(args);
+
+      expect(consoleSpy).toHaveBeenCalledWith('Invalid element property name: undefined, and value: undefined');
+      expect(result).toEqual({});
+      consoleSpy.mockRestore();
+    });
   });
 });

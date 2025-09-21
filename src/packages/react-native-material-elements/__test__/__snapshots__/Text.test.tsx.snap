@@ -1,4 +1,13 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormHelperText component should render correct 1`] = `
+<Text
+  collapsable={false}
+  style={{}}
+>
+  Hello
+</Text>
+`;
 
 exports[`Text Component should match the snapshot with default props 1`] = `
 <Text

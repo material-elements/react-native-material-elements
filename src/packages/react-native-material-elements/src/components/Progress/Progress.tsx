@@ -3,7 +3,7 @@ import { Animated, ColorValue, DimensionValue, I18nManager, LayoutChangeEvent, S
 import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector } from '../../libraries';
 import { StyledProps } from '../../libraries/style/styleTypes';
-import { Theme } from '../../libraries/themes/types';
+import { Theme } from '../../libraries/types';
 import { VariantTypes } from '../../utils';
 import { AnimatedView } from '../Box';
 import { getProgressBarContainerStyles, getProgressBarIndicatorStyles } from './utils';
@@ -119,14 +119,12 @@ export const ProgressBar = React.forwardRef<View, ProgressBarProps>(
 
     const startAnimation = useCallback(() => {
       if (indeterminate) {
-        if (!indeterminateAnimation.current) {
-          indeterminateAnimation.current = Animated.timing(animatedWidth, {
-            duration: INDETERMINATE_DURATION,
-            toValue: 1,
-            useNativeDriver: true,
-            isInteraction: false,
-          });
-        }
+        indeterminateAnimation.current ??= Animated.timing(animatedWidth, {
+          duration: INDETERMINATE_DURATION,
+          toValue: 1,
+          useNativeDriver: true,
+          isInteraction: false,
+        });
 
         animatedWidth.setValue(0);
 
