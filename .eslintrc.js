@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   extends: ['@react-native', 'plugin:testing-library/react'],
-  ignorePatterns: ['.eslintrc.js', '**/*.test.tsx', '**/*.test.ts', '**/*.config.js'],
+  ignorePatterns: ['.eslintrc.js', '**/*.config.js', '**/*.setup.ts'],
   env: { jest: true },
   parserOptions: {
     sourceType: 'module',
@@ -10,11 +10,16 @@ module.exports = {
     project: './tsconfig.json',
   },
   plugins: ['unused-imports'],
-  rules: {
-    'object-curly-spacing': ['error', 'always'],
-    'unused-imports/no-unused-imports': 'error',
-    complexity: ['error', 8],
-    'import/extensions': 0,
-    'react/jsx-filename-extension': [2, { extensions: ['.tsx'] }],
-  },
+  overrides: [
+    {
+      files: ['src/**/*.{ts,tsx,js,jsx}'],
+      rules: {
+        'object-curly-spacing': ['error', 'always'],
+        'unused-imports/no-unused-imports': 'error',
+        complexity: ['error', 8],
+        'import/extensions': 0,
+        'react/jsx-filename-extension': [2, { extensions: ['.tsx'] }],
+      },
+    },
+  ],
 };
