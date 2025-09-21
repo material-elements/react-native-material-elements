@@ -8,7 +8,7 @@ on:
 
 jobs:
   eslint:
-    name: "Es lint check"
+    name: "Eslint check"
     runs-on: ubuntu-latest
 
     steps:

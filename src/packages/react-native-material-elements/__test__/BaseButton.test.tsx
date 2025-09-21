@@ -69,4 +69,12 @@ describe('Base button component', () => {
     expect(mockOnPress).toHaveBeenCalled();
     expect(mockOnPress).toHaveBeenCalledTimes(1);
   });
+
+  it('should called the onLongPress function', () => {
+    jest.useFakeTimers();
+    const { getByTestId } = render(<BaseButton onLongPress={mockOnLongPress} testID={mockTestId} />);
+    const button = getByTestId(mockTestId);
+    fireEvent(button, 'longPress', { nativeEvent: {} });
+    expect(mockOnLongPress).toHaveBeenCalled();
+  });
 });

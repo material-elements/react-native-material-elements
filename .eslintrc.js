@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   extends: ['@react-native', 'plugin:testing-library/react'],
-  ignorePatterns: ['.eslintrc.js', '**/*.test.tsx', '**/*.test.ts'],
+  ignorePatterns: ['.eslintrc.js', '**/*.test.tsx', '**/*.test.ts', '**/*.config.js'],
   env: { jest: true },
   parserOptions: {
     sourceType: 'module',
