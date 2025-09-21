@@ -228,6 +228,8 @@ export const Grid = forwardRef<View, GridProps>(
           {renderChild()}
         </Box>
       );
+    } else {
+      return null;
     }
   },
 );
