@@ -125,14 +125,7 @@ export const Ex8: React.FC = () => {
   const { theme } = useTheme();
 
   return (
-    <Badge
-      badgeContent={100}
-      max={1000}
-      invisible={false}
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-      badgeContentProps={{
-        style: { fontWeight: 500, fontSize: 10, color: 'red' },
-      }}>
+    <Badge badgeContent={100} max={1000} invisible={false} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
       <Box
         sx={{
           w: 200,
@@ -149,15 +142,7 @@ export const Ex9: React.FC = () => {
   const { theme } = useTheme();
 
   return (
-    <Badge
-      badgeContent={100}
-      max={1000}
-      invisible={false}
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-      badgeContentProps={{
-        style: { fontWeight: 500, fontSize: 10, color: 'red' },
-        onLayout: (event: LayoutChangeEvent) => console.log(event),
-      }}>
+    <Badge badgeContent={100} max={1000} invisible={false} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
       <Box
         sx={{
           w: 200,

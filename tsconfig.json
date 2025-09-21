@@ -4,5 +4,6 @@
     "paths": {
       "react": ["./node_modules/@types/react"]
     }
-  }
+  },
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx", "**/__tests__/**"]
 }

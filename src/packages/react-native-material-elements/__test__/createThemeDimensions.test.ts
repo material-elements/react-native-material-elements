@@ -1,5 +1,5 @@
 import { createThemeDimensions, themeDimensions } from '../src';
-import { CreateThemeDimensions } from '../src/libraries/themes/types';
+import { CreateThemeDimensions } from '../src/libraries/types';
 
 describe('createThemeDimensions', () => {
   it('should merge custom and default theme dimensions', () => {
