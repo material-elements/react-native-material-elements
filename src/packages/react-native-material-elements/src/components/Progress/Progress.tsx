@@ -120,7 +120,7 @@ export const ProgressBar = React.forwardRef<View, ProgressBarProps>(
     const startAnimation = useCallback(() => {
       if (indeterminate) {
         if (!indeterminateAnimation.current) {
-          indeterminateAnimation.current = Animated.timing(animatedWidth, {
+          indeterminateAnimation.current ??= Animated.timing(animatedWidth, {
             duration: INDETERMINATE_DURATION,
             toValue: 1,
             useNativeDriver: true,

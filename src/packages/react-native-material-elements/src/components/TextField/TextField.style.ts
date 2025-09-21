@@ -8,6 +8,7 @@ import {
   INPUT_SMALL_HEIGHT,
   TRANSLATE_Y_ANIMATED_DEFAULT_POSITION,
 } from './constants';
+import { GetIconInputStyles } from './IconInput';
 import {
   BaseInputStylesProps,
   LabelTextStylesProps,
@@ -17,7 +18,6 @@ import {
   TextInputStylesProps,
 } from './Input.types';
 import { GetOtpInputStylesParams } from './OtpInput';
-import { GetIconInputStyles } from './IconInput';
 
 const baseInputDefaultStyles: ViewStyle = {
   position: 'relative',
