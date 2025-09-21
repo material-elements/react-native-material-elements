@@ -15,6 +15,7 @@ import { BaseStyles } from '../../libraries/style/styleTypes';
 import { Theme } from '../../libraries/themes/theme';
 import { BoxProps } from '../Box/Box.types';
 import { TextProps } from '../Typography/Text.types';
+import { OTPInputProps } from './OtpInput';
 
 /**
  * Represents the variation options for a text field.
@@ -226,4 +227,10 @@ export interface LabelTextStylesProps
 
 export interface BaseInputStylesProps extends Pick<BaseInputProps, 'variant' | 'height'> {
   colors: Theme;
+}
+
+export interface GetOtpInputStylesParams
+  extends Pick<OTPInputProps, 'length' | 'variant' | 'square' | 'error' | 'tintColor' | 'offTintColor'> {
+  colors: Theme;
+  isFocused?: boolean;
 }

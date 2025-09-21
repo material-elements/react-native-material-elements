@@ -11,13 +11,13 @@ import {
 import { GetIconInputStyles } from './IconInput';
 import {
   BaseInputStylesProps,
+  GetOtpInputStylesParams,
   LabelTextStylesProps,
   LabelTransformStyleProps,
   OutlineStyles,
   TextFiledVariation,
   TextInputStylesProps,
 } from './Input.types';
-import { GetOtpInputStylesParams } from './OtpInput';
 
 const baseInputDefaultStyles: ViewStyle = {
   position: 'relative',

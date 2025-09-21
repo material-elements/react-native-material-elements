@@ -11,7 +11,6 @@ import {
   ViewStyle,
 } from 'react-native';
 import { useThemeColorsSelector } from '../../libraries';
-import { Theme } from '../../libraries/types';
 import { VariantTypes } from '../../utils';
 import { getOtpInputStyles } from './TextField.style';
 
@@ -67,12 +66,6 @@ export type OTPInputProps = Omit<TextInputProps, 'onChange' | 'value' | 'onChang
    */
   defaultValue?: number | string;
 };
-
-export interface GetOtpInputStylesParams
-  extends Pick<OTPInputProps, 'length' | 'variant' | 'square' | 'error' | 'tintColor' | 'offTintColor'> {
-  colors: Theme;
-  isFocused?: boolean;
-}
 
 export const OTPInput: React.FC<OTPInputProps> = ({
   length,
