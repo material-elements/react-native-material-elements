@@ -4,6 +4,10 @@ import { SegmentedControlItem } from '../src/components/SegmentedControl/Segment
 import { fireEvent, render } from './test-utils';
 
 describe('SegmentedControl component', () => {
+  const mockSegmentedControllerTestId = 'mock-segmented-item-test-id';
+
+  const mockOnPress = jest.fn();
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -11,6 +15,57 @@ describe('SegmentedControl component', () => {
   it('should render correctly with default props', () => {
     const { toJSON } = render(<SegmentedControl data={['']} selectedIndex={0} />);
     expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should call the onChange function', () => {
+    const { getByTestId } = render(
+      <SegmentedControl
+        data={['First', 'Second']}
+        selectedIndex={0}
+        segmentedControlItemTestId={mockSegmentedControllerTestId}
+        onChange={mockOnPress}
+      />,
+    );
+
+    const firstItem = getByTestId(`${mockSegmentedControllerTestId}-0`);
+
+    fireEvent(firstItem, 'press', { nativeEvent: {} });
+
+    expect(firstItem).toBeDefined();
+    expect(mockOnPress).toHaveBeenCalled();
+    expect(mockOnPress).toHaveBeenCalledTimes(1);
+  });
+
+  it('should apply the correct segmentTextStyle', () => {
+    const { getByText } = render(
+      <SegmentedControl data={['First', 'Second']} selectedIndex={0} segmentTextStyle={{ color: 'red' }} />,
+    );
+
+    const firstItem = getByText('First');
+    expect(firstItem).toBeDefined();
+
+    expect(firstItem.props.style.color).toEqual('red');
+
+    const secondItem = getByText('Second');
+    expect(secondItem).toBeDefined();
+
+    expect(secondItem.props.style.color).toEqual('red');
+  });
+
+  it('should apply the correct segmentTextStyle to specific item', () => {
+    const { getByText } = render(
+      <SegmentedControl
+        data={['First', 'Second']}
+        selectedIndex={0}
+        segmentTextStyle={{ color: 'red' }}
+        applySegmentItemTextStyleIndex={0}
+      />,
+    );
+
+    const firstItem = getByText('First');
+    expect(firstItem).toBeDefined();
+
+    expect(firstItem.props.style.color).toEqual('red');
   });
 });
 

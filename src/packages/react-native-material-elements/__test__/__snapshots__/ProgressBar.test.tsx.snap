@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBar component should render correctly with default props 1`] = `
+<View
+  accessible={true}
+  onLayout={[Function]}
+>
+  <View
+    collapsable={false}
+    style={
+      {
+        "borderColor": "#03A9F4",
+        "borderRadius": 3,
+        "borderWidth": 0.6,
+        "height": 9,
+        "overflow": "hidden",
+      }
+    }
+  />
+</View>
+`;

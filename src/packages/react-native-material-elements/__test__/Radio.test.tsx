@@ -1,7 +1,8 @@
 import React from 'react';
 import { fireEvent, render, waitFor } from './test-utils';
-import { Radio, Text } from '../src';
+import { Radio, RadioCircle, Text } from '../src';
 import { View } from 'react-native';
+import { RADIO_LARGE, RADIO_MEDIUM, RADIO_SMALL } from '../src/components/Radio/constants';
 
 describe('Radio Component', () => {
   const mockRadioBaseButtonTestId = 'radio-base-button-test-id';
@@ -91,5 +92,56 @@ describe('Radio Component', () => {
 
     expect(queryByText('mock-label')).toBeNull();
     expect(queryByText('mock-description')).toBeNull();
+  });
+
+  it('should render the divider component', () => {
+    const { getByTestId } = render(<Radio showDivider dividerProps={{ testID: 'divider' }} />);
+
+    const divider = getByTestId('divider');
+    expect(divider).toBeDefined();
+  });
+});
+
+describe('Radio Circle', () => {
+  const testID = 'mock-test-id';
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should render small divider component', () => {
+    const { getByTestId } = render(<RadioCircle size="small" testID={testID} />);
+
+    const radio = getByTestId(testID);
+
+    expect(radio).toBeDefined();
+    expect(radio.props.style.width).toEqual(RADIO_SMALL);
+  });
+
+  it('should render medium radioCircle component', () => {
+    const { getByTestId } = render(<RadioCircle size="medium" testID={testID} />);
+
+    const radio = getByTestId(testID);
+
+    expect(radio).toBeDefined();
+    expect(radio.props.style.width).toEqual(RADIO_MEDIUM);
+  });
+
+  it('should render large radioCircle component', () => {
+    const { getByTestId } = render(<RadioCircle size="large" testID={testID} />);
+
+    const radio = getByTestId(testID);
+
+    expect(radio).toBeDefined();
+    expect(radio.props.style.width).toEqual(RADIO_LARGE);
+  });
+
+  it('should render small radioCircle component when invalid size passed', () => {
+    const { getByTestId } = render(<RadioCircle size={'invalid' as any} testID={testID} />);
+
+    const radio = getByTestId(testID);
+
+    expect(radio).toBeDefined();
+    expect(radio.props.style.width).toEqual(RADIO_SMALL);
   });
 });

@@ -48,6 +48,7 @@ export interface SegmentedControlProps
   applySegmentItemTextStyleIndex?: number;
   /** View styles for animated segment */
   animatedSegmentStyle?: ViewStyle;
+  segmentedControlItemTestId?: string;
 }
 
 export const SegmentedControl = ({
@@ -62,6 +63,7 @@ export const SegmentedControl = ({
   animatedSegmentStyle,
   segmentItemContainerStyles,
   selectedIndex = 0,
+  segmentedControlItemTestId,
   ...props
 }: SegmentedControlProps) => {
   const animatedSegmentWidth = useRef(new Animated.Value(0));
@@ -70,15 +72,11 @@ export const SegmentedControl = ({
 
   const colorScheme = useColorScheme();
 
-  const [selectedSegment, setSelectedSegment] = useState<Partial<SegmentedControlDataInterface>>(data[0]);
   const [segmentRect, setSegmentRect] = useState<LayoutRectangle | null>(null);
 
   const segmentedItemHandler = function (value: Partial<SegmentedControlDataInterface>, index: number) {
-    if (selectedSegment !== value) {
-      setSelectedSegment(value);
-      if (onChange) {
-        onChange(value, index);
-      }
+    if (onChange) {
+      onChange(value, index);
     }
   };
 
@@ -131,10 +129,6 @@ export const SegmentedControl = ({
         toValue: width * selectedIndex,
       }).start();
     }
-
-    if (selectedIndex && selectedIndex < data.length) {
-      setSelectedSegment(data[selectedIndex]);
-    }
   }, [segmentRect, selectedIndex, data]);
 
   return (
@@ -151,6 +145,7 @@ export const SegmentedControl = ({
             headingStyles={getSegmentItemHeadingStyle(index)}
             style={getSegmentItemStyle(index)}
             segmentItemContainerStyles={segmentItemContainerStyles}
+            testID={`${segmentedControlItemTestId}-${index}`}
           />
         ))}
       </View>

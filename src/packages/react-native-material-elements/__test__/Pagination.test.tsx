@@ -157,4 +157,16 @@ describe('Pagination Component', () => {
     expect(flattenedStyle.backgroundColor).toEqual('red');
     expect(flattenedStyle.borderWidth).toEqual(2);
   });
+
+  it('should show all the pagination item if count is less than or equal to the max visible items, show all pages', () => {
+    const { getByText } = render(<Pagination count={3} />);
+    const firstItem = getByText('1');
+    expect(firstItem).toBeDefined();
+
+    const secondItem = getByText('2');
+    expect(secondItem).toBeDefined();
+
+    const thirdItem = getByText('3');
+    expect(thirdItem).toBeDefined();
+  });
 });

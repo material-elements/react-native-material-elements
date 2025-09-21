@@ -311,7 +311,7 @@ const RadioOutline: React.FC<RadioOutlineProps> = ({ style, isActive, children, 
   );
 };
 
-const RadioCircle: React.FC<RadioCircleProps> = ({
+export const RadioCircle: React.FC<RadioCircleProps> = ({
   style,
   variant,
   isActive,

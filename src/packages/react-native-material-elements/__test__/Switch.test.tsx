@@ -22,7 +22,7 @@ import {
   SWITCH_THUMB_WIDTH_MEDIUM,
   SWITCH_THUMB_WIDTH_SMALL,
 } from '../src';
-import { fireEvent, render, waitFor } from './test-utils';
+import { fireEvent, render } from './test-utils';
 
 describe('Switch Component', () => {
   const switchMockTestId = 'switch-test-id';
@@ -33,11 +33,9 @@ describe('Switch Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should match the snapshot with default props', async () => {
+  it('should match the snapshot with default props', () => {
     const { toJSON } = render(<Switch />);
-    await waitFor(() => {
-      expect(toJSON()).toMatchSnapshot();
-    });
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should forward ref correctly', () => {
