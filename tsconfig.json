@@ -3,7 +3,8 @@
   "compilerOptions": {
     "paths": {
       "react": ["./node_modules/@types/react"]
-    }
+    },
+    "target": "ES2021"
   },
   "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx", "**/__tests__/**"]
 }
