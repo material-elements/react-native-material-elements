@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ripple effect should render correctly with default props 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "transparent",
+        "bottom": 0,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      },
+      undefined,
+    ]
+  }
+/>
+`;
