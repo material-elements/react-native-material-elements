@@ -23,7 +23,7 @@ export interface RippleObject {
   /**
    * Unique identifier for the ripple object
    */
-  id: string;
+  id: number;
 }
 
 type RipplePosition = 'center' | 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';

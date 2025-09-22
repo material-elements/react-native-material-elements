@@ -1,6 +1,5 @@
 import React, { useImperativeHandle, useMemo, useState } from 'react';
 import { Animated, Easing, LayoutRectangle, StyleSheet, useColorScheme, View, ViewStyle } from 'react-native';
-import { generateUniqueId } from '../../utils';
 import { RIPPLE_DURATION, RIPPLE_RADIUS, RIPPLE_SIZE } from './constants';
 import { RippleInterface, RippleObject, RipplePosition, RippleProps, onRippleAnimationType } from './Ripple.types';
 
@@ -58,7 +57,7 @@ export const Ripple = React.forwardRef<RippleInterface, RippleProps>(
         positionX: positionX - RIPPLE_SIZE / 2,
         positionY: positionY - RIPPLE_SIZE / 2,
         radius: RIPPLE_RADIUS,
-        id: generateUniqueId(),
+        id: Date.now(),
       };
 
       let animation = Animated.timing(ripple.progress, {

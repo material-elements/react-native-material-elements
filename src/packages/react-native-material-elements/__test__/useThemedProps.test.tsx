@@ -7,12 +7,16 @@ import { green } from '../src';
 import { Theme } from '../src/libraries/types';
 
 describe('useThemedProps', () => {
+  beforeAll(() => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+  });
+
   it('should match icon component snapshot correctly', () => {
     const props = {
       icon: () => <View />,
     };
     const { result } = renderHook(() => useThemedProps(props), { wrapper: ThemeWrapper });
-    const { toJSON } = render(result.current.icon);
+    const { toJSON } = render(result.current.icon as any);
     expect(toJSON()).toMatchSnapshot();
   });
 
@@ -41,7 +45,7 @@ describe('useThemedProps', () => {
     const props = {};
     const { result } = renderHook(() => useThemedProps(props), { wrapper: ThemeWrapper });
 
-    expect(result.current.icon).toBeUndefined();
+    expect(result.current.icon as any).toBeUndefined();
   });
 
   it('should support label as a ReactNode', () => {
@@ -82,7 +86,7 @@ describe('useThemedProps', () => {
 
     const { result } = renderHook(() => useThemedProps(props), { wrapper: ThemeWrapper });
 
-    const iconComponent = result.current.icon;
+    const iconComponent = result.current.icon as any;
 
     expect(iconComponent).toBeDefined();
     expect(iconComponent.props.style.backgroundColor).toEqual(green[500]);
@@ -96,7 +100,7 @@ describe('useThemedProps', () => {
 
     const iconComponent = result.current.icon;
     expect(iconComponent).toBeDefined();
-    const { toJSON } = render(iconComponent);
+    const { toJSON } = render(iconComponent as any);
     expect(toJSON()).toMatchSnapshot();
   });
 
@@ -188,15 +192,9 @@ describe('useThemedProps', () => {
 
   it('should warn if icon is a primitive value', () => {
     const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
-
-    const props = {
-      icon: 'not-a-component' as any,
-    };
-
+    const props = { icon: 'not-a-component' as any };
     renderHook(() => useThemedProps(props), { wrapper: ThemeWrapper });
-
     expect(warnSpy).toHaveBeenCalledWith('icon prop must be either <Icon /> or () => <Icon />. Other values are not valid.');
-
     warnSpy.mockRestore();
   });
 
@@ -206,11 +204,8 @@ describe('useThemedProps', () => {
     const props = {
       icon: { something: true } as any,
     };
-
     renderHook(() => useThemedProps(props), { wrapper: ThemeWrapper });
-
     expect(warnSpy).toHaveBeenCalledWith('icon prop must be either <Icon /> or () => <Icon />. Other values are not valid.');
-
     warnSpy.mockRestore();
   });
 

@@ -66,9 +66,15 @@ export const listItemContainerStyles = ({
   const defaultBgColor = colors.gray[50];
   const selectedBgColor = selectedColor ?? colors.gray[100];
 
-  let baseStyles: ViewStyle = {
-    backgroundColor: selected ? selectedBgColor : showDefaultBg ? defaultBgColor : 'transparent',
-  };
+  let baseStyles: ViewStyle = {};
+
+  if (selected) {
+    baseStyles.backgroundColor = selectedBgColor;
+  } else if (showDefaultBg) {
+    baseStyles.backgroundColor = defaultBgColor;
+  } else {
+    baseStyles.backgroundColor = 'transparent';
+  }
 
   if (showOutline) {
     baseStyles.borderWidth = outlineWidth ?? 1;

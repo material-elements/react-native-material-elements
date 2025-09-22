@@ -22,6 +22,8 @@ module.exports = {
     'babel.config.js',
   ],
 
+  testPathIgnorePatterns: ['/node_modules', '/e2e'],
+
   coverageReporters: ['html', 'text', 'lcov', 'text-summary'],
 
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node', 'mjs', 'svg', 'png'],
@@ -32,7 +34,7 @@ module.exports = {
   coverageThreshold: {
     global: {
       statements: 80,
-      branches: 75,
+      branches: 79,
       functions: 80,
       lines: 80,
     },

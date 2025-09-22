@@ -97,7 +97,7 @@ export const TextField = React.forwardRef<View, TextFieldProps>(
       height: textFieldFieldHeight,
     } = textFieldThemeConfig?.filled || {};
 
-    const placeHolderLeftPos = !isOutlined ? PLACEHOLDER_FILED_INPUT_LEFT_POSITION : PLACEHOLDER_OUTLINE_LEFT_POSITION;
+    const placeHolderLeftPos = isOutlined ? PLACEHOLDER_OUTLINE_LEFT_POSITION : PLACEHOLDER_FILED_INPUT_LEFT_POSITION;
     const shouldApplySquareShape = square ?? textFieldThemeConfig?.square ?? false;
 
     const getTextFiledHeight = () => {

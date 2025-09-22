@@ -96,6 +96,7 @@ exports[`Radio Component should render correctly 1`] = `
                 "width": 18,
               }
             }
+            testID="radio-item-test-id"
           />
         </View>
       </View>

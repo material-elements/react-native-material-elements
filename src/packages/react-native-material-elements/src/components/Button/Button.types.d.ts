@@ -93,6 +93,10 @@ export interface ButtonProps extends Omit<BaseButtonProps, 'sx'> {
    */
   loading?: boolean;
   /**
+   * loader test id
+   */
+  loaderTestId?: string;
+  /**
    * Button label
    */
   label?: string;

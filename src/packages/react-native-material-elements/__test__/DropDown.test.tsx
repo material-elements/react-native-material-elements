@@ -9,6 +9,7 @@ describe('DropDown Component', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.clearAllTimers();
   });
 
   it('should render correctly', async () => {
@@ -244,6 +245,7 @@ describe('DropDownListContainer component', () => {
   });
 
   it('should call the onClose function when press on item', () => {
+    jest.useFakeTimers();
     const { getByText } = render(
       <DropDownListContainer
         inputLayoutRectangle={{ x: 0, y: 0, width: 0, height: 0 }}

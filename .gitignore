@@ -35,6 +35,9 @@ local.properties
 *.keystore
 !debug.keystore
 
+# sonar scan
+.scannerwork
+
 # node.js
 #
 node_modules/

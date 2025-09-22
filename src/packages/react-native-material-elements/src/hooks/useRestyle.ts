@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyledProps, StyleLike } from '../libraries/style/styleTypes';
 
-export const useRestyle = <T>(props: T & StyledProps) => {
-  function isValidStyle<U>(value: U) {
-    if (value === undefined || value === null || React.isValidElement(value)) {
-      return false;
-    }
-    return typeof value === 'string' || typeof value === 'number';
+function isValidStyle<U>(value: U) {
+  if (value === undefined || value === null || React.isValidElement(value)) {
+    return false;
   }
+  return typeof value === 'string' || typeof value === 'number';
+}
 
+export const useRestyle = <T>(props: T & StyledProps) => {
   const getStyleFromProps = () => {
     const result: Record<string, StyleLike> = {};
 

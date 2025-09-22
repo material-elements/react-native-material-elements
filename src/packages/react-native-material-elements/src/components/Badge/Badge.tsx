@@ -83,7 +83,7 @@ export const Badge = React.forwardRef<View, BadgeProps>(
         }
 
         if (typeof content === 'object') {
-          throw new Error('Badge content must be a string or number');
+          throw new TypeError('Badge content must be a string or number');
         }
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -96,7 +96,7 @@ export const Badge = React.forwardRef<View, BadgeProps>(
 
         const textStyles = StyleSheet.flatten([styles.badgeContent, badgeContentDefaultStyles({ variation }), badgeContentStyle]);
 
-        if (isNaN(badgeNumber)) {
+        if (Number.isNaN(badgeNumber)) {
           return <Text style={textStyles}>{content}</Text>;
         }
 

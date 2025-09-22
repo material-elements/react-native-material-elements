@@ -137,6 +137,10 @@ export interface RadioProps extends ViewProps, BaseInterface, StyledProps {
    * Customize the divider component.
    */
   dividerProps?: DividerProps;
+  /**
+   * Radio item test id
+   */
+  radioItemTestId?: string;
 }
 
 export const Radio = React.forwardRef<View, RadioProps>(
@@ -166,6 +170,7 @@ export const Radio = React.forwardRef<View, RadioProps>(
       variant = 'info',
       actionType = 'element',
       adornmentType = 'end',
+      radioItemTestId = 'radio-item-test-id',
       ...props
     },
     ref,
@@ -176,7 +181,7 @@ export const Radio = React.forwardRef<View, RadioProps>(
     const { sizeConfig: themeSizeConfig = sizeConfig } = radioThemeConfig || {};
 
     const radioOnPressHandler = (event: GestureResponderEvent) => {
-      if (!!onPress && typeof onPress === 'function') {
+      if (onPress) {
         onPress(event);
       }
     };
@@ -270,6 +275,7 @@ export const Radio = React.forwardRef<View, RadioProps>(
                   size={size}
                   sizeConfig={themeSizeConfig}
                   activeColor={activeColor}
+                  testID={radioItemTestId}
                 />
               )}
             </RadioOutline>
@@ -311,7 +317,7 @@ const RadioOutline: React.FC<RadioOutlineProps> = ({ style, isActive, children, 
   );
 };
 
-const RadioCircle: React.FC<RadioCircleProps> = ({
+export const RadioCircle: React.FC<RadioCircleProps> = ({
   style,
   variant,
   isActive,

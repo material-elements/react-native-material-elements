@@ -44,6 +44,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
       overrideRootRippleEdge = false,
       buttonColor = 'secondary',
       variation = 'contained',
+      loaderTestId = 'button-loader',
       square = false,
       overrideRootSquareConfig = false,
       ...props
@@ -199,6 +200,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
             color={_loadingIndicatorColor}
             switchMode={switchSpinnerMode}
             size={loadingIndicatorSize}
+            testID={loaderTestId}
           />
         );
       }

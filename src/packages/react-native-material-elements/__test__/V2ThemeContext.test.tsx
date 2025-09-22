@@ -96,6 +96,7 @@ describe('V2ThemeContext', () => {
     });
 
     it('should throw error when used outside ThemeProvider', () => {
+      const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
       try {
         renderHook(useTheme);
       } catch (error) {
@@ -104,6 +105,7 @@ describe('V2ThemeContext', () => {
           expect(error?.message).toBe('Theme context must be used within a ThemeProvider');
         }
       }
+      consoleSpy.mockRestore();
     });
   });
 });
