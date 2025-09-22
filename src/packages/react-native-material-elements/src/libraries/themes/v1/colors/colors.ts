@@ -66,7 +66,7 @@ const initialLightTheme = {
 };
 
 const createDarkColorTheme = (key: keyof typeof initialLightTheme) => {
-  const colors = initialLightTheme[key] as ColorShades;
+  const colors = initialLightTheme[key];
   const darkColors: any = {};
   const shades = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'];
   const reverseShades = [...shades].reverse();

@@ -7,7 +7,9 @@ describe('ProgressBar component', () => {
   });
 
   it('should render correctly with default props', () => {
+    jest.useFakeTimers();
     const { toJSON } = render(<ProgressBar progress={0.2} />);
     expect(toJSON()).toMatchSnapshot();
+    jest.clearAllTimers();
   });
 });

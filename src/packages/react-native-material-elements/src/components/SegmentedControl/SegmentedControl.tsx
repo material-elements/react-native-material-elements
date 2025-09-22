@@ -63,7 +63,7 @@ export const SegmentedControl = ({
   animatedSegmentStyle,
   segmentItemContainerStyles,
   selectedIndex = 0,
-  segmentedControlItemTestId,
+  segmentedControlItemTestId = 'segmented-item',
   ...props
 }: SegmentedControlProps) => {
   const animatedSegmentWidth = useRef(new Animated.Value(0));

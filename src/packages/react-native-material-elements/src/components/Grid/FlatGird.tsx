@@ -11,7 +11,9 @@ export interface FlatGirdProps<T> extends Omit<FlatListProps<T>, 'renderItem'> {
 export const FlatGrid = <T,>({ data, numColumns = 2, spacing = 0, renderItem, ...flatListProps }: FlatGirdProps<T>) => {
   const renderGridItem = (info: ListRenderItemInfo<T>) => {
     return (
-      <View style={[styles.gridItem, { width: `${100 / numColumns}%`, padding: spacing }]}>{renderItem && renderItem(info)}</View>
+      <View style={[styles.gridItem, { width: `${100 / numColumns}%`, padding: spacing }]}>
+        {renderItem ? renderItem(info) : null}
+      </View>
     );
   };
 

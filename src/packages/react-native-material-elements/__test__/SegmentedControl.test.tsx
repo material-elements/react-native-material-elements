@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import { SegmentedControl } from '../src';
 import { SegmentedControlContainer } from '../src/components/SegmentedControl/SegmentedControlContainer';
 import { SegmentedControlItem } from '../src/components/SegmentedControl/SegmentedControlItem';
@@ -66,6 +67,41 @@ describe('SegmentedControl component', () => {
     expect(firstItem).toBeDefined();
 
     expect(firstItem.props.style.color).toEqual('red');
+  });
+
+  it('should apply the segmentItemStyles', () => {
+    const { getByTestId } = render(
+      <SegmentedControl
+        data={['First', 'Second']}
+        selectedIndex={0}
+        segmentItemStyles={{ backgroundColor: 'red' }}
+        segmentedControlItemTestId={mockSegmentedControllerTestId}
+      />,
+    );
+
+    const segmentedFirstItem = getByTestId(`${mockSegmentedControllerTestId}-0`);
+    const firstItemStyles = StyleSheet.flatten(segmentedFirstItem.props.style);
+    expect(firstItemStyles).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+
+    const segmentedSecondItem = getByTestId(`${mockSegmentedControllerTestId}-0`);
+    const secondItemStyles = StyleSheet.flatten(segmentedSecondItem.props.style);
+    expect(secondItemStyles).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+  });
+
+  it('should apply the segmentItemStyles', () => {
+    const { getByTestId } = render(
+      <SegmentedControl
+        data={['First', 'Second']}
+        selectedIndex={0}
+        segmentItemStyles={{ backgroundColor: 'red' }}
+        segmentedControlItemTestId={mockSegmentedControllerTestId}
+        applySegmentItemStyleIndex={0}
+      />,
+    );
+
+    const segmentedFirstItem = getByTestId(`${mockSegmentedControllerTestId}-0`);
+    const firstItemStyles = StyleSheet.flatten(segmentedFirstItem.props.style);
+    expect(firstItemStyles).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
   });
 });
 

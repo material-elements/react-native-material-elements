@@ -164,7 +164,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
   }, [position, screenHeight]);
 
   const snackbarRootContainerOnLayout = (event: LayoutChangeEvent) => {
-    if (onLayout && typeof onLayout === 'function') {
+    if (onLayout) {
       onLayout(event);
     }
     const { layout } = event.nativeEvent;

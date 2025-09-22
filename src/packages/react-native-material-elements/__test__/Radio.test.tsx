@@ -100,6 +100,61 @@ describe('Radio Component', () => {
     const divider = getByTestId('divider');
     expect(divider).toBeDefined();
   });
+
+  it('should call the onPress function when click on the label component', () => {
+    const { getByText } = render(<Radio onPress={mockOnPress} actionType="root" label="label" />);
+
+    const label = getByText('label');
+    expect(label).toBeDefined();
+
+    fireEvent(label, 'press', { nativeEvent: {} });
+
+    expect(mockOnPress).toHaveBeenCalled();
+    expect(mockOnPress).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call the onPress function when click on the radio button', () => {
+    const { getByTestId } = render(<Radio onPress={mockOnPress} radioBaseButtonTestId={mockRadioBaseButtonTestId} />);
+
+    const radio = getByTestId(mockRadioBaseButtonTestId);
+
+    expect(radio).toBeDefined();
+
+    fireEvent(radio, 'press', { nativeEvent: {} });
+
+    expect(mockOnPress).toHaveBeenCalled();
+    expect(mockOnPress).toHaveBeenCalledTimes(1);
+  });
+
+  it('should render the custom radio item if radio isActive', () => {
+    const { getByText } = render(<Radio isActive radioItem={<Text>Hello</Text>} />);
+    const text = getByText('Hello');
+    expect(text).toBeDefined();
+  });
+
+  it('should render the start adornment component', () => {
+    const { getByText } = render(<Radio adornment={<Text>Hello</Text>} adornmentType="start" />);
+
+    const text = getByText('Hello');
+    expect(text).toBeDefined();
+  });
+
+  it('should render the start adornment divider component', () => {
+    const { getByTestId } = render(
+      <Radio showDivider dividerProps={{ testID: 'divider-test-id' }} adornment={<Text>Hello</Text>} adornmentType="start" />,
+    );
+
+    const divider = getByTestId('divider-test-id');
+    expect(divider).toBeDefined();
+  });
+
+  it('should render active radio item when radio is active', () => {
+    jest.useFakeTimers();
+    const { getByTestId } = render(<Radio isActive />);
+    const radioItem = getByTestId('radio-item-test-id');
+    expect(radioItem).toBeDefined();
+    jest.clearAllTimers();
+  });
 });
 
 describe('Radio Circle', () => {

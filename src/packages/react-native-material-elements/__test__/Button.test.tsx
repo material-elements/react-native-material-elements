@@ -1,7 +1,7 @@
 import { render as testRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { Text, View } from 'react-native';
-import { Button, green, lightBlue, primary, red, secondary, ThemeProvider, yellow } from '../src';
+import { Button, gray, green, lightBlue, primary, red, secondary, ThemeProvider, yellow } from '../src';
 import { fireEvent, render } from './test-utils';
 
 describe('Button', () => {
@@ -426,5 +426,36 @@ describe('Button', () => {
     );
     const labelText = getByText(mockLabel);
     expect(labelText.props.style).toEqual(expect.objectContaining({ color: 'red', fontWeight: 100 }));
+  });
+
+  it('should show the dark gray color of the text label when button color is lightGray', () => {
+    const { getByText } = render(<Button label="Save" buttonColor="lightGray" />);
+
+    const text = getByText('Save');
+    expect(text).toBeDefined();
+    expect(text.props.style.color).toEqual(gray[900]);
+  });
+
+  it('should show the dark gray color of the text label when button color is lightGray and button variant outlined ', () => {
+    const { getByText } = render(<Button label="Save" variation="outlined" buttonColor="lightGray" />);
+
+    const text = getByText('Save');
+    expect(text).toBeDefined();
+    expect(text.props.style.color).toEqual(gray[900]);
+  });
+
+  it('should render the loader when loading is passed', () => {
+    const { getByTestId } = render(<Button label="Save" loading />);
+
+    const loader = getByTestId('button-loader');
+    expect(loader).toBeDefined();
+  });
+
+  it('should show the dark color of the text label when button color is warning', () => {
+    const { getByText } = render(<Button label="Save" buttonColor="warning" />);
+
+    const text = getByText('Save');
+    expect(text).toBeDefined();
+    expect(text.props.style.color).toEqual(gray[900]);
   });
 });

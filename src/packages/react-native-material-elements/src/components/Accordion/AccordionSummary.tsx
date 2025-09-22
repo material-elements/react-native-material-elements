@@ -100,9 +100,6 @@ export const AccordionSummary = React.forwardRef<View, AccordionSummaryProps>(
             easing: Easing.ease,
             useNativeDriver: false,
           }),
-        );
-
-        animations.push(
           Animated.timing(accordionDetailsOpacityValue, {
             toValue: isActive ? 1 : 0,
             duration: accordionDetailsOpacityDuration,

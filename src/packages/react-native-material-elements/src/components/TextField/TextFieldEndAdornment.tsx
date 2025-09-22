@@ -27,16 +27,12 @@ const TextFieldEndAdornment: React.FC<TextFieldEndAdornmentProps> = ({
     return null;
   }
 
-  let element: React.ReactNode;
+  let element: React.ReactNode = null;
 
   if (endAdornment) {
     element = endAdornment;
-  } else {
-    if (showLoadingIndicatorWhenFocused && isFocused && loading) {
-      element = <ActivityIndicator {...loadingIndicatorProps} />;
-    } else if (!showLoadingIndicatorWhenFocused && loading) {
-      element = <ActivityIndicator {...loadingIndicatorProps} />;
-    }
+  } else if ((showLoadingIndicatorWhenFocused && isFocused && loading) || (!showLoadingIndicatorWhenFocused && loading)) {
+    element = <ActivityIndicator {...loadingIndicatorProps} />;
   }
 
   if (!element) {
