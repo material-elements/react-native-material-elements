@@ -57,7 +57,7 @@ export const Ripple = React.forwardRef<RippleInterface, RippleProps>(
         positionX: positionX - RIPPLE_SIZE / 2,
         positionY: positionY - RIPPLE_SIZE / 2,
         radius: RIPPLE_RADIUS,
-        id: new Date().getTime(),
+        id: Date.now(),
       };
 
       let animation = Animated.timing(ripple.progress, {
