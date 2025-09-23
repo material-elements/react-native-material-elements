@@ -8,7 +8,11 @@ describe('DropDown Component', () => {
   const mockInputTestId = 'input-test-id';
 
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
     jest.clearAllTimers();
   });
 
@@ -113,7 +117,12 @@ describe('DropDownListContainer component', () => {
   const mockOnCloseHandler = jest.fn();
 
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
   });
 
   it('should render properly with default props', () => {
@@ -245,7 +254,6 @@ describe('DropDownListContainer component', () => {
   });
 
   it('should call the onClose function when press on item', () => {
-    jest.useFakeTimers();
     const { getByText } = render(
       <DropDownListContainer
         inputLayoutRectangle={{ x: 0, y: 0, width: 0, height: 0 }}

@@ -9,12 +9,17 @@ describe('Accordion Component', () => {
   const mockRef = React.createRef<View>();
 
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
   });
 
-  it('should render correctly', async () => {
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
+  it('should render correctly', () => {
     const { toJSON } = render(<Accordion />);
-    await waitFor(() => {
+    waitFor(() => {
       expect(toJSON()).toMatchSnapshot();
     });
   });
@@ -75,7 +80,12 @@ describe('AccordionSummary Component', () => {
   const mockTestId = 'mock-accordion-summary-test-id';
 
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
   });
 
   it('should render correctly', async () => {
@@ -136,7 +146,12 @@ describe('AccordionDetails Component', () => {
   const TestChild = (props: any) => <Text {...props}>Test Child</Text>;
 
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
   });
 
   it('should render accordion details correctly', () => {

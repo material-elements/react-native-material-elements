@@ -7,11 +7,13 @@ describe('Skeleton component', () => {
   let colorSchemeSpy: jest.SpyInstance;
 
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
     colorSchemeSpy = jest.spyOn(require('react-native'), 'useColorScheme');
   });
 
   afterEach(() => {
+    jest.clearAllMocks();
     colorSchemeSpy.mockRestore();
   });
 

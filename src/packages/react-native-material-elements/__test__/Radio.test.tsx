@@ -11,7 +11,12 @@ describe('Radio Component', () => {
   const mockRef = React.createRef<View>();
 
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
   });
 
   it('should render correctly', async () => {
@@ -149,11 +154,9 @@ describe('Radio Component', () => {
   });
 
   it('should render active radio item when radio is active', () => {
-    jest.useFakeTimers();
     const { getByTestId } = render(<Radio isActive />);
     const radioItem = getByTestId('radio-item-test-id');
     expect(radioItem).toBeDefined();
-    jest.clearAllTimers();
   });
 });
 

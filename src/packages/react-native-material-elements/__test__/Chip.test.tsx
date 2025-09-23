@@ -17,6 +17,9 @@ describe('Chip Component', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
     jest.clearAllTimers();
   });
 

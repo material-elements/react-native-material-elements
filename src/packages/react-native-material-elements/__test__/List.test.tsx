@@ -15,6 +15,9 @@ describe('List Component', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
     jest.clearAllTimers();
   });
 

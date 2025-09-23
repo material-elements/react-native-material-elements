@@ -23,6 +23,10 @@ describe('TextField Component', () => {
     jest.clearAllMocks();
   });
 
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   it('should render correctly', async () => {
     const { toJSON } = render(<TextField />);
     await waitFor(() => {
@@ -43,21 +47,17 @@ describe('TextField Component', () => {
   });
 
   it("should't render the animated placeholder when passed the hide label prop", () => {
-    jest.useFakeTimers();
     const { queryByTestId } = render(<TextField hideLabel inputLabelProps={{ testID: mockTextFiledInputLabelTestId }} />);
 
     expect(queryByTestId(mockTextFiledInputLabelTestId)).toBeNull();
-    jest.useRealTimers();
   });
 
   it('should change the default placeholder when passed the placeholder prop', () => {
-    jest.useFakeTimers();
     const { getByPlaceholderText } = render(<TextField hideLabel placeholder={mockTextFiledPlaceholder} />);
 
     const placeHolderElem = getByPlaceholderText(mockTextFiledPlaceholder);
     expect(placeHolderElem).toBeDefined();
     expect(placeHolderElem.props.placeholder).toEqual(mockTextFiledPlaceholder);
-    jest.useRealTimers();
   });
 
   it('should apply the dynamic sx styles', () => {
@@ -91,14 +91,12 @@ describe('TextField Component', () => {
   });
 
   it('should change the input placeholder color', () => {
-    jest.useFakeTimers();
     const { getByPlaceholderText } = render(
       <TextField hideLabel placeholder={mockTextFiledPlaceholder} placeholderTextColor={'red'} />,
     );
 
     const placeholder = getByPlaceholderText(mockTextFiledPlaceholder);
     expect(placeholder.props.placeholderTextColor).toEqual('red');
-    jest.useRealTimers();
   });
 
   it('should handle the focus event', () => {
