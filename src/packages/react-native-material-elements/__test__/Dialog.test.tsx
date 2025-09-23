@@ -16,6 +16,17 @@ import { TextVariation, TextVariationThemeConfig } from '../src/types';
 import { render, waitFor } from './test-utils';
 
 describe('Dialog', () => {
+  let consoleErrorSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    consoleErrorSpy.mockRestore();
+  });
+
   it('should render correctly with default props', () => {
     const { toJSON } = render(<Dialog />);
     expect(toJSON()).toMatchSnapshot();
@@ -33,6 +44,17 @@ describe('Dialog', () => {
 });
 
 describe('DialogActions', () => {
+  let consoleErrorSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    consoleErrorSpy.mockRestore();
+  });
+
   it('should render correctly with default props', () => {
     const { toJSON } = render(<DialogActions />);
     expect(toJSON()).toMatchSnapshot();
@@ -85,8 +107,15 @@ const textTests = (Component: any, componentName: string) => {
       h6: { fontSize: 13 },
     };
 
+    let consoleErrorSpy: jest.SpyInstance;
+
     beforeEach(() => {
+      consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
       jest.clearAllMocks();
+    });
+
+    afterEach(() => {
+      consoleErrorSpy.mockRestore();
     });
 
     it('should match the snapshot with default props', async () => {

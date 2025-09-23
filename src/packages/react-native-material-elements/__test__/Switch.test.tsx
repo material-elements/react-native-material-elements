@@ -22,7 +22,7 @@ import {
   SWITCH_THUMB_WIDTH_MEDIUM,
   SWITCH_THUMB_WIDTH_SMALL,
 } from '../src';
-import { fireEvent, render } from './test-utils';
+import { fireEvent, act, render } from './test-utils';
 
 describe('Switch Component', () => {
   const switchMockTestId = 'switch-test-id';
@@ -31,6 +31,11 @@ describe('Switch Component', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
   });
 
   it('should match the snapshot with default props', () => {
@@ -50,11 +55,11 @@ describe('Switch Component', () => {
     expect(switchComponent).toBeTruthy();
   });
 
-  it('should call onToggle when switch is toggled', async () => {
+  it('should call onToggle when switch is toggled', () => {
     const onToggleMock = jest.fn();
     const { getByTestId } = render(<Switch testID={switchMockTestId} onToggle={onToggleMock} />);
-    const switchComponent = getByTestId(switchMockTestId);
 
+    const switchComponent = getByTestId(switchMockTestId);
     fireEvent.press(switchComponent);
 
     expect(onToggleMock).toHaveBeenCalledTimes(1);

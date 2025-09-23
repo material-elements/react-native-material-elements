@@ -13,7 +13,11 @@ describe('Pagination Component', () => {
   const mockOnPageChange = jest.fn();
 
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
     jest.clearAllTimers();
   });
 

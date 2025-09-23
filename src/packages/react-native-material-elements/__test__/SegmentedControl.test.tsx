@@ -10,7 +10,12 @@ describe('SegmentedControl component', () => {
   const mockOnPress = jest.fn();
 
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
   });
 
   it('should render correctly with default props', () => {
@@ -122,7 +127,12 @@ describe('SegmentedControlItem component', () => {
   const mockOnPress = jest.fn();
 
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
   });
 
   it('should render correctly with default props', () => {

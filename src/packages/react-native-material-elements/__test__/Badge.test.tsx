@@ -36,8 +36,13 @@ describe('Badge', () => {
     },
   };
 
-  beforeAll(() => {
+  beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
   });
 
   it('should render correctly', async () => {

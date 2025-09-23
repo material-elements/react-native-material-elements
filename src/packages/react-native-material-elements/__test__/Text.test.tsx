@@ -19,8 +19,15 @@ describe('Text Component', () => {
     h6: { fontSize: 13 },
   };
 
+  let consoleErrorSpy: jest.SpyInstance;
+
   beforeEach(() => {
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    consoleErrorSpy.mockRestore();
   });
 
   it('should match the snapshot with default props', async () => {
