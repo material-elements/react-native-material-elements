@@ -1,6 +1,6 @@
 import { ColorShades } from '../../theme';
 
-export const geekBlue: ColorShades = {
+export const greekBlue: ColorShades = {
   50: '#f0f5ff',
   100: '#d6e4ff',
   200: '#adc6ff',

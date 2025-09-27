@@ -10,6 +10,7 @@ import {
 import { Box } from '../Box';
 import { Ripple } from '../Ripple';
 import { RippleInterface } from '../Ripple/Ripple.types';
+import { baseButtonStyles } from './Button.styles';
 import { BaseButtonProps } from './Button.types';
 
 export const BaseButton = React.forwardRef<View, BaseButtonProps>(
@@ -22,7 +23,7 @@ export const BaseButton = React.forwardRef<View, BaseButtonProps>(
       rippleEdge,
       style,
       sx,
-      baseButtonContainerStyle,
+      buttonContainerStyle,
       onLayout: onLayoutHandler,
       onPress: onPressHandler,
       onLongPress: onLongPressHandler,
@@ -30,6 +31,7 @@ export const BaseButton = React.forwardRef<View, BaseButtonProps>(
       scaleAnimationValue = 0.99,
       disableScaleAnimation = false,
       scaleAnimationDuration = 200,
+      fullWidth,
       ...props
     },
     ref,
@@ -97,21 +99,23 @@ export const BaseButton = React.forwardRef<View, BaseButtonProps>(
     );
 
     return (
-      <Box ref={ref} sx={sx} style={baseButtonContainerStyle}>
-        <TouchableWithoutFeedback
-          onPress={buttonPressHandler}
-          onLongPress={buttonLongPressHandler}
-          onLayout={buttonLayoutHandler}
-          disabled={disabled}
-          {...props}>
-          <Animated.View
-            pointerEvents="box-only"
-            style={[{ transform: [{ scale: scaleValue }] }, style]}
-            {...componentWrapperProps}>
-            {children}
-            {disableRipple ? null : <Ripple ref={rippleRef} {...rippleProps} />}
-          </Animated.View>
-        </TouchableWithoutFeedback>
+      <Box>
+        <Box ref={ref} sx={sx} style={[baseButtonStyles({ fullWidth }), buttonContainerStyle]}>
+          <TouchableWithoutFeedback
+            onPress={buttonPressHandler}
+            onLongPress={buttonLongPressHandler}
+            onLayout={buttonLayoutHandler}
+            disabled={disabled}
+            {...props}>
+            <Animated.View
+              pointerEvents="box-only"
+              style={[{ transform: [{ scale: scaleValue }] }, style]}
+              {...componentWrapperProps}>
+              {children}
+              {disableRipple ? null : <Ripple ref={rippleRef} {...rippleProps} />}
+            </Animated.View>
+          </TouchableWithoutFeedback>
+        </Box>
       </Box>
     );
   },

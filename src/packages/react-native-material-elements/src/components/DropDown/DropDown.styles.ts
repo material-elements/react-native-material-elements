@@ -18,4 +18,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   dropDownInputWrapper: { borderWidth: 0.7, height: 30 },
+  searchInputStyle: {
+    borderWidth: 0,
+  },
 });
