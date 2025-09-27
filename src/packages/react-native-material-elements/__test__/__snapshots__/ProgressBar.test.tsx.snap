@@ -9,7 +9,7 @@ exports[`ProgressBar component should render correctly with default props 1`] = 
     collapsable={false}
     style={
       {
-        "borderColor": "#03A9F4",
+        "borderColor": "#1890ff",
         "borderRadius": 3,
         "borderWidth": 0.6,
         "height": 9,

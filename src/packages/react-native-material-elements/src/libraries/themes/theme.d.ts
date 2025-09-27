@@ -130,18 +130,15 @@ type ButtonThemeConfig = Pick<
   | 'labelStyles'
   | 'square'
   | 'labelColor'
-  | 'baseButtonStyles'
   | 'disableScaleAnimation'
   | 'scaleAnimationValue'
   | 'rippleEdge'
-  | 'baseButtonContainerStyle'
+  | 'buttonContainerStyle'
   | 'rippleProps'
   | 'style'
   | 'sizeConfig'
 >;
-type ButtonVariationConfig = Partial<
-  Record<ButtonVariations, Pick<ButtonThemeConfig, 'labelStyles' | 'baseButtonStyles' | 'style'> | undefined>
->;
+type ButtonVariationConfig = Partial<Record<ButtonVariations, Pick<ButtonThemeConfig, 'labelStyles' | 'style'> | undefined>>;
 type IconButtonThemeConfig = Pick<
   IconButtonProps,
   'variation' | 'disableRipple' | 'rippleProps' | 'rippleEdge' | 'baseButtonContainerStyle' | 'style'

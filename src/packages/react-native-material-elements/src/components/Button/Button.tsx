@@ -4,10 +4,9 @@ import { useThemedProps } from '../../hooks';
 import { gray, useThemeButtonConfigSelector, useThemeColorsSelector } from '../../libraries';
 import { getVariant, merge } from '../../utils';
 import { ActivityIndicator } from '../ActivityIndicator';
-import { Box } from '../Box';
 import { Text } from '../Typography';
 import { BaseButton } from './BaseButton';
-import { buttonLabelStyles, buttonRootContainerStyles, getButtonStyles, styles } from './Button.styles';
+import { buttonLabelStyles, getButtonStyles, styles } from './Button.styles';
 import { ButtonProps } from './Button.types';
 
 export const Button = React.forwardRef<View, ButtonProps>(
@@ -20,33 +19,29 @@ export const Button = React.forwardRef<View, ButtonProps>(
       label,
       labelStyles,
       labelColor,
-      baseButtonStyles,
       disableRipple,
-      flex,
       disableScaleAnimation = false,
       scaleAnimationValue = 0.99,
-      baseButtonContainerStyle,
+      buttonContainerStyle,
       rippleEdge,
       rippleProps,
       sx,
       backgroundColor,
-      baseButtonSx,
       startIcon,
       endIcon,
       loadingIndicatorColor,
       loadingIndicatorVariant = 'gray',
       switchSpinnerMode = false,
-      loadingIndicatorSize,
+      loadingIndicatorSize = 'small',
       size = 'medium',
       sizeConfig,
-      overrideRootDisableScaleAnimation = false,
-      overrideRootScaleAnimationValue = false,
-      overrideRootRippleEdge = false,
-      buttonColor = 'secondary',
+      buttonColor = 'primary',
       variation = 'contained',
       loaderTestId = 'button-loader',
       square = false,
       overrideRootSquareConfig = false,
+      startIconContainerStyles,
+      endIconContainerStyles,
       ...props
     },
     ref,
@@ -63,21 +58,21 @@ export const Button = React.forwardRef<View, ButtonProps>(
       endIcon,
     });
 
-    const {
-      labelStyles: containedButtonLabelStyles,
-      baseButtonStyles: containedBaseButtonStyles,
-      style: containedButtonStyles,
-    } = buttonThemeConfig?.contained || {};
-    const {
-      labelStyles: outlinedButtonLabelStyles,
-      baseButtonStyles: outlinedBaseButtonStyles,
-      style: outlinedButtonStyles,
-    } = buttonThemeConfig?.outlined || {};
-    const {
-      labelStyles: textButtonLabelStyles,
-      baseButtonStyles: textBaseButtonStyles,
-      style: textButtonStyles,
-    } = buttonThemeConfig?.text || {};
+    const { labelStyles: containedButtonLabelStyles, style: containedButtonStyles } = buttonThemeConfig?.contained || {};
+    const { labelStyles: outlinedButtonLabelStyles, style: outlinedButtonStyles } = buttonThemeConfig?.outlined || {};
+    const { labelStyles: textButtonLabelStyles, style: textButtonStyles } = buttonThemeConfig?.text || {};
+
+    const getButtonSpacing = (): StyleProp<ViewStyle> => {
+      if (startIcon && endIcon) {
+        return styles.rightAndLeftButtonPadding;
+      } else if (startIcon) {
+        return styles.leftLabelPadding;
+      } else if (endIcon) {
+        return styles.rightLabelPadding;
+      } else {
+        return styles.rightAndLeftButtonPaddingWithoutIcon;
+      }
+    };
 
     const generateButtonLabelStyles = (): StyleProp<TextStyle> => {
       return [
@@ -85,17 +80,9 @@ export const Button = React.forwardRef<View, ButtonProps>(
         isContainedButton && containedButtonLabelStyles,
         isOutlinedButton && outlinedButtonLabelStyles,
         isTextButton && textButtonLabelStyles,
+        buttonLabelStyles({ size, sizeConfig: buttonThemeConfig?.sizeConfig ?? sizeConfig }),
+        getButtonSpacing(),
         labelStyles,
-      ].filter(Boolean);
-    };
-
-    const generateBaseButtonStyles = (): StyleProp<ViewStyle> => {
-      return [
-        buttonThemeConfig?.baseButtonStyles,
-        isContainedButton && containedBaseButtonStyles,
-        isOutlinedButton && outlinedBaseButtonStyles,
-        isTextButton && textBaseButtonStyles,
-        baseButtonStyles,
       ].filter(Boolean);
     };
 
@@ -112,24 +99,15 @@ export const Button = React.forwardRef<View, ButtonProps>(
     const shouldDisableRipple = disableRipple ?? buttonThemeConfig?.disableRipple;
 
     const shouldDisableScaleAnimation = () => {
-      if (overrideRootDisableScaleAnimation) {
-        return disableScaleAnimation;
-      }
-      return buttonThemeConfig?.disableScaleAnimation ?? disableScaleAnimation;
+      return disableScaleAnimation ?? buttonThemeConfig?.disableScaleAnimation;
     };
 
     const buttonScaleAnimationValue = () => {
-      if (overrideRootScaleAnimationValue) {
-        return scaleAnimationValue;
-      }
-      return buttonThemeConfig?.scaleAnimationValue ?? scaleAnimationValue;
+      return scaleAnimationValue ?? buttonThemeConfig?.scaleAnimationValue;
     };
 
     const buttonRippleEdge = () => {
-      if (overrideRootRippleEdge) {
-        return rippleEdge;
-      }
-      return buttonThemeConfig?.rippleEdge ?? rippleEdge;
+      return rippleEdge ?? buttonThemeConfig?.rippleEdge;
     };
 
     const mergeRippleProps = useMemo(() => {
@@ -169,9 +147,30 @@ export const Button = React.forwardRef<View, ButtonProps>(
       buttonThemeConfig?.sizeConfig,
     ]);
 
+    const renderActivityIndicator = () => {
+      let _loadingIndicatorColor = loadingIndicatorColor;
+
+      if (isContainedButton) {
+        if (buttonColor === 'lightGray') {
+          _loadingIndicatorColor = themeColors.gray[900];
+        } else if (buttonColor === 'warning') {
+          _loadingIndicatorColor = gray[900];
+        }
+      }
+
+      return (
+        <ActivityIndicator
+          variant={loadingIndicatorVariant}
+          color={_loadingIndicatorColor}
+          switchMode={switchSpinnerMode}
+          size={loadingIndicatorSize}
+          testID={loaderTestId}
+        />
+      );
+    };
+
     const renderChild = () => {
       let textColor: ColorValue;
-      let _loadingIndicatorColor = loadingIndicatorColor;
 
       if (labelColor) {
         textColor = labelColor;
@@ -180,10 +179,8 @@ export const Button = React.forwardRef<View, ButtonProps>(
       } else if (isContainedButton) {
         if (buttonColor === 'lightGray') {
           textColor = themeColors.gray[900];
-          _loadingIndicatorColor = themeColors.gray[900];
         } else if (buttonColor === 'warning') {
           textColor = gray[900];
-          _loadingIndicatorColor = gray[900];
         } else {
           textColor = gray[50];
         }
@@ -193,52 +190,39 @@ export const Button = React.forwardRef<View, ButtonProps>(
         textColor = getVariant({ variant: buttonColor, colors: themeColors });
       }
 
-      if (loading) {
-        return (
-          <ActivityIndicator
-            variant={loadingIndicatorVariant}
-            color={_loadingIndicatorColor}
-            switchMode={switchSpinnerMode}
-            size={loadingIndicatorSize}
-            testID={loaderTestId}
-          />
-        );
-      }
       if (children) {
         return children;
       }
       return (
         <View style={styles.buttonLabelContainer}>
-          <Text
-            style={StyleSheet.flatten([
-              { color: textColor },
-              buttonLabelStyles({ size, sizeConfig: buttonThemeConfig?.sizeConfig ?? sizeConfig }),
-              generateButtonLabelStyles(),
-            ])}>
-            {label}
-          </Text>
+          <Text style={StyleSheet.flatten([{ color: textColor }, generateButtonLabelStyles()])}>{label}</Text>
         </View>
       );
     };
 
     return (
-      <Box style={[buttonRootContainerStyles({ flex }), generateButtonStyles()]} sx={sx} ref={ref}>
-        <BaseButton
-          disabled={loading || disabled}
-          style={[styles.baseButtonStyles, buttonStyles, generateBaseButtonStyles()]}
-          disableRipple={shouldDisableRipple}
-          disableScaleAnimation={shouldDisableScaleAnimation()}
-          scaleAnimationValue={buttonScaleAnimationValue()}
-          rippleEdge={buttonRippleEdge()}
-          baseButtonContainerStyle={(buttonThemeConfig?.baseButtonContainerStyle, baseButtonContainerStyle)}
-          rippleProps={mergeRippleProps}
-          sx={baseButtonSx}
-          {...props}>
-          {startThemedIcon && <View style={styles.iconContainer}>{startThemedIcon}</View>}
-          {renderChild()}
-          {endThemedIcon && <View style={styles.iconContainer}>{endThemedIcon}</View>}
-        </BaseButton>
-      </Box>
+      <BaseButton
+        disabled={loading || disabled}
+        style={[styles.buttonStyles, buttonStyles, generateButtonStyles()]}
+        disableRipple={shouldDisableRipple}
+        disableScaleAnimation={shouldDisableScaleAnimation()}
+        scaleAnimationValue={buttonScaleAnimationValue()}
+        rippleEdge={buttonRippleEdge()}
+        buttonContainerStyle={[buttonThemeConfig?.buttonContainerStyle, buttonContainerStyle]}
+        rippleProps={mergeRippleProps}
+        sx={sx}
+        ref={ref}
+        {...props}>
+        {(startThemedIcon || loading) && (
+          <View style={[styles.iconContainer, styles.leftIconContainer, startIconContainerStyles]}>
+            {loading ? renderActivityIndicator() : startThemedIcon}
+          </View>
+        )}
+        {renderChild()}
+        {endThemedIcon && (
+          <View style={[styles.iconContainer, styles.rightIconContainer, endIconContainerStyles]}>{endThemedIcon}</View>
+        )}
+      </BaseButton>
     );
   },
 );

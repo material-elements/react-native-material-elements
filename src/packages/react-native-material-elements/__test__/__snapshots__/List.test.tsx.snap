@@ -106,6 +106,147 @@ exports[`ListItem Component should render correctly 1`] = `
         }
       >
         <View
+          style={
+            [
+              {},
+              {},
+              [
+                {
+                  "alignSelf": "flex-start",
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onLayout={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            pointerEvents="box-only"
+            style={
+              {
+                "display": "flex",
+                "flexDirection": "row",
+                "paddingBottom": 2,
+                "paddingTop": 2,
+                "transform": [
+                  {
+                    "scale": 1,
+                  },
+                ],
+              }
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "width": "100%",
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "bottom": 0,
+                    "left": 0,
+                    "overflow": "hidden",
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`ListItem Component should render the actionType ( root ) component correctly 1`] = `
+<View
+  style={
+    [
+      {},
+      {},
+      [
+        {
+          "display": "flex",
+          "flexDirection": "row",
+        },
+        {
+          "marginBottom": 8,
+        },
+        {
+          "backgroundColor": "transparent",
+        },
+        undefined,
+        undefined,
+      ],
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "flex": 1,
+        },
+        {},
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {},
+          {},
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            {},
+            [
+              {
+                "alignSelf": "flex-start",
+              },
+              undefined,
+            ],
+          ]
+        }
+      >
+        <View
           accessibilityState={
             {
               "busy": undefined,
@@ -174,117 +315,6 @@ exports[`ListItem Component should render correctly 1`] = `
 </View>
 `;
 
-exports[`ListItem Component should render the actionType ( root ) component correctly 1`] = `
-<View
-  style={
-    [
-      {},
-      {},
-      [
-        {
-          "display": "flex",
-          "flexDirection": "row",
-        },
-        {
-          "marginBottom": 8,
-        },
-        {
-          "backgroundColor": "transparent",
-        },
-        undefined,
-        undefined,
-      ],
-    ]
-  }
->
-  <View
-    style={
-      [
-        {
-          "flex": 1,
-        },
-        {},
-        undefined,
-      ]
-    }
-  >
-    <View
-      style={
-        [
-          {},
-          {},
-          undefined,
-        ]
-      }
-    >
-      <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onLayout={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        pointerEvents="box-only"
-        style={
-          {
-            "display": "flex",
-            "flexDirection": "row",
-            "paddingBottom": 2,
-            "paddingTop": 2,
-            "transform": [
-              {
-                "scale": 1,
-              },
-            ],
-          }
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "flexDirection": "row",
-                "width": "100%",
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "backgroundColor": "transparent",
-                "bottom": 0,
-                "left": 0,
-                "overflow": "hidden",
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              },
-              undefined,
-            ]
-          }
-        />
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
 exports[`ListItem Component should render the child component 1`] = `
 <View
   style={
@@ -342,74 +372,89 @@ exports[`ListItem Component should render the child component 1`] = `
         }
       >
         <View
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onLayout={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          pointerEvents="box-only"
           style={
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "paddingBottom": 2,
-              "paddingTop": 2,
-              "transform": [
+            [
+              {},
+              {},
+              [
                 {
-                  "scale": 1,
+                  "alignSelf": "flex-start",
                 },
+                undefined,
               ],
-            }
+            ]
           }
         >
           <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onLayout={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            pointerEvents="box-only"
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "width": "100%",
-                },
-              ]
+              {
+                "display": "flex",
+                "flexDirection": "row",
+                "paddingBottom": 2,
+                "paddingTop": 2,
+                "transform": [
+                  {
+                    "scale": 1,
+                  },
+                ],
+              }
             }
           >
-            <Text
-              collapsable={false}
-              style={{}}
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "width": "100%",
+                  },
+                ]
+              }
             >
-              Mock
-            </Text>
+              <Text
+                collapsable={false}
+                style={{}}
+              >
+                Mock
+              </Text>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "bottom": 0,
+                    "left": 0,
+                    "overflow": "hidden",
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                  undefined,
+                ]
+              }
+            />
           </View>
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "transparent",
-                  "bottom": 0,
-                  "left": 0,
-                  "overflow": "hidden",
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                },
-                undefined,
-              ]
-            }
-          />
         </View>
       </View>
     </View>

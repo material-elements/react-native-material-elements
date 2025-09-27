@@ -34,49 +34,49 @@ exports[`Radio Component should render correctly 1`] = `
       }
     >
       <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onLayout={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        pointerEvents="box-only"
         style={
-          {
-            "padding": 8,
-            "transform": [
+          [
+            {},
+            {},
+            [
               {
-                "scale": 1,
+                "alignSelf": "flex-start",
               },
+              undefined,
             ],
-          }
+          ]
         }
       >
         <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessible={true}
           collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onLayout={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          pointerEvents="box-only"
           style={
             {
-              "alignItems": "center",
-              "borderColor": "rgba(189, 189, 189, 1)",
-              "borderRadius": 100,
-              "borderWidth": 0.8,
-              "display": "flex",
-              "justifyContent": "center",
-              "padding": 3,
+              "padding": 8,
+              "transform": [
+                {
+                  "scale": 1,
+                },
+              ],
             }
           }
         >
@@ -84,20 +84,35 @@ exports[`Radio Component should render correctly 1`] = `
             collapsable={false}
             style={
               {
-                "backgroundColor": "rgba(3, 169, 244, 1)",
+                "alignItems": "center",
+                "borderColor": "rgba(189, 189, 189, 1)",
                 "borderRadius": 100,
-                "height": 18,
-                "opacity": 0,
-                "transform": [
-                  {
-                    "scale": 0,
-                  },
-                ],
-                "width": 18,
+                "borderWidth": 0.8,
+                "display": "flex",
+                "justifyContent": "center",
+                "padding": 3,
               }
             }
-            testID="radio-item-test-id"
-          />
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "backgroundColor": "rgba(3, 169, 244, 1)",
+                  "borderRadius": 100,
+                  "height": 18,
+                  "opacity": 0,
+                  "transform": [
+                    {
+                      "scale": 0,
+                    },
+                  ],
+                  "width": 18,
+                }
+              }
+              testID="radio-item-test-id"
+            />
+          </View>
         </View>
       </View>
     </View>

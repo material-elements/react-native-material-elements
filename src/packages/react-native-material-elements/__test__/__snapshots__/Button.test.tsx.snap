@@ -6,10 +6,7 @@ exports[`Button should render correctly 1`] = `
     [
       {},
       {},
-      [
-        {},
-        [],
-      ],
+      undefined,
     ]
   }
 >
@@ -18,7 +15,15 @@ exports[`Button should render correctly 1`] = `
       [
         {},
         {},
-        undefined,
+        [
+          {
+            "alignSelf": "flex-start",
+          },
+          [
+            undefined,
+            undefined,
+          ],
+        ],
       ]
     }
   >
@@ -47,11 +52,11 @@ exports[`Button should render correctly 1`] = `
       style={
         {
           "alignItems": "center",
-          "backgroundColor": "#03A9F4",
+          "backgroundColor": "#F44336",
           "borderRadius": 8,
           "display": "flex",
           "flexDirection": "row",
-          "height": 35,
+          "height": 30,
           "justifyContent": "center",
           "overflow": "hidden",
           "transform": [
@@ -70,7 +75,6 @@ exports[`Button should render correctly 1`] = `
             "flexDirection": "row",
             "height": "100%",
             "justifyContent": "center",
-            "paddingHorizontal": 10,
           }
         }
       >
@@ -79,7 +83,9 @@ exports[`Button should render correctly 1`] = `
           style={
             {
               "color": "#FAFAFA",
-              "fontSize": 13,
+              "fontSize": 14,
+              "paddingLeft": 10,
+              "paddingRight": 10,
             }
           }
         />
@@ -111,10 +117,7 @@ exports[`Button should render correctly with inner component 1`] = `
     [
       {},
       {},
-      [
-        {},
-        [],
-      ],
+      undefined,
     ]
   }
 >
@@ -123,7 +126,15 @@ exports[`Button should render correctly with inner component 1`] = `
       [
         {},
         {},
-        undefined,
+        [
+          {
+            "alignSelf": "flex-start",
+          },
+          [
+            undefined,
+            undefined,
+          ],
+        ],
       ]
     }
   >
@@ -152,11 +163,11 @@ exports[`Button should render correctly with inner component 1`] = `
       style={
         {
           "alignItems": "center",
-          "backgroundColor": "#03A9F4",
+          "backgroundColor": "#F44336",
           "borderRadius": 8,
           "display": "flex",
           "flexDirection": "row",
-          "height": 35,
+          "height": 30,
           "justifyContent": "center",
           "overflow": "hidden",
           "transform": [

@@ -10,7 +10,7 @@ export * from './daybreakBlue';
 export * from './deepOrange';
 export * from './dustRed';
 export * from './frenchMagenta';
-export * from './geekBlue';
+export * from './greekBlue';
 export * from './goldenPurple';
 export * from './gray';
 export * from './green';

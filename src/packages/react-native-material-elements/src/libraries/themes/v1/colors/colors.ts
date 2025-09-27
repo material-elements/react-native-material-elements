@@ -10,7 +10,7 @@ import { daybreakBlue } from './daybreakBlue';
 import { deepOrange } from './deepOrange';
 import { dustRed } from './dustRed';
 import { frenchMagenta } from './frenchMagenta';
-import { geekBlue } from './geekBlue';
+import { greekBlue } from './greekBlue';
 import { goldenPurple } from './goldenPurple';
 import { green } from './green';
 import { gray } from './gray';
@@ -60,7 +60,7 @@ const initialLightTheme = {
   polarGreen,
   cyanV2,
   daybreakBlue,
-  geekBlue,
+  greekBlue,
   goldenPurple,
   frenchMagenta,
 };
@@ -108,7 +108,7 @@ const initialDarkTheme: Theme = {
   polarGreen: createDarkColorTheme('polarGreen'),
   cyanV2: createDarkColorTheme('cyanV2'),
   daybreakBlue: createDarkColorTheme('daybreakBlue'),
-  geekBlue: createDarkColorTheme('geekBlue'),
+  greekBlue: createDarkColorTheme('greekBlue'),
   goldenPurple: createDarkColorTheme('goldenPurple'),
   frenchMagenta: createDarkColorTheme('frenchMagenta'),
 };

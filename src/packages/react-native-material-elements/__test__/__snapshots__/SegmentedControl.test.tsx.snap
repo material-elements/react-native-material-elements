@@ -61,55 +61,68 @@ exports[`SegmentedControl component should render correctly with default props 1
         [
           {},
           {},
-          {
-            "flex": 1,
-          },
+          undefined,
         ]
       }
     >
       <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onLayout={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        pointerEvents="box-only"
         style={
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flex": 1,
-            "height": "100%",
-            "justifyContent": "center",
-            "transform": [
+          [
+            {},
+            {},
+            [
               {
-                "scale": 1,
+                "alignSelf": "flex-start",
               },
+              undefined,
             ],
-            "zIndex": 10,
-          }
+          ]
         }
-        testID="segmented-item-0"
       >
-        <Text
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessible={true}
           collapsable={false}
-          style={{}}
-        />
+          focusable={true}
+          onClick={[Function]}
+          onLayout={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          pointerEvents="box-only"
+          style={
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flex": 1,
+              "height": "100%",
+              "justifyContent": "center",
+              "transform": [
+                {
+                  "scale": 1,
+                },
+              ],
+              "zIndex": 10,
+            }
+          }
+          testID="segmented-item-0"
+        >
+          <Text
+            collapsable={false}
+            style={{}}
+          />
+        </View>
       </View>
     </View>
   </View>
@@ -145,54 +158,67 @@ exports[`SegmentedControlItem component should render correctly with default pro
     [
       {},
       {},
-      {
-        "flex": 1,
-      },
+      undefined,
     ]
   }
 >
   <View
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onLayout={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    pointerEvents="box-only"
     style={
-      {
-        "alignItems": "center",
-        "display": "flex",
-        "flex": 1,
-        "height": "100%",
-        "justifyContent": "center",
-        "transform": [
+      [
+        {},
+        {},
+        [
           {
-            "scale": 1,
+            "alignSelf": "flex-start",
           },
+          undefined,
         ],
-        "zIndex": 10,
-      }
+      ]
     }
   >
-    <Text
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessible={true}
       collapsable={false}
-      style={{}}
-    />
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      pointerEvents="box-only"
+      style={
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "flex": 1,
+          "height": "100%",
+          "justifyContent": "center",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+          "zIndex": 10,
+        }
+      }
+    >
+      <Text
+        collapsable={false}
+        style={{}}
+      />
+    </View>
   </View>
 </View>
 `;

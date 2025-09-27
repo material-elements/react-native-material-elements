@@ -1,5 +1,13 @@
 import React from 'react';
-import { ActivityIndicatorProps, ColorValue, TextStyle, TouchableWithoutFeedback, ViewProps, ViewStyle } from 'react-native';
+import {
+  ActivityIndicatorProps,
+  ColorValue,
+  StyleProp,
+  TextStyle,
+  TouchableWithoutFeedback,
+  ViewProps,
+  ViewStyle,
+} from 'react-native';
 import { ThemedIconProp } from '../../hooks';
 import { BaseStyles, StyledProps } from '../../libraries/style/styleTypes';
 import { Theme } from '../../libraries/themes/theme';
@@ -44,7 +52,7 @@ export interface BaseButtonProps extends React.ComponentPropsWithRef<typeof Touc
    */
   scaleAnimationValue?: number;
 
-  baseButtonContainerStyle?: ViewStyle;
+  buttonContainerStyle?: StyleProp<ViewStyle>;
 
   /**
    * button scale animation duration
@@ -55,7 +63,13 @@ export interface BaseButtonProps extends React.ComponentPropsWithRef<typeof Touc
    * Button child component wrapper props
    */
   componentWrapperProps?: ViewProps;
+  /**
+   * Full width button
+   */
+  fullWidth?: boolean;
 }
+
+export type BaseButtonStyles = Pick<BaseButtonProps, 'fullWidth'>;
 
 /**
  * Define a union type for the possible variations of a button component,
@@ -117,30 +131,6 @@ export interface ButtonProps extends Omit<BaseButtonProps, 'sx'> {
    */
   labelColor?: ColorValue;
   /**
-   * Base button styles
-   */
-  baseButtonStyles?: ViewStyle;
-  /**
-   * Button container flex style
-   */
-  flex?: number;
-  /**
-   * Base button sx styles
-   */
-  baseButtonSx?: BaseButtonProps['sx'];
-  /**
-   * Override root disable scale animation
-   */
-  overrideRootDisableScaleAnimation?: boolean;
-  /**
-   * Override root scale animation value
-   */
-  overrideRootScaleAnimationValue?: boolean;
-  /**
-   * Override root ripple edge
-   */
-  overrideRootRippleEdge?: boolean;
-  /**
    * Button background color
    */
   backgroundColor?: ColorValue;
@@ -157,9 +147,17 @@ export interface ButtonProps extends Omit<BaseButtonProps, 'sx'> {
    */
   startIcon?: ThemedIconProp;
   /**
+   * Start icon container styles
+   */
+  startIconContainerStyles?: StyleProp<ViewStyle>;
+  /**
    * Button end icon
    */
   endIcon?: ThemedIconProp;
+  /**
+   * End icon container styles
+   */
+  endIconContainerStyles?: StyleProp<ViewStyle>;
   /**
    * Loading spinner color
    */
@@ -177,7 +175,6 @@ export interface ButtonProps extends Omit<BaseButtonProps, 'sx'> {
    */
   loadingIndicatorSize?: ActivityIndicatorProps['size'];
 }
-export interface ButtonRootContainerStylesInterface extends Pick<ButtonProps, 'flex'> {}
 
 /**
  * Defines variations of IconButton component.

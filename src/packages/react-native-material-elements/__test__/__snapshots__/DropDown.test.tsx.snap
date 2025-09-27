@@ -187,8 +187,10 @@ exports[`DropDownListContainer component should render properly with default pro
       onStartShouldSetResponder={[Function]}
       style={
         {
-          "backgroundColor": "#E0E0E0",
+          "backgroundColor": "#F5F5F5",
+          "borderColor": "#9E9E9E",
           "borderRadius": 5,
+          "borderWidth": 0.2,
           "marginTop": 5,
           "maxHeight": undefined,
           "overflow": "hidden",
@@ -198,6 +200,7 @@ exports[`DropDownListContainer component should render properly with default pro
       }
     >
       <RCTScrollView
+        data={[]}
         getItem={[Function]}
         getItemCount={[Function]}
         keyExtractor={[Function]}
@@ -301,8 +304,10 @@ exports[`DropDownListContainer component should render the search bar component 
       onStartShouldSetResponder={[Function]}
       style={
         {
-          "backgroundColor": "#E0E0E0",
+          "backgroundColor": "#F5F5F5",
+          "borderColor": "#9E9E9E",
           "borderRadius": 5,
+          "borderWidth": 0.2,
           "marginTop": 5,
           "maxHeight": undefined,
           "overflow": "hidden",
@@ -323,52 +328,77 @@ exports[`DropDownListContainer component should render the search bar component 
           ]
         }
       >
-        <View>
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#ECEFF1",
-                },
-                {
-                  "testID": "undefined-wrapper",
-                },
-                [
-                  {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "paddingHorizontal": 10,
-                    "width": "100%",
-                  },
-                  undefined,
-                  {
-                    "borderColor": "#757575",
-                    "borderWidth": 0.7,
-                    "height": 30,
-                  },
-                ],
-              ]
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FAFAFA",
+              "borderColor": "#BDBDBD",
+              "borderRadius": 5,
+              "borderWidth": 0,
+              "display": "flex",
+              "flexDirection": "row",
+              "opacity": 1,
+              "paddingHorizontal": 14,
+              "position": "relative",
+              "width": "100%",
             }
-            testID="undefined-wrapper"
-          >
-            <TextInput
-              onChangeText={[Function]}
-              placeholder="Search"
-              placeholderTextColor="#757575"
-              style={
-                {
-                  "color": "#212121",
-                  "flex": 1,
-                  "minHeight": 35,
-                  "width": "100%",
-                }
+          }
+        >
+          <TextInput
+            editable={true}
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            onLayout={[Function]}
+            placeholder="Search"
+            style={
+              {
+                "backgroundColor": "transparent",
+                "color": "#424242",
+                "flex": 1,
+                "minHeight": 30,
+                "position": "relative",
+                "width": "100%",
+                "zIndex": 12,
               }
-            />
-          </View>
+            }
+          />
         </View>
       </View>
       <RCTScrollView
+        data={
+          [
+            {
+              "id": "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+              "title": "First Item",
+            },
+            {
+              "id": "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+              "title": "Second Item",
+            },
+            {
+              "id": "58694a0f-3da1-471f-bd96-145571e29d72",
+              "title": "Third Item",
+            },
+            {
+              "id": "58694a0f-3da1-471f-bd96-145571e29d12",
+              "title": "Four Item",
+            },
+            {
+              "id": "58694a0f-3da1-471f-bd96-145571e29415",
+              "title": "Five Item",
+            },
+            {
+              "id": "58694a0f-3da1-471f-bd96-145571e29419",
+              "title": "Six Item",
+            },
+            {
+              "id": "58694a0f-3da1-471f-bd96-145571e29412",
+              "title": "Seven Item",
+            },
+          ]
+        }
         getItem={[Function]}
         getItemCount={[Function]}
         keyExtractor={[Function]}
@@ -397,7 +427,1177 @@ exports[`DropDownListContainer component should render the search bar component 
         }
         viewabilityConfigCallbackPairs={[]}
       >
-        <View />
+        <View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                [
+                  {},
+                  {},
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    },
+                    {
+                      "marginBottom": 4,
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                    undefined,
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flex": 1,
+                    },
+                    {},
+                    undefined,
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {},
+                      {},
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {},
+                        {},
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onLayout={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      pointerEvents="box-only"
+                      style={
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "minHeight": undefined,
+                          "paddingBottom": 2,
+                          "paddingTop": 2,
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexDirection": "row",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {},
+                              {},
+                              [
+                                {
+                                  "display": "flex",
+                                  "flex": 1,
+                                  "justifyContent": "center",
+                                },
+                                {
+                                  "alignItems": "flex-start",
+                                  "paddingBottom": 5,
+                                  "paddingLeft": 15,
+                                  "paddingRight": 15,
+                                  "paddingTop": 5,
+                                },
+                                {},
+                                undefined,
+                              ],
+                            ]
+                          }
+                        >
+                          <Text
+                            collapsable={false}
+                            style={
+                              {
+                                "color": "#212121",
+                                "fontSize": 12,
+                              }
+                            }
+                          >
+                            First Item
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                              "bottom": 0,
+                              "left": 0,
+                              "overflow": "hidden",
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            undefined,
+                          ]
+                        }
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                [
+                  {},
+                  {},
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    },
+                    {
+                      "marginBottom": 4,
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                    undefined,
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flex": 1,
+                    },
+                    {},
+                    undefined,
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {},
+                      {},
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {},
+                        {},
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onLayout={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      pointerEvents="box-only"
+                      style={
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "minHeight": undefined,
+                          "paddingBottom": 2,
+                          "paddingTop": 2,
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexDirection": "row",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {},
+                              {},
+                              [
+                                {
+                                  "display": "flex",
+                                  "flex": 1,
+                                  "justifyContent": "center",
+                                },
+                                {
+                                  "alignItems": "flex-start",
+                                  "paddingBottom": 5,
+                                  "paddingLeft": 15,
+                                  "paddingRight": 15,
+                                  "paddingTop": 5,
+                                },
+                                {},
+                                undefined,
+                              ],
+                            ]
+                          }
+                        >
+                          <Text
+                            collapsable={false}
+                            style={
+                              {
+                                "color": "#212121",
+                                "fontSize": 12,
+                              }
+                            }
+                          >
+                            Second Item
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                              "bottom": 0,
+                              "left": 0,
+                              "overflow": "hidden",
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            undefined,
+                          ]
+                        }
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                [
+                  {},
+                  {},
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    },
+                    {
+                      "marginBottom": 4,
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                    undefined,
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flex": 1,
+                    },
+                    {},
+                    undefined,
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {},
+                      {},
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {},
+                        {},
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onLayout={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      pointerEvents="box-only"
+                      style={
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "minHeight": undefined,
+                          "paddingBottom": 2,
+                          "paddingTop": 2,
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexDirection": "row",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {},
+                              {},
+                              [
+                                {
+                                  "display": "flex",
+                                  "flex": 1,
+                                  "justifyContent": "center",
+                                },
+                                {
+                                  "alignItems": "flex-start",
+                                  "paddingBottom": 5,
+                                  "paddingLeft": 15,
+                                  "paddingRight": 15,
+                                  "paddingTop": 5,
+                                },
+                                {},
+                                undefined,
+                              ],
+                            ]
+                          }
+                        >
+                          <Text
+                            collapsable={false}
+                            style={
+                              {
+                                "color": "#212121",
+                                "fontSize": 12,
+                              }
+                            }
+                          >
+                            Third Item
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                              "bottom": 0,
+                              "left": 0,
+                              "overflow": "hidden",
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            undefined,
+                          ]
+                        }
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                [
+                  {},
+                  {},
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    },
+                    {
+                      "marginBottom": 4,
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                    undefined,
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flex": 1,
+                    },
+                    {},
+                    undefined,
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {},
+                      {},
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {},
+                        {},
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onLayout={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      pointerEvents="box-only"
+                      style={
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "minHeight": undefined,
+                          "paddingBottom": 2,
+                          "paddingTop": 2,
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexDirection": "row",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {},
+                              {},
+                              [
+                                {
+                                  "display": "flex",
+                                  "flex": 1,
+                                  "justifyContent": "center",
+                                },
+                                {
+                                  "alignItems": "flex-start",
+                                  "paddingBottom": 5,
+                                  "paddingLeft": 15,
+                                  "paddingRight": 15,
+                                  "paddingTop": 5,
+                                },
+                                {},
+                                undefined,
+                              ],
+                            ]
+                          }
+                        >
+                          <Text
+                            collapsable={false}
+                            style={
+                              {
+                                "color": "#212121",
+                                "fontSize": 12,
+                              }
+                            }
+                          >
+                            Four Item
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                              "bottom": 0,
+                              "left": 0,
+                              "overflow": "hidden",
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            undefined,
+                          ]
+                        }
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                [
+                  {},
+                  {},
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    },
+                    {
+                      "marginBottom": 4,
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                    undefined,
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flex": 1,
+                    },
+                    {},
+                    undefined,
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {},
+                      {},
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {},
+                        {},
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onLayout={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      pointerEvents="box-only"
+                      style={
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "minHeight": undefined,
+                          "paddingBottom": 2,
+                          "paddingTop": 2,
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexDirection": "row",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {},
+                              {},
+                              [
+                                {
+                                  "display": "flex",
+                                  "flex": 1,
+                                  "justifyContent": "center",
+                                },
+                                {
+                                  "alignItems": "flex-start",
+                                  "paddingBottom": 5,
+                                  "paddingLeft": 15,
+                                  "paddingRight": 15,
+                                  "paddingTop": 5,
+                                },
+                                {},
+                                undefined,
+                              ],
+                            ]
+                          }
+                        >
+                          <Text
+                            collapsable={false}
+                            style={
+                              {
+                                "color": "#212121",
+                                "fontSize": 12,
+                              }
+                            }
+                          >
+                            Five Item
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                              "bottom": 0,
+                              "left": 0,
+                              "overflow": "hidden",
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            undefined,
+                          ]
+                        }
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                [
+                  {},
+                  {},
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    },
+                    {
+                      "marginBottom": 4,
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                    undefined,
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flex": 1,
+                    },
+                    {},
+                    undefined,
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {},
+                      {},
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {},
+                        {},
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onLayout={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      pointerEvents="box-only"
+                      style={
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "minHeight": undefined,
+                          "paddingBottom": 2,
+                          "paddingTop": 2,
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexDirection": "row",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {},
+                              {},
+                              [
+                                {
+                                  "display": "flex",
+                                  "flex": 1,
+                                  "justifyContent": "center",
+                                },
+                                {
+                                  "alignItems": "flex-start",
+                                  "paddingBottom": 5,
+                                  "paddingLeft": 15,
+                                  "paddingRight": 15,
+                                  "paddingTop": 5,
+                                },
+                                {},
+                                undefined,
+                              ],
+                            ]
+                          }
+                        >
+                          <Text
+                            collapsable={false}
+                            style={
+                              {
+                                "color": "#212121",
+                                "fontSize": 12,
+                              }
+                            }
+                          >
+                            Six Item
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                              "bottom": 0,
+                              "left": 0,
+                              "overflow": "hidden",
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            undefined,
+                          ]
+                        }
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                [
+                  {},
+                  {},
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    },
+                    {
+                      "marginBottom": 4,
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                    undefined,
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flex": 1,
+                    },
+                    {},
+                    undefined,
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {},
+                      {},
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {},
+                        {},
+                        [
+                          {
+                            "alignSelf": "flex-start",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onLayout={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      pointerEvents="box-only"
+                      style={
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "minHeight": undefined,
+                          "paddingBottom": 2,
+                          "paddingTop": 2,
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexDirection": "row",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {},
+                              {},
+                              [
+                                {
+                                  "display": "flex",
+                                  "flex": 1,
+                                  "justifyContent": "center",
+                                },
+                                {
+                                  "alignItems": "flex-start",
+                                  "paddingBottom": 5,
+                                  "paddingLeft": 15,
+                                  "paddingRight": 15,
+                                  "paddingTop": 5,
+                                },
+                                {},
+                                undefined,
+                              ],
+                            ]
+                          }
+                        >
+                          <Text
+                            collapsable={false}
+                            style={
+                              {
+                                "color": "#212121",
+                                "fontSize": 12,
+                              }
+                            }
+                          >
+                            Seven Item
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                              "bottom": 0,
+                              "left": 0,
+                              "overflow": "hidden",
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            undefined,
+                          ]
+                        }
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
       </RCTScrollView>
     </View>
   </View>

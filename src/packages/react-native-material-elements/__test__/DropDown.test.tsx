@@ -3,6 +3,16 @@ import * as RN from 'react-native';
 import { DropDown, DropDownListContainer, gray, Text } from '../src';
 import { fireEvent, render, waitFor } from './test-utils';
 
+const mockData = [
+  { id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba', title: 'First Item' },
+  { id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63', title: 'Second Item' },
+  { id: '58694a0f-3da1-471f-bd96-145571e29d72', title: 'Third Item' },
+  { id: '58694a0f-3da1-471f-bd96-145571e29d12', title: 'Four Item' },
+  { id: '58694a0f-3da1-471f-bd96-145571e29415', title: 'Five Item' },
+  { id: '58694a0f-3da1-471f-bd96-145571e29419', title: 'Six Item' },
+  { id: '58694a0f-3da1-471f-bd96-145571e29412', title: 'Seven Item' },
+];
+
 describe('DropDown Component', () => {
   const mockInputWrapperTouchTestId = 'input-wrapper-touch-test-id';
   const mockInputTestId = 'input-test-id';
@@ -17,7 +27,7 @@ describe('DropDown Component', () => {
   });
 
   it('should render correctly', async () => {
-    const { toJSON } = render(<DropDown />);
+    const { toJSON } = render(<DropDown data={mockData} />);
     await waitFor(() => {
       expect(toJSON()).toMatchSnapshot();
     });
@@ -25,14 +35,14 @@ describe('DropDown Component', () => {
 
   it('should render the inputStartAdornment component correctly', () => {
     const label = 'inputStartAdornmentComponent';
-    const { getByText } = render(<DropDown inputStartAdornment={<Text>{label}</Text>} />);
+    const { getByText } = render(<DropDown inputStartAdornment={<Text>{label}</Text>} data={mockData} />);
     const inputStartAdornment = getByText(label);
     expect(inputStartAdornment).toBeDefined();
   });
 
   it('should render the inputEndAdornment component correctly', () => {
     const label = 'inputEndAdornmentComponent';
-    const { getByText } = render(<DropDown inputEndAdornment={<Text>{label}</Text>} />);
+    const { getByText } = render(<DropDown inputEndAdornment={<Text>{label}</Text>} data={mockData} />);
     const inputEndAdornment = getByText(label);
     expect(inputEndAdornment).toBeDefined();
   });
@@ -41,7 +51,11 @@ describe('DropDown Component', () => {
     const mockOnDropDownClicked = jest.fn();
 
     const { getByTestId } = render(
-      <DropDown inputWrapperTouchableOpacityTestId={mockInputWrapperTouchTestId} onDropDownClicked={mockOnDropDownClicked} />,
+      <DropDown
+        data={mockData}
+        inputWrapperTouchableOpacityTestId={mockInputWrapperTouchTestId}
+        onDropDownClicked={mockOnDropDownClicked}
+      />,
     );
 
     const wrapper = getByTestId(mockInputWrapperTouchTestId);
@@ -51,28 +65,30 @@ describe('DropDown Component', () => {
   });
 
   it('should render the input component', () => {
-    const { getByTestId } = render(<DropDown dropDownInputTestId={mockInputTestId} />);
+    const { getByTestId } = render(<DropDown data={mockData} dropDownInputTestId={mockInputTestId} />);
 
     const input = getByTestId(mockInputTestId);
     expect(input).toBeDefined();
   });
 
   it('should render icon input component when variation prop passed as icon', () => {
-    const { getByTestId } = render(<DropDown variation="icon" dropDownInputTestId={mockInputTestId} />);
+    const { getByTestId } = render(<DropDown data={mockData} variation="icon" dropDownInputTestId={mockInputTestId} />);
 
     const input = getByTestId(mockInputTestId);
     expect(input).toBeDefined();
   });
 
   it('should show empty value when input component mount', () => {
-    const { getByTestId } = render(<DropDown variation="icon" dropDownInputTestId={mockInputTestId} />);
+    const { getByTestId } = render(<DropDown data={mockData} variation="icon" dropDownInputTestId={mockInputTestId} />);
 
     const input = getByTestId(mockInputTestId);
     expect(input.props.value).toEqual('');
   });
 
   it('should not render any input component when invalid variation prop passed', () => {
-    const { queryByTestId } = render(<DropDown variation={'unknown' as any} dropDownInputTestId={mockInputTestId} />);
+    const { queryByTestId } = render(
+      <DropDown data={mockData} variation={'unknown' as any} dropDownInputTestId={mockInputTestId} />,
+    );
 
     const input = queryByTestId(mockInputTestId);
     expect(input).toBeNull();
@@ -82,7 +98,7 @@ describe('DropDown Component', () => {
     const { getByTestId } = render(
       <DropDown
         data={[{ id: '1', title: 'first_item' }]}
-        selectedListItems={[{ id: '1', title: 'first_item' }]}
+        selectedListItems={[{ id: '1' }]}
         variation="icon"
         dropDownInputTestId={mockInputTestId}
       />,
@@ -97,7 +113,7 @@ describe('DropDown Component', () => {
     const { getByTestId } = render(
       <DropDown
         data={[{ id: '1', title: 'first_item' }]}
-        selectedListItems={[{ id: '1', title: 'first_item' }]}
+        selectedListItems={[{ id: '1' }]}
         variation="icon"
         multiselect
         dropDownInputTestId={mockInputTestId}
@@ -130,6 +146,7 @@ describe('DropDownListContainer component', () => {
       <DropDownListContainer
         inputLayoutRectangle={{ x: 0, y: 0, width: 0, height: 0 }}
         dropDownContainerRect={{ x: 0, y: 0, width: 0, height: 0, pageX: 0, pageY: 0 }}
+        data={[]}
       />,
     );
 
@@ -193,7 +210,7 @@ describe('DropDownListContainer component', () => {
         data={[{ id: '1', title: 'first_item' }]}
         onItemClicked={mockOnItemClickedHandler}
         listItemTestId={mockListItemTestId}
-        selectedListItems={[{ id: '1', title: 'first_item' }]}
+        selectedListItems={[{ id: '1' }]}
         showSelectedItem
       />,
     );
@@ -227,7 +244,7 @@ describe('DropDownListContainer component', () => {
         inputLayoutRectangle={{ x: 0, y: 0, width: 0, height: 0 }}
         dropDownContainerRect={{ x: 0, y: 0, width: 0, height: 0, pageX: 0, pageY: 0 }}
         data={[{ id: '1', title: 'first_item' }]}
-        selectedListItems={[{ id: '1', title: 'first_item' }]}
+        selectedListItems={[{ id: '1' }]}
         listItemEndAdornment={<Text>Hello</Text>}
         displaySelectedAdornment
         showSelectedItem
@@ -244,6 +261,7 @@ describe('DropDownListContainer component', () => {
         inputLayoutRectangle={{ x: 0, y: 0, width: 0, height: 0 }}
         dropDownContainerRect={{ x: 0, y: 0, width: 0, height: 0, pageX: 0, pageY: 0 }}
         search
+        data={mockData}
       />,
     );
 
