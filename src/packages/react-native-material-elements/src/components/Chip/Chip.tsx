@@ -27,10 +27,9 @@ export const Chip = React.forwardRef<View, ChipProps>(
       activeBackgroundColor,
       isActive = false,
       variant = 'filled',
-      color = 'secondary',
-      square = false,
+      color = 'primary',
+      square,
       syncBorderAndLabelColor = false,
-      overrideRootSquareConfig = false,
       ...props
     },
     ref,
@@ -68,10 +67,7 @@ export const Chip = React.forwardRef<View, ChipProps>(
     };
 
     const chipSquareHandler = () => {
-      if (overrideRootSquareConfig) {
-        return square;
-      }
-      return chipThemeConfig?.square ?? square;
+      return square ?? chipThemeConfig?.square;
     };
 
     const chipStyles = useMemo(
@@ -145,7 +141,7 @@ export const Chip = React.forwardRef<View, ChipProps>(
                 {startThemedIcon}
               </TouchableOpacity>
             )}
-            {renderLabel()}
+            {label && renderLabel()}
             {endThemedIcon && (
               <TouchableOpacity activeOpacity={1} {...endIconProps}>
                 {endThemedIcon}

@@ -49,12 +49,12 @@ exports[`Chip Component should match the snapshot with default props 1`] = `
       style={
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "#1890ff",
-          "borderRadius": 20,
-          "paddingBottom": 5,
-          "paddingLeft": 10,
-          "paddingRight": 10,
-          "paddingTop": 5,
+          "backgroundColor": "#F44336",
+          "borderRadius": 6,
+          "paddingBottom": 3,
+          "paddingLeft": 7,
+          "paddingRight": 7,
+          "paddingTop": 3,
           "transform": [
             {
               "scale": 1,
@@ -84,6 +84,7 @@ exports[`Chip Component should match the snapshot with default props 1`] = `
             {
               "color": "#FAFAFA",
               "fontSize": 14,
+              "fontWeight": "500",
             }
           }
         />
@@ -142,12 +143,12 @@ exports[`Chip Component should render correctly with end icon 1`] = `
       style={
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "#1890ff",
-          "borderRadius": 20,
-          "paddingBottom": 5,
-          "paddingLeft": 10,
-          "paddingRight": 10,
-          "paddingTop": 5,
+          "backgroundColor": "#F44336",
+          "borderRadius": 6,
+          "paddingBottom": 3,
+          "paddingLeft": 7,
+          "paddingRight": 7,
+          "paddingTop": 3,
           "transform": [
             {
               "scale": 1,
@@ -172,15 +173,6 @@ exports[`Chip Component should render correctly with end icon 1`] = `
           ]
         }
       >
-        <Text
-          collapsable={false}
-          style={
-            {
-              "color": "#FAFAFA",
-              "fontSize": 14,
-            }
-          }
-        />
         <View
           accessibilityState={
             {
@@ -303,12 +295,12 @@ exports[`Chip Component should render correctly with start icon 1`] = `
       style={
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "#1890ff",
-          "borderRadius": 20,
-          "paddingBottom": 5,
-          "paddingLeft": 10,
-          "paddingRight": 10,
-          "paddingTop": 5,
+          "backgroundColor": "#F44336",
+          "borderRadius": 6,
+          "paddingBottom": 3,
+          "paddingLeft": 7,
+          "paddingRight": 7,
+          "paddingTop": 3,
           "transform": [
             {
               "scale": 1,
@@ -400,15 +392,6 @@ exports[`Chip Component should render correctly with start icon 1`] = `
             </View>
           </View>
         </View>
-        <Text
-          collapsable={false}
-          style={
-            {
-              "color": "#FAFAFA",
-              "fontSize": 14,
-            }
-          }
-        />
       </View>
     </View>
   </View>
