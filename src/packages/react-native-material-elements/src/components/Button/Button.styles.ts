@@ -169,7 +169,7 @@ export const buttonLabelStyles = ({ size, sizeConfig }: ButtonLabelStylesParams)
       break;
   }
 
-  return { fontSize };
+  return { fontSize, fontWeight: '500' };
 };
 
 export const baseButtonStyles = ({ fullWidth }: BaseButtonStyles): ViewStyle => {
