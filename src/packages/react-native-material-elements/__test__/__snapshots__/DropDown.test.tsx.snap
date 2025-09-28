@@ -304,8 +304,8 @@ exports[`DropDownListContainer component should render the search bar component 
       onStartShouldSetResponder={[Function]}
       style={
         {
-          "backgroundColor": "#F5F5F5",
-          "borderColor": "#9E9E9E",
+          "backgroundColor": "#424242",
+          "borderColor": "#BDBDBD",
           "borderRadius": 5,
           "borderWidth": 0.2,
           "marginTop": 5,
@@ -332,8 +332,8 @@ exports[`DropDownListContainer component should render the search bar component 
           style={
             {
               "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "#BDBDBD",
+              "backgroundColor": "#212121",
+              "borderColor": "#9E9E9E",
               "borderRadius": 5,
               "borderWidth": 0,
               "display": "flex",
@@ -355,7 +355,7 @@ exports[`DropDownListContainer component should render the search bar component 
             style={
               {
                 "backgroundColor": "transparent",
-                "color": "#424242",
+                "color": "#F5F5F5",
                 "flex": 1,
                 "minHeight": 30,
                 "position": "relative",
@@ -564,7 +564,7 @@ exports[`DropDownListContainer component should render the search bar component 
                             collapsable={false}
                             style={
                               {
-                                "color": "#212121",
+                                "color": "#FAFAFA",
                                 "fontSize": 12,
                               }
                             }
@@ -731,7 +731,7 @@ exports[`DropDownListContainer component should render the search bar component 
                             collapsable={false}
                             style={
                               {
-                                "color": "#212121",
+                                "color": "#FAFAFA",
                                 "fontSize": 12,
                               }
                             }
@@ -898,7 +898,7 @@ exports[`DropDownListContainer component should render the search bar component 
                             collapsable={false}
                             style={
                               {
-                                "color": "#212121",
+                                "color": "#FAFAFA",
                                 "fontSize": 12,
                               }
                             }
@@ -1065,7 +1065,7 @@ exports[`DropDownListContainer component should render the search bar component 
                             collapsable={false}
                             style={
                               {
-                                "color": "#212121",
+                                "color": "#FAFAFA",
                                 "fontSize": 12,
                               }
                             }
@@ -1232,7 +1232,7 @@ exports[`DropDownListContainer component should render the search bar component 
                             collapsable={false}
                             style={
                               {
-                                "color": "#212121",
+                                "color": "#FAFAFA",
                                 "fontSize": 12,
                               }
                             }
@@ -1399,7 +1399,7 @@ exports[`DropDownListContainer component should render the search bar component 
                             collapsable={false}
                             style={
                               {
-                                "color": "#212121",
+                                "color": "#FAFAFA",
                                 "fontSize": 12,
                               }
                             }
@@ -1566,7 +1566,7 @@ exports[`DropDownListContainer component should render the search bar component 
                             collapsable={false}
                             style={
                               {
-                                "color": "#212121",
+                                "color": "#FAFAFA",
                                 "fontSize": 12,
                               }
                             }

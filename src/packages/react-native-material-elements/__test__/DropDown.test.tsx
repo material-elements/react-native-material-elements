@@ -1,4 +1,3 @@
-import React from 'react';
 import * as RN from 'react-native';
 import { DropDown, DropDownListContainer, gray, Text } from '../src';
 import { fireEvent, render, waitFor } from './test-utils';
@@ -235,7 +234,7 @@ describe('DropDownListContainer component', () => {
 
     const title = getByText('first_item');
     expect(title).toBeDefined();
-    expect(title.props.style.color).toEqual(gray[900]);
+    expect(title.props.style.color).toEqual(gray[50]);
   });
 
   it('should show the listItemEndAdornment item when list items is isSelected', () => {

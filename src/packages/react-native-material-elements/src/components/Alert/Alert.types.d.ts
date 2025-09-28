@@ -18,7 +18,7 @@ export interface AlertProps extends BoxProps {
   /** Optional action element (e.g., button or link) displayed inside the alert */
   action?: React.ReactNode;
   /** Defines the visual style of the alert: 'filled' for solid background, 'outlined' for bordered */
-  variation?: 'filled' | 'outlined';
+  variation?: 'filled' | 'outlined' | 'ghost';
   /** Maximum length of the title text, useful for truncating or layout adjustment */
   titleMixLength?: number;
   /** Optional icon displayed at the start (left) of the alert */
@@ -32,7 +32,9 @@ export interface AlertProps extends BoxProps {
 }
 export interface GetAlertContainerStylesParams extends Pick<AlertProps, 'variant' | 'variation'> {
   colors: Theme;
+  colorScheme?: ColorSchemeName;
 }
 export interface GetAlertTitleStylesParams extends Pick<AlertProps, 'variant' | 'variation'> {
   colorScheme: ColorSchemeName;
+  colors: Theme;
 }

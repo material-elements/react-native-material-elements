@@ -1,3 +1,4 @@
+import { ColorSchemeName } from 'react-native';
 import {
   ButtonGroupProps,
   DividerColorThemeConfig,
@@ -226,6 +227,10 @@ export interface ThemeProviderProps extends ThemeConfigInterface {
    * Optional theme dimensions values
    */
   dimensions?: ThemeDimensions;
+  /**
+   * Theme mode
+   */
+  mode?: ColorSchemeName;
 }
 
 export type CreateColorShades = ColorShades;
