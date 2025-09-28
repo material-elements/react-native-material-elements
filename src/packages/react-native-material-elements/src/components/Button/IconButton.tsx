@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleProp, View, ViewStyle } from 'react-native';
 import { useRestyle, useThemedProps } from '../../hooks';
 import { useThemeColorsSelector, useThemeIconButtonConfigSelector } from '../../libraries';
 import { merge } from '../../utils';
 import { BaseButton } from './BaseButton';
-import { getButtonStyles, styles } from './Button.styles';
+import { getButtonStyles } from './Button.styles';
 import { IconButtonProps } from './Button.types';
 
 export const IconButton = React.forwardRef<View, IconButtonProps>(
@@ -14,7 +14,6 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
       children,
       style,
       rippleProps,
-      baseButtonContainerStyle,
       icon,
       overrideRootRippleEdge = false,
       disableRipple = false,
@@ -35,23 +34,13 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
 
     const isRoundedIconButton = variation === 'roundedIconButton';
 
-    const { style: roundedIconButtonStyles, baseButtonContainerStyle: roundedIconButtonBaseButtonContainerStyle } =
-      iconButtonThemeConfig?.roundedIconButton || {};
-    const { style: squareIconButtonStyles, baseButtonContainerStyle: squareIconButtonBaseButtonContainerStyle } =
-      iconButtonThemeConfig?.squareIconButton || {};
+    const { style: roundedIconButtonStyles } = iconButtonThemeConfig?.roundedIconButton || {};
+    const { style: squareIconButtonStyles } = iconButtonThemeConfig?.squareIconButton || {};
 
     const generateButtonStyles = (): StyleProp<ViewStyle> => {
       return [iconButtonThemeConfig?.style, isRoundedIconButton ? roundedIconButtonStyles : squareIconButtonStyles, style].filter(
         Boolean,
       );
-    };
-
-    const generateBaseButtonStyles = (): StyleProp<ViewStyle> => {
-      return [
-        iconButtonThemeConfig?.baseButtonContainerStyle,
-        isRoundedIconButton ? roundedIconButtonBaseButtonContainerStyle : squareIconButtonBaseButtonContainerStyle,
-        baseButtonContainerStyle,
-      ].filter(Boolean);
     };
 
     const iconButtonVariation = () => {
@@ -94,7 +83,6 @@ export const IconButton = React.forwardRef<View, IconButtonProps>(
       <BaseButton
         ref={ref}
         style={[iconButtonStyles, getStyleFromProps(), generateButtonStyles()]}
-        baseButtonContainerStyle={StyleSheet.flatten([styles.iconBaseButtonContainer, generateBaseButtonStyles()])}
         rippleProps={mergeRippleProps}
         disableRipple={iconButtonDisableRipple()}
         rippleEdge={iconButtonRippleEdge()}

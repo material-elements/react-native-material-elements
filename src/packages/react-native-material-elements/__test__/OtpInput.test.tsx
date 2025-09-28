@@ -36,6 +36,22 @@ describe('OTP Component', () => {
     expect(mockOnChange).toHaveBeenCalledTimes(1);
   });
 
+  it('calls onChange with the correct OTP value 2', () => {
+    const { getByTestId } = render(<OTPInput length={3} onChange={mockOnChange} />);
+
+    const firstInput = getByTestId('otp-input-0');
+    fireEvent.changeText(firstInput, '1');
+
+    const secondInput = getByTestId('otp-input-1');
+    fireEvent.changeText(secondInput, '2');
+
+    const thirdInput = getByTestId('otp-input-2');
+    fireEvent.changeText(thirdInput, '3');
+
+    expect(mockOnChange).toHaveBeenCalledWith('123');
+    expect(mockOnChange).toHaveBeenCalledTimes(3);
+  });
+
   it('focuses the next input when a digit is entered', () => {
     const { getByTestId } = render(<OTPInput length={3} />);
 

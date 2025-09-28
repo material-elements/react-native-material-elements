@@ -327,7 +327,6 @@ export const Snackbar: React.FC<SnackbarProps> = ({
               onPress={actionButtonOnPressHandler}
               labelStyles={styles.buttonLabel}
               style={StyleSheet.flatten([snackbarConfig?.actionButtonStyles, styles.actionButtonContainer])}
-              baseButtonStyles={styles.actionButton}
               {...actionButtonProps}>
               {snackbarConfig?.actionButtonItem}
             </Button>

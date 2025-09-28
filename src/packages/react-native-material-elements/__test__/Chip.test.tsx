@@ -412,4 +412,9 @@ describe('Chip Component', () => {
     const chip = getByTestId(chipMockTestId);
     expect(chip.props.style).not.toEqual(expect.objectContaining({ backgroundColor: 'red' }));
   });
+
+  it('should not render the label when label not passed', () => {
+    const { getByTestId } = render(<Chip />);
+    expect(getByTestId('chip-label-test-id').props.children).toBeUndefined();
+  });
 });

@@ -104,5 +104,6 @@ export const labelStyles = ({
   return {
     color: resolvedColor,
     fontWeight: '500',
+    fontSize: 12,
   };
 };

@@ -86,10 +86,10 @@ export const SegmentedControl = ({
   };
 
   const getSegmentItemStyle = (index: number) => {
-    if (!applySegmentItemStyleIndex) {
+    if (applySegmentItemStyleIndex !== undefined || applySegmentItemStyleIndex !== null) {
       return segmentItemStyles;
     }
-    return applySegmentItemStyleIndex && index === applySegmentItemStyleIndex - 1 ? segmentItemStyles : undefined;
+    return applySegmentItemStyleIndex && index === applySegmentItemStyleIndex ? segmentItemStyles : undefined;
   };
 
   const getSegmentItemHeadingStyle = function (index: number) {

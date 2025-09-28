@@ -1,4 +1,4 @@
-import { ColorValue, StyleProp, TouchableOpacityProps, ViewStyle } from 'react-native';
+import { ColorValue, StyleProp, TextStyle, TouchableOpacityProps, ViewStyle } from 'react-native';
 import { ThemedIconProp } from '../../hooks';
 import { Theme } from '../../libraries/themes/theme';
 import { DefaultVariationOptions, GetVariantArgs, VariantTypes, VariationThemeConfig } from '../../utils';
@@ -20,6 +20,10 @@ export interface ChipProps extends Omit<BaseButtonProps, 'sx' | 'disableRipple' 
    * The label text to display inside the chip.
    */
   label?: string;
+  /**
+   * Label styles
+   */
+  labelStyles?: StyleProp<TextStyle>;
   /**
    * The variant of the chip, either 'outlined' or 'filled'.
    */

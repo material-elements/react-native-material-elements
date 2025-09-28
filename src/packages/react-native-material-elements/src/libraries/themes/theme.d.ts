@@ -129,13 +129,8 @@ type ButtonThemeConfig = Pick<
   | 'sizeConfig'
 >;
 type ButtonVariationConfig = Partial<Record<ButtonVariations, Pick<ButtonThemeConfig, 'labelStyles' | 'style'> | undefined>>;
-type IconButtonThemeConfig = Pick<
-  IconButtonProps,
-  'variation' | 'disableRipple' | 'rippleProps' | 'rippleEdge' | 'baseButtonContainerStyle' | 'style'
->;
-type IconButtonVariationsConfig = Partial<
-  Record<IconButtonVariations, Pick<IconButtonThemeConfig, 'style' | 'baseButtonContainerStyle'> | undefined>
->;
+type IconButtonThemeConfig = Pick<IconButtonProps, 'variation' | 'disableRipple' | 'rippleProps' | 'rippleEdge' | 'style'>;
+type IconButtonVariationsConfig = Partial<Record<IconButtonVariations, Pick<IconButtonThemeConfig, 'style'> | undefined>>;
 type ChipThemeConfig = Pick<ChipProps, 'chipWrapperContainerStyles' | 'square' | 'labelColor' | 'style'> & ChipColorThemeConfig;
 type ChipVariationConfig = Partial<
   Record<ChipVariant, Pick<ChipThemeConfig, 'style' | 'chipWrapperContainerStyles'> | undefined>

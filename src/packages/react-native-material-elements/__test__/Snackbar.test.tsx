@@ -4,7 +4,12 @@ import { render } from './test-utils';
 
 describe('snackbar utils', () => {
   beforeEach(() => {
+    jest.useFakeTimers();
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
   });
 
   it('should render with default props', () => {

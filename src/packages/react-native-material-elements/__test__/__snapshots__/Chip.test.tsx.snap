@@ -83,10 +83,12 @@ exports[`Chip Component should match the snapshot with default props 1`] = `
           style={
             {
               "color": "#FAFAFA",
-              "fontSize": 14,
+              "fontSize": 12,
               "fontWeight": "500",
+              "testID": "chip-label-test-id",
             }
           }
+          testID="chip-label-test-id"
         />
       </View>
     </View>

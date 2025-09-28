@@ -30,6 +30,7 @@ export const Chip = React.forwardRef<View, ChipProps>(
       color = 'primary',
       square,
       syncBorderAndLabelColor = false,
+      labelStyles: chipLabelStyles,
       ...props
     },
     ref,
@@ -88,17 +89,21 @@ export const Chip = React.forwardRef<View, ChipProps>(
     const renderLabel = useCallback(() => {
       return (
         <Text
-          style={labelStyles({
-            isOutlinedVariant,
-            colors: themeColors,
-            labelColor: chipLabelColor,
-            color,
-            syncBorderAndLabelColor,
-            colorSchemeConfig: themeColorScheme,
-            isActive,
-            activeLabelColor,
-          })}
-          variation="h4">
+          style={[
+            labelStyles({
+              isOutlinedVariant,
+              colors: themeColors,
+              labelColor: chipLabelColor,
+              color,
+              syncBorderAndLabelColor,
+              colorSchemeConfig: themeColorScheme,
+              isActive,
+              activeLabelColor,
+            }),
+            chipLabelStyles,
+          ]}
+          variation="h4"
+          testID="chip-label-test-id">
           {label}
         </Text>
       );
@@ -112,6 +117,7 @@ export const Chip = React.forwardRef<View, ChipProps>(
       syncBorderAndLabelColor,
       isActive,
       activeLabelColor,
+      chipLabelStyles,
     ]);
 
     const getChipBaseButtonStyles = () =>

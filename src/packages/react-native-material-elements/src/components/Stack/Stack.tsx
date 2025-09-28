@@ -39,10 +39,6 @@ export const Stack = React.forwardRef<View, StackProps>(
 
     const renderChild = () => {
       return React.Children.map(children, (child, index) => {
-        if (!child) {
-          return null;
-        }
-
         const containerStyles = getStackInnerContainerStyles({
           index,
           spacing,

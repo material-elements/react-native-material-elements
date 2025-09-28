@@ -1,6 +1,6 @@
 import { render as testRenderer, waitFor } from '@testing-library/react-native';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Button, gray, green, lightBlue, primary, red, secondary, ThemeProvider, yellow } from '../src';
 import { fireEvent, render } from './test-utils';
 
@@ -458,4 +458,33 @@ describe('Button', () => {
     expect(text).toBeDefined();
     expect(text.props.style.color).toEqual(gray[900]);
   });
+
+  it('should apply side padding when start and end icon passed', () => {
+    const { getByText } = render(<Button label="Save" startIcon={<Text>Icon_1</Text>} endIcon={<Text>Icon_2</Text>} />);
+
+    const text = getByText('Save');
+
+    const flattenStyles = StyleSheet.flatten(text.props.style);
+    expect(flattenStyles).toEqual(expect.objectContaining({ paddingLeft: 5, paddingRight: 5 }));
+  });
+
+  it('should apply left padding when start icon passed', () => {
+    const { getByText } = render(<Button label="Save" startIcon={<Text>Icon_1</Text>} />);
+
+    const text = getByText('Save');
+
+    const flattenStyles = StyleSheet.flatten(text.props.style);
+    expect(flattenStyles).toEqual(expect.objectContaining({ paddingLeft: 5, paddingRight: 10 }));
+  });
+
+  it('should apply right padding when end icon passed', () => {
+    const { getByText } = render(<Button label="Save" endIcon={<Text>Icon_1</Text>} />);
+
+    const text = getByText('Save');
+
+    const flattenStyles = StyleSheet.flatten(text.props.style);
+    expect(flattenStyles).toEqual(expect.objectContaining({ paddingLeft: 10, paddingRight: 5 }));
+  });
+
+  it('should render the gray loader indicator when theme mode is light', () => {});
 });
