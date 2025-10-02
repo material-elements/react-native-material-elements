@@ -151,11 +151,12 @@ export const ThemeProvider = ({
     }
 
     const baseTheme = isDark ? darkTheme ?? defaultDarkTheme : lightTheme ?? defaultLightTheme;
+    const theme = { ...baseTheme, ...(dimensions ?? themeDimensions) };
 
-    return { ...baseTheme, ...(dimensions ?? themeDimensions) };
-  }, [colorScheme, darkTheme, lightTheme, dimensions, mode]);
+    return { theme, components };
+  }, [colorScheme, darkTheme, lightTheme, dimensions, mode, components]);
 
-  return <ThemeContext.Provider value={{ theme: themeValues, components }}>{children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={themeValues}>{children}</ThemeContext.Provider>;
 };
 
 export const useTheme = (): UseTheme => {
