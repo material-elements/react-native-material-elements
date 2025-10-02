@@ -82,7 +82,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({
   testID = 'otp-input',
   ...props
 }) => {
-  const [otp, setOtp] = useState<string[]>(Array(length).fill(''));
+  const [otp, setOtp] = useState<string[]>(new Array(length).fill(''));
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
   const inputs = useRef<TextInput[]>([]);
 
@@ -131,7 +131,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({
   };
 
   useEffect(() => {
-    setOtp(Array(length).fill(''));
+    setOtp(new Array(length).fill(''));
   }, [length]);
 
   useEffect(() => {
@@ -139,7 +139,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({
       const defaultValueLength = defaultValue.toString();
 
       if (defaultValueLength.length > length) {
-        throw Error('Default value must be equal or less then otp length');
+        throw new Error('Default value must be equal or less then otp length');
       }
 
       const otpArray = defaultValueLength.split('').concat(Array(length - defaultValueLength.length).fill(''));

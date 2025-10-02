@@ -117,7 +117,7 @@ export const Menu = React.forwardRef<View, MenuProps>(
     }, [anchorEl, menuRect, menuYPosSpacer]);
 
     const animatedStyles: ViewStyle = {
-      transform: [{ translateX: !fullWidth ? calculateXPosition : 0 }, { translateY: calculateYPosition + elemSpace }],
+      transform: [{ translateX: fullWidth ? 0 : calculateXPosition }, { translateY: calculateYPosition + elemSpace }],
     };
 
     const menuViewOnLayout = function (event: LayoutChangeEvent) {

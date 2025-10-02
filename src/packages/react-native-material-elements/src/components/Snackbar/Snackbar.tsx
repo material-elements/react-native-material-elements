@@ -147,7 +147,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
   }, [position]);
 
   useEffect(() => {
-    if (snackbarConfig?.autoHide !== undefined) {
+    if (snackbarConfig?.autoHide) {
       autoHideRef.current = snackbarConfig.autoHide;
     } else {
       autoHideRef.current = autoHide;
@@ -198,10 +198,8 @@ export const Snackbar: React.FC<SnackbarProps> = ({
   }, [snackbarConfig, opacityValue, positionRef, snackbarRootRectangle, translateY, screenHeight, autoHideRef]);
 
   const startAnimation = useCallback(() => {
-    const translateYToValue =
-      positionRef.current === 'top'
-        ? 30 + extraSpace
-        : screenHeight - (snackbarRootRectangle?.height ? snackbarRootRectangle.height + SNACK_BAR_SCREEN_GAP : 100) - extraSpace;
+    const snackbarHeight = snackbarRootRectangle?.height ? snackbarRootRectangle.height + SNACK_BAR_SCREEN_GAP : 100;
+    const translateYToValue = positionRef.current === 'top' ? 30 + extraSpace : screenHeight - snackbarHeight - extraSpace;
 
     Animated.parallel([
       Animated.timing(opacityValue, {
