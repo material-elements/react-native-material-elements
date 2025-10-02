@@ -91,6 +91,8 @@ export const Menu = React.forwardRef<View, MenuProps>(
     const themeColors = useThemeColorsSelector();
     const { getStyleFromProps } = useRestyle(props);
 
+    const { modalContainerProps, ...rest } = portalProps || {};
+
     const calculateXPosition = useMemo(() => {
       if (menuRect && anchorEl) {
         const menuRightEdge = anchorEl.pageX + menuRect.width;
@@ -128,9 +130,9 @@ export const Menu = React.forwardRef<View, MenuProps>(
         animationType="fade"
         visible={open}
         onClose={onClose}
-        modalContainerProps={{ style: [styles.dropDownModal] }}
+        modalContainerProps={{ ...modalContainerProps, style: [styles.dropDownModal, modalContainerProps?.style] }}
         testID={portalTestId}
-        {...portalProps}>
+        {...rest}>
         <Animated.View
           style={[
             styles.menuContainer,

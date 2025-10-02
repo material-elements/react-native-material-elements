@@ -38,61 +38,57 @@ exports[`Menu component should render child components correctly 1`] = `
           },
           [
             {
-              "backgroundColor": "transparent",
               "flex": 1,
               "paddingHorizontal": 10,
             },
+            undefined,
           ],
         ],
       ]
     }
   >
     <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessible={false}
       collapsable={false}
-      focusable={false}
-      onClick={[Function]}
       onLayout={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         {
-          "backgroundColor": "#F5F5F5",
-          "borderColor": "#E0E0E0",
-          "borderRadius": 5,
-          "borderWidth": 0.5,
-          "paddingBottom": 2,
-          "paddingTop": 2,
           "transform": [
             {
-              "translateX": 0,
-            },
-            {
-              "translateY": 3,
+              "scale": 0.95,
             },
           ],
         }
       }
     >
-      <Text
+      <View
         collapsable={false}
-        style={{}}
+        onLayout={[Function]}
+        style={
+          {
+            "backgroundColor": "#F5F5F5",
+            "borderColor": "#E0E0E0",
+            "borderRadius": 5,
+            "borderWidth": 0.5,
+            "paddingBottom": 2,
+            "paddingTop": 2,
+            "transform": [
+              {
+                "translateX": 0,
+              },
+              {
+                "translateY": 3,
+              },
+            ],
+          }
+        }
       >
-        Child
-      </Text>
+        <Text
+          collapsable={false}
+          style={{}}
+        >
+          Child
+        </Text>
+      </View>
     </View>
   </View>
 </Modal>
@@ -136,55 +132,51 @@ exports[`Menu component should render correctly 1`] = `
           },
           [
             {
-              "backgroundColor": "transparent",
               "flex": 1,
               "paddingHorizontal": 10,
             },
+            undefined,
           ],
         ],
       ]
     }
   >
     <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessible={false}
       collapsable={false}
-      focusable={false}
-      onClick={[Function]}
       onLayout={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         {
-          "backgroundColor": "#F5F5F5",
-          "borderColor": "#E0E0E0",
-          "borderRadius": 5,
-          "borderWidth": 0.5,
-          "paddingBottom": 2,
-          "paddingTop": 2,
           "transform": [
             {
-              "translateX": 0,
-            },
-            {
-              "translateY": 3,
+              "scale": 0.95,
             },
           ],
         }
       }
-    />
+    >
+      <View
+        collapsable={false}
+        onLayout={[Function]}
+        style={
+          {
+            "backgroundColor": "#F5F5F5",
+            "borderColor": "#E0E0E0",
+            "borderRadius": 5,
+            "borderWidth": 0.5,
+            "paddingBottom": 2,
+            "paddingTop": 2,
+            "transform": [
+              {
+                "translateX": 0,
+              },
+              {
+                "translateY": 3,
+              },
+            ],
+          }
+        }
+      />
+    </View>
   </View>
 </Modal>
 `;

@@ -23,11 +23,12 @@ exports[`Divider Component should render correctly 1`] = `
     style={
       [
         {
-          "borderWidth": 0.9,
+          "borderWidth": 0.5,
         },
         {
           "borderColor": "#616161",
           "borderEndWidth": 0,
+          "borderStartWidth": 0,
           "flex": 1,
         },
         undefined,
@@ -39,10 +40,11 @@ exports[`Divider Component should render correctly 1`] = `
     style={
       [
         {
-          "borderWidth": 0.9,
+          "borderWidth": 0.5,
         },
         {
           "borderColor": "#616161",
+          "borderEndWidth": 0,
           "borderStartWidth": 0,
           "flex": 1,
         },
@@ -77,11 +79,12 @@ exports[`Divider Component should render the children correctly 1`] = `
     style={
       [
         {
-          "borderWidth": 0.9,
+          "borderWidth": 0.5,
         },
         {
           "borderColor": "#616161",
           "borderEndWidth": 0,
+          "borderStartWidth": 0,
           "flex": 1,
         },
         undefined,
@@ -99,10 +102,11 @@ exports[`Divider Component should render the children correctly 1`] = `
     style={
       [
         {
-          "borderWidth": 0.9,
+          "borderWidth": 0.5,
         },
         {
           "borderColor": "#616161",
+          "borderEndWidth": 0,
           "borderStartWidth": 0,
           "flex": 1,
         },

@@ -1,4 +1,4 @@
-import { ColorValue } from 'react-native';
+import { Animated, ColorValue } from 'react-native';
 import { SpacingStyle, StylePalette } from '../libraries/style/styleTypes';
 import { ShadeNumbers, ThemeType } from '../libraries/themes/theme';
 
@@ -104,3 +104,51 @@ export const merge = <T1 extends object | any[] | undefined, T2 extends object |
 
   return undefined;
 };
+
+export type Origin = 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+
+export function getScaleTransform(
+  scale: Animated.AnimatedInterpolation<number> | Animated.Value,
+  layout: { width: number; height: number },
+  origin: Origin = 'center',
+) {
+  const { width, height } = layout;
+
+  switch (origin) {
+    case 'top-left':
+      return [
+        { translateX: -width / 2 },
+        { translateY: -height / 2 },
+        { scale },
+        { translateX: width / 2 },
+        { translateY: height / 2 },
+      ];
+    case 'top-right':
+      return [
+        { translateX: width / 2 },
+        { translateY: -height / 2 },
+        { scale },
+        { translateX: -width / 2 },
+        { translateY: height / 2 },
+      ];
+    case 'bottom-left':
+      return [
+        { translateX: -width / 2 },
+        { translateY: height / 2 },
+        { scale },
+        { translateX: width / 2 },
+        { translateY: -height / 2 },
+      ];
+    case 'bottom-right':
+      return [
+        { translateX: width / 2 },
+        { translateY: height / 2 },
+        { scale },
+        { translateX: -width / 2 },
+        { translateY: -height / 2 },
+      ];
+    case 'center':
+    default:
+      return [{ scale }];
+  }
+}

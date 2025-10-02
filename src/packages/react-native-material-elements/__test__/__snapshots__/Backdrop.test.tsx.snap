@@ -46,29 +46,24 @@ exports[`Backdrop should render correctly 1`] = `
     }
   >
     <View
-      accessibilityState={
+      collapsable={false}
+      onLayout={[Function]}
+      style={
         {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
+          "transform": [
+            {
+              "scale": 0.95,
+            },
+          ],
         }
       }
-      accessible={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
     >
-      <ActivityIndicator
-        color="#FAFAFA"
-        size="large"
-      />
+      <View>
+        <ActivityIndicator
+          color="#FAFAFA"
+          size="large"
+        />
+      </View>
     </View>
   </View>
 </Modal>
