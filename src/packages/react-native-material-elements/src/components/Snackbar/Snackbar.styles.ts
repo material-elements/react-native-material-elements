@@ -56,7 +56,6 @@ export const styles = StyleSheet.create({
   },
   buttonLabel: { color: green[500], fontWeight: 600, fontSize: 14 },
   actionButtonContainer: { width: '100%' },
-  actionButton: { width: '100%', borderRadius: 0, height: '100%' },
   icon: {
     width: 20,
     height: 20,

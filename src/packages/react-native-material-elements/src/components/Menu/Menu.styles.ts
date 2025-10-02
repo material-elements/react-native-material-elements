@@ -3,7 +3,6 @@ import { MenuContainerStyle } from './Menu';
 
 export const styles = StyleSheet.create({
   dropDownModal: {
-    backgroundColor: 'transparent',
     flex: 1,
     paddingHorizontal: 10,
   },

@@ -247,4 +247,16 @@ describe('Badge', () => {
       expect(badge.props.style).toEqual(expect.objectContaining({ backgroundColor: expectedStyle.color }));
     });
   });
+
+  it('should throw error if passing invalid type of content', () => {
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    expect(() => render(<Badge badgeContent={[] as any} />)).toThrow(new TypeError('Badge content must be a string or number'));
+    consoleSpy.mockRestore();
+  });
+
+  it('should render badge content if content type is string', () => {
+    const { getByText } = render(<Badge badgeContent={'Save'} />);
+    const content = getByText('Save');
+    expect(content).toBeDefined();
+  });
 });

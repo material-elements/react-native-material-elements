@@ -27,10 +27,10 @@ export const Chip = React.forwardRef<View, ChipProps>(
       activeBackgroundColor,
       isActive = false,
       variant = 'filled',
-      color = 'secondary',
-      square = false,
+      color = 'primary',
+      square,
       syncBorderAndLabelColor = false,
-      overrideRootSquareConfig = false,
+      labelStyles: chipLabelStyles,
       ...props
     },
     ref,
@@ -68,10 +68,7 @@ export const Chip = React.forwardRef<View, ChipProps>(
     };
 
     const chipSquareHandler = () => {
-      if (overrideRootSquareConfig) {
-        return square;
-      }
-      return chipThemeConfig?.square ?? square;
+      return square ?? chipThemeConfig?.square;
     };
 
     const chipStyles = useMemo(
@@ -92,17 +89,21 @@ export const Chip = React.forwardRef<View, ChipProps>(
     const renderLabel = useCallback(() => {
       return (
         <Text
-          style={labelStyles({
-            isOutlinedVariant,
-            colors: themeColors,
-            labelColor: chipLabelColor,
-            color,
-            syncBorderAndLabelColor,
-            colorSchemeConfig: themeColorScheme,
-            isActive,
-            activeLabelColor,
-          })}
-          variation="h4">
+          style={[
+            labelStyles({
+              isOutlinedVariant,
+              colors: themeColors,
+              labelColor: chipLabelColor,
+              color,
+              syncBorderAndLabelColor,
+              colorSchemeConfig: themeColorScheme,
+              isActive,
+              activeLabelColor,
+            }),
+            chipLabelStyles,
+          ]}
+          variation="h4"
+          testID="chip-label-test-id">
           {label}
         </Text>
       );
@@ -116,6 +117,7 @@ export const Chip = React.forwardRef<View, ChipProps>(
       syncBorderAndLabelColor,
       isActive,
       activeLabelColor,
+      chipLabelStyles,
     ]);
 
     const getChipBaseButtonStyles = () =>
@@ -145,7 +147,7 @@ export const Chip = React.forwardRef<View, ChipProps>(
                 {startThemedIcon}
               </TouchableOpacity>
             )}
-            {renderLabel()}
+            {label && renderLabel()}
             {endThemedIcon && (
               <TouchableOpacity activeOpacity={1} {...endIconProps}>
                 {endThemedIcon}

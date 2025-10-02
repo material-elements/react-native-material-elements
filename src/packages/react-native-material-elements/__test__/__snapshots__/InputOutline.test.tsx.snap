@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputOutline component should render correctly with default props 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderColor": "#BDBDBD",
+      "borderRadius": undefined,
+      "borderWidth": 0.6,
+      "display": "flex",
+      "flexDirection": "row",
+      "opacity": 0.6,
+      "paddingHorizontal": 14,
+      "position": "relative",
+      "width": "100%",
+    }
+  }
+/>
+`;

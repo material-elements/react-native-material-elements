@@ -1,3 +1,4 @@
+import { ColorSchemeName } from 'react-native';
 import {
   ButtonGroupProps,
   DividerColorThemeConfig,
@@ -39,18 +40,8 @@ import { themeDimensions } from './V2ThemeContext';
  * Interface representing a set of color shades, typically used for creating gradients or theme variations.
  * Each key represents a different level of color shade,  in the light theme mode the lightest values will be (50) and darkest will be (900) and in the dark theme mode the lightest value will the (900) and darkest value will be (50).
  */
-export interface ColorShades {
-  50: string;
-  100: string;
-  200: string;
-  300: string;
-  400: string;
-  500: string;
-  600: string;
-  700: string;
-  800: string;
-  900: string;
-}
+export type ShadeNumbers = '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
+export type ColorShades = Record<ShadeNumbers, string>;
 /**
  * Type representing the theme, based on the initial light theme.
  */
@@ -130,25 +121,17 @@ type ButtonThemeConfig = Pick<
   | 'labelStyles'
   | 'square'
   | 'labelColor'
-  | 'baseButtonStyles'
   | 'disableScaleAnimation'
   | 'scaleAnimationValue'
   | 'rippleEdge'
-  | 'baseButtonContainerStyle'
+  | 'buttonContainerStyle'
   | 'rippleProps'
   | 'style'
   | 'sizeConfig'
 >;
-type ButtonVariationConfig = Partial<
-  Record<ButtonVariations, Pick<ButtonThemeConfig, 'labelStyles' | 'baseButtonStyles' | 'style'> | undefined>
->;
-type IconButtonThemeConfig = Pick<
-  IconButtonProps,
-  'variation' | 'disableRipple' | 'rippleProps' | 'rippleEdge' | 'baseButtonContainerStyle' | 'style'
->;
-type IconButtonVariationsConfig = Partial<
-  Record<IconButtonVariations, Pick<IconButtonThemeConfig, 'style' | 'baseButtonContainerStyle'> | undefined>
->;
+type ButtonVariationConfig = Partial<Record<ButtonVariations, Pick<ButtonThemeConfig, 'labelStyles' | 'style'> | undefined>>;
+type IconButtonThemeConfig = Pick<IconButtonProps, 'variation' | 'disableRipple' | 'rippleProps' | 'rippleEdge' | 'style'>;
+type IconButtonVariationsConfig = Partial<Record<IconButtonVariations, Pick<IconButtonThemeConfig, 'style'> | undefined>>;
 type ChipThemeConfig = Pick<ChipProps, 'chipWrapperContainerStyles' | 'square' | 'labelColor' | 'style'> & ChipColorThemeConfig;
 type ChipVariationConfig = Partial<
   Record<ChipVariant, Pick<ChipThemeConfig, 'style' | 'chipWrapperContainerStyles'> | undefined>
@@ -244,6 +227,10 @@ export interface ThemeProviderProps extends ThemeConfigInterface {
    * Optional theme dimensions values
    */
   dimensions?: ThemeDimensions;
+  /**
+   * Theme mode
+   */
+  mode?: ColorSchemeName;
 }
 
 export type CreateColorShades = ColorShades;

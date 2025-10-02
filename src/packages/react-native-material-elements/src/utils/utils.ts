@@ -1,6 +1,6 @@
-import { ColorValue } from 'react-native';
+import { Animated, ColorValue } from 'react-native';
 import { SpacingStyle, StylePalette } from '../libraries/style/styleTypes';
-import { ThemeType } from '../libraries/themes/theme';
+import { ShadeNumbers, ThemeType } from '../libraries/themes/theme';
 
 export const OFFSET = 20;
 export const WRAPPER_BOTTOM_OFFSET = 50;
@@ -31,30 +31,31 @@ export interface GetVariantArgs<T> {
   colors: ThemeType['colors'];
   variant?: VariantTypes;
   config?: VariationThemeConfig<DefaultVariationOptions & T>;
+  systemColorItem?: ShadeNumbers;
 }
 /**
  * Function to get the color for a specific variant based on the provided `variant`, `colors`, and `config`.
  * If the variant doesn't exist in `config`, it defaults to the color from the `colors` palette.
  */
-export const getVariant = <T>({ variant, colors, config }: GetVariantArgs<T>): ColorValue | string => {
+export const getVariant = <T>({ variant, colors, config, systemColorItem = '500' }: GetVariantArgs<T>): ColorValue | string => {
   if (variant === 'primary') {
-    return config?.primary?.color ?? colors.primary[500];
+    return config?.primary?.color ?? colors.primary[systemColorItem];
   } else if (variant === 'secondary') {
-    return config?.secondary?.color ?? colors.secondary[500];
+    return config?.secondary?.color ?? colors.secondary[systemColorItem];
   } else if (variant === 'error') {
-    return config?.error?.color ?? colors.red[500];
+    return config?.error?.color ?? colors.red[systemColorItem];
   } else if (variant === 'info') {
-    return config?.info?.color ?? colors.lightBlue[500];
+    return config?.info?.color ?? colors.lightBlue[systemColorItem];
   } else if (variant === 'success') {
-    return config?.success?.color ?? colors.green[500];
+    return config?.success?.color ?? colors.green[systemColorItem];
   } else if (variant === 'warning') {
-    return config?.warning?.color ?? colors.yellow[500];
+    return config?.warning?.color ?? colors.yellow[systemColorItem];
   } else if (variant === 'gray') {
-    return config?.gray?.color ?? colors.gray[500];
+    return config?.gray?.color ?? colors.gray[systemColorItem];
   } else if (variant === 'lightGray') {
     return config?.lightGray?.color ?? colors.gray[200];
   }
-  return colors.secondary[500];
+  return colors.secondary[systemColorItem];
 };
 
 export const maxLength = function (text: string, maxLengthNumber: number): string {
@@ -103,3 +104,51 @@ export const merge = <T1 extends object | any[] | undefined, T2 extends object |
 
   return undefined;
 };
+
+export type Origin = 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+
+export function getScaleTransform(
+  scale: Animated.AnimatedInterpolation<number> | Animated.Value,
+  layout: { width: number; height: number },
+  origin: Origin = 'center',
+) {
+  const { width, height } = layout;
+
+  switch (origin) {
+    case 'top-left':
+      return [
+        { translateX: -width / 2 },
+        { translateY: -height / 2 },
+        { scale },
+        { translateX: width / 2 },
+        { translateY: height / 2 },
+      ];
+    case 'top-right':
+      return [
+        { translateX: width / 2 },
+        { translateY: -height / 2 },
+        { scale },
+        { translateX: -width / 2 },
+        { translateY: height / 2 },
+      ];
+    case 'bottom-left':
+      return [
+        { translateX: -width / 2 },
+        { translateY: height / 2 },
+        { scale },
+        { translateX: width / 2 },
+        { translateY: -height / 2 },
+      ];
+    case 'bottom-right':
+      return [
+        { translateX: width / 2 },
+        { translateY: height / 2 },
+        { scale },
+        { translateX: -width / 2 },
+        { translateY: -height / 2 },
+      ];
+    case 'center':
+    default:
+      return [{ scale }];
+  }
+}

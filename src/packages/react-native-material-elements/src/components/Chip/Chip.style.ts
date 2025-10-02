@@ -2,15 +2,13 @@ import { ColorValue, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { gray } from '../../libraries';
 import { getVariant } from '../../utils';
 import { GenerateChipStylesProps, LabelStylesInterface } from './Chip.types';
-import { ADORNMENT_WRAPPER_SPACE } from './constants';
 
 export const styles = StyleSheet.create({
   chip: {
-    paddingTop: 5,
-    paddingBottom: 5,
-    paddingLeft: 10,
-    paddingRight: 10,
-    borderRadius: 20,
+    paddingTop: 3,
+    paddingBottom: 3,
+    paddingLeft: 7,
+    paddingRight: 7,
     alignSelf: 'flex-start',
   },
   chipWrapper: {
@@ -19,15 +17,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     gap: 6,
-  },
-  chipInnerComponentWrapper: {
-    minWidth: ADORNMENT_WRAPPER_SPACE,
-    minHeight: ADORNMENT_WRAPPER_SPACE,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-    borderRadius: 100,
   },
 });
 
@@ -103,8 +92,8 @@ export const labelStyles = ({
 
   let resolvedColor;
 
-  if (syncBorderAndLabelColor) {
-    resolvedColor = getVariant({ variant: color, colors, config: colorSchemeConfig });
+  if (syncBorderAndLabelColor && color !== 'warning' && color !== 'lightGray' && color !== 'gray') {
+    resolvedColor = getVariant({ variant: color, colors, config: colorSchemeConfig, systemColorItem: '900' });
   } else if (labelColor) {
     resolvedColor = labelColor;
   } else {
@@ -114,5 +103,7 @@ export const labelStyles = ({
 
   return {
     color: resolvedColor,
+    fontWeight: '500',
+    fontSize: 12,
   };
 };

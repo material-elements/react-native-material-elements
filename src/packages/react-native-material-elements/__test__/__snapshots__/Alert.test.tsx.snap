@@ -9,6 +9,7 @@ exports[`Alert should render correctly with zero props 1`] = `
       [
         {
           "alignItems": "center",
+          "borderRadius": 6,
           "display": "flex",
           "flexDirection": "row",
           "minHeight": 30,

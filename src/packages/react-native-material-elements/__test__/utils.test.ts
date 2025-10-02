@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { StyleProp, ViewStyle } from 'react-native';
-import { defaultLightTheme, getVariant, gutter, maxLength, merge } from '../src';
+import { Animated, StyleProp, ViewStyle } from 'react-native';
+import { defaultLightTheme, getScaleTransform, getVariant, gutter, maxLength, merge, Origin } from '../src';
 
 describe('maxLength', () => {
   it('should return the original text if its length is less than the max length', () => {
@@ -275,5 +275,64 @@ describe('getVariant', () => {
       colors: defaultLightTheme.colors,
     });
     expect(result).toBe(defaultLightTheme.colors.secondary[500]);
+  });
+});
+
+describe('getScaleTransform', () => {
+  const layout = { width: 100, height: 200 };
+  const scale = new Animated.Value(1);
+
+  const expectTransforms = (origin: Origin, expected: Array<Record<string, any>>) => {
+    const result = getScaleTransform(scale, layout, origin);
+    expect(result).toEqual(expected);
+  };
+
+  it('should return scale transform for center origin', () => {
+    expectTransforms('center', [{ scale }]);
+  });
+
+  it('should return correct transforms for top-left origin', () => {
+    expectTransforms('top-left', [
+      { translateX: -layout.width / 2 },
+      { translateY: -layout.height / 2 },
+      { scale },
+      { translateX: layout.width / 2 },
+      { translateY: layout.height / 2 },
+    ]);
+  });
+
+  it('should return correct transforms for top-right origin', () => {
+    expectTransforms('top-right', [
+      { translateX: layout.width / 2 },
+      { translateY: -layout.height / 2 },
+      { scale },
+      { translateX: -layout.width / 2 },
+      { translateY: layout.height / 2 },
+    ]);
+  });
+
+  it('should return correct transforms for bottom-left origin', () => {
+    expectTransforms('bottom-left', [
+      { translateX: -layout.width / 2 },
+      { translateY: layout.height / 2 },
+      { scale },
+      { translateX: layout.width / 2 },
+      { translateY: -layout.height / 2 },
+    ]);
+  });
+
+  it('should return correct transforms for bottom-right origin', () => {
+    expectTransforms('bottom-right', [
+      { translateX: layout.width / 2 },
+      { translateY: layout.height / 2 },
+      { scale },
+      { translateX: -layout.width / 2 },
+      { translateY: -layout.height / 2 },
+    ]);
+  });
+
+  it('should default to center when origin is not provided', () => {
+    const result = getScaleTransform(scale, layout);
+    expect(result).toEqual([{ scale }]);
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { useThemeColorsSelector } from '../../libraries';
 import { Box } from '../Box';
 import { Portal } from '../Portal';
@@ -24,15 +24,17 @@ export const Dialog: React.FC<DialogProps> = ({
       animationType="fade"
       modalContainerProps={{ style: [styles.dialogRootContainer, modalContainerStyles], ...rest }}
       {...props}>
-      <Box
-        style={StyleSheet.flatten([
-          styles.dialogContainer,
-          dialogContainerStyles({ colors: themeColors, fullWidth, maxWidth, borderRadius }),
-          dialogContainerStyle,
-        ])}
-        {...dialogOtherProps}>
-        {children}
-      </Box>
+      <TouchableWithoutFeedback accessible={false}>
+        <Box
+          style={StyleSheet.flatten([
+            styles.dialogContainer,
+            dialogContainerStyles({ colors: themeColors, fullWidth, maxWidth, borderRadius }),
+            dialogContainerStyle,
+          ])}
+          {...dialogOtherProps}>
+          {children}
+        </Box>
+      </TouchableWithoutFeedback>
     </Portal>
   );
 };

@@ -3,7 +3,6 @@ import {
   Animated,
   ColorValue,
   FlatList,
-  FlatListProps,
   GestureResponderEvent,
   LayoutChangeEvent,
   LayoutRectangle,
@@ -19,9 +18,12 @@ import { MeasureElementRect } from '../../types';
 import { Box } from '../Box';
 import { ListItem, ListItemText } from '../List';
 import { Portal } from '../Portal';
-import { IconInput, IconInputProps, TextField } from '../TextField';
-import { BoxProps, ListItemTextProps, TextFieldProps, TextFiledVariation } from '../types';
+import { IconInput, TextField } from '../TextField';
+import { BoxProps, ListItemTextProps, TextFieldProps, TextFiledVariation, TextProps } from '../types';
+import { Text } from '../Typography';
 import { styles } from './DropDown.styles';
+
+export type SelectedItemsType = Array<Pick<DropDownData, 'id'>>;
 
 /**
  * Defines the structure of data to be displayed in the dropdown.
@@ -40,11 +42,9 @@ export interface DropDownData {
 
 /**
  * Props for the container that renders the list of dropdown items.
- * Extends properties from `ViewProps` and specific `FlatListProps`.
  */
-export interface DropDownListContainerProps<T extends Partial<DropDownData>>
-  extends ViewProps,
-    Partial<Pick<FlatListProps<T>, 'data'>> {
+export interface DropDownListContainerProps extends ViewProps {
+  data: DropDownData[];
   /**
    * Whether the dropdown is open.
    * */
@@ -78,7 +78,7 @@ export interface DropDownListContainerProps<T extends Partial<DropDownData>>
   /**
    * The currently selected dropdown item, if any.
    * */
-  selectedListItems?: Array<DropDownData> | null;
+  selectedListItems?: SelectedItemsType | null;
 
   /**
    * Whether to show the selected item in the dropdown list.
@@ -138,7 +138,7 @@ export interface DropDownListContainerProps<T extends Partial<DropDownData>>
   /**
    * You can use this to customize the input, such as handling events, styles, or icons.
    */
-  searchProps?: IconInputProps;
+  searchProps?: TextFieldProps;
 
   /**
    * The 'children' prop is omitted to prevent accidental overrides of the search input itself.
@@ -149,15 +149,35 @@ export interface DropDownListContainerProps<T extends Partial<DropDownData>>
    * Dropdown list item test id
    */
   listItemTestId?: string;
+
+  /**
+   * Drop down heading
+   */
+  heading?: string;
+
+  /**
+   * Heading props
+   */
+  headingProps?: Omit<TextProps, 'children'>;
+
+  /**
+   * Drop down sub heading
+   */
+  subHeading?: string;
+
+  /**
+   * Heading props
+   */
+  subHeadingProps?: Omit<TextProps, 'children'>;
 }
 
 /**
  * Props for the dropdown component itself.
  * Extends from `View` and omits some props from `DropDownListContainerProps`.
  */
-export interface DropDownProps<T extends DropDownData>
+export interface DropDownProps
   extends React.ComponentPropsWithRef<typeof View>,
-    Omit<DropDownListContainerProps<T>, 'open' | 'inputLayoutRectangle' | 'dropDownContainerRect' | 'onItemClicked'> {
+    Omit<DropDownListContainerProps, 'open' | 'inputLayoutRectangle' | 'dropDownContainerRect' | 'onItemClicked'> {
   /**
    * React node to be displayed at the start of the input field (e.g., an icon).
    * */
@@ -176,7 +196,7 @@ export interface DropDownProps<T extends DropDownData>
   /**
    * Props for customizing the dropdown list container.
    * */
-  listContainerProps?: Omit<DropDownListContainerProps<T>, 'open' | 'onClose' | 'inputLayoutRectangle' | 'dropDownContainerRect'>;
+  listContainerProps?: Omit<DropDownListContainerProps, 'open' | 'onClose' | 'inputLayoutRectangle' | 'dropDownContainerRect'>;
 
   /**
    * Variation type for the input field, allows different styles or icons.
@@ -211,10 +231,10 @@ export interface DropDownProps<T extends DropDownData>
   /**
    * Callback triggered when an item is clicked.
    * */
-  onItemClicked?: (item: Array<DropDownData>) => void;
+  onItemClicked?: (item: SelectedItemsType) => void;
 }
 
-export const DropDown = <T extends DropDownData>({
+export const DropDown = ({
   inputEndAdornment,
   inputStartAdornment,
   listContainerProps,
@@ -240,19 +260,21 @@ export const DropDown = <T extends DropDownData>({
   multiselect = false,
   disableTextPadding = false,
   displaySelectedAdornment = false,
-  listItemMinHeight = 35,
+  listItemMinHeight = 20,
   showSelectedItem = true,
   variation = 'outlined',
   placeholder = 'Drop down',
+  heading,
+  subHeading,
+  headingProps,
+  subHeadingProps,
   ...props
-}: DropDownProps<T>) => {
+}: DropDownProps) => {
   const containerRef = useRef<View>(null);
   const [open, setOpen] = useState<boolean>(false);
-  const [selectedItems, setSelectedItems] = useState<Array<DropDownData>>([]);
+  const [selectedItems, setSelectedItems] = useState<SelectedItemsType>([]);
   const [inputRect, setInputRect] = useState<LayoutRectangle | null>(null);
   const [dropDownContainerRect, setDropDownContainerRect] = useState<MeasureElementRect | null>(null);
-
-  const hasListSelectedItems = selectedListItems !== undefined;
 
   const dropDownCloseHandler = () => {
     setOpen(false);
@@ -276,10 +298,10 @@ export const DropDown = <T extends DropDownData>({
   };
 
   const onItemClickedHandler = (item: DropDownData) => {
-    let updatedSelectedItems: DropDownData[] = [];
+    let updatedSelectedItems: SelectedItemsType = [];
 
     if (multiselect) {
-      if (hasListSelectedItems && selectedListItems?.length) {
+      if (selectedListItems?.length) {
         updatedSelectedItems = selectedListItems?.includes(item)
           ? selectedListItems.filter(listItem => listItem.id !== item.id)
           : [...selectedListItems, item];
@@ -292,7 +314,7 @@ export const DropDown = <T extends DropDownData>({
       updatedSelectedItems = [item];
     }
 
-    if (!hasListSelectedItems) {
+    if (!selectedListItems) {
       setSelectedItems(updatedSelectedItems);
     }
 
@@ -305,11 +327,18 @@ export const DropDown = <T extends DropDownData>({
     let value: string;
 
     if (multiselect) {
-      value = multiselectMessage ?? `Selected items ${hasListSelectedItems ? selectedListItems?.length : selectedItems.length}`;
-    } else if (hasListSelectedItems && selectedListItems?.length) {
-      value = selectedListItems?.[0]?.title;
+      if (selectedListItems?.length || selectedItems.length) {
+        value = multiselectMessage ?? `Selected items ${selectedListItems?.length ?? selectedItems.length}`;
+      } else {
+        value = '';
+      }
+    } else if (selectedListItems?.length) {
+      const firstItemId = selectedListItems[0].id;
+      const findItem = data.find(element => element.id === firstItemId);
+      value = findItem?.title ?? '';
     } else {
-      value = selectedItems?.[0]?.title ?? '';
+      const findItem = data.find(element => element.id === selectedItems?.[0]?.id);
+      value = findItem?.title ?? '';
     }
 
     const commonProps: TextFieldProps = {
@@ -384,6 +413,10 @@ export const DropDown = <T extends DropDownData>({
           searchPlaceholder={searchPlaceholder}
           searchProps={searchProps}
           searchContainerProps={searchContainerProps}
+          heading={heading}
+          subHeading={subHeading}
+          headingProps={headingProps}
+          subHeadingProps={subHeadingProps}
           {...listContainerProps}
         />
       )}
@@ -391,7 +424,7 @@ export const DropDown = <T extends DropDownData>({
   );
 };
 
-export const DropDownListContainer = <T extends DropDownData>({
+export const DropDownListContainer = ({
   style,
   open,
   data,
@@ -416,8 +449,12 @@ export const DropDownListContainer = <T extends DropDownData>({
   searchContainerProps,
   maxHeight,
   listItemTestId,
+  heading,
+  subHeading,
+  headingProps,
+  subHeadingProps,
   ...props
-}: DropDownListContainerProps<T>) => {
+}: DropDownListContainerProps) => {
   const flatListRef = useRef<FlatList>(null);
   const themeColors = useThemeColorsSelector();
   const colorScheme = useColorScheme();
@@ -479,13 +516,14 @@ export const DropDownListContainer = <T extends DropDownData>({
 
       return (
         <ListItem
+          bottomSpacingType="small"
           startAdornment={startAdornment}
-          selectedColor={activeItemColor ?? themeColors.secondary[500]}
+          selectedColor={activeItemColor ?? gray[600]}
           selected={isSelected}
           onPress={() => itemOnPressHandler(item)}
           endAdornment={endAdornment}
           actionType="root"
-          style={[{ minHeight: listItemMinHeight }]}
+          style={{ minHeight: listItemMinHeight }}
           testID={listItemTestId}>
           <ListItemText
             secondaryLabelStyles={{ color: listItemTextColor }}
@@ -534,19 +572,37 @@ export const DropDownListContainer = <T extends DropDownData>({
         style={StyleSheet.flatten([
           styles.listContainer,
           {
-            backgroundColor: themeColors.gray[300],
+            backgroundColor: themeColors.gray[100],
+            borderWidth: 0.2,
+            borderColor: themeColors.gray[500],
             maxHeight,
             top: dropDownContainerRect.pageY + inputLayoutRectangle.height,
           },
           style,
         ])}
         {...props}>
+        {(heading || subHeading) && (
+          <Box paddingHorizontal={8} paddingVertical={5}>
+            {heading && (
+              <Text variation="h5" {...headingProps}>
+                {heading}
+              </Text>
+            )}
+            {subHeading && (
+              <Text variation="h6" marginTop={5} {...subHeadingProps}>
+                {subHeading}
+              </Text>
+            )}
+          </Box>
+        )}
         {search && (
           <Box sx={{ px: 5, py: 4 }} {...searchContainerProps}>
-            <IconInput
+            <TextField
+              height={30}
+              hideLabel
               onChangeText={searchHandler}
-              inputWrapperStyles={{ borderColor: themeColors.gray[600], ...styles.dropDownInputWrapper }}
               placeholder={searchPlaceholder ?? 'Search'}
+              style={[{ backgroundColor: themeColors.gray[50] }, styles.searchInputStyle]}
               {...searchProps}
             />
           </Box>

@@ -139,18 +139,22 @@ export const ThemeProvider = ({
   darkTheme,
   dimensions,
   components = {},
+  mode,
 }: ThemeProviderProps): JSX.Element => {
   const colorScheme = useColorScheme();
 
-  const initialTheme = useMemo(() => {
-    if (colorScheme === 'dark') {
-      return darkTheme ?? defaultDarkTheme;
-    }
-    return lightTheme ?? defaultLightTheme;
-  }, [lightTheme, darkTheme, colorScheme]);
+  const themeValues = useMemo(() => {
+    let isDark = colorScheme === 'dark';
 
-  const mergedTheme = useMemo(() => ({ ...initialTheme, ...(dimensions || themeDimensions) }), [initialTheme, dimensions]);
-  const themeValues = useMemo(() => ({ theme: mergedTheme, components }), [mergedTheme, components]);
+    if (mode) {
+      isDark = mode === 'dark';
+    }
+
+    const baseTheme = isDark ? darkTheme ?? defaultDarkTheme : lightTheme ?? defaultLightTheme;
+    const theme = { ...baseTheme, ...(dimensions ?? themeDimensions) };
+
+    return { theme, components };
+  }, [colorScheme, darkTheme, lightTheme, dimensions, mode, components]);
 
   return <ThemeContext.Provider value={themeValues}>{children}</ThemeContext.Provider>;
 };

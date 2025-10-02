@@ -98,7 +98,7 @@ describe('SegmentedControl component', () => {
       <SegmentedControl
         data={['First', 'Second']}
         selectedIndex={0}
-        segmentItemStyles={{ backgroundColor: 'red' }}
+        segmentItemStyles={{ backgroundColor: 'red', borderWidth: 1 }}
         segmentedControlItemTestId={mockSegmentedControllerTestId}
         applySegmentItemStyleIndex={0}
       />,
@@ -106,7 +106,7 @@ describe('SegmentedControl component', () => {
 
     const segmentedFirstItem = getByTestId(`${mockSegmentedControllerTestId}-0`);
     const firstItemStyles = StyleSheet.flatten(segmentedFirstItem.props.style);
-    expect(firstItemStyles).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+    expect(firstItemStyles).toEqual(expect.objectContaining({ backgroundColor: 'red', borderWidth: 1 }));
   });
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Chip, green, lightBlue, primary, red, secondary, ThemeProvider, yellow } from '../src';
+import { Avatar, Chip, gray, green, lightBlue, primary, red, secondary, ThemeProvider, yellow } from '../src';
 import { SQUARE_BORDER_RADIUS } from '../src/components/Chip/constants';
 import { fireEvent, render } from './test-utils';
 import { View } from 'react-native';
@@ -84,7 +84,7 @@ describe('Chip Component', () => {
   it('should render with the (secondary) color in (filled) variant', () => {
     const { getByTestId } = render(<Chip testID={chipMockTestId} />);
     const chip = getByTestId(chipMockTestId);
-    expect(chip.props.style).toEqual(expect.objectContaining({ backgroundColor: secondary[500] }));
+    expect(chip.props.style).toEqual(expect.objectContaining({ backgroundColor: primary[500] }));
   });
 
   it('should render with the (primary) color in (filled) variant', () => {
@@ -120,7 +120,7 @@ describe('Chip Component', () => {
   it('should render with the (secondary) color in (outlined) variant', () => {
     const { getByTestId } = render(<Chip testID={chipMockTestId} variant="outlined" />);
     const chip = getByTestId(chipMockTestId);
-    expect(chip.props.style).toEqual(expect.objectContaining({ borderColor: secondary[500] }));
+    expect(chip.props.style).toEqual(expect.objectContaining({ borderColor: primary[500] }));
     expect(chip.props.style).not.toHaveProperty('backgroundColor');
   });
 
@@ -161,14 +161,14 @@ describe('Chip Component', () => {
 
   it('should sync the chip and label (secondary) color in (outlined) variant', () => {
     const { getByTestId, getByText } = render(
-      <Chip testID={chipMockTestId} variant="outlined" syncBorderAndLabelColor label={chipMockLabel} />,
+      <Chip testID={chipMockTestId} color="secondary" variant="outlined" syncBorderAndLabelColor label={chipMockLabel} />,
     );
 
     const chip = getByTestId(chipMockTestId);
     const label = getByText(chipMockLabel);
 
     expect(chip.props.style).toEqual(expect.objectContaining({ borderColor: secondary[500] }));
-    expect(label.props.style).toEqual(expect.objectContaining({ color: secondary[500] }));
+    expect(label.props.style).toEqual(expect.objectContaining({ color: secondary[900] }));
     expect(chip.props.style).not.toHaveProperty('backgroundColor');
   });
 
@@ -181,7 +181,7 @@ describe('Chip Component', () => {
     const label = getByText(chipMockLabel);
 
     expect(chip.props.style).toEqual(expect.objectContaining({ borderColor: primary[500] }));
-    expect(label.props.style).toEqual(expect.objectContaining({ color: primary[500] }));
+    expect(label.props.style).toEqual(expect.objectContaining({ color: primary[900] }));
     expect(chip.props.style).not.toHaveProperty('backgroundColor');
   });
 
@@ -194,7 +194,7 @@ describe('Chip Component', () => {
     const label = getByText(chipMockLabel);
 
     expect(chip.props.style).toEqual(expect.objectContaining({ borderColor: green[500] }));
-    expect(label.props.style).toEqual(expect.objectContaining({ color: green[500] }));
+    expect(label.props.style).toEqual(expect.objectContaining({ color: green[900] }));
     expect(chip.props.style).not.toHaveProperty('backgroundColor');
   });
 
@@ -207,7 +207,7 @@ describe('Chip Component', () => {
     const label = getByText(chipMockLabel);
 
     expect(chip.props.style).toEqual(expect.objectContaining({ borderColor: red[500] }));
-    expect(label.props.style).toEqual(expect.objectContaining({ color: red[500] }));
+    expect(label.props.style).toEqual(expect.objectContaining({ color: red[900] }));
     expect(chip.props.style).not.toHaveProperty('backgroundColor');
   });
 
@@ -220,11 +220,11 @@ describe('Chip Component', () => {
     const label = getByText(chipMockLabel);
 
     expect(chip.props.style).toEqual(expect.objectContaining({ borderColor: lightBlue[500] }));
-    expect(label.props.style).toEqual(expect.objectContaining({ color: lightBlue[500] }));
+    expect(label.props.style).toEqual(expect.objectContaining({ color: lightBlue[900] }));
     expect(chip.props.style).not.toHaveProperty('backgroundColor');
   });
 
-  it('should sync the chip and label (warning) color in (outlined) variant', () => {
+  it('should show the gray dark color when chip variant (warning)', () => {
     const { getByTestId, getByText } = render(
       <Chip testID={chipMockTestId} variant="outlined" color="warning" syncBorderAndLabelColor label={chipMockLabel} />,
     );
@@ -233,7 +233,7 @@ describe('Chip Component', () => {
     const label = getByText(chipMockLabel);
 
     expect(chip.props.style).toEqual(expect.objectContaining({ borderColor: yellow[500] }));
-    expect(label.props.style).toEqual(expect.objectContaining({ color: yellow[500] }));
+    expect(label.props.style).toEqual(expect.objectContaining({ color: gray[900] }));
     expect(chip.props.style).not.toHaveProperty('backgroundColor');
   });
 
@@ -411,5 +411,10 @@ describe('Chip Component', () => {
     );
     const chip = getByTestId(chipMockTestId);
     expect(chip.props.style).not.toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+  });
+
+  it('should not render the label when label not passed', () => {
+    const { getByTestId } = render(<Chip />);
+    expect(getByTestId('chip-label-test-id').props.children).toBeUndefined();
   });
 });

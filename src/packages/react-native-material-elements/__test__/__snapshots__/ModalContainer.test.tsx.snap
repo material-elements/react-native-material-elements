@@ -34,29 +34,25 @@ exports[`ModalContainer should render correctly with default props 1`] = `
     ]
   }
 >
-  <Text
-    accessibilityState={
+  <View
+    collapsable={false}
+    onLayout={[Function]}
+    style={
       {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
+        "transform": [
+          {
+            "scale": 0.95,
+          },
+        ],
       }
     }
-    accessible={false}
-    collapsable={false}
-    focusable={false}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={{}}
   >
-    Hello
-  </Text>
+    <Text
+      collapsable={false}
+      style={{}}
+    >
+      Hello
+    </Text>
+  </View>
 </View>
 `;

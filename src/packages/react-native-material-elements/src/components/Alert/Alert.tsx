@@ -36,24 +36,24 @@ export const Alert = React.forwardRef<View, AlertProps>(
     });
 
     const alertContainerStyles = useMemo(() => {
-      return getAlertContainerStyles({ colors: themeColors, variant, variation });
-    }, [themeColors, variant, variation]);
+      return getAlertContainerStyles({ colors: themeColors, variant, variation, colorScheme });
+    }, [themeColors, variant, variation, colorScheme]);
 
     const titleS = useMemo(() => {
-      return getAlertTitleStyles({ variant, variation, colorScheme });
-    }, [variant, variation, colorScheme]);
+      return getAlertTitleStyles({ variant, variation, colorScheme, colors: themeColors });
+    }, [variant, variation, colorScheme, themeColors]);
 
     return (
       <Box ref={ref} style={[styles.alertContainer, alertContainerStyles, style]} {...props}>
         {startIcon ? <View style={[styles.startIconContainer, startIconContainerStyles]}>{startThemedIcon}</View> : null}
         <View style={styles.contentContainer}>
           {title ? (
-            <Text mode="light" variation="h4" maxLength={titleMixLength} style={[titleS, titleStyles]}>
+            <Text mode="light" variation="h5" maxLength={titleMixLength} style={[titleS, titleStyles]}>
               {title}
             </Text>
           ) : null}
           {subTitle ? (
-            <Text mode="light" variation="h5" maxLength={titleMixLength} style={[titleS, styles.subTitle, subTitleStyles]}>
+            <Text mode="light" variation="h6" maxLength={titleMixLength} style={[titleS, styles.subTitle, subTitleStyles]}>
               {subTitle}
             </Text>
           ) : null}
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    borderRadius: 6,
   },
   startIconContainer: {
     paddingRight: 10,

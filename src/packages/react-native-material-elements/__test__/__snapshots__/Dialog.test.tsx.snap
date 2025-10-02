@@ -48,38 +48,52 @@ exports[`Dialog should render correctly with default props 1`] = `
     }
   >
     <View
-      accessibilityState={
+      collapsable={false}
+      onLayout={[Function]}
+      style={
         {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
+          "transform": [
+            {
+              "scale": 0.95,
+            },
+          ],
         }
       }
-      accessible={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          {},
-          {},
+    >
+      <View
+        accessibilityState={
           {
-            "backgroundColor": "#424242",
-            "borderRadius": 10,
-            "maxWidth": "90%",
-            "paddingBottom": 8,
-            "zIndex": 100,
-          },
-        ]
-      }
-    />
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessible={false}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            {},
+            {},
+            {
+              "backgroundColor": "#424242",
+              "borderRadius": 10,
+              "maxWidth": "90%",
+              "paddingBottom": 8,
+              "zIndex": 100,
+            },
+          ]
+        }
+      />
+    </View>
   </View>
 </Modal>
 `;
