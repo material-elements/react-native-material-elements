@@ -25,9 +25,7 @@ export const generateTextStyles = ({
 
   let baseColor: ColorValue | undefined;
 
-  if (themeComponentConfig?.color) {
-    baseColor = themeComponentConfig.color;
-  } else if (textThemeMode === 'light' || (!textThemeMode && themeMode === 'dark')) {
+  if (textThemeMode === 'light' || (!textThemeMode && themeMode === 'dark')) {
     baseColor = 'white';
   } else if (textThemeMode === 'dark') {
     baseColor = 'black';
@@ -73,8 +71,6 @@ export const generateTextStyles = ({
 
   if (activeColor) {
     textActiveColor = activeColor;
-  } else if (themeComponentConfig?.activeColor) {
-    textActiveColor = themeComponentConfig.activeColor;
   } else {
     textActiveColor = secondary[200];
   }
@@ -83,8 +79,6 @@ export const generateTextStyles = ({
 
   if (errorColor) {
     textErrorColor = errorColor;
-  } else if (themeComponentConfig?.errorColor) {
-    textErrorColor = themeComponentConfig.errorColor;
   } else {
     textErrorColor = red[600];
   }

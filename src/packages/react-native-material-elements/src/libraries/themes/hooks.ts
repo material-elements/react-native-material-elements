@@ -65,17 +65,6 @@ export const useThemeButtonConfigSelector = () => {
 export const useThemeIconButtonConfigSelector = () => {
   return useContextSelector(ThemeContext, values => values?.components?.iconButtonProps);
 };
-export const useThemeButtonGroupConfigSelector = () => {
-  return useContextSelector(ThemeContext, values => values?.components?.buttonGroupProps);
-};
-
-export const useThemeCardConfigSelector = () => {
-  return useContextSelector(ThemeContext, values => values?.components?.cardProps);
-};
-export const useThemeCardHeaderConfigSelector = () => {
-  return useContextSelector(ThemeContext, values => values?.components?.cardHeaderProps);
-};
-
 export const useThemeCheckBoxConfigSelector = () => {
   return useContextSelector(ThemeContext, values => values?.components?.checkBoxProps);
 };

@@ -10,9 +10,6 @@ import {
   useLineHeightSelector,
   useThemeBadgeConfigSelector,
   useThemeButtonConfigSelector,
-  useThemeButtonGroupConfigSelector,
-  useThemeCardConfigSelector,
-  useThemeCardHeaderConfigSelector,
   useThemeCheckBoxConfigSelector,
   useThemeChipConfigSelector,
   useThemeColorsSelector,
@@ -152,29 +149,6 @@ describe('Theme Hooks', () => {
       const { result } = renderHook(useThemeTextConfigSelector, { wrapper: ThemeWrapper });
       expect(result.current).toEqual(undefined);
     });
-
-    it('should return the correct text component configuration from theme provider', () => {
-      const props: ThemeProviderProps = {
-        components: {
-          textProps: {
-            gutterBottomSpace: 10,
-            maxLength: 10,
-            errorColor: 'red',
-            activeColor: 'green',
-            color: 'green',
-            style: { fontWeight: '800', fontSize: 20 },
-          },
-        },
-        children: mockChildren,
-      };
-
-      const { result } = renderHook(useThemeTextConfigSelector, {
-        wrapper: ThemeWrapper,
-        initialProps: props,
-      });
-
-      expect(result.current).toEqual(props.components!.textProps);
-    });
   });
 
   describe('useThemeBadgeConfigSelector', () => {
@@ -220,7 +194,7 @@ describe('Theme Hooks', () => {
             labelColor: 'green',
             scaleAnimationValue: 100,
             rippleEdge: 'bottomRight',
-            baseButtonContainerStyle: { borderWidth: 100 },
+            style: { borderWidth: 100 },
             rippleProps: {
               rippleStyles: { backgroundColor: 'red' },
               rippleAnimationStyles: { backgroundColor: 'red' },
@@ -253,7 +227,6 @@ describe('Theme Hooks', () => {
             style: { backgroundColor: 'red' },
             disableRipple: true,
             rippleEdge: 'bottomRight',
-            baseButtonContainerStyle: { backgroundColor: 'red' },
           },
         },
         children: mockChildren,
@@ -265,27 +238,6 @@ describe('Theme Hooks', () => {
       });
 
       expect(result.current).toEqual(props.components!.iconButtonProps);
-    });
-  });
-
-  describe('useThemeButtonGroupConfigSelector', () => {
-    it('Should return undefined for the theme button group component configuration when the theme wrapper does not provide a component config.', () => {
-      const { result } = renderHook(useThemeButtonGroupConfigSelector, { wrapper: ThemeWrapper });
-      expect(result.current).toEqual(undefined);
-    });
-  });
-
-  describe('useThemeCardConfigSelector', () => {
-    it('Should return undefined for the theme card component configuration when the theme wrapper does not provide a component config.', () => {
-      const { result } = renderHook(useThemeCardConfigSelector, { wrapper: ThemeWrapper });
-      expect(result.current).toEqual(undefined);
-    });
-  });
-
-  describe('useThemeCardHeaderConfigSelector', () => {
-    it('Should return undefined for the theme card header component configuration when the theme wrapper does not provide a component config.', () => {
-      const { result } = renderHook(useThemeCardHeaderConfigSelector, { wrapper: ThemeWrapper });
-      expect(result.current).toEqual(undefined);
     });
   });
 

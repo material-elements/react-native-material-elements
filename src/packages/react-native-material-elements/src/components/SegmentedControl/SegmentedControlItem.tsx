@@ -71,13 +71,7 @@ export const SegmentedControlItem = ({
   }, [data, headingStyles, segmentItemContainerStyles]);
 
   return (
-    <BaseButton
-      baseButtonContainerStyle={styles.item}
-      style={[styles.baseButton, segmentItemStyle]}
-      disableScaleAnimation
-      onPress={onPress}
-      disableRipple
-      {...props}>
+    <BaseButton style={[styles.baseButton, segmentItemStyle]} disableScaleAnimation onPress={onPress} disableRipple {...props}>
       {renderValue()}
     </BaseButton>
   );

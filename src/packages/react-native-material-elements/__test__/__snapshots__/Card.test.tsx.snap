@@ -8,7 +8,6 @@ exports[`Card Component should render correctly 1`] = `
       {},
       [
         undefined,
-        undefined,
         {},
         undefined,
       ],
@@ -198,7 +197,6 @@ exports[`CardHeader Component should render correctly 1`] = `
       {},
       {},
       [
-        undefined,
         {},
         undefined,
       ],
