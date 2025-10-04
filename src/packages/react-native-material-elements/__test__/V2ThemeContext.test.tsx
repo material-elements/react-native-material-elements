@@ -1,10 +1,13 @@
 import { renderHook, render as themeRender } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
 import {
+  Badge,
   createColorShades,
   createTheme,
   createThemeDimensions,
   defaultLightTheme,
+  Divider,
+  DividerColorThemeConfig,
   Text,
   themeDimensions,
   ThemeProvider,
@@ -378,6 +381,301 @@ describe('V2ThemeContext', () => {
         const text = getByText('Hello');
         const fattenStyles = StyleSheet.flatten(text.props.style);
         expect(fattenStyles).toEqual(expect.objectContaining({ fontSize: 20, fontWeight: 200 }));
+      });
+    });
+
+    describe('dividerProps', () => {
+      const startLineTestId = 'divider-start-line-testid';
+      const endLineTestId = 'divider-end-line-testid';
+      const dividerTestId = 'divider-testid';
+
+      const mockDividerColorThemeConfig: DividerColorThemeConfig = {
+        colors: {
+          primary: {
+            color: 'green',
+          },
+          secondary: {
+            color: 'red',
+          },
+          success: {
+            color: 'pink',
+          },
+          error: {
+            color: 'blue',
+          },
+          info: {
+            color: 'white',
+          },
+          warning: {
+            color: 'pink',
+          },
+          gray: {
+            color: 'gray',
+          },
+          lightGray: {
+            color: 'green',
+          },
+        },
+      };
+
+      it('should adopted the theme lightGray color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: mockDividerColorThemeConfig }}>
+            <Divider color="lightGray" startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(startLineTestId);
+        const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'green' }));
+
+        const endLine = getByTestId(endLineTestId);
+        const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'green' }));
+      });
+
+      it('should adopted the theme gray color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: mockDividerColorThemeConfig }}>
+            <Divider color="gray" startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(startLineTestId);
+        const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'gray' }));
+
+        const endLine = getByTestId(endLineTestId);
+        const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'gray' }));
+      });
+
+      it('should adopted the theme warning color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: mockDividerColorThemeConfig }}>
+            <Divider color="warning" startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(startLineTestId);
+        const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'pink' }));
+
+        const endLine = getByTestId(endLineTestId);
+        const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'pink' }));
+      });
+
+      it('should adopted the theme info color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: mockDividerColorThemeConfig }}>
+            <Divider color="info" startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(startLineTestId);
+        const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'white' }));
+
+        const endLine = getByTestId(endLineTestId);
+        const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'white' }));
+      });
+
+      it('should adopted the theme error color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: mockDividerColorThemeConfig }}>
+            <Divider color="error" startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(startLineTestId);
+        const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'blue' }));
+
+        const endLine = getByTestId(endLineTestId);
+        const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'blue' }));
+      });
+
+      it('should adopted the theme success color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: mockDividerColorThemeConfig }}>
+            <Divider color="success" startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(startLineTestId);
+        const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'pink' }));
+
+        const endLine = getByTestId(endLineTestId);
+        const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'pink' }));
+      });
+
+      it('should adopted the theme primary color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: mockDividerColorThemeConfig }}>
+            <Divider color="primary" startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(startLineTestId);
+        const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'green' }));
+
+        const endLine = getByTestId(endLineTestId);
+        const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'green' }));
+      });
+
+      it('should adopted the theme secondary color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: mockDividerColorThemeConfig }}>
+            <Divider color="secondary" startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(startLineTestId);
+        const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'red' }));
+
+        const endLine = getByTestId(endLineTestId);
+        const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'red' }));
+      });
+
+      it('should adopted the theme startLineStyles', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: { startLineStyles: { borderWidth: 10, borderRadius: 10 } } }}>
+            <Divider startLineTestId={startLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(startLineTestId);
+
+        const flattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(flattenStyles).toEqual(expect.objectContaining({ borderWidth: 10, borderRadius: 10 }));
+      });
+
+      it('should override the theme startLineStyles', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: { startLineStyles: { borderWidth: 10, borderRadius: 10 } } }}>
+            <Divider startLineStyles={{ borderWidth: 30, borderRadius: 50 }} startLineTestId={startLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(startLineTestId);
+
+        const flattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(flattenStyles).toEqual(expect.objectContaining({ borderWidth: 30, borderRadius: 50 }));
+      });
+
+      it('should adopted the theme endLineStyles', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: { endLineStyles: { borderWidth: 10, borderRadius: 10 } } }}>
+            <Divider endLineTestId={endLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(endLineTestId);
+
+        const flattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(flattenStyles).toEqual(expect.objectContaining({ borderWidth: 10, borderRadius: 10 }));
+      });
+
+      it('should override the theme endLineStyles', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: { endLineStyles: { borderWidth: 10, borderRadius: 10 } } }}>
+            <Divider endLineStyles={{ borderWidth: 30, borderRadius: 50 }} endLineTestId={endLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(endLineTestId);
+
+        const flattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(flattenStyles).toEqual(expect.objectContaining({ borderWidth: 30, borderRadius: 50 }));
+      });
+
+      it('should adopted the theme borderColor', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: { borderColor: 'red' } }}>
+            <Divider startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(startLineTestId);
+        const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'red' }));
+
+        const endLine = getByTestId(endLineTestId);
+        const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'red' }));
+      });
+
+      it('should override the theme borderColor', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: { borderColor: 'red' } }}>
+            <Divider borderColor="green" startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
+          </ThemeProvider>,
+        );
+
+        const startLine = getByTestId(startLineTestId);
+        const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'green' }));
+
+        const endLine = getByTestId(endLineTestId);
+        const endLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'green' }));
+      });
+
+      it('should adopted the theme styles', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: { style: { borderWidth: 10 } } }}>
+            <Divider testID={dividerTestId} />
+          </ThemeProvider>,
+        );
+
+        const divider = getByTestId(dividerTestId);
+        const flattenStyles = StyleSheet.flatten(divider.props.style);
+        expect(flattenStyles).toEqual(expect.objectContaining({ borderWidth: 10 }));
+      });
+
+      it('should override the theme styles', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ dividerProps: { style: { borderWidth: 10 } } }}>
+            <Divider testID={dividerTestId} style={{ borderWidth: 100 }} />
+          </ThemeProvider>,
+        );
+
+        const divider = getByTestId(dividerTestId);
+        const flattenStyles = StyleSheet.flatten(divider.props.style);
+        expect(flattenStyles).toEqual(expect.objectContaining({ borderWidth: 100 }));
+      });
+    });
+
+    describe('badgeProps', () => {
+      it('should adopted the theme config max prop', () => {
+        const { getByText } = themeRender(
+          <ThemeProvider components={{ badgeProps: { max: 10 } }}>
+            <Badge badgeContent={20} />
+          </ThemeProvider>,
+        );
+
+        const label = getByText('9+');
+        expect(label).toBeDefined();
+      });
+
+      it('should override the theme config max prop', () => {
+        const { getByText } = themeRender(
+          <ThemeProvider components={{ badgeProps: { max: 10 } }}>
+            <Badge badgeContent={30} max={20} shouldOverrideRootMaxValue />
+          </ThemeProvider>,
+        );
+
+        const label = getByText('19+');
+        expect(label).toBeDefined();
       });
     });
   });
