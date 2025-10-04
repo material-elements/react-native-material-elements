@@ -16,9 +16,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     position: 'relative',
   },
-  item: {
-    flex: 1,
-  },
   baseButton: {
     flex: 1,
     height: '100%',

@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   line: {
-    borderWidth: 0.5,
+    borderTopWidth: 0.5,
+    borderBottomWidth: 0.5,
   },
 });
 
@@ -50,14 +51,6 @@ export const dividerLineStyles = ({
     case 'right':
       isStartLine ? (baseStyles.flex = 0.8) : (baseStyles.flex = 0.2);
       break;
-  }
-
-  if (isStartLine) {
-    baseStyles.borderEndWidth = 0;
-    baseStyles.borderStartWidth = 0;
-  } else {
-    baseStyles.borderStartWidth = 0;
-    baseStyles.borderEndWidth = 0;
   }
 
   return baseStyles;

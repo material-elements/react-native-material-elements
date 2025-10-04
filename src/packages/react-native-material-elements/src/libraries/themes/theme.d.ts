@@ -1,6 +1,5 @@
 import { ColorSchemeName } from 'react-native';
 import {
-  ButtonGroupProps,
   DividerColorThemeConfig,
   DividerProps,
   IconInputProps,
@@ -14,8 +13,6 @@ import {
   BadgeVariationThemeConfig,
   ButtonProps,
   ButtonVariations,
-  CardHeaderProps,
-  CardProps,
   CheckBoxProps,
   CheckBoxVariationThemeConfig,
   ChipColorThemeConfig,
@@ -29,7 +26,6 @@ import {
   PaginationThemeConfig,
   TextFieldProps,
   TextFiledVariation,
-  TextProps,
   TextVariationThemeConfig,
 } from '../../components/types';
 import { initialLightTheme } from './v1/colors';
@@ -142,14 +138,10 @@ type ChipVariationConfig = Partial<
  * These configurations allow for easy styling adjustments for various components.
  */
 export type ThemeComponentConfig = {
-  textProps: Pick<TextProps, 'gutterBottomSpace' | 'maxLength' | 'errorColor' | 'activeColor' | 'color' | 'style'> &
-    TextVariationThemeConfig;
+  textProps: TextVariationThemeConfig;
   badgeProps: Pick<BadgeProps, 'max' | 'badgeAnimationDuration' | 'anchorOrigin' | 'style'> & BadgeVariationThemeConfig;
   buttonProps: ButtonThemeConfig & ButtonVariationConfig;
   iconButtonProps: IconButtonThemeConfig & IconButtonVariationsConfig;
-  buttonGroupProps: Pick<ButtonGroupProps, 'roundSize' | 'borderWidth' | 'disableRipple' | 'baseButtonStyles' | 'style'>;
-  cardProps?: Pick<CardProps, 'style'>;
-  cardHeaderProps?: Pick<CardHeaderProps, 'style'>;
   checkBoxProps?: Pick<
     CheckBoxProps,
     | 'checkBoxColor'
