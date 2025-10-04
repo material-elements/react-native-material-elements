@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorSchemeName, ColorValue, Text } from 'react-native';
+import { ColorSchemeName, ColorValue, Text, TextStyle } from 'react-native';
 import { BaseStyles, ElementTextStyleProps, StyledProps } from '../../libraries/style/styleTypes';
 import { ThemeDimensions, WithThemeComponentConfig } from '../../libraries/themes/theme';
 /**
@@ -8,8 +8,8 @@ import { ThemeDimensions, WithThemeComponentConfig } from '../../libraries/theme
  */
 export type TextVariation = 'body1' | 'body2' | 'caption' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-type TextFontSize = { fontSize: number };
-export type TextVariationThemeConfig = Partial<Record<TextVariation, TextFontSize | undefined>>;
+type TextFontConfig = { fontSize: number; fontWeight?: TextStyle['fontWeight'] };
+export type TextVariationThemeConfig = Partial<Record<TextVariation, TextFontConfig | undefined>>;
 
 /**
  * Interface for the properties that can be passed to a text component.
