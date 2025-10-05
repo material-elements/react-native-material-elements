@@ -1,5 +1,15 @@
-import React, { useCallback, useMemo } from 'react';
-import { ColorSchemeName, ColorValue, StyleProp, useColorScheme, View, ViewProps, ViewStyle } from 'react-native';
+import React, { useCallback, useMemo, useState } from 'react';
+import {
+  ColorSchemeName,
+  ColorValue,
+  LayoutChangeEvent,
+  LayoutRectangle,
+  StyleProp,
+  useColorScheme,
+  View,
+  ViewProps,
+  ViewStyle,
+} from 'react-native';
 import { useRestyle } from '../../hooks';
 import { useThemeColorsSelector, useThemeDividerConfigSelector, useThemeSpacingSelector } from '../../libraries';
 import { StyledProps } from '../../libraries/style/styleTypes';
@@ -44,7 +54,7 @@ export interface DividerProps extends ViewProps, StyledProps {
   /**
    * The color of the divider line, defined by a color value.
    */
-  borderColor?: ColorValue;
+  backgroundColor?: ColorValue;
   /**
    * Space between the divider line and any child elements.
    */
@@ -75,8 +85,11 @@ export interface DividerRootContainerStyles extends Pick<DividerProps, 'variant'
    * This can influence layout and styling decisions.
    */
   hasChild?: boolean;
+
+  /** Divider layout rectangle */
+  dividerLayout?: LayoutRectangle | null;
 }
-export interface DividerLineStyles extends Pick<DividerProps, 'borderColor' | 'textAlign' | 'color'> {
+export interface DividerLineStyles extends Pick<DividerProps, 'backgroundColor' | 'textAlign' | 'color' | 'orientation'> {
   /**
    * Theme configuration for the divider line
    */
@@ -101,7 +114,7 @@ export const Divider = React.forwardRef<View, DividerProps>(
       style,
       startLineStyles,
       endLineStyles,
-      borderColor,
+      backgroundColor,
       gap,
       variantSpacing,
       startLineTestId,
@@ -121,8 +134,9 @@ export const Divider = React.forwardRef<View, DividerProps>(
     const hasChild = Boolean(children);
     const dividerThemeConfig = useThemeDividerConfigSelector();
     const { getStyleFromProps } = useRestyle(props);
+    const [dividerLayout, setDividerLayout] = useState<LayoutRectangle | null>(null);
 
-    const dividerBorderColor = borderColor ?? dividerThemeConfig?.borderColor;
+    const dividerBackgroundColor = backgroundColor ?? dividerThemeConfig?.backgroundColor;
     const dividerGap = gap ?? dividerThemeConfig?.gap;
     const dividerVariantSpacing = variantSpacing ?? dividerThemeConfig?.variantSpacing;
 
@@ -136,35 +150,38 @@ export const Divider = React.forwardRef<View, DividerProps>(
         gap: dividerGap,
         hasChild,
         variantSpacing: dividerVariantSpacing,
+        dividerLayout,
       });
-    }, [themeSpacing, variant, orientation, dividerGap, hasChild, dividerVariantSpacing]);
+    }, [themeSpacing, variant, orientation, dividerGap, hasChild, dividerVariantSpacing, dividerLayout]);
 
     const lineStyles = useCallback(
       (lineType: LineType) => {
         return dividerLineStyles({
           colors: themeColors,
           mode: colorScheme,
-          borderColor: dividerBorderColor,
+          backgroundColor: dividerBackgroundColor,
           textAlign,
           lineType,
           color,
           themeColorSchemeConfig: themeVariantColors,
+          orientation,
         });
       },
-      [dividerBorderColor, colorScheme, textAlign, color, themeColors, themeVariantColors],
+      [dividerBackgroundColor, colorScheme, textAlign, color, themeColors, themeVariantColors, orientation],
     );
 
+    const onLayout = (event: LayoutChangeEvent) => {
+      const { layout } = event.nativeEvent;
+      setDividerLayout(layout);
+    };
+
     return (
-      <View
-        ref={ref}
-        style={[styles.rootContainer, containerStyles, dividerThemeConfig?.style, getStyleFromProps(), style]}
-        {...props}>
-        <View
-          style={[styles.line, lineStyles('start'), dividerThemeConfig?.startLineStyles, startLineStyles]}
-          testID={startLineTestId}
-        />
-        {children}
-        <View style={[styles.line, lineStyles('end'), dividerThemeConfig?.endLineStyles, endLineStyles]} testID={endLineTestId} />
+      <View ref={ref} onLayout={onLayout}>
+        <View style={[styles.rootContainer, containerStyles, dividerThemeConfig?.style, getStyleFromProps(), style]} {...props}>
+          <View style={[lineStyles('start'), dividerThemeConfig?.startLineStyles, startLineStyles]} testID={startLineTestId} />
+          {children}
+          <View style={[lineStyles('end'), dividerThemeConfig?.endLineStyles, endLineStyles]} testID={endLineTestId} />
+        </View>
       </View>
     );
   },

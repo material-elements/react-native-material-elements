@@ -78,16 +78,16 @@ describe('Divider Component', () => {
     expect(divider.props.style).not.toHaveProperty('paddingLeft');
   });
 
-  it('should change the border of the divider component when passed the borderColor prop', () => {
+  it('should change the border of the divider component when passed the backgroundColor prop', () => {
     const { getByTestId } = render(
-      <Divider startLineTestId={dividerStartLineTestId} endLineTestId={dividerEndLineTestId} borderColor="red" />,
+      <Divider startLineTestId={dividerStartLineTestId} endLineTestId={dividerEndLineTestId} backgroundColor="red" />,
     );
     const startLine = getByTestId(dividerStartLineTestId);
     const endLine = getByTestId(dividerStartLineTestId);
     const startLineFlattenedStyle = StyleSheet.flatten(startLine.props.style);
     const endLineFlattenedStyle = StyleSheet.flatten(endLine.props.style);
-    expect(startLineFlattenedStyle.borderColor).toEqual('red');
-    expect(endLineFlattenedStyle.borderColor).toEqual('red');
+    expect(startLineFlattenedStyle.backgroundColor).toEqual('red');
+    expect(endLineFlattenedStyle.backgroundColor).toEqual('red');
   });
 
   it('should change the variant spacing of the divider component when passed the variantSpacing prop', () => {
@@ -176,9 +176,9 @@ describe('Divider Component', () => {
     expect(flattenedStyle.borderWidth).toEqual(2);
   });
 
-  it('should apply the root borderColor correctly', () => {
+  it('should apply the root backgroundColor correctly', () => {
     const { getByTestId } = testRenderer(
-      <ThemeProvider components={{ dividerProps: { borderColor: 'red' } }}>
+      <ThemeProvider components={{ dividerProps: { backgroundColor: 'red' } }}>
         <Divider startLineTestId={dividerStartLineTestId} endLineTestId={dividerEndLineTestId} />
       </ThemeProvider>,
     );
@@ -186,22 +186,22 @@ describe('Divider Component', () => {
     const endLine = getByTestId(dividerStartLineTestId);
     const startLineFlattenedStyle = StyleSheet.flatten(startLine.props.style);
     const endLineFlattenedStyle = StyleSheet.flatten(endLine.props.style);
-    expect(startLineFlattenedStyle.borderColor).toEqual('red');
-    expect(endLineFlattenedStyle.borderColor).toEqual('red');
+    expect(startLineFlattenedStyle.backgroundColor).toEqual('red');
+    expect(endLineFlattenedStyle.backgroundColor).toEqual('red');
   });
 
-  it('should override the root borderColor correctly', () => {
+  it('should override the root backgroundColor correctly', () => {
     const { getByTestId } = testRenderer(
-      <ThemeProvider components={{ dividerProps: { borderColor: 'red' } }}>
-        <Divider startLineTestId={dividerStartLineTestId} endLineTestId={dividerEndLineTestId} borderColor={'green'} />
+      <ThemeProvider components={{ dividerProps: { backgroundColor: 'red' } }}>
+        <Divider startLineTestId={dividerStartLineTestId} endLineTestId={dividerEndLineTestId} backgroundColor={'green'} />
       </ThemeProvider>,
     );
     const startLine = getByTestId(dividerStartLineTestId);
     const endLine = getByTestId(dividerStartLineTestId);
     const startLineFlattenedStyle = StyleSheet.flatten(startLine.props.style);
     const endLineFlattenedStyle = StyleSheet.flatten(endLine.props.style);
-    expect(startLineFlattenedStyle.borderColor).toEqual('green');
-    expect(endLineFlattenedStyle.borderColor).toEqual('green');
+    expect(startLineFlattenedStyle.backgroundColor).toEqual('green');
+    expect(endLineFlattenedStyle.backgroundColor).toEqual('green');
   });
 
   it('should apply the root variant spacing of the divider component correctly', () => {
@@ -257,11 +257,11 @@ describe('Divider Component', () => {
 
     const startLine = getByTestId(dividerStartLineTestId);
     const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-    expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: gray[700] }));
+    expect(startLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: gray[700] }));
 
     const endLine = getByTestId(dividerEndLineTestId);
     const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
-    expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: gray[700] }));
+    expect(endLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: gray[700] }));
   });
 
   it('should show smooth dark background when theme mode is light', () => {
@@ -270,11 +270,11 @@ describe('Divider Component', () => {
 
     const startLine = getByTestId(dividerStartLineTestId);
     const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-    expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: gray[400] }));
+    expect(startLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: gray[400] }));
 
     const endLine = getByTestId(dividerEndLineTestId);
     const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
-    expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: gray[400] }));
+    expect(endLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: gray[400] }));
   });
 
   it('should render child component', () => {

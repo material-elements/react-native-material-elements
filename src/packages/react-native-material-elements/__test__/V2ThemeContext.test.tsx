@@ -21,6 +21,15 @@ describe('V2ThemeContext', () => {
   const mockLightColors = { 400: '#000000', '100': '#be3434', '200': '#2f63be' };
   const mockDarkColors = { 400: '#a31a1a', '100': '#3464be', '200': '#76be2f' };
 
+  beforeEach(() => {
+    jest.useFakeTimers();
+    jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   describe('createColorShades', () => {
     it('should customized the theme color shades', () => {
       const colors = createColorShades({
@@ -427,11 +436,11 @@ describe('V2ThemeContext', () => {
 
         const startLine = getByTestId(startLineTestId);
         const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'green' }));
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'green' }));
 
         const endLine = getByTestId(endLineTestId);
         const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
-        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'green' }));
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'green' }));
       });
 
       it('should adopted the theme gray color', () => {
@@ -443,11 +452,11 @@ describe('V2ThemeContext', () => {
 
         const startLine = getByTestId(startLineTestId);
         const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'gray' }));
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'gray' }));
 
         const endLine = getByTestId(endLineTestId);
         const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
-        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'gray' }));
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'gray' }));
       });
 
       it('should adopted the theme warning color', () => {
@@ -459,11 +468,11 @@ describe('V2ThemeContext', () => {
 
         const startLine = getByTestId(startLineTestId);
         const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'pink' }));
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'pink' }));
 
         const endLine = getByTestId(endLineTestId);
         const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
-        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'pink' }));
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'pink' }));
       });
 
       it('should adopted the theme info color', () => {
@@ -475,11 +484,11 @@ describe('V2ThemeContext', () => {
 
         const startLine = getByTestId(startLineTestId);
         const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'white' }));
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'white' }));
 
         const endLine = getByTestId(endLineTestId);
         const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
-        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'white' }));
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'white' }));
       });
 
       it('should adopted the theme error color', () => {
@@ -491,11 +500,11 @@ describe('V2ThemeContext', () => {
 
         const startLine = getByTestId(startLineTestId);
         const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'blue' }));
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'blue' }));
 
         const endLine = getByTestId(endLineTestId);
         const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
-        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'blue' }));
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'blue' }));
       });
 
       it('should adopted the theme success color', () => {
@@ -507,11 +516,11 @@ describe('V2ThemeContext', () => {
 
         const startLine = getByTestId(startLineTestId);
         const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'pink' }));
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'pink' }));
 
         const endLine = getByTestId(endLineTestId);
         const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
-        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'pink' }));
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'pink' }));
       });
 
       it('should adopted the theme primary color', () => {
@@ -523,11 +532,11 @@ describe('V2ThemeContext', () => {
 
         const startLine = getByTestId(startLineTestId);
         const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'green' }));
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'green' }));
 
         const endLine = getByTestId(endLineTestId);
         const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
-        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'green' }));
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'green' }));
       });
 
       it('should adopted the theme secondary color', () => {
@@ -539,11 +548,11 @@ describe('V2ThemeContext', () => {
 
         const startLine = getByTestId(startLineTestId);
         const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'red' }));
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
 
         const endLine = getByTestId(endLineTestId);
         const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
-        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'red' }));
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
       });
 
       it('should adopted the theme startLineStyles', () => {
@@ -600,34 +609,34 @@ describe('V2ThemeContext', () => {
 
       it('should adopted the theme borderColor', () => {
         const { getByTestId } = themeRender(
-          <ThemeProvider components={{ dividerProps: { borderColor: 'red' } }}>
+          <ThemeProvider components={{ dividerProps: { backgroundColor: 'red' } }}>
             <Divider startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
           </ThemeProvider>,
         );
 
         const startLine = getByTestId(startLineTestId);
         const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'red' }));
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
 
         const endLine = getByTestId(endLineTestId);
         const endLineFlattenStyles = StyleSheet.flatten(endLine.props.style);
-        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'red' }));
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
       });
 
       it('should override the theme borderColor', () => {
         const { getByTestId } = themeRender(
-          <ThemeProvider components={{ dividerProps: { borderColor: 'red' } }}>
-            <Divider borderColor="green" startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
+          <ThemeProvider components={{ dividerProps: { backgroundColor: 'red' } }}>
+            <Divider backgroundColor="green" startLineTestId={startLineTestId} endLineTestId={endLineTestId} />
           </ThemeProvider>,
         );
 
         const startLine = getByTestId(startLineTestId);
         const startLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'green' }));
+        expect(startLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'green' }));
 
         const endLine = getByTestId(endLineTestId);
         const endLineFlattenStyles = StyleSheet.flatten(startLine.props.style);
-        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ borderColor: 'green' }));
+        expect(endLineFlattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'green' }));
       });
 
       it('should adopted the theme styles', () => {

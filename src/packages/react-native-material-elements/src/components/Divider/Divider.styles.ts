@@ -9,36 +9,41 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  line: {
-    borderTopWidth: 0.5,
-    borderBottomWidth: 0.5,
-  },
 });
 
 export const dividerLineStyles = ({
   colors,
   mode,
-  borderColor,
+  backgroundColor,
   textAlign,
   lineType,
   color,
   themeColorSchemeConfig,
+  orientation,
 }: DividerLineStyles) => {
-  let borderColorValue: ColorValue;
+  let _backgroundColor: ColorValue;
+  const isVertical = orientation === 'vertical';
 
-  if (borderColor) {
-    borderColorValue = borderColor;
+  if (backgroundColor) {
+    _backgroundColor = backgroundColor;
   } else if (color) {
-    borderColorValue = getVariant({ colors, variant: color, config: themeColorSchemeConfig });
+    _backgroundColor = getVariant({ colors, variant: color, config: themeColorSchemeConfig });
   } else if (mode === 'light') {
-    borderColorValue = gray[400];
+    _backgroundColor = gray[400];
   } else {
-    borderColorValue = gray[700];
+    _backgroundColor = gray[700];
   }
 
   let baseStyles: ViewStyle = {
-    borderColor: borderColorValue,
+    backgroundColor: _backgroundColor,
   };
+
+  if (isVertical) {
+    baseStyles.width = 0.6;
+  } else {
+    baseStyles.height = 0.6;
+  }
+
   const isStartLine = lineType === 'start';
 
   switch (textAlign) {
@@ -63,19 +68,35 @@ export const dividerRootContainerStyles = ({
   gap,
   hasChild,
   variantSpacing,
+  dividerLayout,
 }: DividerRootContainerStyles): ViewStyle => {
   const isVertical = orientation === 'vertical';
 
   const defaultStyles: ViewStyle = isVertical
     ? {
         paddingHorizontal: 2,
-        alignSelf: 'auto',
+        alignSelf: 'flex-start',
         flexDirection: 'column',
       }
     : { paddingVertical: 2 };
 
   const baseStyles: ViewStyle = { ...defaultStyles, gap: gap || hasChild ? 10 : 0 };
-  const elementSpacing = variantSpacing ?? spacing.lg;
+
+  let elementSpacing: number;
+
+  if (variantSpacing) {
+    elementSpacing = variantSpacing;
+  } else {
+    if (dividerLayout) {
+      if (isVertical) {
+        elementSpacing = dividerLayout.height / 6;
+      } else {
+        elementSpacing = dividerLayout.width / 6;
+      }
+    } else {
+      elementSpacing = spacing.lg;
+    }
+  }
 
   switch (variant) {
     case 'middle':
