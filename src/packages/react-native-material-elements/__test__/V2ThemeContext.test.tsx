@@ -8,6 +8,7 @@ import {
   defaultLightTheme,
   Divider,
   DividerColorThemeConfig,
+  IconInput,
   Text,
   themeDimensions,
   ThemeProvider,
@@ -124,6 +125,36 @@ describe('V2ThemeContext', () => {
   });
 
   describe('ThemeProvider component config', () => {
+    const iconInputWrapperTestId = 'icon-input-test-id';
+
+    describe('iconInputProps', () => {
+      it('should adopted theme inputWrapperStyles prop', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider
+            components={{ iconInputProps: { inputWrapperStyles: { width: 100, height: 100, backgroundColor: 'red' } } }}>
+            <IconInput testID={iconInputWrapperTestId} />
+          </ThemeProvider>,
+        );
+
+        const inputWrapper = getByTestId(`${iconInputWrapperTestId}-wrapper`);
+        const flattenStyles = StyleSheet.flatten(inputWrapper.props.style);
+        expect(flattenStyles).toEqual(expect.objectContaining({ width: 100, height: 100, backgroundColor: 'red' }));
+      });
+
+      it('should marge theme inputWrapperStyles prop and inputWrapperStyles component prop', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider
+            components={{ iconInputProps: { inputWrapperStyles: { width: 100, height: 100, backgroundColor: 'red' } } }}>
+            <IconInput testID={iconInputWrapperTestId} inputWrapperStyles={{ width: 10, backgroundColor: 'green' }} />
+          </ThemeProvider>,
+        );
+
+        const inputWrapper = getByTestId(`${iconInputWrapperTestId}-wrapper`);
+        const flattenStyles = StyleSheet.flatten(inputWrapper.props.style);
+        expect(flattenStyles).toEqual(expect.objectContaining({ width: 10, backgroundColor: 'green' }));
+      });
+    });
+
     describe('textProps', () => {
       const mockTextThemeConfig: TextVariationThemeConfig = {
         body1: { fontSize: 10, fontWeight: '100' },
