@@ -15,7 +15,7 @@ import {
 } from '../src';
 import { ThemeInterface, ThemeType } from '../src/libraries/types';
 import { render, ThemeWrapper } from './test-utils';
-import { TextVariationThemeConfig } from '../src/types';
+import { BadgeVariationThemeConfig, TextVariationThemeConfig } from '../src/types';
 
 describe('V2ThemeContext', () => {
   const mockLightColors = { 400: '#000000', '100': '#be3434', '200': '#2f63be' };
@@ -665,6 +665,133 @@ describe('V2ThemeContext', () => {
     });
 
     describe('badgeProps', () => {
+      const badgeTestId = 'badge-testid';
+
+      const mockDividerColorThemeConfig: BadgeVariationThemeConfig = {
+        colors: {
+          primary: {
+            color: 'green',
+          },
+          secondary: {
+            color: 'red',
+          },
+          success: {
+            color: 'pink',
+          },
+          error: {
+            color: 'blue',
+          },
+          info: {
+            color: 'white',
+          },
+          warning: {
+            color: 'pink',
+          },
+          gray: {
+            color: 'gray',
+          },
+          lightGray: {
+            color: 'green',
+          },
+        },
+      };
+
+      it('should adopted theme lightGray color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ badgeProps: mockDividerColorThemeConfig }}>
+            <Badge variation="lightGray" testID={badgeTestId} />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'green' }));
+      });
+
+      it('should adopted theme gray color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ badgeProps: mockDividerColorThemeConfig }}>
+            <Badge variation="gray" testID={badgeTestId} />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'gray' }));
+      });
+
+      it('should adopted theme warning color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ badgeProps: mockDividerColorThemeConfig }}>
+            <Badge variation="warning" testID={badgeTestId} />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'pink' }));
+      });
+
+      it('should adopted theme info color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ badgeProps: mockDividerColorThemeConfig }}>
+            <Badge variation="info" testID={badgeTestId} />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'white' }));
+      });
+
+      it('should adopted theme error color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ badgeProps: mockDividerColorThemeConfig }}>
+            <Badge variation="error" testID={badgeTestId} />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'blue' }));
+      });
+
+      it('should adopted theme success color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ badgeProps: mockDividerColorThemeConfig }}>
+            <Badge variation="success" testID={badgeTestId} />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'pink' }));
+      });
+
+      it('should adopted theme secondary color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ badgeProps: mockDividerColorThemeConfig }}>
+            <Badge variation="secondary" testID={badgeTestId} />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'red' }));
+      });
+
+      it('should adopted theme primary color', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ badgeProps: mockDividerColorThemeConfig }}>
+            <Badge variation="primary" testID={badgeTestId} />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(expect.objectContaining({ backgroundColor: 'green' }));
+      });
+
       it('should adopted the theme config max prop', () => {
         const { getByText } = themeRender(
           <ThemeProvider components={{ badgeProps: { max: 10 } }}>
@@ -685,6 +812,127 @@ describe('V2ThemeContext', () => {
 
         const label = getByText('19+');
         expect(label).toBeDefined();
+      });
+
+      it('should adopted the theme anchorOrigin prop with badge variant', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ badgeProps: { anchorOrigin: { vertical: 'top', horizontal: 'left' } } }}>
+            <Badge badgeContent={10} testID={badgeTestId} />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(expect.objectContaining({ top: -4, left: -4 }));
+      });
+
+      it('should override the theme anchorOrigin prop with badge variant', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ badgeProps: { anchorOrigin: { vertical: 'top', horizontal: 'left' } } }}>
+            <Badge
+              shouldOverrideRootAnchor
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+              badgeContent={10}
+              testID={badgeTestId}
+            />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(expect.objectContaining({ bottom: -4, right: -4 }));
+      });
+
+      it('should adopted the theme anchorOrigin prop with dot variant', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ badgeProps: { anchorOrigin: { vertical: 'top', horizontal: 'left' } } }}>
+            <Badge badgeContent={10} variant="dot" testID={badgeTestId} />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(expect.objectContaining({ top: 0, left: 0 }));
+      });
+
+      it('should override the theme anchorOrigin prop with dot variant', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider components={{ badgeProps: { anchorOrigin: { vertical: 'top', horizontal: 'left' } } }}>
+            <Badge
+              shouldOverrideRootAnchor
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+              badgeContent={10}
+              variant="dot"
+              testID={badgeTestId}
+            />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(expect.objectContaining({ bottom: 0, right: 0 }));
+      });
+
+      it('should apply the theme badge style config', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider
+            components={{
+              badgeProps: {
+                style: {
+                  borderRadius: 2,
+                  backgroundColor: 'red',
+                  borderWidth: 1,
+                  borderColor: 'grey',
+                },
+              },
+            }}>
+            <Badge testID={badgeTestId} />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(
+          expect.objectContaining({
+            borderRadius: 2,
+            backgroundColor: 'red',
+            borderWidth: 1,
+            borderColor: 'grey',
+          }),
+        );
+      });
+
+      it('should merge the theme badge style config with badge component style prop', () => {
+        const { getByTestId } = themeRender(
+          <ThemeProvider
+            components={{
+              badgeProps: {
+                style: {
+                  borderRadius: 2,
+                  backgroundColor: 'red',
+                  borderWidth: 1,
+                  borderColor: 'grey',
+                },
+              },
+            }}>
+            <Badge style={{ backgroundColor: 'green', borderColor: 'red' }} testID={badgeTestId} />
+          </ThemeProvider>,
+        );
+
+        const badge = getByTestId(badgeTestId);
+        const fattenStyles = StyleSheet.flatten(badge.props.style);
+        expect(fattenStyles).toEqual(
+          expect.objectContaining({
+            borderRadius: 2,
+            backgroundColor: 'green',
+            borderWidth: 1,
+            borderColor: 'red',
+          }),
+        );
       });
     });
   });
