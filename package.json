@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest --coverage",
-    "sonar-scanner": "sonar-scanner"
+    "sonar-scanner": "sonar-scanner",
+    "type-check": "npx tsc --noEmit"
   },
   "dependencies": {
     "lodash": "^4.17.21",

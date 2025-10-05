@@ -43,29 +43,6 @@ describe('Card Component', () => {
     expect(flattenedStyle.borderWidth).toEqual(0.5);
     expect(flattenedStyle.borderColor).toEqual(gray[500]);
   });
-
-  it('should apply the root style', () => {
-    const { getByTestId } = testRenderer(
-      <ThemeProvider components={{ cardProps: { style: { backgroundColor: 'red' } } }}>
-        <Card variation="outlined" testID={mockCardTestId} />
-      </ThemeProvider>,
-    );
-    const card = getByTestId(mockCardTestId);
-    const flattenedStyle = StyleSheet.flatten(card.props.style);
-    expect(flattenedStyle.backgroundColor).toEqual('red');
-  });
-
-  it('should combine the root style and component style', () => {
-    const { getByTestId } = testRenderer(
-      <ThemeProvider components={{ cardProps: { style: { backgroundColor: 'red' } } }}>
-        <Card variation="outlined" testID={mockCardTestId} style={{ borderWidth: 2 }} />
-      </ThemeProvider>,
-    );
-    const card = getByTestId(mockCardTestId);
-    const flattenedStyle = StyleSheet.flatten(card.props.style);
-    expect(flattenedStyle.backgroundColor).toEqual('red');
-    expect(flattenedStyle.borderWidth).toEqual(2);
-  });
 });
 
 describe('CardHeader Component', () => {
@@ -97,29 +74,6 @@ describe('CardHeader Component', () => {
     const cardHeader = getByTestId(mockCardHeaderTestId);
     const flattenedStyle = StyleSheet.flatten(cardHeader.props.style);
     expect(flattenedStyle.backgroundColor).toEqual('red');
-  });
-
-  it('should apply the root style', () => {
-    const { getByTestId } = testRenderer(
-      <ThemeProvider components={{ cardHeaderProps: { style: { backgroundColor: 'red' } } }}>
-        <CardHeader testID={mockCardHeaderTestId} />
-      </ThemeProvider>,
-    );
-    const cardHeader = getByTestId(mockCardHeaderTestId);
-    const flattenedStyle = StyleSheet.flatten(cardHeader.props.style);
-    expect(flattenedStyle.backgroundColor).toEqual('red');
-  });
-
-  it('should combine the root style and component style', () => {
-    const { getByTestId } = testRenderer(
-      <ThemeProvider components={{ cardHeaderProps: { style: { backgroundColor: 'red' } } }}>
-        <CardHeader testID={mockCardHeaderTestId} style={{ borderWidth: 2 }} />
-      </ThemeProvider>,
-    );
-    const cardHeader = getByTestId(mockCardHeaderTestId);
-    const flattenedStyle = StyleSheet.flatten(cardHeader.props.style);
-    expect(flattenedStyle.backgroundColor).toEqual('red');
-    expect(flattenedStyle.borderWidth).toEqual(2);
   });
 });
 

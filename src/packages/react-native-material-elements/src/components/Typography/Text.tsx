@@ -22,7 +22,6 @@ export const Text = React.forwardRef<RnText, TextProps>(
       mode,
       color,
       gutterBottomSpace = 10,
-      overrideRootGutterBottomConfig = false,
       disabled = false,
       ...props
     },
@@ -33,25 +32,16 @@ export const Text = React.forwardRef<RnText, TextProps>(
     const themeMode = useColorScheme();
     const { getStyleFromProps } = useRestyle(props);
 
-    const hasMaxLength = maxLength ?? themeTextConfig?.maxLength;
-
-    const themeGutterBottomSpace = () => {
-      if (overrideRootGutterBottomConfig) {
-        return gutterBottomSpace;
-      }
-      return themeTextConfig?.gutterBottomSpace ?? gutterBottomSpace;
-    };
-
     const renderedChildren = useMemo(() => {
-      if (hasMaxLength && typeof children !== 'string') {
+      if (maxLength && typeof children !== 'string') {
         throw new Error('maxLength props must be used with string');
       }
 
-      if (typeof children === 'string' && hasMaxLength) {
-        return maxLengthUtile(children, hasMaxLength);
+      if (typeof children === 'string' && maxLength) {
+        return maxLengthUtile(children, maxLength);
       }
       return children;
-    }, [children, hasMaxLength]);
+    }, [children, maxLength]);
 
     return (
       <Animated.Text
@@ -60,7 +50,7 @@ export const Text = React.forwardRef<RnText, TextProps>(
           generateTextStyles({
             variation,
             gutterBottom,
-            gutterBottomSpace: themeGutterBottomSpace(),
+            gutterBottomSpace: gutterBottomSpace,
             isActive,
             activeColor,
             disabled,
@@ -73,7 +63,6 @@ export const Text = React.forwardRef<RnText, TextProps>(
             themeFonts: themeFontConfig,
             themeMode,
           }),
-          themeTextConfig?.style,
           getStyleFromProps(),
           style,
         ]}

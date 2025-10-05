@@ -25,9 +25,7 @@ export const generateTextStyles = ({
 
   let baseColor: ColorValue | undefined;
 
-  if (themeComponentConfig?.color) {
-    baseColor = themeComponentConfig.color;
-  } else if (textThemeMode === 'light' || (!textThemeMode && themeMode === 'dark')) {
+  if (textThemeMode === 'light' || (!textThemeMode && themeMode === 'dark')) {
     baseColor = 'white';
   } else if (textThemeMode === 'dark') {
     baseColor = 'black';
@@ -36,34 +34,44 @@ export const generateTextStyles = ({
   const textColor = color ?? baseColor;
 
   let fontSize: number;
+  let fontWeight: TextStyle['fontWeight'];
 
   switch (variation) {
     case 'body1':
       fontSize = themeComponentConfig?.body1?.fontSize ?? themeFonts['text-2xl'];
+      fontWeight = themeComponentConfig?.body1?.fontWeight;
       break;
     case 'body2':
       fontSize = themeComponentConfig?.body2?.fontSize ?? themeFonts['text-3xl'];
+      fontWeight = themeComponentConfig?.body2?.fontWeight;
       break;
     case 'caption':
       fontSize = themeComponentConfig?.caption?.fontSize ?? themeFonts['text-sm'];
+      fontWeight = themeComponentConfig?.caption?.fontWeight;
       break;
     case 'h1':
       fontSize = themeComponentConfig?.h1?.fontSize ?? themeFonts['text-xl'];
+      fontWeight = themeComponentConfig?.h1?.fontWeight;
       break;
     case 'h2':
       fontSize = themeComponentConfig?.h2?.fontSize ?? themeFonts['text-lg'];
+      fontWeight = themeComponentConfig?.h2?.fontWeight;
       break;
     case 'h3':
       fontSize = themeComponentConfig?.h3?.fontSize ?? themeFonts['text-md'];
+      fontWeight = themeComponentConfig?.h3?.fontWeight;
       break;
     case 'h4':
       fontSize = themeComponentConfig?.h4?.fontSize ?? themeFonts['text-sm'];
+      fontWeight = themeComponentConfig?.h4?.fontWeight;
       break;
     case 'h5':
       fontSize = themeComponentConfig?.h5?.fontSize ?? themeFonts['text-xs'];
+      fontWeight = themeComponentConfig?.h5?.fontWeight;
       break;
     case 'h6':
       fontSize = themeComponentConfig?.h6?.fontSize ?? themeFonts['text-xxs'];
+      fontWeight = themeComponentConfig?.h6?.fontWeight;
       break;
     default:
       fontSize = themeFonts['text-sm'];
@@ -73,8 +81,6 @@ export const generateTextStyles = ({
 
   if (activeColor) {
     textActiveColor = activeColor;
-  } else if (themeComponentConfig?.activeColor) {
-    textActiveColor = themeComponentConfig.activeColor;
   } else {
     textActiveColor = secondary[200];
   }
@@ -83,8 +89,6 @@ export const generateTextStyles = ({
 
   if (errorColor) {
     textErrorColor = errorColor;
-  } else if (themeComponentConfig?.errorColor) {
-    textErrorColor = themeComponentConfig.errorColor;
   } else {
     textErrorColor = red[600];
   }
@@ -92,6 +96,7 @@ export const generateTextStyles = ({
   return {
     ...(textColor && { color: textColor }),
     ...(variation && { fontSize }),
+    ...(fontWeight && { fontWeight }),
     ...(gutterBottom && gutter('marginBottom', gutterBottomSpace)),
     ...(isActive && { color: textActiveColor }),
     ...(disabled && { opacity: 0.3 }),

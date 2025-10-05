@@ -15,7 +15,7 @@ function App(): React.JSX.Element {
                 label="UNDO"
                 labelColor={'white'}
                 variation="text"
-                baseButtonStyles={{ paddingTop: 4, paddingBottom: 4 }}
+                style={{ paddingTop: 4, paddingBottom: 4 }}
                 onPress={() => {}}
                 square
               />
